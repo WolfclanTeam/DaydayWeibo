@@ -962,6 +962,7 @@
 				DEBCFDD619F2114A0014D970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DEBCFDD719F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeiboTests" */ = {
 			isa = XCConfigurationList;
@@ -970,6 +971,7 @@
 				DEBCFDD919F2114A0014D970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
