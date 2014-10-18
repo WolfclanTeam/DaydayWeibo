@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KZJMyTabBarController.h"
+#import "KZJHomeController.h"
+#import "KZJMessageController.h"
+#import "KZJShareController.h"
+#import "KZJFindController.h"
+#import "KZJMeController.h"
+#import "KZJRequestData.h"
 @interface KZJAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

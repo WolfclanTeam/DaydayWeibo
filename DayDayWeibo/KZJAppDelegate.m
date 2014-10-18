@@ -20,6 +20,34 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    KZJHomeController*homeController = [[KZJHomeController alloc]init];
+    UINavigationController*nav_home = [[UINavigationController alloc]initWithRootViewController:homeController];
+    
+    KZJMessageController *message = [[KZJMessageController alloc]init];
+    UINavigationController*nav_message = [[UINavigationController alloc]initWithRootViewController:message];
+    
+    KZJShareController *share = [[KZJShareController alloc]init];
+    
+    KZJFindController *find = [[KZJFindController alloc]init];
+    UINavigationController*nav_find = [[UINavigationController alloc]initWithRootViewController:find];
+    
+    KZJMeController *me = [[KZJMeController alloc]init];
+    UINavigationController*nav_me = [[UINavigationController alloc]initWithRootViewController:me];
+    
+    
+    NSMutableArray*image = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"tabbar_home@2x"],[UIImage imageNamed:@"tabbar_message_center@2x"],[UIImage imageNamed:@"tabbar_compose_button@2x"],[UIImage imageNamed:@"tabbar_discover@2x"],[UIImage imageNamed:@"tabbar_profile@2x"], nil];
+    
+    NSMutableArray*selectedImage = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"tabbar_home_selected@2x"],[UIImage imageNamed:@"tabbar_message_center_selected@2x"],[UIImage imageNamed:@"tabbar_compose_button_highlighted@2x"],[UIImage imageNamed:@"tabbar_discover_selected@2x"],[UIImage imageNamed:@"tabbar_profile_selected@2x"], nil];
+    KZJMyTabBarController *myTabBar = [[KZJMyTabBarController alloc] initWithImage:image SeletedImage:selectedImage];
+    myTabBar.titleArray = [NSArray arrayWithObjects:@"首页",@"消息",@"",@"发现",@"我",nil];
+    
+    myTabBar.viewControllers = [NSArray arrayWithObjects:nav_home,nav_message,share,nav_find,nav_me, nil];
+    
+    
+    
+    
+    self.window.rootViewController = myTabBar;
     return YES;
 }
 
