@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+Redraw.h"
+#import "KZJShareView.h"
+#import "TumblrLikeMenu.h"
+#import "KZJShareController.h"
 @interface KZJMyTabBarController : UITabBarController
 {
     int flag;

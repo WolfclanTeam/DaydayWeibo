@@ -11,7 +11,7 @@
 #import "KZJMyTabBarController.h"
 #import "KZJHomeController.h"
 #import "KZJMessageController.h"
-#import "KZJShareController.h"
+
 #import "KZJFindController.h"
 #import "KZJMeController.h"
 #import "KZJRequestData.h"

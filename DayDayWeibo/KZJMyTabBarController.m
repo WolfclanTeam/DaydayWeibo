@@ -68,7 +68,14 @@
             [label setBackgroundColor:[UIColor clearColor]];
             label.font=[UIFont boldSystemFontOfSize:9.5];
             label.tag =1100+i;
-            label.text = titleArray[i];
+            if (i>2)
+            {
+                label.text = titleArray[i-1];
+            }else
+            {
+                label.text = titleArray[i];
+            }
+            
             label.textColor = [UIColor grayColor];
             label.textAlignment=NSTextAlignmentCenter;
             
@@ -96,27 +103,15 @@
  */
 - (void)clickBtn:(UIButton *)button {
     //1.先将之前选中的按钮设置为未选中
-    self.selectedBtn.selected = NO;
+//    self.selectedBtn.selected = NO;
     if (button.tag-1000==2)
     {
+        [self popSelectMenu];  //弹出选择菜单
         
-        //2.再将当前按钮设置为选中
-        if (self.selectedIndex!=button.tag-1000)
-        {
-            UILabel*label1 = (UILabel*)[self.view viewWithTag:1100+self.selectedIndex];
-            label1.textColor = [UIColor grayColor];
-            ;
-            [button setBackgroundImage:[self.seletedImageArr objectAtIndex:button.tag-1000] forState:UIControlStateSelected];
-            [button setImage:[UIImage redraw:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted@2x"] Frame:CGRectMake(0, 0, 30, 28)] forState:UIControlStateSelected];
-            self.selectedIndex = button.tag-1000;
-        }else
-        {
-            [button setImage:[UIImage redraw:[self.seletedImageArr objectAtIndex:button.tag-1000] Frame:CGRectMake(0, 0, 60, 35)] forState:UIControlStateSelected];
-            [button setImage:[UIImage redraw:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted@2x"] Frame:CGRectMake(0, 0, 30, 28)] forState:UIControlStateSelected];
-            self.selectedIndex = button.tag-1000;
-        }
     }else
     {
+        UIButton*btn = (UIButton*)[self.view viewWithTag:1000+self.selectedIndex];
+        btn.selected = NO;
         UILabel*label1 = (UILabel*)[self.view viewWithTag:1100+self.selectedIndex];
         label1.textColor = [UIColor grayColor];
         //2.再将当前按钮设置为选中
@@ -145,6 +140,42 @@
     [self.delegate tabBarController:self didSelectViewController:[self.viewControllers objectAtIndex:button.tag-1000]];
 }
 
+-(void)popSelectMenu
+{
+    TumblrLikeMenuItem *menuItem0 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Twitter"]
+                                                             highlightedImage:[UIImage imageNamed:@"Twitter"]
+                                                                         text:@"Twitter"];
+    TumblrLikeMenuItem *menuItem1 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Facebook"]
+                                                             highlightedImage:[UIImage imageNamed:@"Facebook"]
+                                                                         text:@"Facebook"];
+    TumblrLikeMenuItem *menuItem2 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Youtube"]
+                                                             highlightedImage:[UIImage imageNamed:@"Youtube"]
+                                                                         text:@"Youtube"];
+    TumblrLikeMenuItem *menuItem3 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Google+"]
+                                                             highlightedImage:[UIImage imageNamed:@"Google+"]
+                                                                         text:@"Google+"];
+    TumblrLikeMenuItem *menuItem4 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Tumblr"]
+                                                             highlightedImage:[UIImage imageNamed:@"Tumblr"]
+                                                                         text:@"Tumblr"];
+    TumblrLikeMenuItem *menuItem5 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"LinkedIn"]
+                                                             highlightedImage:[UIImage imageNamed:@"LinkedIn"]
+                                                                         text:@"LinkedIn"];
+    
+    NSArray *subMenus = @[menuItem0, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5];
+    
+    TumblrLikeMenu *menu = [[TumblrLikeMenu alloc] initWithFrame:self.view.bounds
+                                                        subMenus:subMenus
+                                                             tip:@"Nevermind"];
+    menu.selectBlock = ^(NSUInteger index) {
+        NSLog(@"item %d index selected", index);
+        if (index==5)
+        {
+            
+        }
+    };
+    [menu show];
+    
+}
 
 - (void)viewDidLoad
 {

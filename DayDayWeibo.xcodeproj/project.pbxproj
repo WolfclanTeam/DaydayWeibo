@@ -79,9 +79,13 @@
 		DEBCFE7B19F212E00014D970 /* KZJRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE7A19F212E00014D970 /* KZJRequestData.m */; };
 		DEBCFE8819F213900014D970 /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8719F213900014D970 /* KZJHomeController.m */; };
 		DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */; };
-		DEBCFE8E19F213A30014D970 /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8D19F213A30014D970 /* KZJShareController.m */; };
 		DEBCFE9119F213AA0014D970 /* KZJFindController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE9019F213AA0014D970 /* KZJFindController.m */; };
 		DEBCFE9419F213B60014D970 /* KZJMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE9319F213B60014D970 /* KZJMeController.m */; };
+		DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9519F2513100289A6C /* KZJShareView.m */; };
+		DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */; };
+		DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */; };
+		DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */; };
+		DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8EA819F2641700289A6C /* KZJShareController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,12 +216,20 @@
 		DEBCFE8719F213900014D970 /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
 		DEBCFE8919F2139A0014D970 /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
 		DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageController.m; sourceTree = "<group>"; };
-		DEBCFE8C19F213A30014D970 /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
-		DEBCFE8D19F213A30014D970 /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
 		DEBCFE8F19F213AA0014D970 /* KZJFindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJFindController.h; sourceTree = "<group>"; };
 		DEBCFE9019F213AA0014D970 /* KZJFindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJFindController.m; sourceTree = "<group>"; };
 		DEBCFE9219F213B60014D970 /* KZJMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMeController.h; sourceTree = "<group>"; };
 		DEBCFE9319F213B60014D970 /* KZJMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMeController.m; sourceTree = "<group>"; };
+		DECC8E9419F2513100289A6C /* KZJShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareView.h; sourceTree = "<group>"; };
+		DECC8E9519F2513100289A6C /* KZJShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareView.m; sourceTree = "<group>"; };
+		DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenu.m; sourceTree = "<group>"; };
+		DECC8E9919F254A900289A6C /* TumblrLikeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenuItem.h; sourceTree = "<group>"; };
+		DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenuItem.m; sourceTree = "<group>"; };
+		DECC8E9B19F254A900289A6C /* UIView+CommonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonAnimation.h"; sourceTree = "<group>"; };
+		DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonAnimation.m"; sourceTree = "<group>"; };
+		DECC8EA019F254DD00289A6C /* TumblrLikeMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenu.h; sourceTree = "<group>"; };
+		DECC8EA719F2641700289A6C /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
+		DECC8EA819F2641700289A6C /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,6 +549,9 @@
 		DEBCFE7E19F2131D0014D970 /* share */ = {
 			isa = PBXGroup;
 			children = (
+				DECC8E9719F2549700289A6C /* TumbirLikeMenu */,
+				DECC8E9419F2513100289A6C /* KZJShareView.h */,
+				DECC8E9519F2513100289A6C /* KZJShareView.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -576,8 +591,8 @@
 		DEBCFE8319F213420014D970 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				DEBCFE8C19F213A30014D970 /* KZJShareController.h */,
-				DEBCFE8D19F213A30014D970 /* KZJShareController.m */,
+				DECC8EA719F2641700289A6C /* KZJShareController.h */,
+				DECC8EA819F2641700289A6C /* KZJShareController.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -598,6 +613,19 @@
 				DEBCFE8719F213900014D970 /* KZJHomeController.m */,
 			);
 			name = home;
+			sourceTree = "<group>";
+		};
+		DECC8E9719F2549700289A6C /* TumbirLikeMenu */ = {
+			isa = PBXGroup;
+			children = (
+				DECC8EA019F254DD00289A6C /* TumblrLikeMenu.h */,
+				DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */,
+				DECC8E9919F254A900289A6C /* TumblrLikeMenuItem.h */,
+				DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */,
+				DECC8E9B19F254A900289A6C /* UIView+CommonAnimation.h */,
+				DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */,
+			);
+			name = TumbirLikeMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
@@ -726,8 +755,8 @@
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
 				DEBCFE4E19F212910014D970 /* MKNetworkEngine.m in Sources */,
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
+				DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
-				DEBCFE8E19F213A30014D970 /* KZJShareController.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				DEBCFE2319F212870014D970 /* SDWebImageDecoder.m in Sources */,
 				DEBCFE2A19F212870014D970 /* UIImage+MultiFormat.m in Sources */,
@@ -750,12 +779,15 @@
 				DEBCFE9419F213B60014D970 /* KZJMeController.m in Sources */,
 				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
+				DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */,
 				DEBCFE2119F212870014D970 /* SDImageCache.m in Sources */,
 				DEBCFE4F19F212910014D970 /* MKNetworkOperation.m in Sources */,
 				DEBCFE2819F212870014D970 /* UIButton+WebCache.m in Sources */,
 				DEBCFE2019F212870014D970 /* NSData+ImageContentType.m in Sources */,
 				DEBCFE5019F212910014D970 /* Reachability.m in Sources */,
+				DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */,
 				DEBCFDF719F2127A0014D970 /* MJRefreshConst.m in Sources */,
 				DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */,
 			);
@@ -962,6 +994,7 @@
 				DEBCFDD619F2114A0014D970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DEBCFDD719F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeiboTests" */ = {
 			isa = XCConfigurationList;
@@ -970,6 +1003,7 @@
 				DEBCFDD919F2114A0014D970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

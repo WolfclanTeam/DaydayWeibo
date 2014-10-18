@@ -40,7 +40,7 @@
     
     NSMutableArray*selectedImage = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"tabbar_home_selected@2x"],[UIImage imageNamed:@"tabbar_message_center_selected@2x"],[UIImage imageNamed:@"tabbar_compose_button_highlighted@2x"],[UIImage imageNamed:@"tabbar_discover_selected@2x"],[UIImage imageNamed:@"tabbar_profile_selected@2x"], nil];
     KZJMyTabBarController *myTabBar = [[KZJMyTabBarController alloc] initWithImage:image SeletedImage:selectedImage];
-    myTabBar.titleArray = [NSArray arrayWithObjects:@"首页",@"消息",@"",@"发现",@"我",nil];
+    myTabBar.titleArray = [NSArray arrayWithObjects:@"首页",@"消息",@"发现",@"我",nil];
     
     myTabBar.viewControllers = [NSArray arrayWithObjects:nav_home,nav_message,share,nav_find,nav_me, nil];
     
