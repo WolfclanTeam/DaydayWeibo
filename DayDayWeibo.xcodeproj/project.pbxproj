@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DEBCFDA619F2114A0014D970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA519F2114A0014D970 /* Foundation.framework */; };
+		DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */; };
+		DEBCFDAA19F2114A0014D970 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA919F2114A0014D970 /* UIKit.framework */; };
+		DEBCFDAC19F2114A0014D970 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDAB19F2114A0014D970 /* CoreData.framework */; };
+		DEBCFDB219F2114A0014D970 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEBCFDB019F2114A0014D970 /* InfoPlist.strings */; };
+		DEBCFDB419F2114A0014D970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFDB319F2114A0014D970 /* main.m */; };
+		DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFDB719F2114A0014D970 /* KZJAppDelegate.m */; };
+		DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFDB919F2114A0014D970 /* DayDayWeibo.xcdatamodeld */; };
+		DEBCFDBD19F2114A0014D970 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBCFDBC19F2114A0014D970 /* Images.xcassets */; };
+		DEBCFDC419F2114A0014D970 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDC319F2114A0014D970 /* XCTest.framework */; };
+		DEBCFDC519F2114A0014D970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA519F2114A0014D970 /* Foundation.framework */; };
+		DEBCFDC619F2114A0014D970 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA919F2114A0014D970 /* UIKit.framework */; };
+		DEBCFDC719F2114A0014D970 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDAB19F2114A0014D970 /* CoreData.framework */; };
+		DEBCFDCF19F2114A0014D970 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEBCFDCD19F2114A0014D970 /* InfoPlist.strings */; };
+		DEBCFDD119F2114A0014D970 /* DayDayWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFDD019F2114A0014D970 /* DayDayWeiboTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DEBCFDC819F2114A0014D970 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEBCFD9A19F2114A0014D970 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEBCFDA119F2114A0014D970;
+			remoteInfo = DayDayWeibo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayDayWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBCFDA519F2114A0014D970 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DEBCFDA919F2114A0014D970 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DEBCFDAB19F2114A0014D970 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DEBCFDAF19F2114A0014D970 /* DayDayWeibo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DayDayWeibo-Info.plist"; sourceTree = "<group>"; };
+		DEBCFDB119F2114A0014D970 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEBCFDB319F2114A0014D970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DEBCFDB519F2114A0014D970 /* DayDayWeibo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DayDayWeibo-Prefix.pch"; sourceTree = "<group>"; };
+		DEBCFDB619F2114A0014D970 /* KZJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KZJAppDelegate.h; sourceTree = "<group>"; };
+		DEBCFDB719F2114A0014D970 /* KZJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KZJAppDelegate.m; sourceTree = "<group>"; };
+		DEBCFDBA19F2114A0014D970 /* DayDayWeibo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayDayWeibo.xcdatamodel; sourceTree = "<group>"; };
+		DEBCFDBC19F2114A0014D970 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DEBCFDC219F2114A0014D970 /* DayDayWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayDayWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBCFDC319F2114A0014D970 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DEBCFDCC19F2114A0014D970 /* DayDayWeiboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DayDayWeiboTests-Info.plist"; sourceTree = "<group>"; };
+		DEBCFDCE19F2114A0014D970 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEBCFDD019F2114A0014D970 /* DayDayWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayDayWeiboTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DEBCFD9F19F2114A0014D970 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */,
+				DEBCFDAC19F2114A0014D970 /* CoreData.framework in Frameworks */,
+				DEBCFDAA19F2114A0014D970 /* UIKit.framework in Frameworks */,
+				DEBCFDA619F2114A0014D970 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBCFDBF19F2114A0014D970 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDC419F2114A0014D970 /* XCTest.framework in Frameworks */,
+				DEBCFDC719F2114A0014D970 /* CoreData.framework in Frameworks */,
+				DEBCFDC619F2114A0014D970 /* UIKit.framework in Frameworks */,
+				DEBCFDC519F2114A0014D970 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DEBCFD9919F2114A0014D970 = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDAD19F2114A0014D970 /* DayDayWeibo */,
+				DEBCFDCA19F2114A0014D970 /* DayDayWeiboTests */,
+				DEBCFDA419F2114A0014D970 /* Frameworks */,
+				DEBCFDA319F2114A0014D970 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DEBCFDA319F2114A0014D970 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */,
+				DEBCFDC219F2114A0014D970 /* DayDayWeiboTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DEBCFDA419F2114A0014D970 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDA519F2114A0014D970 /* Foundation.framework */,
+				DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */,
+				DEBCFDA919F2114A0014D970 /* UIKit.framework */,
+				DEBCFDAB19F2114A0014D970 /* CoreData.framework */,
+				DEBCFDC319F2114A0014D970 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DEBCFDAD19F2114A0014D970 /* DayDayWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDB619F2114A0014D970 /* KZJAppDelegate.h */,
+				DEBCFDB719F2114A0014D970 /* KZJAppDelegate.m */,
+				DEBCFDBC19F2114A0014D970 /* Images.xcassets */,
+				DEBCFDB919F2114A0014D970 /* DayDayWeibo.xcdatamodeld */,
+				DEBCFDAE19F2114A0014D970 /* Supporting Files */,
+			);
+			path = DayDayWeibo;
+			sourceTree = "<group>";
+		};
+		DEBCFDAE19F2114A0014D970 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDAF19F2114A0014D970 /* DayDayWeibo-Info.plist */,
+				DEBCFDB019F2114A0014D970 /* InfoPlist.strings */,
+				DEBCFDB319F2114A0014D970 /* main.m */,
+				DEBCFDB519F2114A0014D970 /* DayDayWeibo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEBCFDCA19F2114A0014D970 /* DayDayWeiboTests */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDD019F2114A0014D970 /* DayDayWeiboTests.m */,
+				DEBCFDCB19F2114A0014D970 /* Supporting Files */,
+			);
+			path = DayDayWeiboTests;
+			sourceTree = "<group>";
+		};
+		DEBCFDCB19F2114A0014D970 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCFDCC19F2114A0014D970 /* DayDayWeiboTests-Info.plist */,
+				DEBCFDCD19F2114A0014D970 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DEBCFDA119F2114A0014D970 /* DayDayWeibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEBCFDD419F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeibo" */;
+			buildPhases = (
+				DEBCFD9E19F2114A0014D970 /* Sources */,
+				DEBCFD9F19F2114A0014D970 /* Frameworks */,
+				DEBCFDA019F2114A0014D970 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DayDayWeibo;
+			productName = DayDayWeibo;
+			productReference = DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DEBCFDC119F2114A0014D970 /* DayDayWeiboTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEBCFDD719F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeiboTests" */;
+			buildPhases = (
+				DEBCFDBE19F2114A0014D970 /* Sources */,
+				DEBCFDBF19F2114A0014D970 /* Frameworks */,
+				DEBCFDC019F2114A0014D970 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEBCFDC919F2114A0014D970 /* PBXTargetDependency */,
+			);
+			name = DayDayWeiboTests;
+			productName = DayDayWeiboTests;
+			productReference = DEBCFDC219F2114A0014D970 /* DayDayWeiboTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DEBCFD9A19F2114A0014D970 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KZJ;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = KZJ;
+				TargetAttributes = {
+					DEBCFDC119F2114A0014D970 = {
+						TestTargetID = DEBCFDA119F2114A0014D970;
+					};
+				};
+			};
+			buildConfigurationList = DEBCFD9D19F2114A0014D970 /* Build configuration list for PBXProject "DayDayWeibo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DEBCFD9919F2114A0014D970;
+			productRefGroup = DEBCFDA319F2114A0014D970 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DEBCFDA119F2114A0014D970 /* DayDayWeibo */,
+				DEBCFDC119F2114A0014D970 /* DayDayWeiboTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DEBCFDA019F2114A0014D970 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDB219F2114A0014D970 /* InfoPlist.strings in Resources */,
+				DEBCFDBD19F2114A0014D970 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBCFDC019F2114A0014D970 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDCF19F2114A0014D970 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DEBCFD9E19F2114A0014D970 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
+				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
+				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBCFDBE19F2114A0014D970 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBCFDD119F2114A0014D970 /* DayDayWeiboTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DEBCFDC919F2114A0014D970 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEBCFDA119F2114A0014D970 /* DayDayWeibo */;
+			targetProxy = DEBCFDC819F2114A0014D970 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DEBCFDB019F2114A0014D970 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEBCFDB119F2114A0014D970 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DEBCFDCD19F2114A0014D970 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEBCFDCE19F2114A0014D970 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DEBCFDD219F2114A0014D970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DEBCFDD319F2114A0014D970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DEBCFDD519F2114A0014D970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
+				INFOPLIST_FILE = "DayDayWeibo/DayDayWeibo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DEBCFDD619F2114A0014D970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
+				INFOPLIST_FILE = "DayDayWeibo/DayDayWeibo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DEBCFDD819F2114A0014D970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DayDayWeibo.app/DayDayWeibo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DayDayWeiboTests/DayDayWeiboTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DEBCFDD919F2114A0014D970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DayDayWeibo.app/DayDayWeibo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
+				INFOPLIST_FILE = "DayDayWeiboTests/DayDayWeiboTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DEBCFD9D19F2114A0014D970 /* Build configuration list for PBXProject "DayDayWeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEBCFDD219F2114A0014D970 /* Debug */,
+				DEBCFDD319F2114A0014D970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEBCFDD419F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEBCFDD519F2114A0014D970 /* Debug */,
+				DEBCFDD619F2114A0014D970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DEBCFDD719F2114A0014D970 /* Build configuration list for PBXNativeTarget "DayDayWeiboTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEBCFDD819F2114A0014D970 /* Debug */,
+				DEBCFDD919F2114A0014D970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DEBCFDB919F2114A0014D970 /* DayDayWeibo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DEBCFDBA19F2114A0014D970 /* DayDayWeibo.xcdatamodel */,
+			);
+			currentVersion = DEBCFDBA19F2114A0014D970 /* DayDayWeibo.xcdatamodel */;
+			path = DayDayWeibo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DEBCFD9A19F2114A0014D970 /* Project object */;
+}
