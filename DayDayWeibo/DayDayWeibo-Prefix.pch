@@ -19,4 +19,5 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #import "WeiboSDK.h"
+#import "UIImage+Redraw.h"
 #endif

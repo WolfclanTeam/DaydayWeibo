@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KZJMeTableView.h"
+#import "KZJLoginView.h"
+#import "KZJSetView.h"
 @interface KZJMeController : UIViewController
-
+{
+    NSArray*arrayTableTitle;
+    NSArray*arrayTableImage;
+}
+@property(retain,nonatomic)KZJMeTableView*meTableView;
 @end

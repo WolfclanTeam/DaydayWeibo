@@ -9,6 +9,7 @@
 #import "KZJRequestData.h"
 
 @implementation KZJRequestData
+@synthesize userInformation;
 -(void)didReceiveWeiboRequest:(WBBaseRequest *)request
 {
     
@@ -16,5 +17,11 @@
 -(void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
    
+}
+-(void)setUserInformation:(NSDictionary *)userInformation
+{
+   
+    
+    
 }
 @end

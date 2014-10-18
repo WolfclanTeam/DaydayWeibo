@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface KZJRequestData : NSObject<WeiboSDKDelegate>
-
+#import "KZJAppDelegate.h"
+#import "UserInformation.h"
+@interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate>
+@property(retain,nonatomic)NSDictionary*userInformation;
 @end
