@@ -105,6 +105,7 @@
     
     if (button.tag-1000==2)
     {
+        [self popSelectMenu];  //弹出选择菜单
         
         //2.再将当前按钮设置为选中
 //        if (self.selectedIndex!=button.tag-1000)
@@ -160,6 +161,42 @@
 
 }
 
+-(void)popSelectMenu
+{
+    TumblrLikeMenuItem *menuItem0 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Twitter"]
+                                                             highlightedImage:[UIImage imageNamed:@"Twitter"]
+                                                                         text:@"Twitter"];
+    TumblrLikeMenuItem *menuItem1 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Facebook"]
+                                                             highlightedImage:[UIImage imageNamed:@"Facebook"]
+                                                                         text:@"Facebook"];
+    TumblrLikeMenuItem *menuItem2 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Youtube"]
+                                                             highlightedImage:[UIImage imageNamed:@"Youtube"]
+                                                                         text:@"Youtube"];
+    TumblrLikeMenuItem *menuItem3 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Google+"]
+                                                             highlightedImage:[UIImage imageNamed:@"Google+"]
+                                                                         text:@"Google+"];
+    TumblrLikeMenuItem *menuItem4 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Tumblr"]
+                                                             highlightedImage:[UIImage imageNamed:@"Tumblr"]
+                                                                         text:@"Tumblr"];
+    TumblrLikeMenuItem *menuItem5 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"LinkedIn"]
+                                                             highlightedImage:[UIImage imageNamed:@"LinkedIn"]
+                                                                         text:@"LinkedIn"];
+    
+    NSArray *subMenus = @[menuItem0, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5];
+    
+    TumblrLikeMenu *menu = [[TumblrLikeMenu alloc] initWithFrame:self.view.bounds
+                                                        subMenus:subMenus
+                                                             tip:@"Nevermind"];
+    menu.selectBlock = ^(NSUInteger index) {
+        NSLog(@"item %d index selected", index);
+        if (index==5)
+        {
+            
+        }
+    };
+    [menu show];
+    
+}
 
 - (void)viewDidLoad
 {
