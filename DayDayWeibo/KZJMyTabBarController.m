@@ -106,6 +106,7 @@
 //    self.selectedBtn.selected = NO;
     if (button.tag-1000==2)
     {
+       
         [self popSelectMenu];  //弹出选择菜单
         
     }else
@@ -142,24 +143,24 @@
 
 -(void)popSelectMenu
 {
-    TumblrLikeMenuItem *menuItem0 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Twitter"]
-                                                             highlightedImage:[UIImage imageNamed:@"Twitter"]
-                                                                         text:@"Twitter"];
-    TumblrLikeMenuItem *menuItem1 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Facebook"]
-                                                             highlightedImage:[UIImage imageNamed:@"Facebook"]
-                                                                         text:@"Facebook"];
-    TumblrLikeMenuItem *menuItem2 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Youtube"]
-                                                             highlightedImage:[UIImage imageNamed:@"Youtube"]
-                                                                         text:@"Youtube"];
-    TumblrLikeMenuItem *menuItem3 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Google+"]
-                                                             highlightedImage:[UIImage imageNamed:@"Google+"]
-                                                                         text:@"Google+"];
-    TumblrLikeMenuItem *menuItem4 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Tumblr"]
-                                                             highlightedImage:[UIImage imageNamed:@"Tumblr"]
-                                                                         text:@"Tumblr"];
-    TumblrLikeMenuItem *menuItem5 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"LinkedIn"]
-                                                             highlightedImage:[UIImage imageNamed:@"LinkedIn"]
-                                                                         text:@"LinkedIn"];
+    TumblrLikeMenuItem *menuItem0 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_idea"]
+                                                             highlightedImage:[UIImage imageNamed:@"abbar_compose_idea"]
+                                                                         text:@"文字"];
+    TumblrLikeMenuItem *menuItem1 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_photo"]
+                                                             highlightedImage:[UIImage imageNamed:@"tabbar_compose_photo"]
+                                                                         text:@"相册"];
+    TumblrLikeMenuItem *menuItem2 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_camera"]
+                                                             highlightedImage:[UIImage imageNamed:@"tabbar_compose_camera"]
+                                                                         text:@"拍摄"];
+    TumblrLikeMenuItem *menuItem3 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_lbs"]
+                                                             highlightedImage:[UIImage imageNamed:@"tabbar_compose_lbs"]
+                                                                         text:@"签到"];
+    TumblrLikeMenuItem *menuItem4 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_review"]
+                                                             highlightedImage:[UIImage imageNamed:@"tabbar_compose_review"]
+                                                                         text:@"点评"];
+    TumblrLikeMenuItem *menuItem5 = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_compose_more"]
+                                                             highlightedImage:[UIImage imageNamed:@"tabbar_compose_more"]
+                                                                         text:@"更多"];
     
     NSArray *subMenus = @[menuItem0, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5];
     
@@ -170,7 +171,7 @@
         NSLog(@"item %d index selected", index);
         if (index==5)
         {
-            
+            return ;
         }
     };
     [menu show];
