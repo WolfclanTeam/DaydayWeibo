@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KZJMessageView.h"
 @interface KZJMessageController : UIViewController
 
 @end

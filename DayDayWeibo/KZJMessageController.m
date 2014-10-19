@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    KZJMessageView *messageView = [[KZJMessageView alloc] initWithFrame:self.view.bounds];
+    self.view = messageView;
+    
+    self.navigationItem.title = @"消息";
 }
 
 - (void)didReceiveMemoryWarning

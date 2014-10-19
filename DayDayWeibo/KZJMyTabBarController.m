@@ -162,22 +162,47 @@
                                                              highlightedImage:[UIImage imageNamed:@"tabbar_compose_more"]
                                                                          text:@"更多"];
     
+    
     NSArray *subMenus = @[menuItem0, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5];
     
     TumblrLikeMenu *menu = [[TumblrLikeMenu alloc] initWithFrame:self.view.bounds
                                                         subMenus:subMenus
-                                                             tip:@"Nevermind"];
+                                                             tip:@"fg"];
     menu.selectBlock = ^(NSUInteger index) {
         NSLog(@"item %d index selected", index);
         if (index==5)
         {
-            return ;
+            [self popMoreMenu];
         }
     };
     [menu show];
     
 }
-
+-(void)popMoreMenu
+{
+    NSArray *tipArr = @[@"好友圈",@"有声照片",@"秒拍",@"定时删",@"长微博",@""];
+    NSArray *moreImageArr =@[@"tabbar_compose_friend",@"tabbar_compose_voice",@"tabbar_compose_shooting",@"tabbar_compose_delete",@"tabbar_compose_weibo",@"tabbar_compose_background_icon_return@2x"];
+    NSMutableArray *subMenus =[NSMutableArray array] ;
+   
+    for (int i=0; i<6; i++)
+    {
+        TumblrLikeMenuItem *menuItem = [[TumblrLikeMenuItem alloc] initWithImage:[UIImage imageNamed:[moreImageArr objectAtIndex:i]]
+                                                                 highlightedImage:[UIImage imageNamed:[moreImageArr objectAtIndex:i]]
+                                                                             text:[tipArr objectAtIndex:i]];
+        [subMenus addObject:menuItem];
+    }
+    TumblrLikeMenu *menu = [[TumblrLikeMenu alloc] initWithFrame:self.view.bounds
+                                                        subMenus:subMenus
+                                                             tip:@""];
+    menu.selectBlock = ^(NSUInteger index) {
+        NSLog(@"item %d index selected", index);
+        if (index==5)
+        {
+            [self popSelectMenu];
+        }
+    };
+    [menu show];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -198,7 +223,7 @@
         }
     }
     //隐藏原有的tabBar
-    //    self.tabBar.hidden =YES;  //隐藏TabBarController自带的下部的条s
+//    self.tabBar.hidden =YES;  //隐藏TabBarController自带的下部的条s
     
     [self btn];
     

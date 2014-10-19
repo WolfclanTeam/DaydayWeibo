@@ -47,6 +47,7 @@
         {
             // use tool bar in iOS 7 to blur the backgroud
             self.magicBgImageView = [[UIToolbar alloc] initWithFrame:frame];
+            
             ((UIToolbar *)self.magicBgImageView).barStyle = UIBarStyleBlackTranslucent;
         }
         
@@ -55,11 +56,12 @@
         if (tip)
         {
             self.tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), kFloatTipLabelHeight)];
+            
             self.tipLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
             self.tipLabel.text = tip;
-            self.tipLabel.backgroundColor = [UIColor clearColor];
+            
             self.tipLabel.textAlignment = NSTextAlignmentCenter;
-            self.tipLabel.textColor = [UIColor whiteColor];
+            self.tipLabel.textColor = [UIColor clearColor];
             [self addSubview:self.tipLabel];
         }
         
