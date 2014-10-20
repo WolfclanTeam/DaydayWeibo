@@ -2,7 +2,7 @@
 //  UserInformation.h
 //  DayDayWeibo
 //
-//  Created by bk on 14-10-18.
+//  Created by bk on 14-10-19.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
@@ -12,12 +12,13 @@
 
 @interface UserInformation : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * statuses;
-@property (nonatomic, retain) NSNumber * care;
-@property (nonatomic, retain) NSNumber * fans;
 @property (nonatomic, retain) NSString * brief;
-@property (nonatomic, retain) NSData * photo;
-@property (nonatomic, retain) NSNumber * uid;
+@property (nonatomic, retain) NSString * care;
+@property (nonatomic, retain) NSString * fans;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * photo;
+@property (nonatomic, retain) NSString * statuses;
+@property (nonatomic, retain) NSString * token;
+@property (nonatomic, retain) NSString * uid;
 
 @end

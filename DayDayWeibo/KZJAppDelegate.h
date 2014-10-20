@@ -18,10 +18,11 @@
 #import "KZJRequestData.h"
 #import "JSONKit.h"
 #import "UserInformation.h"
-@interface KZJAppDelegate : UIResponder <UIApplicationDelegate,WeiboSDKDelegate,WBHttpRequestDelegate>
+#import "MKNetworkKit.h"
+
+@interface KZJAppDelegate : UIResponder <UIApplicationDelegate,WBHttpRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

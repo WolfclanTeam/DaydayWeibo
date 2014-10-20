@@ -16,6 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     NSLog(@"%@",NSHomeDirectory());
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -162,7 +163,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -175,90 +176,16 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-#pragma mark 微博返回信息
--(void)didReceiveWeiboResponse:(WBBaseResponse *)response
-{
-    
-    if ([response isKindOfClass:WBAuthorizeResponse.class])
-    {
-        
-        if (response.statusCode == WeiboSDKResponseStatusCodeSuccess )
-        {
-            
-            [[NSUserDefaults standardUserDefaults]setObject:@"已登陆1" forKey:@"登陆状态"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            
-            NSUserDefaults*user = [NSUserDefaults standardUserDefaults];
-            [user setObject:[(WBAuthorizeResponse *)response accessToken] forKey:@"Token"];
-            [user setObject:[(WBAuthorizeResponse *)response userID] forKey:@"UserID"];
-            [user synchronize];
-            
-            [self startRequestData];
-            
-            NSNotification*notification= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
-            
-            
-        }else
-        {
-            
-            [[NSUserDefaults standardUserDefaults]setObject:@"未登陆" forKey:@"登陆状态"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        }
-    }
-    
-}
-#pragma mark 微博请求信息
--(void)didReceiveWeiboRequest:(WBBaseRequest *)request
-{
-    
-}
--(void)startRequestData
-{
-    NSDictionary*params=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
-    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/users/show.json" httpMethod:@"GET" params:params delegate:self withTag:@"991"];
-}
-#pragma mark 微博认证请求返回结果结束
--(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
-{
-    //    NSLog(@"===");
-    NSDictionary*dict = [result objectFromJSONString];
-        NSLog(@"===%@",dict);
-//        NSLog(@"===");
-    KZJRequestData *requestData= [[KZJRequestData alloc]init];
-    requestData.userInformation = dict;
-    
-    NSManagedObjectContext *context = [self managedObjectContext];
-    UserInformation*userInformation = [NSEntityDescription
-                                      insertNewObjectForEntityForName:@"UserInformation"
-                                      inManagedObjectContext:context];
-    userInformation.name = [dict objectForKey:@"name"];
-    UIImageView*image = [[UIImageView alloc]init];
-    [image sd_setImageWithURL:[dict objectForKey:@"avatar_hd"]];
-    NSData*imageData = UIImagePNGRepresentation(image.image);
-    userInformation.photo = imageData;
-    userInformation.brief = [dict objectForKey:@"description"];
-    userInformation.statuses = [dict objectForKey:@"statuses_count"];
-    userInformation.care = [dict objectForKey:@"friends_count"];
-    userInformation.fans = [dict objectForKey:@"followers_count"];
-    userInformation.uid = [dict objectForKey:@"id"];
-    [context save:nil];
-    
-    
-    
-    
-    NSNotification*notification=nil;
-    notification = [NSNotification notificationWithName:@"passValue" object:self userInfo:dict];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-    
-}
+
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [WeiboSDK handleOpenURL:url delegate:self];
+    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    return [WeiboSDK handleOpenURL:url delegate:requestData];
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [WeiboSDK handleOpenURL:url delegate:self];
+    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    return [WeiboSDK handleOpenURL:url delegate:requestData];
 }
 
 

@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "KZJAppDelegate.h"
 #import "UserInformation.h"
-@interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate>
-@property(retain,nonatomic)NSDictionary*userInformation;
+@interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate,WBHttpRequestDelegate>
+
+
+
+-(NSArray*)getCoreData:(NSString*)entityName;
+-(int)textLength:(NSString *)dataString;
+-(NSArray*)loginRank:(NSArray*)array;
+-(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info;
+-(id)initOnly;
+
 @end
