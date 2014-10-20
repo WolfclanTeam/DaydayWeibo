@@ -1,24 +1,20 @@
 //
-//  KZJShareView.m
+//  KZJMyCommentSupportBaseTableView.m
 //  DayDayWeibo
 //
-//  Created by Ibokan on 14-10-18.
+//  Created by Ibokan on 14-10-20.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJShareView.h"
+#import "KZJMyCommentSupportBaseTableView.h"
 
-@implementation KZJShareView
+@implementation KZJMyCommentSupportBaseTableView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
-      
-        
-       
     }
     return self;
 }
