@@ -54,15 +54,12 @@
         UserInformation*info = numberArray[indexPath.row];
         
         [cell.image sd_setImageWithURL:[NSURL URLWithString:info.photo]];
-        
         cell.nameLabel.text = info.name;
-        
         if (indexPath.row==0)
         {
             cell.loginView.image = [UIImage redraw:[UIImage imageNamed:@"login_fonud_check@2x"] Frame:CGRectMake(0, 0, 15, 15)];
+            [cell.loginView setHidden:NO];
         }
-        
-        
         if (info.unread !=nil&&![info.unread isEqualToString:@"0"])
         {
             cell.unreadLabel.layer.cornerRadius =7;
@@ -73,16 +70,31 @@
             cell.unreadLabel.font = [UIFont systemFontOfSize:12];
             cell.unreadLabel.textAlignment =NSTextAlignmentCenter;
             cell.unreadLabel.textColor = [UIColor blackColor];
+            [cell.unreadLabel setHidden:NO];
+        }else
+        {
+            [cell.unreadLabel setHidden:YES];
         }
     }
     else if(indexPath.section ==0)
     {
         cell.image.image = [UIImage imageNamed:@"accountmanage_add@2x"];
+        cell.nameLabel.text = @"添加账号";
+        cell.nameLabel.textAlignment = NSTextAlignmentLeft;
+        cell.nameLabel.frame = CGRectMake(55, 5, 250, 45);
+        cell.nameLabel.textColor = [UIColor blackColor];
+        [cell.loginView setHidden:YES];
+        [cell.image setHidden:NO];
+        [cell.unreadLabel setHidden:YES];
     }else
     {
         cell.nameLabel.textAlignment = NSTextAlignmentCenter;
+        cell.nameLabel.frame = CGRectMake(0, 0, SCREENWIDTH, 30);
         cell.nameLabel.text = @"退出当前账号";
         cell.nameLabel.textColor = [UIColor redColor];
+        [cell.line setHidden:YES];
+        [cell.image setHidden:YES];
+        [cell.unreadLabel setHidden:YES];
     }
     return cell;
 }
@@ -134,7 +146,7 @@
             if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
             {
                 numberArray = (NSMutableArray*)[[KZJRequestData alloc]deleteCoreData:@"UserInformation" withData:info];
-//                NSLog(@"===%@",numberArray);
+                NSLog(@"===%@",numberArray);
                 [tableView reloadData];
             }
         }
@@ -152,6 +164,8 @@
         }else
         {
             [user setObject:@"未登录" forKey:@"登陆状态"];
+            [user setObject:nil forKey:@"Token"];
+            [user setObject:nil forKey:@"UserID"];
         }
         [user synchronize];
     }else
@@ -173,8 +187,6 @@
             [[[KZJRequestData alloc] initOnly]startRequestData1];
             numberArray = (NSMutableArray*)[[KZJRequestData alloc]loginRank:numberArray];
             [tableView reloadData];
-            
-            
         }
     }
 }

@@ -20,4 +20,5 @@
 @dynamic token;
 @dynamic uid;
 @dynamic unread;
+@dynamic collectionNum;
 @end

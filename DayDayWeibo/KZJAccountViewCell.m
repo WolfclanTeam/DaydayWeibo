@@ -20,9 +20,9 @@
     self =[super initWithStyle:style reuseIdentifier:reuseIdentifier ];
     if (self)
     {
-        UILabel*line = [[UILabel alloc]initWithFrame:CGRectMake(0, 54, SCREENWIDTH, 0.5)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:line];
+        _line = [[UILabel alloc]initWithFrame:CGRectMake(0, 54, SCREENWIDTH, 0.5)];
+        _line.backgroundColor = [UIColor lightGrayColor];
+        [self addSubview:_line];
         
         _image = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 45, 45)];
         [self addSubview:_image];
@@ -35,6 +35,7 @@
         
         _unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-20,20, 15, 15)];
         [self addSubview:_unreadLabel];
+        
     }
     return self;
 }

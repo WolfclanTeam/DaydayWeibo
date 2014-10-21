@@ -13,5 +13,5 @@
 @property(retain,nonatomic)UILabel*nameLabel;
 @property(retain,nonatomic)UIImageView*loginView;
 @property(retain,nonatomic)UILabel*unreadLabel;
-
+@property(retain,nonatomic)UILabel*line;
 @end
