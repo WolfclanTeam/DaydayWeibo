@@ -35,6 +35,7 @@
 		A54933E819F4DBC3002F9D92 /* findfriend_icon_popolarroots@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54933E619F4DBC3002F9D92 /* findfriend_icon_popolarroots@2x.png */; };
 		A54933EC19F4DE7C002F9D92 /* more_icon_collection1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54933EB19F4DE7C002F9D92 /* more_icon_collection1@2x.png */; };
 		A54933EE19F4DEF0002F9D92 /* login_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54933ED19F4DEF0002F9D92 /* login_detail@2x.png */; };
+		A54933F019F51759002F9D92 /* skin_cell_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54933EF19F51759002F9D92 /* skin_cell_background@2x.png */; };
 		A582E70C19F2714B002D66D2 /* navigationbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A582E70B19F2714B002D66D2 /* navigationbar_background@2x.png */; };
 		DEBCFDA619F2114A0014D970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA519F2114A0014D970 /* Foundation.framework */; };
 		DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */; };
@@ -165,6 +166,7 @@
 		A54933E619F4DBC3002F9D92 /* findfriend_icon_popolarroots@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findfriend_icon_popolarroots@2x.png"; sourceTree = "<group>"; };
 		A54933EB19F4DE7C002F9D92 /* more_icon_collection1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_icon_collection1@2x.png"; sourceTree = "<group>"; };
 		A54933ED19F4DEF0002F9D92 /* login_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_detail@2x.png"; sourceTree = "<group>"; };
+		A54933EF19F51759002F9D92 /* skin_cell_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skin_cell_background@2x.png"; sourceTree = "<group>"; };
 		A582E70B19F2714B002D66D2 /* navigationbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_background@2x.png"; sourceTree = "<group>"; };
 		DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayDayWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBCFDA519F2114A0014D970 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -585,6 +587,7 @@
 		DEBCFE5519F212BB0014D970 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A54933EF19F51759002F9D92 /* skin_cell_background@2x.png */,
 				A54933ED19F4DEF0002F9D92 /* login_detail@2x.png */,
 				A54933EB19F4DE7C002F9D92 /* more_icon_collection1@2x.png */,
 				A54933E519F4DBC3002F9D92 /* findfriend_icon_guess@2x.png */,
@@ -817,6 +820,7 @@
 				DEBCFE7519F212C50014D970 /* tabbar_profile@2x.png in Resources */,
 				DEBCFE7019F212C50014D970 /* tabbar_message_center_highlighted@2x.png in Resources */,
 				A51B609B19F3AF7C00282413 /* messagescenter_good@2x.png in Resources */,
+				A54933F019F51759002F9D92 /* skin_cell_background@2x.png in Resources */,
 				DEBCFDB219F2114A0014D970 /* InfoPlist.strings in Resources */,
 				DEBCFE6A19F212C50014D970 /* tabbar_discover_highlighted@2x.png in Resources */,
 				A5133DD319F3968F00F11B95 /* settings_statistic_form_background_middle@2x.png in Resources */,

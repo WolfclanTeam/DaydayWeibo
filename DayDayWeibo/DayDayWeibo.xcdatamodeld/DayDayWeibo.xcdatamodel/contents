@@ -9,8 +9,9 @@
         <attribute name="statuses" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unread" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserInformation" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="UserInformation" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

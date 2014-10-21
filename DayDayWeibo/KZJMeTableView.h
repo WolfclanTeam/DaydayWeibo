@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
 #import "CustomCell.h"
+#import "UserInformation.h"
 
 @interface KZJMeTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray*titleArray;
     NSArray*imageArray;
+    UserInformation*info;
 }
--(id)initWithFrame:(CGRect)frame withTitle:(NSArray*)arrayTitle withImage:(NSArray*)arrayImage style:(UITableViewStyle)style;
 
+
+//-(id)initWithFrame:(CGRect)frame withTitle:(NSArray*)arrayTitle withImage:(NSArray*)arrayImage style:(UITableViewStyle)style withArray:(NSArray *)array;
+-(void)setWithTitle:(NSArray*)arrayTitle withImage:(NSArray*)arrayImage style:(UITableViewStyle)style withArray:(NSArray *)array;
 @end

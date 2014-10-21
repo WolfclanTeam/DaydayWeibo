@@ -19,7 +19,10 @@
 {
     [self addSubview:imageView];
 }
-
+-(void)addView:(UIView *)view
+{
+    [self addView:view];
+}
 - (void)awakeFromNib {
     // Initialization code
 }

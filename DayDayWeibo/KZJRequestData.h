@@ -18,5 +18,8 @@
 -(NSArray*)loginRank:(NSArray*)array;
 -(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info;
 -(id)initOnly;
-
+-(NSString*)cacheNumber;
+-(id)searchEntityName:(NSString*)name uid:(NSString*)uid;
+-(void)startRequestData1;
+-(void)startRequestData2;
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CustomCell.h"
 #import "UIImageView+WebCache.h"
-@interface KZJAccountView : UITableView<UITableViewDataSource,UITableViewDelegate>
-
+@interface KZJAccountView : UITableView<UITableViewDataSource,UITableViewDelegate,WBHttpRequestDelegate>
+{
+    NSMutableArray*numberArray;
+}
+-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style numArray:(NSArray*)array;
 @end

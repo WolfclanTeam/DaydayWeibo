@@ -34,14 +34,19 @@
 -(void)pushAccount
 {
     KZJNextView*accountView = [[KZJNextView alloc]init];
-    
+//    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:accountView animated:YES];
 }
 -(void)back
 {
+    self.hidesBottomBarWhenPushed = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    self.hidesBottomBarWhenPushed = YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

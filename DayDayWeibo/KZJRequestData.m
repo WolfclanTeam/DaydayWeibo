@@ -44,12 +44,11 @@
 }
 -(void)startRequestData1
 {
-
-//    NSLock*lock = [[NSLock alloc]init];
-//    [lock lock];
     NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/users/show.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"991"];
-//    [lock unlock];
+
+    NSDictionary*params2=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://rm.api.weibo.com/2/remind/unread_count.json" httpMethod:@"GET" params:params2 delegate:self withTag:@"993"];
 }
 -(void)startRequestData2
 {
@@ -60,7 +59,8 @@
 #pragma mark 微博认证请求返回结果结束
 -(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
 {
-    NSLog(@"%@",request.tag);
+
+//    NSLog(@"%@",result);
     //    NSLog(@"===");
     if ([request.tag isEqualToString:@"991"])
     {
@@ -70,9 +70,37 @@
     {
 //        NSLog(@"%@",result);
 
+    }else if ([request.tag isEqualToString:@"993"])
+    {
+        NSLog(@"%@",result);
+        [self unread:result];
     }
 }
-
+#pragma mark 返回用户未读信息数(不包含未读微博)
+-(void)unread:(NSString*)result
+{
+    NSDictionary*dict = [result objectFromJSONString];
+    NSArray*keyArray = [NSArray arrayWithObjects:@"follower",@"cmt",@"dm",@"attention_follower",@"mention_status",@"mention_cmt",@"group", @"private_group",@"notice",@"invite",@"badge",@"photo",@"all_cmt",@"attention_follower",nil];
+    int num=0;
+    for (NSString*key in keyArray)
+    {
+        num+=[[dict objectForKey:key] intValue];
+    }
+    NSLog(@"%d",num);
+    
+    KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = app.managedObjectContext;
+    NSArray*array = [self getCoreData:@"UserInformation"];
+    for (UserInformation*info in array)
+    {
+        if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
+        {
+            info.unread = [NSString stringWithFormat:@"%d",num];
+            NSLog(@"%@",info.unread);
+        }
+    }
+    [context save:nil];
+}
 #pragma mark 处理请求回来的用户个人信息
 -(void)userData:(NSString*)result
 {
@@ -109,8 +137,13 @@
             flag ++;
             if (flag>=2)
             {
-                UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"你好,你已经登录过该账号,请直接选择账号登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                [alert show];
+                if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"标示启动"]isEqualToString:@"启动"]&&![[[NSUserDefaults standardUserDefaults]objectForKey:@"账号管理"]isEqualToString:@"已存在"])
+                {
+                    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"你好,你已经登录过该账号,请直接选择账号登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alert show];
+                }
+                [[NSUserDefaults standardUserDefaults]setObject:@"已启动" forKey:@"标示启动"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
                 [context deleteObject:info];
             }
             
@@ -123,9 +156,13 @@
     NSNotification*notification=nil;
     notification = [NSNotification notificationWithName:@"passValue" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+    if ([array count]==1)
+    {
+        NSNotification*notification1= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification1];
+        NSLog(@"=dasfa-24354");
+    }
     
-    //        NSNotification*notification1= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
-    //        [[NSNotificationCenter defaultCenter] postNotification:notification1];
     NSNotification*notification2= [NSNotification notificationWithName:@"addlogin" object:self userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification2];
 }
@@ -176,6 +213,24 @@
     fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
     return fetchedObjects;
 }
+#pragma mark 通过传入实体名和要修改的实体的属性uid,即可获得该实体
+-(id)searchEntityName:(NSString*)name uid:(NSString*)uid
+{
+    KZJAppDelegate*appdelegate = (KZJAppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext*manager = appdelegate.managedObjectContext;
+    //
+    NSFetchRequest*request = [[NSFetchRequest alloc]initWithEntityName:name];
+//    NSString*str = @".*k$";
+    NSPredicate*predicate = [NSPredicate predicateWithFormat:@"uid matches %@",uid];
+    [request setPredicate:predicate];
+    //
+    NSArray*arr = [manager executeFetchRequest:request error:nil];
+    if ([arr count]>0)
+    {
+        return arr[0];
+    }
+    return nil;
+}
 
 #pragma mark 测试文字长度
 -(int)textLength:(NSString *)dataString
@@ -214,6 +269,31 @@
         
     }
     return rankArray;
+}
+
+#pragma mark 获得缓存大小
+-(NSString*)cacheNumber
+{
+    
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:cachPath]) return 0;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:cachPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        NSString* fileAbsolutePath = [cachPath stringByAppendingPathComponent:fileName];
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    NSString*cache = [NSString stringWithFormat:@"%.2f",folderSize/1024.0/1024.0];
+    return cache;
+}
+- (long long) fileSizeAtPath:(NSString*) filePath{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:filePath]){
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+    }
+    return 0;
 }
 
 

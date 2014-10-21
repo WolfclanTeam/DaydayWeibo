@@ -19,5 +19,5 @@
 @dynamic statuses;
 @dynamic token;
 @dynamic uid;
-
+@dynamic unread;
 @end

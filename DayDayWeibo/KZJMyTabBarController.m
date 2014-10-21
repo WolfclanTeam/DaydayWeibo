@@ -75,6 +75,7 @@
             {
                 label.text = titleArray[i];
             }
+            
             label.textColor = [UIColor grayColor];
             label.textAlignment=NSTextAlignmentCenter;
             
@@ -102,7 +103,7 @@
  */
 - (void)clickBtn:(UIButton *)button {
     //1.先将之前选中的按钮设置为未选中
-    
+//    self.selectedBtn.selected = NO;
     if (button.tag-1000==2)
     {
         [self popSelectMenu];  //弹出选择菜单
@@ -188,7 +189,7 @@
                                                         subMenus:subMenus
                                                              tip:@"Nevermind"];
     menu.selectBlock = ^(NSUInteger index) {
-        NSLog(@"item %d index selected", index);
+        NSLog(@"item %lu index selected", (unsigned long)index);
         if (index==5)
         {
             

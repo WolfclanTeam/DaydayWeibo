@@ -20,5 +20,6 @@
 @property (nonatomic, retain) NSString * statuses;
 @property (nonatomic, retain) NSString * token;
 @property (nonatomic, retain) NSString * uid;
+@property (nonatomic, retain) NSString * unread;
 
 @end
