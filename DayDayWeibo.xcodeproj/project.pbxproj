@@ -347,6 +347,8 @@
 				DEBCFDB719F2114A0014D970 /* KZJAppDelegate.m */,
 				DEBCFDBC19F2114A0014D970 /* Images.xcassets */,
 				DEBCFDB919F2114A0014D970 /* DayDayWeibo.xcdatamodeld */,
+				A51B609719F3AB4800282413 /* UserInformation.h */,
+				A51B609819F3AB4800282413 /* UserInformation.m */,
 				DEBCFDAE19F2114A0014D970 /* Supporting Files */,
 			);
 			path = DayDayWeibo;
@@ -417,6 +419,8 @@
 		DEBCFDDD19F2123F0014D970 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				A51D711819F23D3C0079F710 /* JSONKit.h */,
+				A51D711919F23D3C0079F710 /* JSONKit.m */,
 				DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */,
 				DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */,
 				DEBCFE5519F212BB0014D970 /* images */,
@@ -591,6 +595,8 @@
 				DEBCFE6319F212C50014D970 /* tabbar_profile_highlighted@2x.png */,
 				DEBCFE6419F212C50014D970 /* tabbar_profile_selected@2x.png */,
 				DEBCFE6519F212C50014D970 /* tabbar_profile@2x.png */,
+				A51D711D19F23F500079F710 /* common_relationship_button_background@2x.png */,
+				A51D711F19F23F960079F710 /* userinfo_relationship_indicator_friends@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -633,6 +639,20 @@
 		DEBCFE8019F213280014D970 /* me */ = {
 			isa = PBXGroup;
 			children = (
+				A51D710319F238C10079F710 /* KZJMeTableView.h */,
+				A51D710419F238C10079F710 /* KZJMeTableView.m */,
+				A54FDD2F19F5F1BB00A8EF96 /* KZJMeTableViewCell.h */,
+				A54FDD3019F5F1BB00A8EF96 /* KZJMeTableViewCell.m */,
+				A51D710919F23A7A0079F710 /* KZJLoginView.h */,
+				A51D710A19F23A7A0079F710 /* KZJLoginView.m */,
+				A51D710C19F23B1E0079F710 /* KZJSetTableView.h */,
+				A51D710D19F23B1E0079F710 /* KZJSetTableView.m */,
+				A54FDD3219F5F1D300A8EF96 /* KZJSetTableViewCell.h */,
+				A54FDD3319F5F1D300A8EF96 /* KZJSetTableViewCell.m */,
+				A51D710F19F23B310079F710 /* KZJAccountView.h */,
+				A51D711019F23B310079F710 /* KZJAccountView.m */,
+				A54FDD3519F5F1EE00A8EF96 /* KZJAccountViewCell.h */,
+				A54FDD3619F5F1EE00A8EF96 /* KZJAccountViewCell.m */,
 			);
 			name = me;
 			sourceTree = "<group>";
@@ -642,6 +662,10 @@
 			children = (
 				DEBCFE9219F213B60014D970 /* KZJMeController.h */,
 				DEBCFE9319F213B60014D970 /* KZJMeController.m */,
+				A51D711219F23BA80079F710 /* KZJSetView.h */,
+				A51D711319F23BA80079F710 /* KZJSetView.m */,
+				A51D711519F23BBA0079F710 /* KZJNextView.h */,
+				A51D711619F23BBA0079F710 /* KZJNextView.m */,
 			);
 			name = me;
 			sourceTree = "<group>";
@@ -777,11 +801,16 @@
 			files = (
 				DE1B0FFD19F3947400137633 /* messagescenter_at@2x.png in Resources */,
 				DEBCFE7419F212C50014D970 /* tabbar_profile_selected@2x.png in Resources */,
+				A51D711C19F23F3B0079F710 /* navigationbar_back@2x.png in Resources */,
+				A54933E419F4A768002F9D92 /* login_fonud_check@2x.png in Resources */,
+				A51B60A119F3B02900282413 /* timeline_card_small_article@2x.png in Resources */,
 				DEBCFE6919F212C50014D970 /* tabbar_compose_icon_add_highlighted@2x.png in Resources */,
 				DE81C84719F4F33500FC2E71 /* navigationbar_back@2x.png in Resources */,
 				DEBCFE7519F212C50014D970 /* tabbar_profile@2x.png in Resources */,
 				DECC8EB519F26D9C00289A6C /* tabbar_compose_review@2x.png in Resources */,
 				DEBCFE7019F212C50014D970 /* tabbar_message_center_highlighted@2x.png in Resources */,
+				A51B609B19F3AF7C00282413 /* messagescenter_good@2x.png in Resources */,
+				A54933F019F51759002F9D92 /* skin_cell_background@2x.png in Resources */,
 				DEBCFDB219F2114A0014D970 /* InfoPlist.strings in Resources */,
 				DEBDBCCC19F352E9003EFB7E /* tabbar_compose_friend@2x.png in Resources */,
 				DEBCFE6A19F212C50014D970 /* tabbar_discover_highlighted@2x.png in Resources */,
@@ -797,6 +826,7 @@
 				DEBCFDF519F2127A0014D970 /* MJRefresh.bundle in Resources */,
 				DE1B0FFF19F3948100137633 /* messagescenter_comments@2x.png in Resources */,
 				DEBCFE6719F212C50014D970 /* tabbar_compose_icon_add@2x.png in Resources */,
+				A5133DD119F3968F00F11B95 /* settings_statistic_form_background_line@2x.png in Resources */,
 				DEBCFE7319F212C50014D970 /* tabbar_profile_highlighted@2x.png in Resources */,
 				DEBDBCD419F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png in Resources */,
 				DECC8EB119F26D7F00289A6C /* tabbar_compose_lbs@2x.png in Resources */,
@@ -812,6 +842,8 @@
 				DEBCFE6F19F212C50014D970 /* tabbar_home@2x.png in Resources */,
 				DEBCFE6C19F212C50014D970 /* tabbar_discover@2x.png in Resources */,
 				DEBCFDE319F2126D0014D970 /* WeiboSDK.bundle in Resources */,
+				A51D712019F23F960079F710 /* userinfo_relationship_indicator_friends@2x.png in Resources */,
+				A5133DC919F3559C00F11B95 /* settings_statistic_buttom@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,20 +864,30 @@
 			files = (
 				DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				A51D711419F23BA80079F710 /* KZJSetView.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
 				DEBCFDFC19F2127A0014D970 /* UIView+MJExtension.m in Sources */,
 				DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DEBCFE2719F212870014D970 /* SDWebImagePrefetcher.m in Sources */,
+				A51D711A19F23D3C0079F710 /* JSONKit.m in Sources */,
+				A51D711119F23B310079F710 /* KZJAccountView.m in Sources */,
 				DEBCFE2619F212870014D970 /* SDWebImageManager.m in Sources */,
 				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
+				A54FDD3119F5F1BB00A8EF96 /* KZJMeTableViewCell.m in Sources */,
+				A54FDD3719F5F1EE00A8EF96 /* KZJAccountViewCell.m in Sources */,
+				A54FDD3419F5F1D300A8EF96 /* KZJSetTableViewCell.m in Sources */,
 				DEBCFE4919F212910014D970 /* NSDate+RFC1123.m in Sources */,
+				A51D711719F23BBA0079F710 /* KZJNextView.m in Sources */,
+				A51D710519F238C10079F710 /* KZJMeTableView.m in Sources */,
 				DEBCFDF919F2127A0014D970 /* MJRefreshHeaderView.m in Sources */,
+				A51D710E19F23B1E0079F710 /* KZJSetTableView.m in Sources */,
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
 				DEBCFE4E19F212910014D970 /* MKNetworkEngine.m in Sources */,
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
 				DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
+				A51D710B19F23A7A0079F710 /* KZJLoginView.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				DEBCFE2319F212870014D970 /* SDWebImageDecoder.m in Sources */,
 				DEBCFE2A19F212870014D970 /* UIImage+MultiFormat.m in Sources */,
@@ -873,6 +915,7 @@
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
 				DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				A51B609919F3AB4800282413 /* UserInformation.m in Sources */,
 				DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */,
 				DEBCFE2119F212870014D970 /* SDImageCache.m in Sources */,
 				DEBCFE4F19F212910014D970 /* MKNetworkOperation.m in Sources */,

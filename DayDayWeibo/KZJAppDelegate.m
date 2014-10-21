@@ -16,6 +16,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]!=nil)
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:@"启动" forKey:@"标示启动"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [[[KZJRequestData alloc]initOnly] startRequestData1];
+    }
+    NSLog(@"%@",NSHomeDirectory());
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -161,7 +168,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -173,5 +180,18 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    return [WeiboSDK handleOpenURL:url delegate:requestData];
+}
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    return [WeiboSDK handleOpenURL:url delegate:requestData];
+}
+
 
 @end

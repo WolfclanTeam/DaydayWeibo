@@ -36,15 +36,15 @@
 {
     //    self.tabBar.backgroundColor = [UIColor blackColor];
     CGRect rect = self.tabBar.frame;
-    int number = [self.imageArr count]>5?5:(int)[self.imageArr count];
+    
     //在视图上添加按钮
-    for (int i = 0; i<number; i++)
+    for (int i = 0; i<5; i++)
     {
         UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
         
         if (i==2)
         {
-            btn.frame = CGRectMake(i*rect.size.width/number, 0, rect.size.width/number, rect.size.height);
+            btn.frame = CGRectMake(i*rect.size.width/5, 0, rect.size.width/5, rect.size.height);
             btn.tag = 1000+i;
             
             //            [btn setBackgroundColor:[UIColor whiteColor]];
@@ -56,7 +56,7 @@
             [self.btnArr addObject:btn];
         }else
         {
-            btn.frame = CGRectMake(i*rect.size.width/number, 0, rect.size.width/number, rect.size.height);
+            btn.frame = CGRectMake(i*rect.size.width/5, 0, rect.size.width/5, rect.size.height);
             btn.tag = 1000+i;
             //            [btn setBackgroundColor:[UIColor whiteColor]];
            
@@ -109,8 +109,24 @@
        
         [self popSelectMenu];  //弹出选择菜单
         
+        //2.再将当前按钮设置为选中
+//        if (self.selectedIndex!=button.tag-1000)
+//        {
+////            UILabel*label1 = (UILabel*)[self.view viewWithTag:1100+self.selectedIndex];
+////            label1.textColor = [UIColor grayColor];
+//            ;
+//            [button setBackgroundImage:[self.seletedImageArr objectAtIndex:button.tag-1000] forState:UIControlStateSelected];
+//            [button setImage:[UIImage redraw:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted@2x"] Frame:CGRectMake(0, 0, 30, 28)] forState:UIControlStateSelected];
+////            self.selectedIndex = button.tag-1000;
+//        }else
+//        {
+//            [button setImage:[UIImage redraw:[self.seletedImageArr objectAtIndex:button.tag-1000] Frame:CGRectMake(0, 0, 60, 35)] forState:UIControlStateSelected];
+//            [button setImage:[UIImage redraw:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted@2x"] Frame:CGRectMake(0, 0, 30, 28)] forState:UIControlStateSelected];
+//            self.selectedIndex = button.tag-1000;
+//        }
     }else
     {
+//        self.selectedBtn.selected = NO;
         UIButton*btn = (UIButton*)[self.view viewWithTag:1000+self.selectedIndex];
         btn.selected = NO;
         UILabel*label1 = (UILabel*)[self.view viewWithTag:1100+self.selectedIndex];
@@ -137,8 +153,14 @@
     self.selectedBtn = button;
     
     //4.跳转到相应的视图控制器. (通过selectIndex参数来设置选中了那个控制器)
-    
-    [self.delegate tabBarController:self didSelectViewController:[self.viewControllers objectAtIndex:button.tag-1000]];
+    if (button.tag>1002)
+    {
+//        [self.delegate tabBarController:self didSelectViewController:[self.viewControllers objectAtIndex:button.tag-1000-1]];
+    }else if(button.tag<1002)
+    {
+//        [self.delegate tabBarController:self didSelectViewController:[self.viewControllers objectAtIndex:button.tag-1000]];
+    }
+
 }
 
 -(void)popSelectMenu
@@ -169,7 +191,7 @@
                                                         subMenus:subMenus
                                                              tip:@"fg"];
     menu.selectBlock = ^(NSUInteger index) {
-        NSLog(@"item %d index selected", index);
+        NSLog(@"item %lu index selected", (unsigned long)index);
         if (index==5)
         {
             [self popMoreMenu];
