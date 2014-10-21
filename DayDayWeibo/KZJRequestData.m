@@ -97,5 +97,200 @@
     }
     [context save:nil];
 }
+#pragma mark 处理请求回来的用户个人信息
+-(void)userData:(NSString*)result
+{
+    NSDictionary*dict = [result objectFromJSONString];
+    //        NSLog(@"===%@",dict);
+    KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = app.managedObjectContext;
+    UserInformation*userInformation = [NSEntityDescription
+                                       insertNewObjectForEntityForName:@"UserInformation"
+                                       inManagedObjectContext:context];
+    
+    userInformation.name = [dict objectForKey:@"name"];
+    userInformation.photo = [dict objectForKey:@"avatar_hd"];
+    
+    
+    userInformation.brief = [dict objectForKey:@"description"];
+    userInformation.token = [[NSUserDefaults standardUserDefaults]objectForKey:@"Token"];
+    userInformation.statuses = [NSString stringWithFormat:@"%@",[dict objectForKey:@"statuses_count"]];
+    
+    userInformation.care =[NSString stringWithFormat:@"%@",[dict objectForKey:@"friends_count"]] ;
+    
+    userInformation.fans =[NSString stringWithFormat:@"%@",[dict objectForKey:@"followers_count"]]  ;
+    userInformation.uid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
+//    NSLog(@"%@",[dict objectForKey:@"id"]);
+    NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
+    //        NSLog(@"%@",array);
+    int flag = 0;
+    for (UserInformation*info in array)
+    {
+        NSString*str1 = [NSString stringWithFormat:@"%@",userInformation.uid];
+        NSString*str2 = [NSString stringWithFormat:@"%@",info.uid];
+        if ([str1 isEqualToString:str2])
+        {
+            flag ++;
+            if (flag>=2)
+            {
+                if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"标示启动"]isEqualToString:@"启动"]&&![[[NSUserDefaults standardUserDefaults]objectForKey:@"账号管理"]isEqualToString:@"已存在"])
+                {
+                    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"你好,你已经登录过该账号,请直接选择账号登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alert show];
+                }
+                [[NSUserDefaults standardUserDefaults]setObject:@"已启动" forKey:@"标示启动"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                [context deleteObject:info];
+            }
+            
+        }
+        //        [context deleteObject:info];
+    }
+    
+    [context save:nil];
+    
+    NSNotification*notification=nil;
+    notification = [NSNotification notificationWithName:@"passValue" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    if ([array count]==1)
+    {
+        NSNotification*notification1= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification1];
+        NSLog(@"=dasfa-24354");
+    }
+    
+    NSNotification*notification2= [NSNotification notificationWithName:@"addlogin" object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification2];
+}
+#pragma mark 单例
+-(id)initOnly
+{
+
+    static KZJRequestData*request = nil;
+    if (!request)
+    {
+        request = [[KZJRequestData alloc]init];
+    }
+    return request;
+}
+
+#pragma mark 通过传入实体名获得实体数据
+-(NSArray *)getCoreData:(NSString *)entityName
+{
+    KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = app.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+    
+    return fetchedObjects;
+}
+
+#pragma mark 通过传入实体名和要删除的某个实体数据,可实现删除
+-(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info
+{
+    KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = app.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+    for (UserInformation*info1 in fetchedObjects)
+    {
+        if ([info isEqual:info1])
+        {
+            [context deleteObject:info1];
+        }
+    }
+    [context save:nil];
+    fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+    return fetchedObjects;
+}
+#pragma mark 通过传入实体名和要修改的实体的属性uid,即可获得该实体
+-(id)searchEntityName:(NSString*)name uid:(NSString*)uid
+{
+    KZJAppDelegate*appdelegate = (KZJAppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext*manager = appdelegate.managedObjectContext;
+    //
+    NSFetchRequest*request = [[NSFetchRequest alloc]initWithEntityName:name];
+//    NSString*str = @".*k$";
+    NSPredicate*predicate = [NSPredicate predicateWithFormat:@"uid matches %@",uid];
+    [request setPredicate:predicate];
+    //
+    NSArray*arr = [manager executeFetchRequest:request error:nil];
+    if ([arr count]>0)
+    {
+        return arr[0];
+    }
+    return nil;
+}
+
+#pragma mark 测试文字长度
+-(int)textLength:(NSString *)dataString
+{
+    float sum = 0.0;
+    for(int i=0;i<[dataString length];i++)
+    {
+        NSString *character = [dataString substringWithRange:NSMakeRange(i, 1)];
+        if([character lengthOfBytesUsingEncoding:NSUTF8StringEncoding] == 3)
+        {
+            sum++;
+        }
+        else
+            sum += 0.7;
+    }
+    return ceil(sum);
+}
+#pragma mark 排列账号管理页账号顺序
+-(NSArray*)loginRank:(NSArray*)array
+{
+    NSMutableArray*array1 = [NSMutableArray arrayWithArray:array];
+    NSMutableArray*rankArray = [[NSMutableArray alloc]init];
+    for (UserInformation*info in array1)
+    {
+        if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
+        {
+            [rankArray addObject:info];
+        }
+    }
+    for (UserInformation*info in array1)
+    {
+        if (![info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
+        {
+            [rankArray addObject:info];
+        }
+        
+    }
+    return rankArray;
+}
+
+#pragma mark 获得缓存大小
+-(NSString*)cacheNumber
+{
+    
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:cachPath]) return 0;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:cachPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        NSString* fileAbsolutePath = [cachPath stringByAppendingPathComponent:fileName];
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    NSString*cache = [NSString stringWithFormat:@"%.2f",folderSize/1024.0/1024.0];
+    return cache;
+}
+- (long long) fileSizeAtPath:(NSString*) filePath{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:filePath]){
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+    }
+    return 0;
+}
+
 
 @end

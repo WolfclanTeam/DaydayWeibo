@@ -84,7 +84,6 @@
 		DEBCFE7419F212C50014D970 /* tabbar_profile_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBCFE6419F212C50014D970 /* tabbar_profile_selected@2x.png */; };
 		DEBCFE7519F212C50014D970 /* tabbar_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBCFE6519F212C50014D970 /* tabbar_profile@2x.png */; };
 		DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */; };
-		DEBCFE7B19F212E00014D970 /* KZJRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE7A19F212E00014D970 /* KZJRequestData.m */; };
 		DEBCFE8819F213900014D970 /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8719F213900014D970 /* KZJHomeController.m */; };
 		DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */; };
 		DEBCFE9119F213AA0014D970 /* KZJFindController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE9019F213AA0014D970 /* KZJFindController.m */; };
@@ -107,6 +106,27 @@
 		DECC8EB519F26D9C00289A6C /* tabbar_compose_review@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DECC8EB419F26D9C00289A6C /* tabbar_compose_review@2x.png */; };
 		DECC8EB719F26DEF00289A6C /* tabbar_compose_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DECC8EB619F26DEF00289A6C /* tabbar_compose_photo@2x.png */; };
 		DECC8EB919F26E7600289A6C /* tabbar_compose_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DECC8EB819F26E7600289A6C /* tabbar_compose_camera@2x.png */; };
+		DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */; };
+		DEDD9D4419F5FCD2007D45A9 /* KZJMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4319F5FCD2007D45A9 /* KZJMeTableViewCell.m */; };
+		DEDD9D4719F5FCFB007D45A9 /* KZJMeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4619F5FCFB007D45A9 /* KZJMeTableView.m */; };
+		DEDD9D4A19F5FD1F007D45A9 /* KZJLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4919F5FD1F007D45A9 /* KZJLoginView.m */; };
+		DEDD9D4D19F5FD9D007D45A9 /* KZJSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4C19F5FD9D007D45A9 /* KZJSetView.m */; };
+		DEDD9D5019F5FDF7007D45A9 /* KZJNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4F19F5FDF7007D45A9 /* KZJNextView.m */; };
+		DEDD9D5319F5FE37007D45A9 /* KZJSetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5219F5FE37007D45A9 /* KZJSetTableView.m */; };
+		DEDD9D5619F5FE47007D45A9 /* KZJSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5519F5FE47007D45A9 /* KZJSetTableViewCell.m */; };
+		DEDD9D5B19F5FE5E007D45A9 /* KZJAccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5819F5FE5E007D45A9 /* KZJAccountView.m */; };
+		DEDD9D5C19F5FE5E007D45A9 /* KZJAccountViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5A19F5FE5E007D45A9 /* KZJAccountViewCell.m */; };
+		DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DEDD9D6219F5FF75007D45A9 /* findfriend_icon_guess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6019F5FF75007D45A9 /* findfriend_icon_guess@2x.png */; };
+		DEDD9D6319F5FF75007D45A9 /* findfriend_icon_popolarroots@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6119F5FF75007D45A9 /* findfriend_icon_popolarroots@2x.png */; };
+		DEDD9D6719F5FF9E007D45A9 /* timeline_card_small_article@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6419F5FF9E007D45A9 /* timeline_card_small_article@2x.png */; };
+		DEDD9D6819F5FF9E007D45A9 /* timeline_icon_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6519F5FF9E007D45A9 /* timeline_icon_photo@2x.png */; };
+		DEDD9D6919F5FF9E007D45A9 /* userinfo_relationship_indicator_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6619F5FF9E007D45A9 /* userinfo_relationship_indicator_friends@2x.png */; };
+		DEDD9D6E19F5FFA9007D45A9 /* more_icon_collection1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6A19F5FFA9007D45A9 /* more_icon_collection1@2x.png */; };
+		DEDD9D6F19F5FFA9007D45A9 /* timeline_card_small_article@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6B19F5FFA9007D45A9 /* timeline_card_small_article@2x.png */; };
+		DEDD9D7019F5FFA9007D45A9 /* timeline_icon_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6C19F5FFA9007D45A9 /* timeline_icon_photo@2x.png */; };
+		DEDD9D7119F5FFA9007D45A9 /* userinfo_relationship_indicator_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D6D19F5FFA9007D45A9 /* userinfo_relationship_indicator_friends@2x.png */; };
+		DEDD9D7319F5FFB0007D45A9 /* messagescenter_good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDD9D7219F5FFB0007D45A9 /* messagescenter_good@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,7 +264,6 @@
 		DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyTabBarController.h; sourceTree = "<group>"; };
 		DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyTabBarController.m; sourceTree = "<group>"; };
 		DEBCFE7919F212E00014D970 /* KZJRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJRequestData.h; sourceTree = "<group>"; };
-		DEBCFE7A19F212E00014D970 /* KZJRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRequestData.m; sourceTree = "<group>"; };
 		DEBCFE8619F213900014D970 /* KZJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJHomeController.h; sourceTree = "<group>"; };
 		DEBCFE8719F213900014D970 /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
 		DEBCFE8919F2139A0014D970 /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
@@ -276,6 +295,37 @@
 		DECC8EB419F26D9C00289A6C /* tabbar_compose_review@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_compose_review@2x.png"; sourceTree = "<group>"; };
 		DECC8EB619F26DEF00289A6C /* tabbar_compose_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_compose_photo@2x.png"; sourceTree = "<group>"; };
 		DECC8EB819F26E7600289A6C /* tabbar_compose_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_compose_camera@2x.png"; sourceTree = "<group>"; };
+		DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRequestData.m; sourceTree = "<group>"; };
+		DEDD9D4219F5FCD2007D45A9 /* KZJMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMeTableViewCell.h; sourceTree = "<group>"; };
+		DEDD9D4319F5FCD2007D45A9 /* KZJMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMeTableViewCell.m; sourceTree = "<group>"; };
+		DEDD9D4519F5FCFB007D45A9 /* KZJMeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMeTableView.h; sourceTree = "<group>"; };
+		DEDD9D4619F5FCFB007D45A9 /* KZJMeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMeTableView.m; sourceTree = "<group>"; };
+		DEDD9D4819F5FD1F007D45A9 /* KZJLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJLoginView.h; sourceTree = "<group>"; };
+		DEDD9D4919F5FD1F007D45A9 /* KZJLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJLoginView.m; sourceTree = "<group>"; };
+		DEDD9D4B19F5FD9D007D45A9 /* KZJSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJSetView.h; sourceTree = "<group>"; };
+		DEDD9D4C19F5FD9D007D45A9 /* KZJSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJSetView.m; sourceTree = "<group>"; };
+		DEDD9D4E19F5FDF7007D45A9 /* KZJNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJNextView.h; sourceTree = "<group>"; };
+		DEDD9D4F19F5FDF7007D45A9 /* KZJNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJNextView.m; sourceTree = "<group>"; };
+		DEDD9D5119F5FE37007D45A9 /* KZJSetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJSetTableView.h; sourceTree = "<group>"; };
+		DEDD9D5219F5FE37007D45A9 /* KZJSetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJSetTableView.m; sourceTree = "<group>"; };
+		DEDD9D5419F5FE47007D45A9 /* KZJSetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJSetTableViewCell.h; sourceTree = "<group>"; };
+		DEDD9D5519F5FE47007D45A9 /* KZJSetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJSetTableViewCell.m; sourceTree = "<group>"; };
+		DEDD9D5719F5FE5E007D45A9 /* KZJAccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJAccountView.h; sourceTree = "<group>"; };
+		DEDD9D5819F5FE5E007D45A9 /* KZJAccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJAccountView.m; sourceTree = "<group>"; };
+		DEDD9D5919F5FE5E007D45A9 /* KZJAccountViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJAccountViewCell.h; sourceTree = "<group>"; };
+		DEDD9D5A19F5FE5E007D45A9 /* KZJAccountViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJAccountViewCell.m; sourceTree = "<group>"; };
+		DEDD9D5D19F5FF0A007D45A9 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		DEDD9D6019F5FF75007D45A9 /* findfriend_icon_guess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findfriend_icon_guess@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6119F5FF75007D45A9 /* findfriend_icon_popolarroots@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findfriend_icon_popolarroots@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6419F5FF9E007D45A9 /* timeline_card_small_article@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_card_small_article@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6519F5FF9E007D45A9 /* timeline_icon_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_icon_photo@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6619F5FF9E007D45A9 /* userinfo_relationship_indicator_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userinfo_relationship_indicator_friends@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6A19F5FFA9007D45A9 /* more_icon_collection1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_icon_collection1@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6B19F5FFA9007D45A9 /* timeline_card_small_article@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_card_small_article@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6C19F5FFA9007D45A9 /* timeline_icon_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_icon_photo@2x.png"; sourceTree = "<group>"; };
+		DEDD9D6D19F5FFA9007D45A9 /* userinfo_relationship_indicator_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userinfo_relationship_indicator_friends@2x.png"; sourceTree = "<group>"; };
+		DEDD9D7219F5FFB0007D45A9 /* messagescenter_good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_good@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,8 +397,6 @@
 				DEBCFDB719F2114A0014D970 /* KZJAppDelegate.m */,
 				DEBCFDBC19F2114A0014D970 /* Images.xcassets */,
 				DEBCFDB919F2114A0014D970 /* DayDayWeibo.xcdatamodeld */,
-				A51B609719F3AB4800282413 /* UserInformation.h */,
-				A51B609819F3AB4800282413 /* UserInformation.m */,
 				DEBCFDAE19F2114A0014D970 /* Supporting Files */,
 			);
 			path = DayDayWeibo;
@@ -387,7 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBCFE7919F212E00014D970 /* KZJRequestData.h */,
-				DEBCFE7A19F212E00014D970 /* KZJRequestData.m */,
+				DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -419,10 +467,10 @@
 		DEBCFDDD19F2123F0014D970 /* tools */ = {
 			isa = PBXGroup;
 			children = (
-				A51D711819F23D3C0079F710 /* JSONKit.h */,
-				A51D711919F23D3C0079F710 /* JSONKit.m */,
 				DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */,
 				DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */,
+				DEDD9D5D19F5FF0A007D45A9 /* JSONKit.h */,
+				DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */,
 				DEBCFE5519F212BB0014D970 /* images */,
 				DEBCFE5119F212AC0014D970 /* 图片重绘 */,
 				DEBCFE2F19F212910014D970 /* MKNetworkKit */,
@@ -562,6 +610,16 @@
 		DEBCFE5519F212BB0014D970 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				DEDD9D7219F5FFB0007D45A9 /* messagescenter_good@2x.png */,
+				DEDD9D6A19F5FFA9007D45A9 /* more_icon_collection1@2x.png */,
+				DEDD9D6B19F5FFA9007D45A9 /* timeline_card_small_article@2x.png */,
+				DEDD9D6C19F5FFA9007D45A9 /* timeline_icon_photo@2x.png */,
+				DEDD9D6D19F5FFA9007D45A9 /* userinfo_relationship_indicator_friends@2x.png */,
+				DEDD9D6419F5FF9E007D45A9 /* timeline_card_small_article@2x.png */,
+				DEDD9D6519F5FF9E007D45A9 /* timeline_icon_photo@2x.png */,
+				DEDD9D6619F5FF9E007D45A9 /* userinfo_relationship_indicator_friends@2x.png */,
+				DEDD9D6019F5FF75007D45A9 /* findfriend_icon_guess@2x.png */,
+				DEDD9D6119F5FF75007D45A9 /* findfriend_icon_popolarroots@2x.png */,
 				DE81C84619F4F33500FC2E71 /* navigationbar_back@2x.png */,
 				DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */,
 				DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */,
@@ -595,8 +653,6 @@
 				DEBCFE6319F212C50014D970 /* tabbar_profile_highlighted@2x.png */,
 				DEBCFE6419F212C50014D970 /* tabbar_profile_selected@2x.png */,
 				DEBCFE6519F212C50014D970 /* tabbar_profile@2x.png */,
-				A51D711D19F23F500079F710 /* common_relationship_button_background@2x.png */,
-				A51D711F19F23F960079F710 /* userinfo_relationship_indicator_friends@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -639,20 +695,20 @@
 		DEBCFE8019F213280014D970 /* me */ = {
 			isa = PBXGroup;
 			children = (
-				A51D710319F238C10079F710 /* KZJMeTableView.h */,
-				A51D710419F238C10079F710 /* KZJMeTableView.m */,
-				A54FDD2F19F5F1BB00A8EF96 /* KZJMeTableViewCell.h */,
-				A54FDD3019F5F1BB00A8EF96 /* KZJMeTableViewCell.m */,
-				A51D710919F23A7A0079F710 /* KZJLoginView.h */,
-				A51D710A19F23A7A0079F710 /* KZJLoginView.m */,
-				A51D710C19F23B1E0079F710 /* KZJSetTableView.h */,
-				A51D710D19F23B1E0079F710 /* KZJSetTableView.m */,
-				A54FDD3219F5F1D300A8EF96 /* KZJSetTableViewCell.h */,
-				A54FDD3319F5F1D300A8EF96 /* KZJSetTableViewCell.m */,
-				A51D710F19F23B310079F710 /* KZJAccountView.h */,
-				A51D711019F23B310079F710 /* KZJAccountView.m */,
-				A54FDD3519F5F1EE00A8EF96 /* KZJAccountViewCell.h */,
-				A54FDD3619F5F1EE00A8EF96 /* KZJAccountViewCell.m */,
+				DEDD9D4819F5FD1F007D45A9 /* KZJLoginView.h */,
+				DEDD9D4919F5FD1F007D45A9 /* KZJLoginView.m */,
+				DEDD9D4219F5FCD2007D45A9 /* KZJMeTableViewCell.h */,
+				DEDD9D4319F5FCD2007D45A9 /* KZJMeTableViewCell.m */,
+				DEDD9D4519F5FCFB007D45A9 /* KZJMeTableView.h */,
+				DEDD9D4619F5FCFB007D45A9 /* KZJMeTableView.m */,
+				DEDD9D5119F5FE37007D45A9 /* KZJSetTableView.h */,
+				DEDD9D5219F5FE37007D45A9 /* KZJSetTableView.m */,
+				DEDD9D5419F5FE47007D45A9 /* KZJSetTableViewCell.h */,
+				DEDD9D5519F5FE47007D45A9 /* KZJSetTableViewCell.m */,
+				DEDD9D5719F5FE5E007D45A9 /* KZJAccountView.h */,
+				DEDD9D5819F5FE5E007D45A9 /* KZJAccountView.m */,
+				DEDD9D5919F5FE5E007D45A9 /* KZJAccountViewCell.h */,
+				DEDD9D5A19F5FE5E007D45A9 /* KZJAccountViewCell.m */,
 			);
 			name = me;
 			sourceTree = "<group>";
@@ -662,10 +718,10 @@
 			children = (
 				DEBCFE9219F213B60014D970 /* KZJMeController.h */,
 				DEBCFE9319F213B60014D970 /* KZJMeController.m */,
-				A51D711219F23BA80079F710 /* KZJSetView.h */,
-				A51D711319F23BA80079F710 /* KZJSetView.m */,
-				A51D711519F23BBA0079F710 /* KZJNextView.h */,
-				A51D711619F23BBA0079F710 /* KZJNextView.m */,
+				DEDD9D4B19F5FD9D007D45A9 /* KZJSetView.h */,
+				DEDD9D4C19F5FD9D007D45A9 /* KZJSetView.m */,
+				DEDD9D4E19F5FDF7007D45A9 /* KZJNextView.h */,
+				DEDD9D4F19F5FDF7007D45A9 /* KZJNextView.m */,
 			);
 			name = me;
 			sourceTree = "<group>";
@@ -799,18 +855,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDD9D7319F5FFB0007D45A9 /* messagescenter_good@2x.png in Resources */,
 				DE1B0FFD19F3947400137633 /* messagescenter_at@2x.png in Resources */,
 				DEBCFE7419F212C50014D970 /* tabbar_profile_selected@2x.png in Resources */,
-				A51D711C19F23F3B0079F710 /* navigationbar_back@2x.png in Resources */,
-				A54933E419F4A768002F9D92 /* login_fonud_check@2x.png in Resources */,
-				A51B60A119F3B02900282413 /* timeline_card_small_article@2x.png in Resources */,
 				DEBCFE6919F212C50014D970 /* tabbar_compose_icon_add_highlighted@2x.png in Resources */,
 				DE81C84719F4F33500FC2E71 /* navigationbar_back@2x.png in Resources */,
 				DEBCFE7519F212C50014D970 /* tabbar_profile@2x.png in Resources */,
 				DECC8EB519F26D9C00289A6C /* tabbar_compose_review@2x.png in Resources */,
+				DEDD9D7019F5FFA9007D45A9 /* timeline_icon_photo@2x.png in Resources */,
+				DEDD9D6F19F5FFA9007D45A9 /* timeline_card_small_article@2x.png in Resources */,
 				DEBCFE7019F212C50014D970 /* tabbar_message_center_highlighted@2x.png in Resources */,
-				A51B609B19F3AF7C00282413 /* messagescenter_good@2x.png in Resources */,
-				A54933F019F51759002F9D92 /* skin_cell_background@2x.png in Resources */,
 				DEBCFDB219F2114A0014D970 /* InfoPlist.strings in Resources */,
 				DEBDBCCC19F352E9003EFB7E /* tabbar_compose_friend@2x.png in Resources */,
 				DEBCFE6A19F212C50014D970 /* tabbar_discover_highlighted@2x.png in Resources */,
@@ -822,18 +876,22 @@
 				DEBCFE7219F212C50014D970 /* tabbar_message_center@2x.png in Resources */,
 				DEBCFE6619F212C50014D970 /* tabbar_compose_button_highlighted@2x.png in Resources */,
 				DEBCFE6E19F212C50014D970 /* tabbar_home_selected@2x.png in Resources */,
+				DEDD9D6719F5FF9E007D45A9 /* timeline_card_small_article@2x.png in Resources */,
+				DEDD9D6219F5FF75007D45A9 /* findfriend_icon_guess@2x.png in Resources */,
 				DEBDBCD219F35879003EFB7E /* tabbar_compose_background_icon_return@2x.png in Resources */,
 				DEBCFDF519F2127A0014D970 /* MJRefresh.bundle in Resources */,
 				DE1B0FFF19F3948100137633 /* messagescenter_comments@2x.png in Resources */,
 				DEBCFE6719F212C50014D970 /* tabbar_compose_icon_add@2x.png in Resources */,
-				A5133DD119F3968F00F11B95 /* settings_statistic_form_background_line@2x.png in Resources */,
+				DEDD9D6319F5FF75007D45A9 /* findfriend_icon_popolarroots@2x.png in Resources */,
 				DEBCFE7319F212C50014D970 /* tabbar_profile_highlighted@2x.png in Resources */,
 				DEBDBCD419F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png in Resources */,
 				DECC8EB119F26D7F00289A6C /* tabbar_compose_lbs@2x.png in Resources */,
 				DEBCFE6D19F212C50014D970 /* tabbar_home_highlighted@2x.png in Resources */,
 				DEBCFE7119F212C50014D970 /* tabbar_message_center_selected@2x.png in Resources */,
 				DECC8EAB19F26D3B00289A6C /* tabbar_compose_idea.png in Resources */,
+				DEDD9D6819F5FF9E007D45A9 /* timeline_icon_photo@2x.png in Resources */,
 				DECC8EB919F26E7600289A6C /* tabbar_compose_camera@2x.png in Resources */,
+				DEDD9D6919F5FF9E007D45A9 /* userinfo_relationship_indicator_friends@2x.png in Resources */,
 				DEBCFE6819F212C50014D970 /* tabbar_compose_button@2x.png in Resources */,
 				DEBCFE6B19F212C50014D970 /* tabbar_discover_selected@2x.png in Resources */,
 				DE1B100319F3948900137633 /* messagescenter_messagebox@2x.png in Resources */,
@@ -842,8 +900,8 @@
 				DEBCFE6F19F212C50014D970 /* tabbar_home@2x.png in Resources */,
 				DEBCFE6C19F212C50014D970 /* tabbar_discover@2x.png in Resources */,
 				DEBCFDE319F2126D0014D970 /* WeiboSDK.bundle in Resources */,
-				A51D712019F23F960079F710 /* userinfo_relationship_indicator_friends@2x.png in Resources */,
-				A5133DC919F3559C00F11B95 /* settings_statistic_buttom@2x.png in Resources */,
+				DEDD9D6E19F5FFA9007D45A9 /* more_icon_collection1@2x.png in Resources */,
+				DEDD9D7119F5FFA9007D45A9 /* userinfo_relationship_indicator_friends@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,31 +922,25 @@
 			files = (
 				DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
-				A51D711419F23BA80079F710 /* KZJSetView.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
+				DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */,
+				DEDD9D5619F5FE47007D45A9 /* KZJSetTableViewCell.m in Sources */,
+				DEDD9D5C19F5FE5E007D45A9 /* KZJAccountViewCell.m in Sources */,
 				DEBCFDFC19F2127A0014D970 /* UIView+MJExtension.m in Sources */,
 				DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DEBCFE2719F212870014D970 /* SDWebImagePrefetcher.m in Sources */,
-				A51D711A19F23D3C0079F710 /* JSONKit.m in Sources */,
-				A51D711119F23B310079F710 /* KZJAccountView.m in Sources */,
 				DEBCFE2619F212870014D970 /* SDWebImageManager.m in Sources */,
 				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
-				A54FDD3119F5F1BB00A8EF96 /* KZJMeTableViewCell.m in Sources */,
-				A54FDD3719F5F1EE00A8EF96 /* KZJAccountViewCell.m in Sources */,
-				A54FDD3419F5F1D300A8EF96 /* KZJSetTableViewCell.m in Sources */,
 				DEBCFE4919F212910014D970 /* NSDate+RFC1123.m in Sources */,
-				A51D711719F23BBA0079F710 /* KZJNextView.m in Sources */,
-				A51D710519F238C10079F710 /* KZJMeTableView.m in Sources */,
 				DEBCFDF919F2127A0014D970 /* MJRefreshHeaderView.m in Sources */,
-				A51D710E19F23B1E0079F710 /* KZJSetTableView.m in Sources */,
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
 				DEBCFE4E19F212910014D970 /* MKNetworkEngine.m in Sources */,
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
 				DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
-				A51D710B19F23A7A0079F710 /* KZJLoginView.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				DEDD9D4719F5FCFB007D45A9 /* KZJMeTableView.m in Sources */,
 				DEBCFE2319F212870014D970 /* SDWebImageDecoder.m in Sources */,
 				DEBCFE2A19F212870014D970 /* UIImage+MultiFormat.m in Sources */,
 				DEBCFE2B19F212870014D970 /* UIImage+WebP.m in Sources */,
@@ -896,12 +948,13 @@
 				DEBCFE4D19F212910014D970 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				DE81C84519F4F01C00FC2E71 /* KZJ@MyCotentViewController.m in Sources */,
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,
+				DEDD9D5B19F5FE5E007D45A9 /* KZJAccountView.m in Sources */,
 				DEBCFE2419F212870014D970 /* SDWebImageDownloader.m in Sources */,
 				DEBCFE2919F212870014D970 /* UIImage+GIF.m in Sources */,
 				DE81C85019F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m in Sources */,
+				DEDD9D4419F5FCD2007D45A9 /* KZJMeTableViewCell.m in Sources */,
 				DEBCFDFA19F2127A0014D970 /* UIScrollView+MJExtension.m in Sources */,
 				DEBCFE4819F212910014D970 /* NSData+MKBase64.m in Sources */,
-				DEBCFE7B19F212E00014D970 /* KZJRequestData.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
 				DEBCFE8819F213900014D970 /* KZJHomeController.m in Sources */,
 				DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */,
@@ -910,19 +963,23 @@
 				DEBCFDF619F2127A0014D970 /* MJRefreshBaseView.m in Sources */,
 				DEBCFE9119F213AA0014D970 /* KZJFindController.m in Sources */,
 				DEBCFE2C19F212870014D970 /* UIImageView+HighlightedWebCache.m in Sources */,
+				DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */,
 				DEBCFE9419F213B60014D970 /* KZJMeController.m in Sources */,
 				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
+				DEDD9D5019F5FDF7007D45A9 /* KZJNextView.m in Sources */,
 				DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
-				A51B609919F3AB4800282413 /* UserInformation.m in Sources */,
+				DEDD9D4D19F5FD9D007D45A9 /* KZJSetView.m in Sources */,
 				DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */,
+				DEDD9D5319F5FE37007D45A9 /* KZJSetTableView.m in Sources */,
 				DEBCFE2119F212870014D970 /* SDImageCache.m in Sources */,
 				DEBCFE4F19F212910014D970 /* MKNetworkOperation.m in Sources */,
 				DEBCFE2819F212870014D970 /* UIButton+WebCache.m in Sources */,
 				DEBCFE2019F212870014D970 /* NSData+ImageContentType.m in Sources */,
 				DEBCFE5019F212910014D970 /* Reachability.m in Sources */,
 				DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */,
+				DEDD9D4A19F5FD1F007D45A9 /* KZJLoginView.m in Sources */,
 				DEBCFDF719F2127A0014D970 /* MJRefreshConst.m in Sources */,
 				DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */,
 			);
