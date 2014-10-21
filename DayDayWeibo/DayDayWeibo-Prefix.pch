@@ -20,4 +20,6 @@
     #import <CoreData/CoreData.h>
 #import "WeiboSDK.h"
 #import "MJRefresh.h"
+#import "UIImage+Redraw.h"
+#import "KZJRequestData.h"
 #endif
