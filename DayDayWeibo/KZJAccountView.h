@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomCell.h"
+#import "KZJAccountViewCell.h"
 #import "UIImageView+WebCache.h"
 @interface KZJAccountView : UITableView<UITableViewDataSource,UITableViewDelegate,WBHttpRequestDelegate>
 {

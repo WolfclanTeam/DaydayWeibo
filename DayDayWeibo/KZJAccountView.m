@@ -41,68 +41,48 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString*mark = @"meMark";
-    CustomCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
+    KZJAccountViewCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
     if (cell ==nil)
     {
-        cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        cell = [[KZJAccountViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
     }
-    for (UIView*view in cell.subviews)
-    {
-        [view removeFromSuperview];
-    }
-    
     
     if (indexPath.row<[numberArray count]&&indexPath.section ==0)
     {
-        UILabel*line = [[UILabel alloc]initWithFrame:CGRectMake(0, 54, SCREENWIDTH, 0.5)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [cell addLabel:line];
+       
         
         UserInformation*info = numberArray[indexPath.row];
-        UIImageView*image = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 45, 45)];
-        [image sd_setImageWithURL:[NSURL URLWithString:info.photo]];
-        [cell addImageView:image];
         
-        UILabel*nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(55, 5, 250, 45)];
-        nameLabel.text = info.name;
-        [cell addSubview:nameLabel];
+        [cell.image sd_setImageWithURL:[NSURL URLWithString:info.photo]];
+        
+        cell.nameLabel.text = info.name;
+        
         if (indexPath.row==0)
         {
-            UIImageView*loginView = [[UIImageView alloc]initWithFrame:CGRectMake(35, 35, 15, 15)];
-            loginView.image = [UIImage redraw:[UIImage imageNamed:@"login_fonud_check@2x"] Frame:CGRectMake(0, 0, 15, 15)];
-            [image addSubview:loginView];
-            
+            cell.loginView.image = [UIImage redraw:[UIImage imageNamed:@"login_fonud_check@2x"] Frame:CGRectMake(0, 0, 15, 15)];
         }
         
-        UILabel*unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-20,20, 15, 15)];
-        unreadLabel.layer.cornerRadius =7;
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
-        unreadLabel.layer.backgroundColor = colorref;
-        unreadLabel.text = info.unread;
-        unreadLabel.font = [UIFont systemFontOfSize:12];
-        unreadLabel.textAlignment =NSTextAlignmentCenter;
-        unreadLabel.textColor = [UIColor blackColor];
-        if (unreadLabel.text ==nil||[unreadLabel.text isEqualToString:@"0"])
+        
+        if (info.unread !=nil&&![info.unread isEqualToString:@"0"])
         {
-            
-        }else
-        {
-            [cell addLabel:unreadLabel];
+            cell.unreadLabel.layer.cornerRadius =7;
+            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+            CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
+            cell.unreadLabel.layer.backgroundColor = colorref;
+            cell.unreadLabel.text = info.unread;
+            cell.unreadLabel.font = [UIFont systemFontOfSize:12];
+            cell.unreadLabel.textAlignment =NSTextAlignmentCenter;
+            cell.unreadLabel.textColor = [UIColor blackColor];
         }
     }
     else if(indexPath.section ==0)
     {
-        UIImageView*image = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 45, 45)];
-        image.image = [UIImage imageNamed:@"accountmanage_add@2x"];
-        [cell addImageView:image];
+        cell.image.image = [UIImage imageNamed:@"accountmanage_add@2x"];
     }else
     {
-        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 30)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"退出当前账号";
-        label.textColor = [UIColor redColor];
-        [cell addLabel:label];
+        cell.nameLabel.textAlignment = NSTextAlignmentCenter;
+        cell.nameLabel.text = @"退出当前账号";
+        cell.nameLabel.textColor = [UIColor redColor];
     }
     return cell;
 }

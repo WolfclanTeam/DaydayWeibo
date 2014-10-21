@@ -159,42 +159,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString*meMark = @"meMark";
-    CustomCell*cell = [tableView dequeueReusableCellWithIdentifier:meMark];
+    KZJMeTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:meMark];
     if (cell ==nil)
     {
-        cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:meMark];
+        cell = [[KZJMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:meMark];
     }
-    for (UIView*view in cell.subviews)
-    {
-        [view removeFromSuperview];
-    }
-    UILabel*line = [[UILabel alloc]initWithFrame:CGRectMake(0, 29, SCREENWIDTH, 0.5)];
-    line.backgroundColor = [UIColor lightGrayColor];
-    [cell addLabel:line];
-//    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage redraw:[UIImage imageNamed:@"skin_cell_background@2x"] Frame:cell.frame]];
-//    UIImageView*view = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 30)];
-//    view.image = [UIImage redraw:[UIImage imageNamed:@"settings_statistic_buttom@2x"] Frame:view.frame];
-//    [cell addImageView:view];
-    
-//    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage redraw:[UIImage imageNamed:@"settings_statistic_form_background_middle"] Frame:CGRectMake(0, 0, SCREENWIDTH, 30)]];
-//    cell.backgroundColor = [UIColor whiteColor];
-    UIImageView*image = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 20, 20)];
-//    if (indexPath.section==1&&indexPath.row ==1)
-//    {
-//        image.backgroundColor = [UIColor orangeColor];
-////        image.highlightedImage = [UIImage imageNamed:@"tabbar_compose_button@2x"];
-//    }
-    image.image = [UIImage imageNamed: imageArray[indexPath.section][indexPath.row]];
-    [cell addImageView:image];
-    
-    UIImageView*image1 = [[UIImageView alloc]initWithFrame:CGRectMake(320-20, 7, 12, 15)];
-    image1.image = [UIImage imageNamed:@"login_detail@2x"];
-
-    [cell addSubview:image1];
-    
-    UILabel*label1 = [[UILabel alloc]initWithFrame:CGRectMake(45, 0, 80, 30)];
-    label1.text = titleArray[indexPath.section][indexPath.row];
-    [cell addLabel:label1];
+//    NSLog(@"%@",cell.subviews);
+    cell.image.image = [UIImage imageNamed:imageArray[indexPath.section][indexPath.row]];
+    cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
+    cell.label1.text = titleArray[indexPath.section][indexPath.row];
     
     return cell;
 }

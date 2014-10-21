@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
-#import "CustomCell.h"
+#import "KZJMeTableViewCell.h"
 #import "UserInformation.h"
 
 @interface KZJMeTableView : UITableView<UITableViewDataSource,UITableViewDelegate>

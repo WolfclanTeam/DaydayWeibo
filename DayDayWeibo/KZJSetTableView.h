@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomCell.h"
+#import "KZJSetTableViewCell.h"
 #import "KZJAccountView.h"
 @interface KZJSetTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 {

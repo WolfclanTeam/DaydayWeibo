@@ -29,10 +29,6 @@
             [self startRequestData1];
 //            [self startRequestData2];
             
-        }else
-        {
-            [[NSUserDefaults standardUserDefaults]setObject:@"未登陆" forKey:@"登陆状态"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
         }
     }
     
@@ -65,7 +61,7 @@
     if ([request.tag isEqualToString:@"991"])
     {
         [self userData:result];
-        
+//        NSLog(@"%@",result);
     }else if ([request.tag isEqualToString:@"992"])
     {
 //        NSLog(@"%@",result);
@@ -86,7 +82,7 @@
     {
         num+=[[dict objectForKey:key] intValue];
     }
-    NSLog(@"%d",num);
+//    NSLog(@"%d",num);
     
     KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = app.managedObjectContext;
@@ -96,7 +92,7 @@
         if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
         {
             info.unread = [NSString stringWithFormat:@"%d",num];
-            NSLog(@"%@",info.unread);
+//            NSLog(@"%@",info.unread);
         }
     }
     [context save:nil];
@@ -124,7 +120,7 @@
     
     userInformation.fans =[NSString stringWithFormat:@"%@",[dict objectForKey:@"followers_count"]]  ;
     userInformation.uid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
-    NSLog(@"%@",[dict objectForKey:@"id"]);
+//    NSLog(@"%@",[dict objectForKey:@"id"]);
     NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
     //        NSLog(@"%@",array);
     int flag = 0;

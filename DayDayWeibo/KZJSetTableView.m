@@ -36,81 +36,65 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString*mark = @"meMark";
-    CustomCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
+    KZJSetTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
   
     if (cell==nil)
     {
-        cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        cell = [[KZJSetTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
     }
-    for (UIView*view in cell.subviews)
-    {
-        [view removeFromSuperview];
-    }
-    UILabel*line = [[UILabel alloc]initWithFrame:CGRectMake(0, 39, SCREENWIDTH, 0.5)];
-    line.backgroundColor = [UIColor lightGrayColor];
-    [cell addLabel:line];
     
-    UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 100, 40)];
+    
+    
+    
     if (indexPath.section ==4)
     {
-        label.frame = CGRectMake(5, 0, SCREENWIDTH-10, 40);
-        label.textAlignment = NSTextAlignmentCenter;
-        label.textColor = [UIColor redColor];
+        cell.label.frame = CGRectMake(5, 0, SCREENWIDTH-10, 40);
+        cell.label.textAlignment = NSTextAlignmentCenter;
+        cell.label.textColor = [UIColor redColor];
     }else if(!(indexPath.section==3&&indexPath.row==1))
     {
         
         if (indexPath.row==0&&indexPath.section ==0)
         {
-            UILabel*unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-20,15, 15, 15)];
-            unreadLabel.layer.cornerRadius =7;
-            
-            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-            CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
-            unreadLabel.layer.backgroundColor = colorref;
-            
             NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
             int num = 0;
+            NSLog(@"%@",array);
             for (UserInformation*info in array)
             {
                 num += [info.unread intValue];
             }
-            unreadLabel.text = [NSString stringWithFormat:@"%d",num];
-            unreadLabel.font = [UIFont systemFontOfSize:12];
-            unreadLabel.textAlignment =NSTextAlignmentCenter;
-            unreadLabel.textColor = [UIColor blackColor];
-            if ([unreadLabel.text isEqualToString:@"0"]||unreadLabel.text==nil)
+            NSLog(@"num=%d",num);
+            if (num==0)
             {
-                UIImageView*image1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH-20,15, 12, 15)];
-                image1.image = [UIImage imageNamed:@"login_detail@2x"];
-                [cell addSubview:image1];
+                cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
             }else
             {
-                [cell addLabel:unreadLabel];
+                cell.unreadLabel.layer.cornerRadius =7;
+                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+                CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
+                cell.unreadLabel.layer.backgroundColor = colorref;
+                cell.unreadLabel.text = [NSString stringWithFormat:@"%d",num];
+                cell.unreadLabel.font = [UIFont systemFontOfSize:12];
+                cell.unreadLabel.textAlignment =NSTextAlignmentCenter;
+                cell.unreadLabel.textColor = [UIColor blackColor];
             }
         }else
         {
-            UIImageView*image1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH-20,15, 12, 15)];
-            image1.image = [UIImage imageNamed:@"login_detail@2x"];
-            [cell addSubview:image1];
+            cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
         }
     }else
     {
-        UILabel*cacheLaabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-50, 5, 45, 28)];
         if ([[KZJRequestData alloc] cacheNumber]!=nil)
         {
-            cacheLaabel.text = [NSString stringWithFormat:@"%@M",[[KZJRequestData alloc] cacheNumber]];
+            cell.cacheLaabel.text = [NSString stringWithFormat:@"%@M",[[KZJRequestData alloc] cacheNumber]];
         }else
         {
-            cacheLaabel.text = @"0.00M";
+            cell.cacheLaabel.text = @"0.00M";
         }
-        
-        cacheLaabel.textColor = [UIColor grayColor];
-        cacheLaabel.font = [UIFont systemFontOfSize:15];
-        [cell addLabel:cacheLaabel];
+        cell.cacheLaabel.textColor = [UIColor grayColor];
+        cell.cacheLaabel.font = [UIFont systemFontOfSize:15];
     }
-    label.text = titleArray[indexPath.section][indexPath.row];
-    [cell addLabel:label];
-    
+    cell.label.text = titleArray[indexPath.section][indexPath.row];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
