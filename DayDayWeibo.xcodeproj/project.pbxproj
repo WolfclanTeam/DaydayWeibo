@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DE1B0FFD19F3947400137633 /* messagescenter_at@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B0FFC19F3947400137633 /* messagescenter_at@2x.png */; };
 		DE1B0FFF19F3948100137633 /* messagescenter_comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */; };
-		DE1B100119F3948600137633 /* messagescenter_good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B100019F3948600137633 /* messagescenter_good@2x.png */; };
 		DE1B100319F3948900137633 /* messagescenter_messagebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */; };
 		DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */; };
 		DE81C84519F4F01C00FC2E71 /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C84419F4F01C00FC2E71 /* KZJ@MyCotentViewController.m */; };
@@ -123,7 +122,6 @@
 /* Begin PBXFileReference section */
 		DE1B0FFC19F3947400137633 /* messagescenter_at@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_at@2x.png"; sourceTree = "<group>"; };
 		DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_comments@2x.png"; sourceTree = "<group>"; };
-		DE1B100019F3948600137633 /* messagescenter_good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_good@2x.png"; sourceTree = "<group>"; };
 		DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_messagebox@2x.png"; sourceTree = "<group>"; };
 		DE81C83D19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCommentSupportBaseController.h"; sourceTree = "<group>"; };
 		DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCommentSupportBaseController.m"; sourceTree = "<group>"; };
@@ -562,7 +560,6 @@
 			children = (
 				DE81C84619F4F33500FC2E71 /* navigationbar_back@2x.png */,
 				DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */,
-				DE1B100019F3948600137633 /* messagescenter_good@2x.png */,
 				DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */,
 				DE1B0FFC19F3947400137633 /* messagescenter_at@2x.png */,
 				DEBDBCD319F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png */,
@@ -803,7 +800,6 @@
 				DEBCFE7319F212C50014D970 /* tabbar_profile_highlighted@2x.png in Resources */,
 				DEBDBCD419F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png in Resources */,
 				DECC8EB119F26D7F00289A6C /* tabbar_compose_lbs@2x.png in Resources */,
-				DE1B100119F3948600137633 /* messagescenter_good@2x.png in Resources */,
 				DEBCFE6D19F212C50014D970 /* tabbar_home_highlighted@2x.png in Resources */,
 				DEBCFE7119F212C50014D970 /* tabbar_message_center_selected@2x.png in Resources */,
 				DECC8EAB19F26D3B00289A6C /* tabbar_compose_idea.png in Resources */,
