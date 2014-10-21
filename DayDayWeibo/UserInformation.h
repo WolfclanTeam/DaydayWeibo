@@ -21,5 +21,5 @@
 @property (nonatomic, retain) NSString * token;
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSString * unread;
-
+@property (nonatomic, retain) NSString *collectionNum;
 @end

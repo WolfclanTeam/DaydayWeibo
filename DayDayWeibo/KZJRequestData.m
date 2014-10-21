@@ -156,6 +156,7 @@
     {
         NSNotification*notification1= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification1];
+        
         NSLog(@"=dasfa-24354");
     }
     
@@ -201,6 +202,10 @@
     for (UserInformation*info1 in fetchedObjects)
     {
         if ([info isEqual:info1])
+        {
+            [context deleteObject:info1];
+        }
+        if (info1.uid ==nil)
         {
             [context deleteObject:info1];
         }

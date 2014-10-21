@@ -96,10 +96,10 @@
     }
     meTableView.scrollsToTop = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    for (UIView*view in self.view.subviews)
-    {
-        [view removeFromSuperview];
-    }
+//    for (UIView*view in self.view.subviews)
+//    {
+//        [view removeFromSuperview];
+//    }
     [self.view addSubview:meTableView];
     
 }
