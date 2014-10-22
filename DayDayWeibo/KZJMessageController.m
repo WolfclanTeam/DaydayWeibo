@@ -9,11 +9,15 @@
 #import "KZJMessageController.h"
 
 @interface KZJMessageController ()
-
+{
+    SlideAnimation *slideAnimationController;
+  
+}
 @end
 
 @implementation KZJMessageController
 @synthesize messageTableView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,8 +31,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
+    self.tabBarController.delegate = self;
+    //创建动画
+    slideAnimationController  = [[SlideAnimation alloc] init];
+   
+    self.navigationController.delegate =self;
     [self setMyView];//设置MessageView给当前self.view
     [self initMessageTableView]; //初始化消息页面
     
@@ -118,13 +125,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
-    KZJ_MyCotentViewController *myContentVC = [[KZJ_MyCotentViewController alloc] init]; //@我的页面
-    [self.navigationController pushViewController:myContentVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    
+    [self performSelector:@selector(presentmyContentVC)];//@我的页面
 }
-
+-(void)presentmyContentVC
+{
+    KZJ_MyCotentViewController *myContentVC = [[KZJ_MyCotentViewController alloc] init]; //@我的页面
+   
+    [self.navigationController pushViewController:myContentVC animated:YES];
+}
 #pragma mark 发起聊天
 -(void)startChat
 {
@@ -135,6 +146,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Navigation Controller Delegate
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+   
+    
+    BaseAnimation *animationController;
+   
+        animationController = slideAnimationController;
+        switch (operation) {
+        case UINavigationControllerOperationPush:
+            animationController.type = AnimationTypePresent;
+            return  animationController;
+        case UINavigationControllerOperationPop:
+            animationController.type = AnimationTypeDismiss;
+            return animationController;
+        default: return nil;
+    }
+    
+}
+
 
 /*
 #pragma mark - Navigation

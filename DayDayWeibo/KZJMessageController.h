@@ -10,12 +10,15 @@
 #import "KZJMessageTableView.h"
 #import "KZJ@MyCotentViewController.h"
 #import "UIImage+Redraw.h"
-@interface KZJMessageController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "SlideAnimation.h"
+
+@interface KZJMessageController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 {
    
    NSMutableArray *iconArr;  //消息页面的头像数组
    NSArray *titleArr;
 }
 @property(strong,nonatomic)KZJMessageTableView *messageTableView;
+
 
 @end

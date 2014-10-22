@@ -68,8 +68,14 @@
 
     }else if ([request.tag isEqualToString:@"993"])
     {
-        NSLog(@"%@",result);
+        //NSLog(@"%@",result);
         [self unread:result];
+    }else if ([request.tag isEqualToString:@"1100"])
+    {
+       // NSLog(@"1100 = %@",result);
+    }else if ([request.tag isEqualToString:@"1101"])
+    {
+        //NSLog(@"1101 = %@",result);
     }
 }
 #pragma mark 返回用户未读信息数(不包含未读微博)
@@ -296,6 +302,30 @@
     }
     return 0;
 }
+#pragma mark 张立坚 的消息页面 "@我的"  数据请求
+/**
+ 
+ "@我的"  数据请求
+ */
+-(void)zljRequestData1
+{
+    //NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"filter_by_source", nil];
+   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"filter_by_type", nil];
+  
+    
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/mentions.json" httpMethod:@"Get" params:params delegate:self withTag:@"1100"];
+}
 
-
+#pragma mark 张立坚 的消息页面 "评论"  数据请求
+-(void)zljRequestData2
+{
+    //NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"page", nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/by_me.json" httpMethod:@"Get" params:nil delegate:self withTag:@"1101"];
+    
+}
+#pragma mark  张立坚 的消息页面 "赞"  数据请求
+-(void)zljRequestData3
+{
+    
+}
 @end

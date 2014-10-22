@@ -10,6 +10,8 @@
 		DE1B0FFD19F3947400137633 /* messagescenter_at@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B0FFC19F3947400137633 /* messagescenter_at@2x.png */; };
 		DE1B0FFF19F3948100137633 /* messagescenter_comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */; };
 		DE1B100319F3948900137633 /* messagescenter_messagebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */; };
+		DE77D9DD19F75905006E2F24 /* BaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE77D9DC19F75905006E2F24 /* BaseAnimation.m */; };
+		DE77D9E019F75913006E2F24 /* SlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE77D9DF19F75913006E2F24 /* SlideAnimation.m */; };
 		DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */; };
 		DE81C84519F4F01C00FC2E71 /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C84419F4F01C00FC2E71 /* KZJ@MyCotentViewController.m */; };
 		DE81C84719F4F33500FC2E71 /* navigationbar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE81C84619F4F33500FC2E71 /* navigationbar_back@2x.png */; };
@@ -93,7 +95,7 @@
 		DEBDBCD019F35789003EFB7E /* tabbar_compose_voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBDBCCF19F35789003EFB7E /* tabbar_compose_voice@2x.png */; };
 		DEBDBCD219F35879003EFB7E /* tabbar_compose_background_icon_return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBDBCD119F35879003EFB7E /* tabbar_compose_background_icon_return@2x.png */; };
 		DEBDBCD419F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBDBCD319F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png */; };
-		DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9519F2513100289A6C /* KZJShareView.m */; };
+		DEBE2FED19F79583000B4322 /* KZJShareWeiboController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */; };
 		DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */; };
 		DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */; };
 		DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */; };
@@ -143,6 +145,10 @@
 		DE1B0FFC19F3947400137633 /* messagescenter_at@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_at@2x.png"; sourceTree = "<group>"; };
 		DE1B0FFE19F3948100137633 /* messagescenter_comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_comments@2x.png"; sourceTree = "<group>"; };
 		DE1B100219F3948900137633 /* messagescenter_messagebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagescenter_messagebox@2x.png"; sourceTree = "<group>"; };
+		DE77D9DB19F75905006E2F24 /* BaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAnimation.h; sourceTree = "<group>"; };
+		DE77D9DC19F75905006E2F24 /* BaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAnimation.m; sourceTree = "<group>"; };
+		DE77D9DE19F75913006E2F24 /* SlideAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideAnimation.h; sourceTree = "<group>"; };
+		DE77D9DF19F75913006E2F24 /* SlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideAnimation.m; sourceTree = "<group>"; };
 		DE81C83D19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCommentSupportBaseController.h"; sourceTree = "<group>"; };
 		DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCommentSupportBaseController.m"; sourceTree = "<group>"; };
 		DE81C84319F4F01C00FC2E71 /* KZJ@MyCotentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCotentViewController.h"; sourceTree = "<group>"; };
@@ -277,8 +283,8 @@
 		DEBDBCCF19F35789003EFB7E /* tabbar_compose_voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_compose_voice@2x.png"; sourceTree = "<group>"; };
 		DEBDBCD119F35879003EFB7E /* tabbar_compose_background_icon_return@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_compose_background_icon_return@2x.png"; sourceTree = "<group>"; };
 		DEBDBCD319F35AD6003EFB7E /* toolbar_stop_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar_stop_highlighted@2x.png"; sourceTree = "<group>"; };
-		DECC8E9419F2513100289A6C /* KZJShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareView.h; sourceTree = "<group>"; };
-		DECC8E9519F2513100289A6C /* KZJShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareView.m; sourceTree = "<group>"; };
+		DEBE2FEB19F79583000B4322 /* KZJShareWeiboController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareWeiboController.h; sourceTree = "<group>"; };
+		DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareWeiboController.m; sourceTree = "<group>"; };
 		DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenu.m; sourceTree = "<group>"; };
 		DECC8E9919F254A900289A6C /* TumblrLikeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenuItem.h; sourceTree = "<group>"; };
 		DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenuItem.m; sourceTree = "<group>"; };
@@ -355,6 +361,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE77D9DA19F758F3006E2F24 /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				DE77D9DB19F75905006E2F24 /* BaseAnimation.h */,
+				DE77D9DC19F75905006E2F24 /* BaseAnimation.m */,
+				DE77D9DE19F75913006E2F24 /* SlideAnimation.h */,
+				DE77D9DF19F75913006E2F24 /* SlideAnimation.m */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
 		DEBCFD9919F2114A0014D970 = {
 			isa = PBXGroup;
 			children = (
@@ -679,8 +696,6 @@
 			isa = PBXGroup;
 			children = (
 				DECC8E9719F2549700289A6C /* TumbirLikeMenu */,
-				DECC8E9419F2513100289A6C /* KZJShareView.h */,
-				DECC8E9519F2513100289A6C /* KZJShareView.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -740,6 +755,8 @@
 			children = (
 				DECC8EA719F2641700289A6C /* KZJShareController.h */,
 				DECC8EA819F2641700289A6C /* KZJShareController.m */,
+				DEBE2FEB19F79583000B4322 /* KZJShareWeiboController.h */,
+				DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -747,6 +764,7 @@
 		DEBCFE8419F213490014D970 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				DE77D9DA19F758F3006E2F24 /* animations */,
 				DEBCFE8919F2139A0014D970 /* KZJMessageController.h */,
 				DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */,
 				DE81C83D19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.h */,
@@ -937,7 +955,6 @@
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
 				DEBCFE4E19F212910014D970 /* MKNetworkEngine.m in Sources */,
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
-				DECC8E9619F2513100289A6C /* KZJShareView.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				DEDD9D4719F5FCFB007D45A9 /* KZJMeTableView.m in Sources */,
@@ -954,6 +971,7 @@
 				DE81C85019F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m in Sources */,
 				DEDD9D4419F5FCD2007D45A9 /* KZJMeTableViewCell.m in Sources */,
 				DEBCFDFA19F2127A0014D970 /* UIScrollView+MJExtension.m in Sources */,
+				DE77D9DD19F75905006E2F24 /* BaseAnimation.m in Sources */,
 				DEBCFE4819F212910014D970 /* NSData+MKBase64.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
 				DEBCFE8819F213900014D970 /* KZJHomeController.m in Sources */,
@@ -966,7 +984,9 @@
 				DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */,
 				DEBCFE9419F213B60014D970 /* KZJMeController.m in Sources */,
 				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
+				DE77D9E019F75913006E2F24 /* SlideAnimation.m in Sources */,
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
+				DEBE2FED19F79583000B4322 /* KZJShareWeiboController.m in Sources */,
 				DEDD9D5019F5FDF7007D45A9 /* KZJNextView.m in Sources */,
 				DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,

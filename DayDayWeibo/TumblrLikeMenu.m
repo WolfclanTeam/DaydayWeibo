@@ -48,7 +48,7 @@
             // use tool bar in iOS 7 to blur the backgroud
             self.magicBgImageView = [[UIToolbar alloc] initWithFrame:frame];
             
-            ((UIToolbar *)self.magicBgImageView).barStyle = UIBarStyleBlackTranslucent;
+            ((UIToolbar *)self.magicBgImageView).barStyle = UIBarStyleBlack;
         }
         
         [self addSubview:self.magicBgImageView];
@@ -186,6 +186,9 @@
         [item.layer addAnimation:disappear forKey:kStringMenuItemAppearKey];
     }
     item.layer.position = finalPoint;
+    
+  
+
 }
 
 - (void)appearMenuItem:(TumblrLikeMenuItem *)item animated:(BOOL )animated

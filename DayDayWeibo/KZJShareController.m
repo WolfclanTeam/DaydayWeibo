@@ -27,9 +27,39 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelMethod)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor orangeColor];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendMethod)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor grayColor];
+    
+    
+    UIView *titleView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
+    UILabel *sendWeiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 60, 24)];
+    sendWeiboLabel.text = @"发微博";
+    [titleView addSubview:sendWeiboLabel];
+    whoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 80, 20)];
+    whoLabel.text = @"发微博inging";
+    whoLabel.adjustsFontSizeToFitWidth = YES;
+    [titleView addSubview:whoLabel];
+
+    self.navigationItem.titleView = titleView;
+}
+#pragma mark 取消方法
+-(void)cancelMethod
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+#pragma mark 发送方法
+-(void)sendMethod
+{
     
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -1,25 +1,24 @@
 //
-//  KZJ@MyCotentViewController.m
+//  KZJShareWeiboController.m
 //  DayDayWeibo
 //
-//  Created by Ibokan on 14-10-20.
+//  Created by Ibokan on 14-10-22.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJ@MyCotentViewController.h"
+#import "KZJShareWeiboController.h"
 
-@interface KZJ_MyCotentViewController ()
+@interface KZJShareWeiboController ()
 
 @end
 
-@implementation KZJ_MyCotentViewController
+@implementation KZJShareWeiboController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
@@ -28,9 +27,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    KZJRequestData *data = [[KZJRequestData alloc] initOnly];
-   // [data zljRequestData1];
-    [data zljRequestData2];
 }
 
 - (void)didReceiveMemoryWarning

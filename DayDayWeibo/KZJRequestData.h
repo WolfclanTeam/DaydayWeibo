@@ -22,4 +22,17 @@
 -(id)searchEntityName:(NSString*)name uid:(NSString*)uid;
 -(void)startRequestData1;
 -(void)startRequestData2;
+
+
+#pragma mark 张立坚 的消息页面@我的  数据请求
+/**
+ 
+ "@我的"  数据请求
+ */
+-(void)zljRequestData1;
+#pragma mark 张立坚 的消息页面 "评论"  数据请求
+-(void)zljRequestData2;
+#pragma mark  张立坚 的消息页面 "赞"  数据请求
+-(void)zljRequestData3;
+
 @end

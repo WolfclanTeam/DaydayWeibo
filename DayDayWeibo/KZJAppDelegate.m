@@ -16,6 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"===");
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]!=nil)
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"启动" forKey:@"标示启动"];

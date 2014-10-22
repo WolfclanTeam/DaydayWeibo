@@ -38,6 +38,18 @@
     
     //设置基类view
     [self setBaseView];
+    UIButton *testView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [testView setTitle:@"所有微博" forState:UIControlStateNormal];
+    [testView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [testView addTarget:self action:@selector(test) forControlEvents:UIControlEventTouchUpInside];
+    //testView.backgroundColor = [UIColor redColor];
+    self.navigationItem.titleView =testView;
+    
+}
+-(void)test
+{
+    NSLog(@"出来");
+    //添加动画
     
 }
 -(void)setBaseView

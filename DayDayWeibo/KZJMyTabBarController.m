@@ -27,13 +27,16 @@
 {
     if (self = [super init])
     {
+        NSLog(@"12");
         imageArr = image;
         seletedImageArr = seletedImage;
+        
     }
     return self;
 }
 -(void)btn
 {
+   
     //    self.tabBar.backgroundColor = [UIColor blackColor];
     CGRect rect = self.tabBar.frame;
     
@@ -187,11 +190,24 @@
     
     NSArray *subMenus = @[menuItem0, menuItem1, menuItem2, menuItem3, menuItem4, menuItem5];
     
+   
     TumblrLikeMenu *menu = [[TumblrLikeMenu alloc] initWithFrame:self.view.bounds
                                                         subMenus:subMenus
                                                              tip:@"fg"];
+    
     menu.selectBlock = ^(NSUInteger index) {
-        NSLog(@"item %lu index selected", (unsigned long)index);
+        NSLog(@"11item %lu index selected", (unsigned long)index);
+        if (index==0)
+        {
+            
+            KZJShareController *shareWeibo = [[KZJShareController alloc] init];
+            shareWeibo.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
+            
+            [self presentViewController:shareNav animated:YES completion:^{
+               
+            }];
+        }
         if (index==5)
         {
             [self popMoreMenu];
@@ -218,6 +234,9 @@
                                                              tip:@""];
     menu.selectBlock = ^(NSUInteger index) {
         NSLog(@"item %d index selected", index);
+        
+        
+        
         if (index==5)
         {
             [self popSelectMenu];
@@ -228,6 +247,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"3223");
     // Do any additional setup after loading the view.
     
 }
@@ -235,21 +255,28 @@
 {
     [super viewWillAppear:animated];
     //初始化原来的tabbar的image
-    for (int i=0; i<self.imageArr.count; i++)
-    {
-        //        UINavigationController* nav = [self.viewControllers objectAtIndex:i];
-        UIImage* selectImg = [self.imageArr objectAtIndex:i];
-        if (self.tabBarItem.image==NULL || self.tabBarItem.image==nil)
-        {
-            [self.tabBarItem setImage:selectImg];
-        }
-    }
+    
     //隐藏原有的tabBar
 //    self.tabBar.hidden =YES;  //隐藏TabBarController自带的下部的条s
+    static int i =1;
+    if (i) {
+        for (int i=0; i<self.imageArr.count; i++)
+        {
+            //        UINavigationController* nav = [self.viewControllers objectAtIndex:i];
+            UIImage* selectImg = [self.imageArr objectAtIndex:i];
+            if (self.tabBarItem.image==NULL || self.tabBarItem.image==nil)
+            {
+                [self.tabBarItem setImage:selectImg];
+            }
+        }
+        [self btn];
+        i=0;
+    }
     
-    [self btn];
     
+    NSLog(@"basjfewdgsigtfguc");
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
