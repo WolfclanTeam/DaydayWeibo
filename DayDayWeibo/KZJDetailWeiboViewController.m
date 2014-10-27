@@ -13,7 +13,7 @@
 @end
 
 @implementation KZJDetailWeiboViewController
-@synthesize dataDict;
+@synthesize dataDict,fromCom;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    num = 1;
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    //标题
+    self.title = @"微博正文";
     //返回按钮设置
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.backgroundColor = [UIColor colorWithPatternImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x.png"] Frame:CGRectMake(0,0,30,30)]];
@@ -35,8 +39,9 @@
     [btn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
     [self.navigationItem setLeftBarButtonItem:backBtn];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWebView:) name:@"COMPUSHWEB" object:nil];
+
     
-   
     
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
     NSNumber *weiboID = [dataDict objectForKey:@"id"];
@@ -44,10 +49,70 @@
     [datamanager getCommentList:str];
     [datamanager passWeiboData:^(NSDictionary *dict) {
         detail = [[DetailWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-30) dataDict:dataDict superView:self.navigationController.view];
-        detail.commentDict = dict;
+        detail.commentsArr = [dict objectForKey:@"comments"];
+        if (self.fromCom == YES)
+        {
+            [detail reloadData];
+        }
+        
+        [detail addHeaderWithTarget:self action:@selector(headerRefresh)];
+        [detail addFooterWithTarget:self action:@selector(footerRefresh)];
+        
+        detail.headerRefreshingText = @"加载中";
+        detail.footerRefreshingText = @"加载中";
+        
     }];
 }
 
+
+-(void)headerRefresh
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [detail headerEndRefreshing];
+       
+    });
+}
+//
+//
+-(void)footerRefresh
+{
+    num++;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        KZJRequestData *datamanager = [KZJRequestData requestOnly];
+        NSNumber *weiboID = [dataDict objectForKey:@"id"];
+        NSString *str = [weiboID stringValue];
+        NSString *page = [NSString stringWithFormat:@"%d",num];
+        [datamanager getNewComment:str page:page];
+        [datamanager passWeiboData:^(NSDictionary *dict) {
+            if ([[dict objectForKey:@"comments"] count] ==0)
+            {
+                [detail footerEndRefreshing];
+            }else
+            {
+                NSMutableArray *comData = [NSMutableArray arrayWithArray:detail.commentsArr];
+                NSArray *array = [dict objectForKey:@"comments"];
+                for (int i = 0;i < [array count];i++)
+                {
+                    [comData addObject:[array objectAtIndex:i]];
+                }
+                detail.commentsArr = comData;
+                [detail reloadData];
+                [detail footerEndRefreshing];
+            }
+        }];
+        
+    });
+}
+
+
+-(void)pushWebView:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    KZJWebViewController *webView = [[KZJWebViewController alloc] init];
+    UINavigationController *nav_webView = [[UINavigationController alloc] initWithRootViewController:webView];
+    webView.urlString = [dict objectForKey:@"http"];
+    [self presentViewController:nav_webView animated:YES completion:nil];
+}
 
 -(void)backAction
 {

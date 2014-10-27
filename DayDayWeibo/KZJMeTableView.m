@@ -263,7 +263,7 @@
 {
     if (indexPath.section ==1&&indexPath.row==0)
     {
-        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
+        [[KZJRequestData requestOnly]startRequestData5:1];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"picture" object:nil];
     }else if (indexPath.section ==3 &&indexPath.row==0)
     {

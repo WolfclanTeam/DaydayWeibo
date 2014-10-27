@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailWeiboTableView.h"
+#import"KZJWebViewController.h"
 
 @interface KZJDetailWeiboViewController : UIViewController
 {
     DetailWeiboTableView *detail;
+    UIScrollView *weiboScroll;
+    int num;
+    
 }
 @property(nonatomic,retain)NSDictionary *dataDict;
+@property(nonatomic,assign)BOOL fromCom;
 
 @end

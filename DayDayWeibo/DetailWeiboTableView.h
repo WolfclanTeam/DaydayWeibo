@@ -10,16 +10,30 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "GetNetImageSize.h"
 #import "KZJCommentCell.h"
+#import"RTLabel.h"
+#import"RegexKitLite.h"
+#import"NSString+URLEncoding.h"
 
-@interface DetailWeiboTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
+
+@interface DetailWeiboTableView : UITableView<UITableViewDataSource,UITableViewDelegate,RTLabelDelegate>
 {
+    //微博信息
     UIView *headView;
     UIImageView*headImage;
     UILabel *idLabel;
     UILabel *timeLabel;
-    UITextView *weiboConnent;
+    UIView *viewForHeadImage;
+    //微博内容
+    RTLabel *weiboConnent;
     UIView*weiboImages;
     UIImageView *weiboSingleImage;
+    //转发内容
+    UIView *retweetView;
+    RTLabel *retweetContent;
+    UIImageView *retweetSingleImage;
+    UIView *retweetImages;
+    
+    
     UIButton *repostsBtn;
     UIImageView *repostsBG;
     UILabel *repostsCount;
@@ -33,9 +47,14 @@
     NSNumber *repostsNum;
     NSNumber *commentsNum;
     NSNumber *attitudesNum;
+    
+    //
+    UIView *bgView;
+    UIView *comSelectView;
 }
 
 @property (nonatomic,retain) NSDictionary *commentDict;
+@property (nonatomic,retain) NSArray *commentsArr;
 
 - (id)initWithFrame:(CGRect)frame dataDict:(NSDictionary*)weiboDict superView:(UIView*)supView;
 @end

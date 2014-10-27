@@ -24,8 +24,9 @@
         // Initialization code
         
         //设置显示大图的图片视图
-        picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-        imageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+        imageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, SCREENWIDTH, SCREENHEIGHT)];
+        imageScroll.backgroundColor = [UIColor blackColor];
         imageScroll.bounces = NO;
         [imageScroll addSubview:picImageView];
         
@@ -36,12 +37,12 @@
         [self.detailTextLabel removeFromSuperview];
         
         //用于显示博主ID的label
-        idLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, self.frame.size.width-45, 25)];
+        idLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, SCREENWIDTH-45, 25)];
         idLabel.font = [UIFont systemFontOfSize:14];
         [self addSubview:idLabel];
         
         //显示微博时间来源
-        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 25, self.frame.size.width-45, 15)];
+        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 25, SCREENWIDTH-45, 15)];
         timeLabel.textColor = [UIColor grayColor];
         timeLabel.font = [UIFont systemFontOfSize:10];
         [self addSubview:timeLabel];
@@ -53,11 +54,11 @@
         [self addSubview:HeadImageView];
 //
 //        //显示微博正文的textview
-        Weibocontent = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0)];
-        Weibocontent.editable = NO;
-        Weibocontent.scrollEnabled = NO;
-        Weibocontent.userInteractionEnabled = NO;
+        Weibocontent = [[RTLabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 0)];
+        Weibocontent.userInteractionEnabled = YES;
         Weibocontent.font = [UIFont systemFontOfSize:13];
+        Weibocontent.linkAttributes = [NSDictionary dictionaryWithObject:@"blue" forKey:@"color"];
+        Weibocontent.delegate = self;
         [self addSubview:Weibocontent];
 //
 //        //显示微博图片
@@ -73,12 +74,14 @@
         retweetWeibo.userInteractionEnabled = YES;
         
         //转发微博正文
-        retweetContent = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
+        retweetContent = [[RTLabel alloc] initWithFrame:CGRectMake(10, 10, SCREENWIDTH-20, 0)];
         retweetContent.tag = 2001;
-        retweetContent.editable = NO;
-        retweetContent.userInteractionEnabled = NO;
-        retweetContent.scrollEnabled = NO;
+        retweetContent.userInteractionEnabled = YES;
+        retweetContent.font = [UIFont systemFontOfSize:12];
         retweetContent.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+        retweetContent.linkAttributes = [NSDictionary dictionaryWithObject:@"blue" forKey:@"color"];
+        retweetContent.delegate = self;
+
 //
 //        //转发微博图片
         retweetImages = [[UIView alloc] init];
@@ -94,7 +97,7 @@
         retweetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         retweetBg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 20, 20)];
         retweetBg.image = [UIImage redraw:[UIImage imageNamed:@"rettoolbar_icon_retweet@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
-        retweetNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, self.frame.size.width/3-50, 20)];
+        retweetNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
         [retweetBtn addSubview:retweetBg];
         [retweetBtn addSubview:retweetNum];
         
@@ -102,7 +105,7 @@
         commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         commentBg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 20, 20)];
         commentBg.image = [UIImage redraw:[UIImage imageNamed:@"comtoolbar_icon_comment@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
-        commentNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, self.frame.size.width/3-50, 20)];
+        commentNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
         [commentBtn addSubview:commentBg];
         [commentBtn addSubview:commentNum];
         
@@ -110,7 +113,7 @@
         attitudeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         attitudeBg = [[UIImageView alloc]initWithFrame:CGRectMake(20, 5, 20, 20)];
         attitudeBg.image = [UIImage redraw:[UIImage imageNamed:@"attitoolbar_icon_unlike@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
-        attitudeNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, self.frame.size.width/3-50, 20)];
+        attitudeNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
         [attitudeBtn addSubview:attitudeBg];
         [attitudeBtn addSubview:attitudeNum];
         
@@ -154,6 +157,38 @@
         return dateString;
     }
 }
+
+#pragma mark-解析超链接
+-(NSString*)parseLink:(NSString*)text
+{
+    NSString *regex = @"(@\\w+)|(#\\w+#)|(http(s)?://([A-Za-z0-9._-]+(/)?)*)";
+    NSArray *matchArray = [text componentsMatchedByRegex:regex];
+    
+    for (NSString *linkString in matchArray)
+    {
+        //三种不同超链接
+        //<a href='user://@用户'></a>
+        //<a href='http://www.baidu.com '>http://www.baidu.com</a>
+        //<a href='topic://#话题#'>#话题#</a>
+        NSString *replacing = nil;
+        if ([linkString hasPrefix:@"@"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='user://%@'>%@</a>",[linkString URLEncodedString],linkString];
+        }else if ([linkString hasPrefix:@"http"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='http://%@'>%@</a>",[linkString URLEncodedString],@"网页链接"];
+        }else if ([linkString hasPrefix:@"#"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='topic://%@'>%@</a>",[linkString URLEncodedString],linkString];
+        }
+        if (replacing!=nil)
+        {
+            text =  [text stringByReplacingOccurrencesOfString:linkString withString:replacing];
+        }
+    }
+    return text;
+}
+
 #pragma mark-设置cell内容与高度
 -(void)setCell:(NSArray *)dataArr indexPath:(NSIndexPath *)indexPath
 {
@@ -162,11 +197,7 @@
     CGFloat statuHeight = 0.0f;
     retweetWeibo.hidden = YES;
     //博主ID
-    if ([dataArr count]>0)
-    {
-        idLabel.text = [[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"screen_name"];
-    
-    
+    idLabel.text = [[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"screen_name"];
     //微博发布时间以及来源
     NSString *sourceStr = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"source"];
     NSArray *array=[sourceStr componentsSeparatedByString:@">"];
@@ -202,17 +233,16 @@
         timeLabel.text = [NSString stringWithFormat:@"%@ 来自%@",inputTimeStr,inputSource];
     }
     
-    
     //博主头像
     [HeadImageView sd_setImageWithURL:[NSURL URLWithString:[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
-//    //微博正文
-    Weibocontent.text = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"text"];
-    CGFloat textViewContentHeight =[[NSString stringWithFormat:@"%@",Weibocontent.text]
-                                    boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)
-                                    options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                    attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] context:nil].size.height+10;
-    Weibocontent.frame = CGRectMake(0, 40, self.frame.size.width, textViewContentHeight);
-//    //微博图片
+    //微博正文
+    NSString *weiboText = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"text"];
+    [self parseLink:weiboText];
+    Weibocontent.text = [self parseLink:weiboText];
+    CGFloat textViewContentHeight = Weibocontent.optimumSize.height;
+    Weibocontent.frame = CGRectMake(10, 50, SCREENWIDTH-20, textViewContentHeight);
+    
+    //微博图片
     if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count] == 0)
     {
         weiboImages.hidden = YES;
@@ -224,7 +254,7 @@
         CGSize sizeH = [GetNetImageSize downloadImageSizeWithURL:[NSURL URLWithString:[[dataArr objectAtIndex:indexPath.row] objectForKey:@"thumbnail_pic"]]];
         weiboImgHeight = sizeH.height;
         
-        weiboImages.frame = CGRectMake(10, 40+textViewContentHeight+15, sizeH.width, sizeH.height);
+        weiboImages.frame = CGRectMake(10, 40+textViewContentHeight+10, sizeH.width, sizeH.height);
         UIImageView *aImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeH.width, sizeH.height)];
         
         [aImage sd_setImageWithURL:[[dataArr objectAtIndex:indexPath.row] objectForKey:@"thumbnail_pic"]];
@@ -242,7 +272,7 @@
             weiboImgHeight = 100*([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]/3+1);
         }
         
-        weiboImages.frame = CGRectMake(10, 40+Weibocontent.frame.size.height, 300, weiboImgHeight);
+        weiboImages.frame = CGRectMake(10, 40+textViewContentHeight+10, 300, weiboImgHeight);
         for (int i = 0; i<[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]; i++)
         {
             UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
@@ -264,27 +294,24 @@
         retweetWeibo.hidden = NO;
         NSString *statuID = [[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"user"] objectForKey:@"screen_name"];
         NSString *statuDetail = [[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"text"];
-        retweetContent.text = [NSString stringWithFormat:@"@%@:%@",statuID,statuDetail];
-        CGFloat staContentHeight =[[NSString stringWithFormat:@"%@",retweetContent.text]
-                                   boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)
-                                   options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                   attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] context:nil].size.height+10;
-        retweetContent.frame = CGRectMake(0, 0, self.frame.size.width, staContentHeight);
+        NSString *retweetWeiboText = [NSString stringWithFormat:@"@%@:%@",statuID,statuDetail];
+        retweetContent.text = [self parseLink:retweetWeiboText];
+        CGFloat staContentHeight = retweetContent.optimumSize.height;
+        retweetContent.frame = CGRectMake(10, 10, SCREENWIDTH-20, staContentHeight);
 //
         if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count] == 0)
         {
             weiboImages.hidden = YES;
             retweetImages.hidden = YES;
-            statuHeight = staContentHeight;
-//            NSLog(@"无转发图");
+            statuHeight = staContentHeight+10;
         }else if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count] == 1)
         {
             [retweetImages.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             weiboImages.hidden = YES;
             retweetImages.hidden = NO;
             CGSize sizeH = [GetNetImageSize downloadImageSizeWithURL:[NSURL URLWithString:[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"]]];
-            statuHeight = sizeH.height+staContentHeight;
-            retweetImages.frame = CGRectMake(10, staContentHeight, sizeH.width, sizeH.height);
+            statuHeight = sizeH.height+staContentHeight+10;
+            retweetImages.frame = CGRectMake(10, staContentHeight+10, sizeH.width, sizeH.height);
             UIImageView *aImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeH.width, sizeH.height)];
             
             [aImage sd_setImageWithURL:[NSURL URLWithString:[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"]] placeholderImage:nil options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
@@ -308,8 +335,8 @@
                 statuImageHeight = 100*([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]/3+1);
             }
             
-            retweetImages.frame = CGRectMake(10, staContentHeight, 300, statuImageHeight);
-            statuHeight = staContentHeight+statuImageHeight;
+            retweetImages.frame = CGRectMake(10, staContentHeight+10, 300, statuImageHeight);
+            statuHeight = staContentHeight+statuImageHeight+10;
             for (int i = 0; i<[[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]; i++)
             {
                 UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
@@ -326,25 +353,21 @@
         }
 //
     }
-    retweetWeibo.frame = CGRectMake(0, 40+textViewContentHeight+15, [UIScreen mainScreen].bounds.size.width, statuHeight);
-    self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 50+30+Weibocontent.frame.size.height+weiboImgHeight+statuHeight);
+    retweetWeibo.frame = CGRectMake(0, 40+textViewContentHeight+10, SCREENWIDTH, statuHeight);
+    self.frame = CGRectMake(0, 0, SCREENWIDTH, 50+35+textViewContentHeight+weiboImgHeight+statuHeight);
     
     //转发
-    retweetBtn.frame = CGRectMake(0, self.frame.size.height-30, self.frame.size.width/3, 30);
+    retweetBtn.frame = CGRectMake(0, self.frame.size.height-35, self.frame.size.width/3, 30);
     retweetNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"reposts_count"]];
-//    [retweetBtn.layer setMasksToBounds:YES];
-//    [retweetBtn.layer setCornerRadius:0];
-//    [retweetBtn.layer setBorderWidth:1.0];   //边框宽度
-//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0, 0, 0, 1 });
-//    [retweetBtn.layer setBorderColor:colorref];//边框颜色
+    [retweetBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
     //评论
-    commentBtn.frame = CGRectMake(self.frame.size.width/3, self.frame.size.height-30, self.frame.size.width/3, 30);
+    commentBtn.frame = CGRectMake(self.frame.size.width/3, self.frame.size.height-35, self.frame.size.width/3, 30);
     commentNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"comments_count"]];
+    [commentBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
     //表态
-    attitudeBtn.frame = CGRectMake(self.frame.size.width/3*2, self.frame.size.height-30, self.frame.size.width/3, 30);
+    attitudeBtn.frame = CGRectMake(self.frame.size.width/3*2, self.frame.size.height-35, self.frame.size.width/3, 30);
     attitudeNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"attitudes_count"]];
-    
+    [attitudeBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
     //点击微博图片触发显示大图方法
     UITapGestureRecognizer *bigger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
     bigger.numberOfTapsRequired = 1;
@@ -387,7 +410,20 @@
     [retweetBtn addTarget:self action:@selector(retweetAction:) forControlEvents:UIControlEventTouchUpInside];
     [commentBtn addTarget:self action:@selector(commentAction:) forControlEvents:UIControlEventTouchUpInside];
     [attitudeBtn addTarget:self action:@selector(attitudeAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+}
+
+#pragma mark-RTLabelDelegate
+
+-(void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL *)url
+{
+    NSString *urlString = [url host];
+    urlString = [urlString URLDecodedString];
+    NSLog(@"%@",urlString);
+    if ([urlString hasPrefix:@"http://"])
+    {
+        NSDictionary *dict = @{@"http": urlString};
+        NSNotification *webNoti = [[NSNotification alloc] initWithName:@"WEBPUSH" object:self userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:webNoti];
     }
 }
 
@@ -404,6 +440,10 @@
 {
     UIButton *btn = (UIButton*)sender;
     NSLog(@"%d",btn.tag);
+    int row = btn.tag-5000;
+    NSDictionary *dict = [weiboData objectAtIndex:row];
+    NSNotification *comNoti = [[NSNotification alloc] initWithName:@"CLICKCOMMENT" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:comNoti];
 }
 //点击表态触发方法
 -(void)attitudeAction:(id)sender
@@ -486,16 +526,19 @@
          
          [indicatorView stopAnimating];
          [indicatorView removeFromSuperview];
-         NSLog(@"====%f",image.size.height);
+         
+         
+         
      }];
     UITapGestureRecognizer *backTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backAction)];
     backTap.numberOfTapsRequired = 1;
     [imageScroll addGestureRecognizer:backTap];
     [mainView addSubview:imageScroll];
-    //    [self.superview.superview.superview.superview.superview.superview ];
     self.superview.superview.superview.hidden = YES;
     
+    
 }
+
 
 
 - (void)awakeFromNib

@@ -26,11 +26,11 @@
         timeLbel = [[UILabel alloc] initWithFrame:CGRectMake(65, 30, [UIScreen mainScreen].bounds.size.width-65, 15)];
         timeLbel.font = [UIFont systemFontOfSize:10];
         timeLbel.textColor = [UIColor grayColor];
-        commentContent = [[UITextView alloc] initWithFrame:CGRectMake(45, 45, [UIScreen mainScreen].bounds.size.width-45, 0)];
-        commentContent.editable = NO;
-        commentContent.scrollEnabled = NO;
-        commentContent.userInteractionEnabled = NO;
+        commentContent = [[RTLabel alloc] initWithFrame:CGRectMake(45, 45, SCREENWIDTH-45, 0)];
+        commentContent.linkAttributes = [NSDictionary dictionaryWithObject:@"blue" forKey:@"color"];
         commentContent.font = [UIFont systemFontOfSize:13];
+        commentContent.userInteractionEnabled = YES;
+        commentContent.delegate = self;
         
         [self addSubview:headImageView];
         [self addSubview:idLabel];
@@ -40,7 +40,7 @@
     return self;
 }
 
--(void)setCellCommentData:(NSMutableArray *)commentArr indexPath:(NSIndexPath *)indexPath
+-(void)setCellCommentData:(NSArray *)commentArr indexPath:(NSIndexPath *)indexPath
 {
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[[[commentArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
     idLabel.text = [[[commentArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"screen_name"];
@@ -55,17 +55,60 @@
     timeLbel.text = inputTimeStr;
     
     //评论内容
-    commentContent.text = [[commentArr objectAtIndex:indexPath.row] objectForKey:@"text"];
+    NSString *commentText = [[commentArr objectAtIndex:indexPath.row] objectForKey:@"text"];
+    commentContent.text = [self parseLink:commentText];
     
-    CGFloat commentContentHeight =[[NSString stringWithFormat:@"%@",commentContent.text]
-                                    boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-45, CGFLOAT_MAX)
-                                    options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                    attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] context:nil].size.height;
-    commentContent.frame = CGRectMake(45, 45, [UIScreen mainScreen].bounds.size.width-45, 20+commentContentHeight);
+    CGFloat commentContentHeight =commentContent.optimumSize.height;
+    commentContent.frame = CGRectMake(45, 45, SCREENWIDTH-45, 20+commentContentHeight);
     
     self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40+10+commentContentHeight+20);
 }
 
+#pragma mark-解析超链接
+-(NSString*)parseLink:(NSString*)text
+{
+    NSString *regex = @"(@\\w+)|(#\\w+#)|(http(s)?://([A-Za-z0-9._-]+(/)?)*)";
+    NSArray *matchArray = [text componentsMatchedByRegex:regex];
+    
+    for (NSString *linkString in matchArray)
+    {
+        //三种不同超链接
+        //<a href='user://@用户'></a>
+        //<a href='http://www.baidu.com '>http://www.baidu.com</a>
+        //<a href='topic://#话题#'>#话题#</a>
+        NSString *replacing = nil;
+        if ([linkString hasPrefix:@"@"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='user://%@'>%@</a>",[linkString URLEncodedString],linkString];
+        }else if ([linkString hasPrefix:@"http"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='http://%@'>%@</a>",[linkString URLEncodedString],@"网页链接"];
+        }else if ([linkString hasPrefix:@"#"])
+        {
+            replacing = [NSString stringWithFormat:@"<a href='topic://%@'>%@</a>",[linkString URLEncodedString],linkString];
+        }
+        if (replacing!=nil)
+        {
+            text =  [text stringByReplacingOccurrencesOfString:linkString withString:replacing];
+        }
+    }
+    return text;
+}
+
+#pragma mark-RTLabelDelegate
+
+-(void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL *)url
+{
+    NSString *urlString = [url host];
+    urlString = [urlString URLDecodedString];
+    NSLog(@"%@",urlString);
+    if ([urlString hasPrefix:@"http://"])
+    {
+        NSDictionary *dict = @{@"http": urlString};
+        NSNotification *webNoti = [[NSNotification alloc] initWithName:@"WEBPUSH" object:self userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:webNoti];
+    }
+}
 
 - (void)awakeFromNib
 {

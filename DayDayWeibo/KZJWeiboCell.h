@@ -9,23 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "GetNetImageSize.h"
+#import"RTLabel.h"
+#import"RegexKitLite.h"
+#import"NSString+URLEncoding.h"
 
 
-@interface KZJWeiboCell : UITableViewCell
+@interface KZJWeiboCell : UITableViewCell<RTLabelDelegate>
 {
     UIActivityIndicatorView *indicatorView;//活动控件，标示大图在下载中
     UIImageView *picImageView;//显示微博图片大图的图片视图
     UIScrollView *imageScroll;//用于添加picImageView的滑动视图
     NSArray *weiboData;//接收由viewcontroller传来的微博数据
+    CGFloat lastScale;
 }
 
 @property (nonatomic,retain) UIImageView *HeadImageView;//头像视图
 @property (nonatomic,retain) UILabel *timeLabel;//显示微博发布时间
 @property (nonatomic,retain) UILabel *idLabel;//显示博主ID
-@property (nonatomic,retain) UITextView *Weibocontent;//微博正文
+@property (nonatomic,retain) RTLabel *Weibocontent;//微博正文
 @property (nonatomic,retain) UIView *weiboImages;//显示微博图片
 @property (nonatomic,retain) UIView *retweetWeibo;//转发微博视图
-@property (nonatomic,retain) UITextView *retweetContent;//转发微博正文
+@property (nonatomic,retain) RTLabel *retweetContent;//转发微博正文
 @property (nonatomic,retain) UIView *retweetImages;//显示转发微博图片
 @property (nonatomic,retain) UIButton *retweetBtn;//转发按钮
 @property (nonatomic,retain) UIImageView *retweetBg;//转发按钮图片

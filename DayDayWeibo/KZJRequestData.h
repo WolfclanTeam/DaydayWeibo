@@ -60,7 +60,7 @@ typedef void(^passData)(NSDictionary*);
 -(void)getADetailWeibo:(NSString*)weiboID;
 -(void)getCommentList:(NSString*)weiboID;
 -(void)getNewWeibo:(NSString *)page;
-
+-(void)getNewComment:(NSString*)weiboID page:(NSString*)page;
 
 
 #pragma mark 张立坚 的消息页面@我的  数据请求

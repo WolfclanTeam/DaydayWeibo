@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "SDWebImage/UIImageView+WebCache.h"
+#import"RTLabel.h"
 
 
-@interface KZJCommentCell : UITableViewCell
+@interface KZJCommentCell : UITableViewCell<RTLabelDelegate>
 
 @property(nonatomic,retain)UIImageView *headImageView;
 @property(nonatomic,retain)UILabel *idLabel;
 @property(nonatomic,retain)UILabel *timeLbel;
-@property(nonatomic,retain)UITextView *commentContent;
+@property(nonatomic,retain)RTLabel *commentContent;
 
--(void)setCellCommentData:(NSMutableArray*)commentArr indexPath:(NSIndexPath*)indexPath;
+-(void)setCellCommentData:(NSArray*)commentArr indexPath:(NSIndexPath*)indexPath;
 
 @end

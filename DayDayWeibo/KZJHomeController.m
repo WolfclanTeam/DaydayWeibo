@@ -26,27 +26,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.automaticallyAdjustsScrollViewInsets=NO;
-    
     // Do any additional setup after loading the view.
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor colorWithPatternImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_friendsearch@2x.png"] Frame:CGRectMake(0,0,30,30)]];
+    btn.frame = CGRectMake(0, 0, 30, 30);
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    [self.navigationItem setLeftBarButtonItem:backBtn];
+    
     page = 1;
-    weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64-49) view:self.tabBarController.view];
+    weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-49) view:self.tabBarController.view];
     KZJRequestData *dataManger = [KZJRequestData requestOnly];
     [dataManger getHomeWeibo];
     [dataManger passWeiboData:^(NSDictionary *dict) {
         dataArr = [dict objectForKey:@"statuses"];
         weiboList.dataArr = dataArr;
-        [self.view addSubview:weiboList];
+        [self.navigationController.view addSubview:weiboList];
         
         [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
         [weiboList headerBeginRefreshing];
         [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];
-
+        
+        weiboList.headerRefreshingText = @"加载中";
+        weiboList.footerRefreshingText = @"加载中";
         
     }];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushDetailWeibo:) name:@"DETAILWEIBO" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushDetailWeibo:) name:@"CLICKCOMMENT" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWebView:) name:@"WEBPUSH" object:nil];
 }
 
 -(void)headerRefresh
@@ -61,7 +67,7 @@
             page = 1;
         }];
         
-//        [weiboList reloadData];
+        [weiboList reloadData];
         [weiboList headerEndRefreshing];
     });
 }
@@ -99,11 +105,28 @@
 
 -(void)pushDetailWeibo:(NSNotification*)noti
 {
+    NSLog(@"===%@,",noti.name);
     NSDictionary *dict = [noti userInfo];
     KZJDetailWeiboViewController *detailWeibo = [[KZJDetailWeiboViewController alloc] init];
     UINavigationController *nav_detailWeibo = [[UINavigationController alloc] initWithRootViewController:detailWeibo];
     detailWeibo.dataDict = dict;
+    if ([noti.name isEqualToString:@"CLICKCOMMENT"])
+    {
+        detailWeibo.fromCom = YES;
+    }else
+    {
+        detailWeibo.fromCom = NO;
+    }
     [self presentViewController:nav_detailWeibo animated:YES completion:nil];
+}
+
+-(void)pushWebView:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    KZJWebViewController *webView = [[KZJWebViewController alloc] init];
+    UINavigationController *nav_webView = [[UINavigationController alloc] initWithRootViewController:webView];
+    webView.urlString = [dict objectForKey:@"http"];
+    [self presentViewController:nav_webView animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

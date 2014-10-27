@@ -271,6 +271,11 @@
         [JDStatusBarNotification showWithStatus:@"发送成功" dismissAfter:1 styleName:@"JDStatusBarStyleSuccess"];
         
         
+    }else if ([request.tag isEqualToString:@"NEWCOMMENT"])
+    {
+        NSLog(@"%@",result);
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
     }
 
 
@@ -595,7 +600,12 @@
     NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",weiboID,@"id", nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"COMMENT"];
 }
-
+-(void)getNewComment:(NSString*)weiboID page:(NSString*)page
+{
+    //https://api.weibo.com/2/comments/show.json
+    NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",weiboID,@"id",page,@"page", nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"NEWCOMMENT"];
+}
 //代码块传值
 -(void)passWeiboData:(passData)sender
 {

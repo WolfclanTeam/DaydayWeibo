@@ -35,13 +35,7 @@
 		DE3A648B19FE373000BA4E59 /* KZJFindManView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A648719FE373000BA4E59 /* KZJFindManView.m */; };
 		DE3A648C19FE373000BA4E59 /* KZJRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A648919FE373000BA4E59 /* KZJRoundView.m */; };
 		DE3A648F19FE374C00BA4E59 /* KZJFindView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A648E19FE374C00BA4E59 /* KZJFindView.m */; };
-		DE3A649A19FE376D00BA4E59 /* DetailWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A649119FE376D00BA4E59 /* DetailWeiboTableView.m */; };
-		DE3A649B19FE376D00BA4E59 /* KZJCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A649319FE376D00BA4E59 /* KZJCommentCell.m */; };
-		DE3A649C19FE376D00BA4E59 /* GetNetImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A649519FE376D00BA4E59 /* GetNetImageSize.m */; };
-		DE3A649D19FE376D00BA4E59 /* KZJWeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A649719FE376D00BA4E59 /* KZJWeiboCell.m */; };
 		DE3A649E19FE376D00BA4E59 /* KZJWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A649919FE376D00BA4E59 /* KZJWeiboTableView.m */; };
-		DE3A64A319FE379500BA4E59 /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A64A019FE379500BA4E59 /* KZJHomeController.m */; };
-		DE3A64A419FE379500BA4E59 /* KZJDetailWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A64A219FE379500BA4E59 /* KZJDetailWeiboViewController.m */; };
 		DE3A64A919FE379F00BA4E59 /* KZJLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A64A619FE379F00BA4E59 /* KZJLoadView.m */; };
 		DE3A64AA19FE379F00BA4E59 /* KZJShareSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A64A819FE379F00BA4E59 /* KZJShareSheet.m */; };
 		DE3A64AD19FE37AE00BA4E59 /* KZJDealData.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A64AC19FE37AE00BA4E59 /* KZJDealData.m */; };
@@ -184,6 +178,20 @@
 		DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699619FE3EA800B4624E /* UIView+CommonAnimation.m */; };
 		DE56699E19FE3EBF00B4624E /* KZJMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699B19FE3EBF00B4624E /* KZJMessageTableView.m */; };
 		DE56699F19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699D19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m */; };
+		DE5669A619FE46A800B4624E /* KZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669A119FE46A800B4624E /* KZJWebViewController.m */; };
+		DE5669A719FE46A800B4624E /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669A319FE46A800B4624E /* KZJHomeController.m */; };
+		DE5669A819FE46A800B4624E /* KZJDetailWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669A519FE46A800B4624E /* KZJDetailWeiboViewController.m */; };
+		DE5669AF19FE474900B4624E /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669AB19FE474900B4624E /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE5669B019FE474900B4624E /* RegexKitLite.html in Resources */ = {isa = PBXBuildFile; fileRef = DE5669AD19FE474900B4624E /* RegexKitLite.html */; };
+		DE5669B119FE474900B4624E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669AE19FE474900B4624E /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE5669B319FE477B00B4624E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5669B219FE477B00B4624E /* libicucore.dylib */; };
+		DE5669B619FE479E00B4624E /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669B519FE479E00B4624E /* RTLabel.m */; };
+		DE5669B819FE47A700B4624E /* page_image_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5669B719FE47A700B4624E /* page_image_loading@2x.png */; };
+		DE5669C119FE47CE00B4624E /* DetailWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669BA19FE47CE00B4624E /* DetailWeiboTableView.m */; };
+		DE5669C219FE47CE00B4624E /* KZJCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669BC19FE47CE00B4624E /* KZJCommentCell.m */; };
+		DE5669C319FE47CE00B4624E /* GetNetImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669BE19FE47CE00B4624E /* GetNetImageSize.m */; };
+		DE5669C419FE47CE00B4624E /* KZJWeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5669C019FE47CE00B4624E /* KZJWeiboCell.m */; };
+		DE5669C619FE4A3800B4624E /* navigationbar_friendsearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5669C519FE4A3800B4624E /* navigationbar_friendsearch@2x.png */; };
 		DEBCFDA619F2114A0014D970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA519F2114A0014D970 /* Foundation.framework */; };
 		DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */; };
 		DEBCFDAA19F2114A0014D970 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA919F2114A0014D970 /* UIKit.framework */; };
@@ -308,20 +316,8 @@
 		DE3A648919FE373000BA4E59 /* KZJRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRoundView.m; sourceTree = "<group>"; };
 		DE3A648D19FE374C00BA4E59 /* KZJFindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJFindView.h; sourceTree = "<group>"; };
 		DE3A648E19FE374C00BA4E59 /* KZJFindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJFindView.m; sourceTree = "<group>"; };
-		DE3A649019FE376D00BA4E59 /* DetailWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeiboTableView.h; sourceTree = "<group>"; };
-		DE3A649119FE376D00BA4E59 /* DetailWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeiboTableView.m; sourceTree = "<group>"; };
-		DE3A649219FE376D00BA4E59 /* KZJCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentCell.h; sourceTree = "<group>"; };
-		DE3A649319FE376D00BA4E59 /* KZJCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentCell.m; sourceTree = "<group>"; };
-		DE3A649419FE376D00BA4E59 /* GetNetImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNetImageSize.h; sourceTree = "<group>"; };
-		DE3A649519FE376D00BA4E59 /* GetNetImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNetImageSize.m; sourceTree = "<group>"; };
-		DE3A649619FE376D00BA4E59 /* KZJWeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboCell.h; sourceTree = "<group>"; };
-		DE3A649719FE376D00BA4E59 /* KZJWeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboCell.m; sourceTree = "<group>"; };
 		DE3A649819FE376D00BA4E59 /* KZJWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboTableView.h; sourceTree = "<group>"; };
 		DE3A649919FE376D00BA4E59 /* KZJWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboTableView.m; sourceTree = "<group>"; };
-		DE3A649F19FE379500BA4E59 /* KZJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJHomeController.h; sourceTree = "<group>"; };
-		DE3A64A019FE379500BA4E59 /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
-		DE3A64A119FE379500BA4E59 /* KZJDetailWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJDetailWeiboViewController.h; sourceTree = "<group>"; };
-		DE3A64A219FE379500BA4E59 /* KZJDetailWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJDetailWeiboViewController.m; sourceTree = "<group>"; };
 		DE3A64A519FE379F00BA4E59 /* KZJLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJLoadView.h; sourceTree = "<group>"; };
 		DE3A64A619FE379F00BA4E59 /* KZJLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJLoadView.m; sourceTree = "<group>"; };
 		DE3A64A719FE379F00BA4E59 /* KZJShareSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareSheet.h; sourceTree = "<group>"; };
@@ -504,6 +500,30 @@
 		DE56699B19FE3EBF00B4624E /* KZJMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageTableView.m; sourceTree = "<group>"; };
 		DE56699C19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyCommentSupportBaseTableView.h; sourceTree = "<group>"; };
 		DE56699D19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyCommentSupportBaseTableView.m; sourceTree = "<group>"; };
+		DE5669A019FE46A800B4624E /* KZJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWebViewController.h; sourceTree = "<group>"; };
+		DE5669A119FE46A800B4624E /* KZJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWebViewController.m; sourceTree = "<group>"; };
+		DE5669A219FE46A800B4624E /* KZJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJHomeController.h; sourceTree = "<group>"; };
+		DE5669A319FE46A800B4624E /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
+		DE5669A419FE46A800B4624E /* KZJDetailWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJDetailWeiboViewController.h; sourceTree = "<group>"; };
+		DE5669A519FE46A800B4624E /* KZJDetailWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJDetailWeiboViewController.m; sourceTree = "<group>"; };
+		DE5669AA19FE474900B4624E /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		DE5669AB19FE474900B4624E /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		DE5669AC19FE474900B4624E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		DE5669AD19FE474900B4624E /* RegexKitLite.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RegexKitLite.html; sourceTree = "<group>"; };
+		DE5669AE19FE474900B4624E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		DE5669B219FE477B00B4624E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		DE5669B419FE479E00B4624E /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTLabel.h; path = "../../DaydayWeibo副本/DayDayWeibo/RTLabel.h"; sourceTree = "<group>"; };
+		DE5669B519FE479E00B4624E /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTLabel.m; path = "../../DaydayWeibo副本/DayDayWeibo/RTLabel.m"; sourceTree = "<group>"; };
+		DE5669B719FE47A700B4624E /* page_image_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page_image_loading@2x.png"; sourceTree = "<group>"; };
+		DE5669B919FE47CE00B4624E /* DetailWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeiboTableView.h; sourceTree = "<group>"; };
+		DE5669BA19FE47CE00B4624E /* DetailWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeiboTableView.m; sourceTree = "<group>"; };
+		DE5669BB19FE47CE00B4624E /* KZJCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentCell.h; sourceTree = "<group>"; };
+		DE5669BC19FE47CE00B4624E /* KZJCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentCell.m; sourceTree = "<group>"; };
+		DE5669BD19FE47CE00B4624E /* GetNetImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNetImageSize.h; sourceTree = "<group>"; };
+		DE5669BE19FE47CE00B4624E /* GetNetImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNetImageSize.m; sourceTree = "<group>"; };
+		DE5669BF19FE47CE00B4624E /* KZJWeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboCell.h; sourceTree = "<group>"; };
+		DE5669C019FE47CE00B4624E /* KZJWeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboCell.m; sourceTree = "<group>"; };
+		DE5669C519FE4A3800B4624E /* navigationbar_friendsearch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar_friendsearch@2x.png"; sourceTree = "<group>"; };
 		DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayDayWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBCFDA519F2114A0014D970 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -610,6 +630,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5669B319FE477B00B4624E /* libicucore.dylib in Frameworks */,
 				DEBCFDE219F2126D0014D970 /* libWeiboSDK.a in Frameworks */,
 				DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */,
 				DEBCFDAC19F2114A0014D970 /* CoreData.framework in Frameworks */,
@@ -774,6 +795,18 @@
 			name = HPGrowingTextView;
 			sourceTree = "<group>";
 		};
+		DE5669A919FE473E00B4624E /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				DE5669AA19FE474900B4624E /* NSString+URLEncoding.h */,
+				DE5669AB19FE474900B4624E /* NSString+URLEncoding.m */,
+				DE5669AC19FE474900B4624E /* RegexKitLite.h */,
+				DE5669AD19FE474900B4624E /* RegexKitLite.html */,
+				DE5669AE19FE474900B4624E /* RegexKitLite.m */,
+			);
+			name = RegexKitLite;
+			sourceTree = "<group>";
+		};
 		DEBCFD9919F2114A0014D970 = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +829,7 @@
 		DEBCFDA419F2114A0014D970 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE5669B219FE477B00B4624E /* libicucore.dylib */,
 				DEBCFDA519F2114A0014D970 /* Foundation.framework */,
 				DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */,
 				DEBCFDA919F2114A0014D970 /* UIKit.framework */,
@@ -1038,6 +1072,8 @@
 		DEBCFE5519F212BB0014D970 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				DE5669C519FE4A3800B4624E /* navigationbar_friendsearch@2x.png */,
+				DE5669B719FE47A700B4624E /* page_image_loading@2x.png */,
 				DE3A64CE19FE3AF400BA4E59 /* userinfo_relationship_indicator_edit@2x.png */,
 				DE3A64CF19FE3AF400BA4E59 /* page_cover_book_background@2x.jpg */,
 				DE3A64D019FE3AF400BA4E59 /* page_cover_car_background@2x.jpg */,
@@ -1142,14 +1178,17 @@
 		DEBCFE7C19F213050014D970 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				DE3A649019FE376D00BA4E59 /* DetailWeiboTableView.h */,
-				DE3A649119FE376D00BA4E59 /* DetailWeiboTableView.m */,
-				DE3A649219FE376D00BA4E59 /* KZJCommentCell.h */,
-				DE3A649319FE376D00BA4E59 /* KZJCommentCell.m */,
-				DE3A649419FE376D00BA4E59 /* GetNetImageSize.h */,
-				DE3A649519FE376D00BA4E59 /* GetNetImageSize.m */,
-				DE3A649619FE376D00BA4E59 /* KZJWeiboCell.h */,
-				DE3A649719FE376D00BA4E59 /* KZJWeiboCell.m */,
+				DE5669A919FE473E00B4624E /* RegexKitLite */,
+				DE5669B419FE479E00B4624E /* RTLabel.h */,
+				DE5669B519FE479E00B4624E /* RTLabel.m */,
+				DE5669B919FE47CE00B4624E /* DetailWeiboTableView.h */,
+				DE5669BA19FE47CE00B4624E /* DetailWeiboTableView.m */,
+				DE5669BB19FE47CE00B4624E /* KZJCommentCell.h */,
+				DE5669BC19FE47CE00B4624E /* KZJCommentCell.m */,
+				DE5669BD19FE47CE00B4624E /* GetNetImageSize.h */,
+				DE5669BE19FE47CE00B4624E /* GetNetImageSize.m */,
+				DE5669BF19FE47CE00B4624E /* KZJWeiboCell.h */,
+				DE5669C019FE47CE00B4624E /* KZJWeiboCell.m */,
 				DE3A649819FE376D00BA4E59 /* KZJWeiboTableView.h */,
 				DE3A649919FE376D00BA4E59 /* KZJWeiboTableView.m */,
 			);
@@ -1272,10 +1311,12 @@
 		DEBCFE8519F213500014D970 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				DE3A649F19FE379500BA4E59 /* KZJHomeController.h */,
-				DE3A64A019FE379500BA4E59 /* KZJHomeController.m */,
-				DE3A64A119FE379500BA4E59 /* KZJDetailWeiboViewController.h */,
-				DE3A64A219FE379500BA4E59 /* KZJDetailWeiboViewController.m */,
+				DE5669A019FE46A800B4624E /* KZJWebViewController.h */,
+				DE5669A119FE46A800B4624E /* KZJWebViewController.m */,
+				DE5669A219FE46A800B4624E /* KZJHomeController.h */,
+				DE5669A319FE46A800B4624E /* KZJHomeController.m */,
+				DE5669A419FE46A800B4624E /* KZJDetailWeiboViewController.h */,
+				DE5669A519FE46A800B4624E /* KZJDetailWeiboViewController.m */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1369,6 +1410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5669B019FE474900B4624E /* RegexKitLite.html in Resources */,
 				DE3A657519FE3AF400BA4E59 /* tabbar_compose_weibo@2x.png in Resources */,
 				DE3A653119FE3AF400BA4E59 /* page_cover_car_background@2x.jpg in Resources */,
 				DE3A654C19FE3AF400BA4E59 /* more_circlefriends@2x.png in Resources */,
@@ -1382,6 +1424,7 @@
 				DE3A654119FE3AF400BA4E59 /* userinfo_tabicon_more@2x.png in Resources */,
 				DE3A655C19FE3AF400BA4E59 /* searchbar_textfield_down_icon@2x.png in Resources */,
 				DE3A657119FE3AF400BA4E59 /* messagescenter_at@2x.png in Resources */,
+				DE5669B819FE47A700B4624E /* page_image_loading@2x.png in Resources */,
 				DE3A655319FE3AF400BA4E59 /* more_weixin_highlighted@2x.png in Resources */,
 				DE3A657019FE3AF400BA4E59 /* messagescenter_comments@2x.png in Resources */,
 				DE3A654519FE3AF400BA4E59 /* more_icon_collection@2x 17.png in Resources */,
@@ -1416,6 +1459,7 @@
 				DE3A657D19FE3AF400BA4E59 /* tabbar_compose_shooting@2x.png in Resources */,
 				DE3A658419FE3AF400BA4E59 /* tabbar_discover_highlighted@2x.png in Resources */,
 				DE3A658C19FE3AF400BA4E59 /* tabbar_message_center@2x.png in Resources */,
+				DE5669C619FE4A3800B4624E /* navigationbar_friendsearch@2x.png in Resources */,
 				DE3A657A19FE3AF400BA4E59 /* tabbar_compose_review@2x.png in Resources */,
 				DE3A657619FE3AF400BA4E59 /* tabbar_compose_friend@2x.png in Resources */,
 				DE3A656319FE3AF400BA4E59 /* more_icon_collection1@2x.png in Resources */,
@@ -1506,11 +1550,12 @@
 				DE3A647B19FE36FF00BA4E59 /* KZJOpinionView.m in Sources */,
 				DEBCFDFC19F2127A0014D970 /* UIView+MJExtension.m in Sources */,
 				DE3A64C919FE38E500BA4E59 /* rscode.c in Sources */,
+				DE5669C119FE47CE00B4624E /* DetailWeiboTableView.m in Sources */,
 				DE56697719FE3DFF00B4624E /* JGProgressHUD.m in Sources */,
+				DE5669B619FE479E00B4624E /* RTLabel.m in Sources */,
 				DE3A64CA19FE38E500BA4E59 /* split.c in Sources */,
 				DE3A647A19FE36FF00BA4E59 /* KZJPrivacyView.m in Sources */,
 				DE3A64C719FE38E500BA4E59 /* qrinput.c in Sources */,
-				DE3A64A319FE379500BA4E59 /* KZJHomeController.m in Sources */,
 				DE3A645F19FE36A500BA4E59 /* KZJSetView.m in Sources */,
 				DE56697B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				DEBCFE2719F212870014D970 /* SDWebImagePrefetcher.m in Sources */,
@@ -1521,6 +1566,7 @@
 				DEBCFE2619F212870014D970 /* SDWebImageManager.m in Sources */,
 				DE56698619FE3E2B00B4624E /* HPGrowingTextView.m in Sources */,
 				DE56699719FE3EA800B4624E /* TumblrLikeMenu.m in Sources */,
+				DE5669C319FE47CE00B4624E /* GetNetImageSize.m in Sources */,
 				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
 				DEBCFE4919F212910014D970 /* NSDate+RFC1123.m in Sources */,
 				DEBCFDF919F2127A0014D970 /* MJRefreshHeaderView.m in Sources */,
@@ -1530,11 +1576,12 @@
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
 				DE3A64AA19FE379F00BA4E59 /* KZJShareSheet.m in Sources */,
 				DE3A644619FE366D00BA4E59 /* KZJInformationCell.m in Sources */,
+				DE5669AF19FE474900B4624E /* NSString+URLEncoding.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
-				DE3A649D19FE376D00BA4E59 /* KZJWeiboCell.m in Sources */,
 				DE3A648C19FE373000BA4E59 /* KZJRoundView.m in Sources */,
 				DE3A64C119FE38E500BA4E59 /* bitstream.c in Sources */,
 				DE56695B19FE3DC100B4624E /* JDStatusBarNotification.m in Sources */,
+				DE5669C419FE47CE00B4624E /* KZJWeiboCell.m in Sources */,
 				DE3A645219FE367D00BA4E59 /* KZJAccountView.m in Sources */,
 				DE56697819FE3DFF00B4624E /* JGProgressHUDAnimation.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -1550,6 +1597,8 @@
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,
 				DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE2419F212870014D970 /* SDWebImageDownloader.m in Sources */,
+				DE5669A819FE46A800B4624E /* KZJDetailWeiboViewController.m in Sources */,
+				DE5669A719FE46A800B4624E /* KZJHomeController.m in Sources */,
 				DE3A64A919FE379F00BA4E59 /* KZJLoadView.m in Sources */,
 				DEBCFE2919F212870014D970 /* UIImage+GIF.m in Sources */,
 				DEBCFDFA19F2127A0014D970 /* UIScrollView+MJExtension.m in Sources */,
@@ -1557,8 +1606,10 @@
 				DE56698E19FE3E8400B4624E /* KZJMessageController.m in Sources */,
 				DE56698F19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
+				DE5669B119FE474900B4624E /* RegexKitLite.m in Sources */,
 				DE3A64C219FE38E500BA4E59 /* mask.c in Sources */,
 				DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */,
+				DE5669A619FE46A800B4624E /* KZJWebViewController.m in Sources */,
 				DE56695219FE3D9C00B4624E /* KZJCheckInTableViewController.m in Sources */,
 				DEBCFDFB19F2127A0014D970 /* UIScrollView+MJRefresh.m in Sources */,
 				DE3A648219FE371200BA4E59 /* KZJHotTopicView.m in Sources */,
@@ -1569,14 +1620,13 @@
 				DE56697F19FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m in Sources */,
 				DE56699E19FE3EBF00B4624E /* KZJMessageTableView.m in Sources */,
 				DEBCFDF619F2127A0014D970 /* MJRefreshBaseView.m in Sources */,
+				DE5669C219FE47CE00B4624E /* KZJCommentCell.m in Sources */,
 				DEBCFE2C19F212870014D970 /* UIImageView+HighlightedWebCache.m in Sources */,
-				DE3A649A19FE376D00BA4E59 /* DetailWeiboTableView.m in Sources */,
 				DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */,
 				DE3A64C619FE38E500BA4E59 /* qrencode.c in Sources */,
 				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
 				DE3A647F19FE370D00BA4E59 /* KZJFindController.m in Sources */,
 				DE3A646C19FE36F100BA4E59 /* KZJCardView.m in Sources */,
-				DE3A649C19FE376D00BA4E59 /* GetNetImageSize.m in Sources */,
 				DE56694519FE3D4200B4624E /* BaseAnimation.m in Sources */,
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
 				DE3A645A19FE369200BA4E59 /* KZJMeController.m in Sources */,
@@ -1584,7 +1634,6 @@
 				DE56694619FE3D4200B4624E /* SlideAnimation.m in Sources */,
 				DE3A649E19FE376D00BA4E59 /* KZJWeiboTableView.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
-				DE3A649B19FE376D00BA4E59 /* KZJCommentCell.m in Sources */,
 				DE56697C19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				DE3A644019FE364A00BA4E59 /* KZJMeTableView.m in Sources */,
 				DEBCFE2119F212870014D970 /* SDImageCache.m in Sources */,
@@ -1607,7 +1656,6 @@
 				DE56694F19FE3D9C00B4624E /* KZJShareController.m in Sources */,
 				DE56698019FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				DE56699819FE3EA800B4624E /* TumblrLikeMenuItem.m in Sources */,
-				DE3A64A419FE379500BA4E59 /* KZJDetailWeiboViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import"KZJDetailWeiboViewController.h"
 #import"MJRefresh/MJRefresh.h"
 #import "KZJDetailWeiboViewController.h"
+#import "KZJWebViewController.h"
 
 @interface KZJHomeController : UIViewController
 {
