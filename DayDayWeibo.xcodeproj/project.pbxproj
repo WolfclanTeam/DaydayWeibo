@@ -153,12 +153,37 @@
 		DE3A658D19FE3AF400BA4E59 /* tabbar_profile_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3A652C19FE3AF400BA4E59 /* tabbar_profile_highlighted@2x.png */; };
 		DE3A658E19FE3AF400BA4E59 /* tabbar_profile_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3A652D19FE3AF400BA4E59 /* tabbar_profile_selected@2x.png */; };
 		DE3A658F19FE3AF400BA4E59 /* tabbar_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3A652E19FE3AF400BA4E59 /* tabbar_profile@2x.png */; };
-		DE77D9DD19F75905006E2F24 /* BaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE77D9DC19F75905006E2F24 /* BaseAnimation.m */; };
-		DE77D9E019F75913006E2F24 /* SlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE77D9DF19F75913006E2F24 /* SlideAnimation.m */; };
-		DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */; };
-		DE81C84519F4F01C00FC2E71 /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C84419F4F01C00FC2E71 /* KZJ@MyCotentViewController.m */; };
-		DE81C84D19F50CC000FC2E71 /* KZJMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C84C19F50CC000FC2E71 /* KZJMessageTableView.m */; };
-		DE81C85019F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81C84F19F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m */; };
+		DE56694519FE3D4200B4624E /* BaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56694219FE3D4200B4624E /* BaseAnimation.m */; };
+		DE56694619FE3D4200B4624E /* SlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56694419FE3D4200B4624E /* SlideAnimation.m */; };
+		DE56694F19FE3D9C00B4624E /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56694819FE3D9C00B4624E /* KZJShareController.m */; };
+		DE56695019FE3D9C00B4624E /* KZJShareScopeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56694A19FE3D9C00B4624E /* KZJShareScopeTableController.m */; };
+		DE56695119FE3D9C00B4624E /* KZJShareScopeTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE56694B19FE3D9C00B4624E /* KZJShareScopeTableController.xib */; };
+		DE56695219FE3D9C00B4624E /* KZJCheckInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56694D19FE3D9C00B4624E /* KZJCheckInTableViewController.m */; };
+		DE56695319FE3D9C00B4624E /* KZJCheckInTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE56694E19FE3D9C00B4624E /* KZJCheckInTableViewController.xib */; };
+		DE56695B19FE3DC100B4624E /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56695619FE3DC100B4624E /* JDStatusBarNotification.m */; };
+		DE56695C19FE3DC100B4624E /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56695819FE3DC100B4624E /* JDStatusBarStyle.m */; };
+		DE56695D19FE3DC100B4624E /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56695A19FE3DC100B4624E /* JDStatusBarView.m */; };
+		DE56697619FE3DFF00B4624E /* JGProgressHUD Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE56696119FE3DFF00B4624E /* JGProgressHUD Resources.bundle */; };
+		DE56697719FE3DFF00B4624E /* JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696319FE3DFF00B4624E /* JGProgressHUD.m */; };
+		DE56697819FE3DFF00B4624E /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696519FE3DFF00B4624E /* JGProgressHUDAnimation.m */; };
+		DE56697919FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696719FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m */; };
+		DE56697A19FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696919FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m */; };
+		DE56697B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m */; };
+		DE56697C19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696D19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m */; };
+		DE56697D19FE3DFF00B4624E /* JGProgressHUDIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56696F19FE3DFF00B4624E /* JGProgressHUDIndicatorView.m */; };
+		DE56697E19FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56697119FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.m */; };
+		DE56697F19FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56697319FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m */; };
+		DE56698019FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56697519FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m */; };
+		DE56698619FE3E2B00B4624E /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56698319FE3E2B00B4624E /* HPGrowingTextView.m */; };
+		DE56698719FE3E2B00B4624E /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56698519FE3E2B00B4624E /* HPTextViewInternal.m */; };
+		DE56698E19FE3E8400B4624E /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56698919FE3E8400B4624E /* KZJMessageController.m */; };
+		DE56698F19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56698B19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m */; };
+		DE56699019FE3E8400B4624E /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56698D19FE3E8400B4624E /* KZJ@MyCotentViewController.m */; };
+		DE56699719FE3EA800B4624E /* TumblrLikeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699219FE3EA800B4624E /* TumblrLikeMenu.m */; };
+		DE56699819FE3EA800B4624E /* TumblrLikeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699419FE3EA800B4624E /* TumblrLikeMenuItem.m */; };
+		DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699619FE3EA800B4624E /* UIView+CommonAnimation.m */; };
+		DE56699E19FE3EBF00B4624E /* KZJMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699B19FE3EBF00B4624E /* KZJMessageTableView.m */; };
+		DE56699F19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56699D19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m */; };
 		DEBCFDA619F2114A0014D970 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA519F2114A0014D970 /* Foundation.framework */; };
 		DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */; };
 		DEBCFDAA19F2114A0014D970 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBCFDA919F2114A0014D970 /* UIKit.framework */; };
@@ -212,12 +237,6 @@
 		DEBCFE5019F212910014D970 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE4619F212910014D970 /* Reachability.m */; };
 		DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE5319F212AC0014D970 /* UIImage+Redraw.m */; };
 		DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */; };
-		DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */; };
-		DEBE2FED19F79583000B4322 /* KZJShareWeiboController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */; };
-		DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */; };
-		DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */; };
-		DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */; };
-		DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC8EA819F2641700289A6C /* KZJShareController.m */; };
 		DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */; };
 		DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
@@ -426,18 +445,65 @@
 		DE3A652C19FE3AF400BA4E59 /* tabbar_profile_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_profile_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE3A652D19FE3AF400BA4E59 /* tabbar_profile_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_profile_selected@2x.png"; sourceTree = "<group>"; };
 		DE3A652E19FE3AF400BA4E59 /* tabbar_profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_profile@2x.png"; sourceTree = "<group>"; };
-		DE77D9DB19F75905006E2F24 /* BaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAnimation.h; sourceTree = "<group>"; };
-		DE77D9DC19F75905006E2F24 /* BaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAnimation.m; sourceTree = "<group>"; };
-		DE77D9DE19F75913006E2F24 /* SlideAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideAnimation.h; sourceTree = "<group>"; };
-		DE77D9DF19F75913006E2F24 /* SlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideAnimation.m; sourceTree = "<group>"; };
-		DE81C83D19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCommentSupportBaseController.h"; sourceTree = "<group>"; };
-		DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCommentSupportBaseController.m"; sourceTree = "<group>"; };
-		DE81C84319F4F01C00FC2E71 /* KZJ@MyCotentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCotentViewController.h"; sourceTree = "<group>"; };
-		DE81C84419F4F01C00FC2E71 /* KZJ@MyCotentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCotentViewController.m"; sourceTree = "<group>"; };
-		DE81C84B19F50CC000FC2E71 /* KZJMessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageTableView.h; sourceTree = "<group>"; };
-		DE81C84C19F50CC000FC2E71 /* KZJMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageTableView.m; sourceTree = "<group>"; };
-		DE81C84E19F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyCommentSupportBaseTableView.h; sourceTree = "<group>"; };
-		DE81C84F19F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyCommentSupportBaseTableView.m; sourceTree = "<group>"; };
+		DE56694119FE3D4200B4624E /* BaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAnimation.h; sourceTree = "<group>"; };
+		DE56694219FE3D4200B4624E /* BaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAnimation.m; sourceTree = "<group>"; };
+		DE56694319FE3D4200B4624E /* SlideAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideAnimation.h; sourceTree = "<group>"; };
+		DE56694419FE3D4200B4624E /* SlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideAnimation.m; sourceTree = "<group>"; };
+		DE56694719FE3D9C00B4624E /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
+		DE56694819FE3D9C00B4624E /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
+		DE56694919FE3D9C00B4624E /* KZJShareScopeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareScopeTableController.h; sourceTree = "<group>"; };
+		DE56694A19FE3D9C00B4624E /* KZJShareScopeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareScopeTableController.m; sourceTree = "<group>"; };
+		DE56694B19FE3D9C00B4624E /* KZJShareScopeTableController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJShareScopeTableController.xib; sourceTree = "<group>"; };
+		DE56694C19FE3D9C00B4624E /* KZJCheckInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCheckInTableViewController.h; sourceTree = "<group>"; };
+		DE56694D19FE3D9C00B4624E /* KZJCheckInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCheckInTableViewController.m; sourceTree = "<group>"; };
+		DE56694E19FE3D9C00B4624E /* KZJCheckInTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJCheckInTableViewController.xib; sourceTree = "<group>"; };
+		DE56695519FE3DC100B4624E /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
+		DE56695619FE3DC100B4624E /* JDStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarNotification.m; sourceTree = "<group>"; };
+		DE56695719FE3DC100B4624E /* JDStatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarStyle.h; sourceTree = "<group>"; };
+		DE56695819FE3DC100B4624E /* JDStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarStyle.m; sourceTree = "<group>"; };
+		DE56695919FE3DC100B4624E /* JDStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarView.h; sourceTree = "<group>"; };
+		DE56695A19FE3DC100B4624E /* JDStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarView.m; sourceTree = "<group>"; };
+		DE56696119FE3DFF00B4624E /* JGProgressHUD Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "JGProgressHUD Resources.bundle"; sourceTree = "<group>"; };
+		DE56696219FE3DFF00B4624E /* JGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUD.h; sourceTree = "<group>"; };
+		DE56696319FE3DFF00B4624E /* JGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUD.m; sourceTree = "<group>"; };
+		DE56696419FE3DFF00B4624E /* JGProgressHUDAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDAnimation.h; sourceTree = "<group>"; };
+		DE56696519FE3DFF00B4624E /* JGProgressHUDAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDAnimation.m; sourceTree = "<group>"; };
+		DE56696619FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDErrorIndicatorView.h; sourceTree = "<group>"; };
+		DE56696719FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDErrorIndicatorView.m; sourceTree = "<group>"; };
+		DE56696819FE3DFF00B4624E /* JGProgressHUDFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeAnimation.h; sourceTree = "<group>"; };
+		DE56696919FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeAnimation.m; sourceTree = "<group>"; };
+		DE56696A19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeZoomAnimation.h; sourceTree = "<group>"; };
+		DE56696B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeZoomAnimation.m; sourceTree = "<group>"; };
+		DE56696C19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndeterminateIndicatorView.h; sourceTree = "<group>"; };
+		DE56696D19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndeterminateIndicatorView.m; sourceTree = "<group>"; };
+		DE56696E19FE3DFF00B4624E /* JGProgressHUDIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndicatorView.h; sourceTree = "<group>"; };
+		DE56696F19FE3DFF00B4624E /* JGProgressHUDIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndicatorView.m; sourceTree = "<group>"; };
+		DE56697019FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDPieIndicatorView.h; sourceTree = "<group>"; };
+		DE56697119FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDPieIndicatorView.m; sourceTree = "<group>"; };
+		DE56697219FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDRingIndicatorView.h; sourceTree = "<group>"; };
+		DE56697319FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDRingIndicatorView.m; sourceTree = "<group>"; };
+		DE56697419FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
+		DE56697519FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDSuccessIndicatorView.m; sourceTree = "<group>"; };
+		DE56698219FE3E2B00B4624E /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
+		DE56698319FE3E2B00B4624E /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
+		DE56698419FE3E2B00B4624E /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		DE56698519FE3E2B00B4624E /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
+		DE56698819FE3E8400B4624E /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
+		DE56698919FE3E8400B4624E /* KZJMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageController.m; sourceTree = "<group>"; };
+		DE56698A19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCommentSupportBaseController.h"; sourceTree = "<group>"; };
+		DE56698B19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCommentSupportBaseController.m"; sourceTree = "<group>"; };
+		DE56698C19FE3E8400B4624E /* KZJ@MyCotentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCotentViewController.h"; sourceTree = "<group>"; };
+		DE56698D19FE3E8400B4624E /* KZJ@MyCotentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCotentViewController.m"; sourceTree = "<group>"; };
+		DE56699119FE3EA800B4624E /* TumblrLikeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenu.h; sourceTree = "<group>"; };
+		DE56699219FE3EA800B4624E /* TumblrLikeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenu.m; sourceTree = "<group>"; };
+		DE56699319FE3EA800B4624E /* TumblrLikeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenuItem.h; sourceTree = "<group>"; };
+		DE56699419FE3EA800B4624E /* TumblrLikeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenuItem.m; sourceTree = "<group>"; };
+		DE56699519FE3EA800B4624E /* UIView+CommonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonAnimation.h"; sourceTree = "<group>"; };
+		DE56699619FE3EA800B4624E /* UIView+CommonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonAnimation.m"; sourceTree = "<group>"; };
+		DE56699A19FE3EBF00B4624E /* KZJMessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageTableView.h; sourceTree = "<group>"; };
+		DE56699B19FE3EBF00B4624E /* KZJMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageTableView.m; sourceTree = "<group>"; };
+		DE56699C19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyCommentSupportBaseTableView.h; sourceTree = "<group>"; };
+		DE56699D19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyCommentSupportBaseTableView.m; sourceTree = "<group>"; };
 		DEBCFDA219F2114A0014D970 /* DayDayWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayDayWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBCFDA519F2114A0014D970 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -534,18 +600,6 @@
 		DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyTabBarController.h; sourceTree = "<group>"; };
 		DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyTabBarController.m; sourceTree = "<group>"; };
 		DEBCFE7919F212E00014D970 /* KZJRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJRequestData.h; sourceTree = "<group>"; };
-		DEBCFE8919F2139A0014D970 /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
-		DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageController.m; sourceTree = "<group>"; };
-		DEBE2FEB19F79583000B4322 /* KZJShareWeiboController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareWeiboController.h; sourceTree = "<group>"; };
-		DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareWeiboController.m; sourceTree = "<group>"; };
-		DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenu.m; sourceTree = "<group>"; };
-		DECC8E9919F254A900289A6C /* TumblrLikeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenuItem.h; sourceTree = "<group>"; };
-		DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrLikeMenuItem.m; sourceTree = "<group>"; };
-		DECC8E9B19F254A900289A6C /* UIView+CommonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonAnimation.h"; sourceTree = "<group>"; };
-		DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonAnimation.m"; sourceTree = "<group>"; };
-		DECC8EA019F254DD00289A6C /* TumblrLikeMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TumblrLikeMenu.h; sourceTree = "<group>"; };
-		DECC8EA719F2641700289A6C /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
-		DECC8EA819F2641700289A6C /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
 		DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRequestData.m; sourceTree = "<group>"; };
 		DEDD9D5D19F5FF0A007D45A9 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
@@ -657,15 +711,67 @@
 			path = libqrencode;
 			sourceTree = "<group>";
 		};
-		DE77D9DA19F758F3006E2F24 /* animations */ = {
+		DE56694019FE3D2B00B4624E /* animations */ = {
 			isa = PBXGroup;
 			children = (
-				DE77D9DB19F75905006E2F24 /* BaseAnimation.h */,
-				DE77D9DC19F75905006E2F24 /* BaseAnimation.m */,
-				DE77D9DE19F75913006E2F24 /* SlideAnimation.h */,
-				DE77D9DF19F75913006E2F24 /* SlideAnimation.m */,
+				DE56694119FE3D4200B4624E /* BaseAnimation.h */,
+				DE56694219FE3D4200B4624E /* BaseAnimation.m */,
+				DE56694319FE3D4200B4624E /* SlideAnimation.h */,
+				DE56694419FE3D4200B4624E /* SlideAnimation.m */,
 			);
 			name = animations;
+			sourceTree = "<group>";
+		};
+		DE56695419FE3DAC00B4624E /* stausBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				DE56695519FE3DC100B4624E /* JDStatusBarNotification.h */,
+				DE56695619FE3DC100B4624E /* JDStatusBarNotification.m */,
+				DE56695719FE3DC100B4624E /* JDStatusBarStyle.h */,
+				DE56695819FE3DC100B4624E /* JDStatusBarStyle.m */,
+				DE56695919FE3DC100B4624E /* JDStatusBarView.h */,
+				DE56695A19FE3DC100B4624E /* JDStatusBarView.m */,
+			);
+			name = stausBarNotification;
+			sourceTree = "<group>";
+		};
+		DE56696019FE3DFF00B4624E /* JGProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				DE56696119FE3DFF00B4624E /* JGProgressHUD Resources.bundle */,
+				DE56696219FE3DFF00B4624E /* JGProgressHUD.h */,
+				DE56696319FE3DFF00B4624E /* JGProgressHUD.m */,
+				DE56696419FE3DFF00B4624E /* JGProgressHUDAnimation.h */,
+				DE56696519FE3DFF00B4624E /* JGProgressHUDAnimation.m */,
+				DE56696619FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.h */,
+				DE56696719FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m */,
+				DE56696819FE3DFF00B4624E /* JGProgressHUDFadeAnimation.h */,
+				DE56696919FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m */,
+				DE56696A19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.h */,
+				DE56696B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m */,
+				DE56696C19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.h */,
+				DE56696D19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m */,
+				DE56696E19FE3DFF00B4624E /* JGProgressHUDIndicatorView.h */,
+				DE56696F19FE3DFF00B4624E /* JGProgressHUDIndicatorView.m */,
+				DE56697019FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.h */,
+				DE56697119FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.m */,
+				DE56697219FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.h */,
+				DE56697319FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m */,
+				DE56697419FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.h */,
+				DE56697519FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m */,
+			);
+			path = JGProgressHUD;
+			sourceTree = "<group>";
+		};
+		DE56698119FE3E1900B4624E /* HPGrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				DE56698219FE3E2B00B4624E /* HPGrowingTextView.h */,
+				DE56698319FE3E2B00B4624E /* HPGrowingTextView.m */,
+				DE56698419FE3E2B00B4624E /* HPTextViewInternal.h */,
+				DE56698519FE3E2B00B4624E /* HPTextViewInternal.m */,
+			);
+			name = HPGrowingTextView;
 			sourceTree = "<group>";
 		};
 		DEBCFD9919F2114A0014D970 = {
@@ -1053,10 +1159,10 @@
 		DEBCFE7D19F213170014D970 /* message */ = {
 			isa = PBXGroup;
 			children = (
-				DE81C84B19F50CC000FC2E71 /* KZJMessageTableView.h */,
-				DE81C84C19F50CC000FC2E71 /* KZJMessageTableView.m */,
-				DE81C84E19F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.h */,
-				DE81C84F19F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m */,
+				DE56699A19FE3EBF00B4624E /* KZJMessageTableView.h */,
+				DE56699B19FE3EBF00B4624E /* KZJMessageTableView.m */,
+				DE56699C19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.h */,
+				DE56699D19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m */,
 			);
 			name = message;
 			sourceTree = "<group>";
@@ -1134,10 +1240,17 @@
 		DEBCFE8319F213420014D970 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				DECC8EA719F2641700289A6C /* KZJShareController.h */,
-				DECC8EA819F2641700289A6C /* KZJShareController.m */,
-				DEBE2FEB19F79583000B4322 /* KZJShareWeiboController.h */,
-				DEBE2FEC19F79583000B4322 /* KZJShareWeiboController.m */,
+				DE56698119FE3E1900B4624E /* HPGrowingTextView */,
+				DE56696019FE3DFF00B4624E /* JGProgressHUD */,
+				DE56695419FE3DAC00B4624E /* stausBarNotification */,
+				DE56694719FE3D9C00B4624E /* KZJShareController.h */,
+				DE56694819FE3D9C00B4624E /* KZJShareController.m */,
+				DE56694919FE3D9C00B4624E /* KZJShareScopeTableController.h */,
+				DE56694A19FE3D9C00B4624E /* KZJShareScopeTableController.m */,
+				DE56694B19FE3D9C00B4624E /* KZJShareScopeTableController.xib */,
+				DE56694C19FE3D9C00B4624E /* KZJCheckInTableViewController.h */,
+				DE56694D19FE3D9C00B4624E /* KZJCheckInTableViewController.m */,
+				DE56694E19FE3D9C00B4624E /* KZJCheckInTableViewController.xib */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -1145,13 +1258,13 @@
 		DEBCFE8419F213490014D970 /* message */ = {
 			isa = PBXGroup;
 			children = (
-				DE77D9DA19F758F3006E2F24 /* animations */,
-				DEBCFE8919F2139A0014D970 /* KZJMessageController.h */,
-				DEBCFE8A19F2139A0014D970 /* KZJMessageController.m */,
-				DE81C83D19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.h */,
-				DE81C83E19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m */,
-				DE81C84319F4F01C00FC2E71 /* KZJ@MyCotentViewController.h */,
-				DE81C84419F4F01C00FC2E71 /* KZJ@MyCotentViewController.m */,
+				DE56698819FE3E8400B4624E /* KZJMessageController.h */,
+				DE56698919FE3E8400B4624E /* KZJMessageController.m */,
+				DE56698A19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.h */,
+				DE56698B19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m */,
+				DE56698C19FE3E8400B4624E /* KZJ@MyCotentViewController.h */,
+				DE56698D19FE3E8400B4624E /* KZJ@MyCotentViewController.m */,
+				DE56694019FE3D2B00B4624E /* animations */,
 			);
 			name = message;
 			sourceTree = "<group>";
@@ -1170,12 +1283,12 @@
 		DECC8E9719F2549700289A6C /* TumbirLikeMenu */ = {
 			isa = PBXGroup;
 			children = (
-				DECC8EA019F254DD00289A6C /* TumblrLikeMenu.h */,
-				DECC8E9819F254A900289A6C /* TumblrLikeMenu.m */,
-				DECC8E9919F254A900289A6C /* TumblrLikeMenuItem.h */,
-				DECC8E9A19F254A900289A6C /* TumblrLikeMenuItem.m */,
-				DECC8E9B19F254A900289A6C /* UIView+CommonAnimation.h */,
-				DECC8E9C19F254A900289A6C /* UIView+CommonAnimation.m */,
+				DE56699119FE3EA800B4624E /* TumblrLikeMenu.h */,
+				DE56699219FE3EA800B4624E /* TumblrLikeMenu.m */,
+				DE56699319FE3EA800B4624E /* TumblrLikeMenuItem.h */,
+				DE56699419FE3EA800B4624E /* TumblrLikeMenuItem.m */,
+				DE56699519FE3EA800B4624E /* UIView+CommonAnimation.h */,
+				DE56699619FE3EA800B4624E /* UIView+CommonAnimation.m */,
 			);
 			name = TumbirLikeMenu;
 			sourceTree = "<group>";
@@ -1316,6 +1429,7 @@
 				DE3A658819FE3AF400BA4E59 /* tabbar_home_selected@2x.png in Resources */,
 				DE3A658E19FE3AF400BA4E59 /* tabbar_profile_selected@2x.png in Resources */,
 				DEBCFDF519F2127A0014D970 /* MJRefresh.bundle in Resources */,
+				DE56697619FE3DFF00B4624E /* JGProgressHUD Resources.bundle in Resources */,
 				DE3A655819FE3AF400BA4E59 /* tabbar_compose_music@2x.png in Resources */,
 				DE3A658319FE3AF400BA4E59 /* tabbar_compose_icon_add_highlighted@2x.png in Resources */,
 				DE3A653B19FE3AF400BA4E59 /* attitoolbar_icon_unlike@2x.png in Resources */,
@@ -1338,6 +1452,7 @@
 				DE3A658919FE3AF400BA4E59 /* tabbar_home@2x.png in Resources */,
 				DE3A657319FE3AF400BA4E59 /* tabbar_compose_background_icon_return@2x.png in Resources */,
 				DE3A653819FE3AF400BA4E59 /* page_cover_tv_background@2x.jpg in Resources */,
+				DE56695119FE3D9C00B4624E /* KZJShareScopeTableController.xib in Resources */,
 				DE3A658619FE3AF400BA4E59 /* tabbar_discover@2x.png in Resources */,
 				DE3A657919FE3AF400BA4E59 /* tabbar_compose_photo@2x.png in Resources */,
 				DE3A653319FE3AF400BA4E59 /* page_cover_movie_background@2x.jpg in Resources */,
@@ -1358,6 +1473,7 @@
 				DE3A656619FE3AF400BA4E59 /* userinfo_relationship_indicator_friends@2x.png in Resources */,
 				DE3A653619FE3AF400BA4E59 /* page_cover_radio_background@2x.jpg in Resources */,
 				DE3A658119FE3AF400BA4E59 /* tabbar_compose_icon_add@2x.png in Resources */,
+				DE56695319FE3D9C00B4624E /* KZJCheckInTableViewController.xib in Resources */,
 				DE3A656019FE3AF400BA4E59 /* card_icon_arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1378,33 +1494,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE3A645C19FE369200BA4E59 /* KZJPictureView.m in Sources */,
-				DECC8E9F19F254A900289A6C /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				DE56697A19FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m in Sources */,
 				DE3A648B19FE373000BA4E59 /* KZJFindManView.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
 				DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */,
 				DE3A64C819FE38E500BA4E59 /* qrspec.c in Sources */,
 				DE3A643F19FE364A00BA4E59 /* KZJMeTableViewCell.m in Sources */,
+				DE56695D19FE3DC100B4624E /* JDStatusBarView.m in Sources */,
 				DE3A647B19FE36FF00BA4E59 /* KZJOpinionView.m in Sources */,
 				DEBCFDFC19F2127A0014D970 /* UIView+MJExtension.m in Sources */,
 				DE3A64C919FE38E500BA4E59 /* rscode.c in Sources */,
+				DE56697719FE3DFF00B4624E /* JGProgressHUD.m in Sources */,
 				DE3A64CA19FE38E500BA4E59 /* split.c in Sources */,
-				DE81C83F19F4ED4600FC2E71 /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DE3A647A19FE36FF00BA4E59 /* KZJPrivacyView.m in Sources */,
 				DE3A64C719FE38E500BA4E59 /* qrinput.c in Sources */,
 				DE3A64A319FE379500BA4E59 /* KZJHomeController.m in Sources */,
 				DE3A645F19FE36A500BA4E59 /* KZJSetView.m in Sources */,
+				DE56697B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				DEBCFE2719F212870014D970 /* SDWebImagePrefetcher.m in Sources */,
 				DE3A643E19FE364A00BA4E59 /* KZJLoginView.m in Sources */,
 				DE3A646219FE36AB00BA4E59 /* KZJNextView.m in Sources */,
 				DE3A645319FE367D00BA4E59 /* KZJAccountViewCell.m in Sources */,
 				DE3A645119FE367D00BA4E59 /* KZJSetTableViewCell.m in Sources */,
 				DEBCFE2619F212870014D970 /* SDWebImageManager.m in Sources */,
+				DE56698619FE3E2B00B4624E /* HPGrowingTextView.m in Sources */,
+				DE56699719FE3EA800B4624E /* TumblrLikeMenu.m in Sources */,
 				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
 				DEBCFE4919F212910014D970 /* NSDate+RFC1123.m in Sources */,
 				DEBCFDF919F2127A0014D970 /* MJRefreshHeaderView.m in Sources */,
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
+				DE56699F19FE3EBF00B4624E /* KZJMyCommentSupportBaseTableView.m in Sources */,
 				DEBCFE4E19F212910014D970 /* MKNetworkEngine.m in Sources */,
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
 				DE3A64AA19FE379F00BA4E59 /* KZJShareSheet.m in Sources */,
@@ -1413,7 +1534,9 @@
 				DE3A649D19FE376D00BA4E59 /* KZJWeiboCell.m in Sources */,
 				DE3A648C19FE373000BA4E59 /* KZJRoundView.m in Sources */,
 				DE3A64C119FE38E500BA4E59 /* bitstream.c in Sources */,
+				DE56695B19FE3DC100B4624E /* JDStatusBarNotification.m in Sources */,
 				DE3A645219FE367D00BA4E59 /* KZJAccountView.m in Sources */,
+				DE56697819FE3DFF00B4624E /* JGProgressHUDAnimation.m in Sources */,
 				DEBCFE4B19F212910014D970 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				DEBCFE2319F212870014D970 /* SDWebImageDecoder.m in Sources */,
 				DEBCFE2A19F212870014D970 /* UIImage+MultiFormat.m in Sources */,
@@ -1422,60 +1545,69 @@
 				DEBCFE2519F212870014D970 /* SDWebImageDownloaderOperation.m in Sources */,
 				DE3A646B19FE36F100BA4E59 /* KZJFansView.m in Sources */,
 				DEBCFE4D19F212910014D970 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
-				DE81C84519F4F01C00FC2E71 /* KZJ@MyCotentViewController.m in Sources */,
+				DE56699019FE3E8400B4624E /* KZJ@MyCotentViewController.m in Sources */,
 				DE3A64CD19FE396700BA4E59 /* UserInformation.m in Sources */,
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,
+				DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */,
 				DEBCFE2419F212870014D970 /* SDWebImageDownloader.m in Sources */,
 				DE3A64A919FE379F00BA4E59 /* KZJLoadView.m in Sources */,
 				DEBCFE2919F212870014D970 /* UIImage+GIF.m in Sources */,
-				DE81C85019F50CE500FC2E71 /* KZJMyCommentSupportBaseTableView.m in Sources */,
 				DEBCFDFA19F2127A0014D970 /* UIScrollView+MJExtension.m in Sources */,
-				DE77D9DD19F75905006E2F24 /* BaseAnimation.m in Sources */,
 				DEBCFE4819F212910014D970 /* NSData+MKBase64.m in Sources */,
+				DE56698E19FE3E8400B4624E /* KZJMessageController.m in Sources */,
+				DE56698F19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
 				DE3A64C219FE38E500BA4E59 /* mask.c in Sources */,
 				DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */,
+				DE56695219FE3D9C00B4624E /* KZJCheckInTableViewController.m in Sources */,
 				DEBCFDFB19F2127A0014D970 /* UIScrollView+MJRefresh.m in Sources */,
 				DE3A648219FE371200BA4E59 /* KZJHotTopicView.m in Sources */,
-				DE81C84D19F50CC000FC2E71 /* KZJMessageTableView.m in Sources */,
 				DE3A647919FE36FF00BA4E59 /* KZJCommonView.m in Sources */,
+				DE56697919FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				DE3A645B19FE369200BA4E59 /* KZJWeiboView.m in Sources */,
+				DE56697D19FE3DFF00B4624E /* JGProgressHUDIndicatorView.m in Sources */,
+				DE56697F19FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m in Sources */,
+				DE56699E19FE3EBF00B4624E /* KZJMessageTableView.m in Sources */,
 				DEBCFDF619F2127A0014D970 /* MJRefreshBaseView.m in Sources */,
 				DEBCFE2C19F212870014D970 /* UIImageView+HighlightedWebCache.m in Sources */,
 				DE3A649A19FE376D00BA4E59 /* DetailWeiboTableView.m in Sources */,
 				DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */,
 				DE3A64C619FE38E500BA4E59 /* qrencode.c in Sources */,
 				DEBCFDBB19F2114A0014D970 /* DayDayWeibo.xcdatamodeld in Sources */,
-				DE77D9E019F75913006E2F24 /* SlideAnimation.m in Sources */,
 				DE3A647F19FE370D00BA4E59 /* KZJFindController.m in Sources */,
 				DE3A646C19FE36F100BA4E59 /* KZJCardView.m in Sources */,
 				DE3A649C19FE376D00BA4E59 /* GetNetImageSize.m in Sources */,
+				DE56694519FE3D4200B4624E /* BaseAnimation.m in Sources */,
 				DEBCFE4A19F212910014D970 /* NSDictionary+RequestEncoding.m in Sources */,
 				DE3A645A19FE369200BA4E59 /* KZJMeController.m in Sources */,
 				DE3A648F19FE374C00BA4E59 /* KZJFindView.m in Sources */,
-				DEBE2FED19F79583000B4322 /* KZJShareWeiboController.m in Sources */,
-				DECC8EA919F2641700289A6C /* KZJShareController.m in Sources */,
+				DE56694619FE3D4200B4624E /* SlideAnimation.m in Sources */,
 				DE3A649E19FE376D00BA4E59 /* KZJWeiboTableView.m in Sources */,
 				DEBCFE4C19F212910014D970 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
-				DECC8E9E19F254A900289A6C /* TumblrLikeMenuItem.m in Sources */,
 				DE3A649B19FE376D00BA4E59 /* KZJCommentCell.m in Sources */,
+				DE56697C19FE3DFF00B4624E /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				DE3A644019FE364A00BA4E59 /* KZJMeTableView.m in Sources */,
 				DEBCFE2119F212870014D970 /* SDImageCache.m in Sources */,
 				DEBCFE4F19F212910014D970 /* MKNetworkOperation.m in Sources */,
+				DE56695019FE3D9C00B4624E /* KZJShareScopeTableController.m in Sources */,
 				DE3A647C19FE36FF00BA4E59 /* KZJAboutView.m in Sources */,
+				DE56698719FE3E2B00B4624E /* HPTextViewInternal.m in Sources */,
 				DEBCFE2819F212870014D970 /* UIButton+WebCache.m in Sources */,
 				DE3A644719FE366D00BA4E59 /* KZJPhotoCell.m in Sources */,
 				DE3A646D19FE36F100BA4E59 /* KZJMyHomeView.m in Sources */,
 				DE3A64C519FE38E500BA4E59 /* QRCodeGenerator.m in Sources */,
 				DE3A64AD19FE37AE00BA4E59 /* KZJDealData.m in Sources */,
 				DE3A647819FE36FF00BA4E59 /* KZJRemindView.m in Sources */,
+				DE56695C19FE3DC100B4624E /* JDStatusBarStyle.m in Sources */,
+				DE56697E19FE3DFF00B4624E /* JGProgressHUDPieIndicatorView.m in Sources */,
 				DEBCFE2019F212870014D970 /* NSData+ImageContentType.m in Sources */,
 				DE3A645019FE367D00BA4E59 /* KZJSetTableView.m in Sources */,
 				DEBCFE5019F212910014D970 /* Reachability.m in Sources */,
-				DECC8E9D19F254A900289A6C /* TumblrLikeMenu.m in Sources */,
 				DEBCFDF719F2127A0014D970 /* MJRefreshConst.m in Sources */,
+				DE56694F19FE3D9C00B4624E /* KZJShareController.m in Sources */,
+				DE56698019FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m in Sources */,
+				DE56699819FE3EA800B4624E /* TumblrLikeMenuItem.m in Sources */,
 				DE3A64A419FE379500BA4E59 /* KZJDetailWeiboViewController.m in Sources */,
-				DEBCFE8B19F2139A0014D970 /* KZJMessageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

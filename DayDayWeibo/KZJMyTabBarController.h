@@ -12,6 +12,8 @@
 #import "TumblrLikeMenu.h"
 #import "KZJShareController.h"
 
+#import "KZJCheckInTableViewController.h"
+
 
 @interface KZJMyTabBarController : UITabBarController
 {

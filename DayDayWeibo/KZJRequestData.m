@@ -10,6 +10,17 @@
 
 @implementation KZJRequestData
 
+-(id)init
+{
+    if (self = [super init])
+    {
+        addressArr = [[NSMutableArray alloc] init];
+        checkin_user_numArr = [[NSMutableArray alloc] init]; //去过数
+        titleArr = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 #pragma mark 微博返回信息
 -(void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
@@ -230,7 +241,38 @@
         [self photoNum:result];
         //用总微博数进行判断,实现遍历全部微博
         
+    }else if ([request.tag isEqualToString:@"1100"])
+    {
+        // NSLog(@"1100 = %@",result);
+    }else if ([request.tag isEqualToString:@"1101"])
+    {
+        //NSLog(@"1101 = %@",result);
     }
+    else if ([request.tag isEqualToString:@"1105"])
+    {
+        //  NSLog(@"签到：%@",result);
+        
+        
+        NSDictionary *dict = [result objectFromJSONString];
+        //NSLog(@"%@",dict);
+        NSArray *poisArr =  [dict objectForKey:@"pois"];
+        for (NSDictionary *contentDict in poisArr)
+        {
+            [addressArr addObject:[contentDict objectForKey:@"address"]];
+            [checkin_user_numArr addObject:[contentDict objectForKey:@"checkin_user_num"]];
+            [titleArr addObject:[contentDict objectForKey:@"title"]];
+        }
+        //        NSLog(@"%@",[[dict objectForKey:@"pois"] objectAtIndex:0]);
+        //        NSLog(@"arr%@",[[[dict objectForKey:@"pois"] objectAtIndex:0] objectForKey:@"address"]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkInPositionNoti" object:self userInfo:@{@"address": addressArr,@"checkin_user_num":checkin_user_numArr,@"title":titleArr}];
+    }
+    else if ([request.tag isEqualToString:@"1106"])
+    {
+        [JDStatusBarNotification showWithStatus:@"发送成功" dismissAfter:1 styleName:@"JDStatusBarStyleSuccess"];
+        
+        
+    }
+
 
 }
 
@@ -567,8 +609,8 @@
 -(void)zljRequestData1
 {
     //NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"filter_by_source", nil];
-   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"filter_by_type", nil];
-  
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"filter_by_type", nil];
+    
     
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/mentions.json" httpMethod:@"Get" params:params delegate:self withTag:@"1100"];
 }
@@ -585,4 +627,38 @@
 {
     
 }
-@end
+
+#pragma mark 张立坚 签到
+-(void)zljRequestData4:(float)lat Long:(float)longDu page:(NSString*)page
+{
+    
+    NSDictionary *param = @{@"lat":[NSString stringWithFormat:@"%f",lat],@"long":[NSString stringWithFormat:@"%f",longDu],@"range":@"5000",@"page":page,@"sort":@"0",@"count":@"20"};
+    
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby/pois.json" httpMethod:@"GET" params:param delegate:self withTag:@"1105"];
+    
+}
+#pragma mark 张立坚 发微博
+-(void)zljSendWeibo:(NSString*)message picArr:(NSMutableArray*)imageArr visible:(int)visible
+{
+    [JDStatusBarNotification showWithStatus:@"正在努力发送中..." styleName:JDStatusBarStyleWarning];
+    [JDStatusBarNotification showActivityIndicator:YES indicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    //113.255868,23.135174
+    NSString *url;
+    NSDictionary*params;
+    if (message.length>0  && imageArr.count>1)
+    {
+        url = @"https://upload.api.weibo.com/2/statuses/upload.json";
+        params=[NSDictionary dictionaryWithObjectsAndKeys:message,@"status",[imageArr objectAtIndex:0],@"pic",[NSString stringWithFormat:@"%d",visible],@"visible",nil];
+    }
+    else if(message.length>0)
+    {
+        url = @"https://api.weibo.com/2/statuses/update.json";
+        params=[NSDictionary dictionaryWithObjectsAndKeys:message,@"status",[NSString stringWithFormat:@"%d",visible],@"visible",nil];
+    }
+    
+    
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:url httpMethod:@"POST" params:params delegate:self withTag:@"1106"];
+    
+    
+}@end

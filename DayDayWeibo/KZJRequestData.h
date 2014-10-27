@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KZJAppDelegate.h"
 #import "UserInformation.h"
+#import "JDStatusBarNotification.h"
 typedef void(^passData)(NSDictionary*);
 @interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate,WBHttpRequestDelegate>
 {
@@ -22,6 +23,12 @@ typedef void(^passData)(NSDictionary*);
     passData passBlock;
     
     NSMutableArray*weiboData;
+    
+    
+    //坚 的数组 签到
+    NSMutableArray *addressArr;
+    NSMutableArray *checkin_user_numArr; //去过数
+    NSMutableArray *titleArr;
 }
 
 //彬楷
@@ -58,13 +65,27 @@ typedef void(^passData)(NSDictionary*);
 
 #pragma mark 张立坚 的消息页面@我的  数据请求
 /**
- 
  "@我的"  数据请求
  */
 -(void)zljRequestData1;
-#pragma mark 张立坚 的消息页面 "评论"  数据请求
+
+/**
+ #pragma mark 张立坚 的消息页面 "评论"  数据请求
+ */
 -(void)zljRequestData2;
-#pragma mark  张立坚 的消息页面 "赞"  数据请求
+
+/**
+ #pragma mark  张立坚 的消息页面 "赞"  数据请求
+ */
 -(void)zljRequestData3;
+
+/**
+ #pragma mark 张立坚 签到
+ */
+-(void)zljRequestData4:(float)lat Long:(float)longDu page:(NSString*)page;
+/**
+ 张立坚 发微博
+ */
+-(void)zljSendWeibo:(NSString*)message picArr:(NSMutableArray*)imageArr visible:(int)visible;
 
 @end

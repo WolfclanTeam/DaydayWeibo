@@ -196,7 +196,6 @@
                                                              tip:@"fg"];
     
     menu.selectBlock = ^(NSUInteger index) {
-        NSLog(@"11item %lu index selected", (unsigned long)index);
         if (index==0)
         {
             
@@ -205,13 +204,49 @@
             UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
             
             [self presentViewController:shareNav animated:YES completion:^{
-               
+                
             }];
         }
-        if (index==5)
+        else if (index ==1)
+        {
+            KZJShareController *shareWeibo = [[KZJShareController alloc] init];
+            shareWeibo.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
+            
+            [self presentViewController:shareNav animated:YES completion:^{
+                [shareWeibo insertPic];
+            }];
+            
+        }else if (index ==2)
+        {
+            KZJShareController *shareWeibo = [[KZJShareController alloc] init];
+            shareWeibo.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
+            
+            [self presentViewController:shareNav animated:YES completion:^{
+                [shareWeibo openCamera];
+            }];
+            
+        }
+        else if (index ==3) //签到
+        {
+            NSLog(@"签到");
+            KZJCheckInTableViewController *checkInVC = [[KZJCheckInTableViewController alloc]init];
+            UINavigationController *checkIn_Nav = [[UINavigationController alloc] initWithRootViewController:checkInVC];
+            checkIn_Nav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:checkIn_Nav animated:YES completion:^{
+                
+            }];
+        }
+        else if (index==4)
+        {
+            
+        }
+        else if (index==5)
         {
             [self popMoreMenu];
         }
+
     };
     [menu show];
     
@@ -233,11 +268,40 @@
                                                         subMenus:subMenus
                                                              tip:@""];
     menu.selectBlock = ^(NSUInteger index) {
-        NSLog(@"item %d index selected", index);
-        
-        
-        
-        if (index==5)
+        if(index ==0)
+        {
+            KZJShareController *shareWeibo = [[KZJShareController alloc] init];
+            shareWeibo.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
+            shareWeibo.weiboVisibleScopeTitle = @"对好友圈可见";
+            shareWeibo.weiboVisibleScopeValue = 2;
+            [self presentViewController:shareNav animated:YES completion:^{
+                
+            }];
+            
+        }
+        else if (index ==1)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"尚未安装图丁客户端，是否前往下载？" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alertView show];
+        }
+        else if (index==2)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"尚未安装秒拍客户端，是否前往下载？" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"下载", nil];
+            [alertView show];
+        }
+        else if(index ==3)
+        {
+            KZJShareController *shareWeibo = [[KZJShareController alloc] init];
+            shareWeibo.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:shareWeibo];
+            
+            [self presentViewController:shareNav animated:YES completion:^{
+                shareWeibo.weiboContentTextView.text = @"#十分钟删#";
+            }];
+            
+        }
+        else if (index==5)
         {
             [self popSelectMenu];
         }

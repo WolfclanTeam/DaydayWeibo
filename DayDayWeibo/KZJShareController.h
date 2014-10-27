@@ -7,9 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
+#import"UserInformation.h"
 
-@interface KZJShareController : UIViewController
+#import "HPGrowingTextView.h"
+#import "KZJShareScopeTableController.h"
+#import "KZJCheckInTableViewController.h"
+@interface KZJShareController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,HPGrowingTextViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource,UIAlertViewDelegate>
+
 {
     UILabel *whoLabel;
+    
+    UIToolbar *toolBar;
+    HPGrowingTextView *weiboContentTextView;
+    NSMutableArray *imageArr;
+    NSString *inputContent;
+    NSString *whoDo;
+    int itemIndex ;
+    NSString *itemSelect;
+    UIImagePickerControllerSourceType imagePickerSourceType;
+    
+    UIButton *locationBtn;
+    UIButton *shareScopeBtn;
+    
+    int  weiboVisibleScopeValue;
+    NSString *weiboVisibleScopeTitle;
+    
+    
 }
+@property(retain,nonatomic)UICollectionView *collectionView;
+@property(retain,nonatomic)HPGrowingTextView *weiboContentTextView;
+@property(assign,nonatomic)int weiboVisibleScopeValue;
+@property(copy,nonatomic)NSString *weiboVisibleScopeTitle;
+-(void)insertPic;
+-(void)openCamera;
 @end
