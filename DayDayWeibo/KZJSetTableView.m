@@ -28,6 +28,8 @@
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0.906, 0.906, 0.906, 1 });
         [self.layer setBackgroundColor:colorref];
+        CGColorSpaceRelease(colorSpace);
+        CGColorRelease(colorref);
 
     }
     return self;
@@ -58,12 +60,12 @@
         {
             NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
             int num = 0;
-            NSLog(@"%@",array);
+//            NSLog(@"%@",array);
             for (UserInformation*info in array)
             {
                 num += [info.unread intValue];
             }
-            NSLog(@"num=%d",num);
+//            NSLog(@"num=%d",num);
             if (num==0)
             {
                 cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
@@ -73,6 +75,8 @@
                 CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
                 CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
                 cell.unreadLabel.layer.backgroundColor = colorref;
+                CGColorSpaceRelease(colorSpace);
+                CGColorRelease(colorref);
                 cell.unreadLabel.text = [NSString stringWithFormat:@"%d",num];
                 cell.unreadLabel.font = [UIFont systemFontOfSize:12];
                 cell.unreadLabel.textAlignment =NSTextAlignmentCenter;
@@ -130,22 +134,40 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==4)
+    if (indexPath.section ==0&&indexPath.row==0)
+    {
+        NSNotification*notification= [NSNotification notificationWithName:@"pushAccount" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }else if (indexPath.section ==1&&indexPath.row==0)
+    {
+        //提醒和通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"remind" object:nil userInfo:nil];
+    }else if (indexPath.section ==1&&indexPath.row==1)
+    {
+        //通用设置
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"common" object:nil userInfo:nil];
+    }else if (indexPath.section ==1&&indexPath.row==2)
+    {
+        //隐私与安全
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"privacy" object:nil userInfo:nil];
+    }else if (indexPath.section ==2&&indexPath.row==0)
+    {
+        //意见反馈
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"remind" object:nil userInfo:nil];
+    }else if (indexPath.section ==2&&indexPath.row==1)
+    {
+        //关于微博
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"about" object:nil userInfo:nil];
+    }else if (indexPath.section==3&&indexPath.row==0)
+    {
+        
+    }else if (indexPath.section==3&&indexPath.row==1)
+    {
+        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:nil message:@"您确定清理缓存吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        [alert show];
+    }else if (indexPath.section ==4)
     {
         KZJAppDelegate*app = (KZJAppDelegate*)[UIApplication sharedApplication].delegate;
-        //定义uiview动画
-//        [UIView beginAnimations:@"exit" context:(__bridge void *)(app.window)];
-//        [UIView setAnimationBeginsFromCurrentState:YES];
-//        //    [UIView setAnimationDelay:1];//延迟3秒开始播放
-//        [UIView setAnimationDelegate:self];//设置动画代理
-//        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];//动画停止之后调用的方法
-//        [UIView setAnimationDuration:1];//动画运行时间
-//        //    [UIView setAnimationRepeatAutoreverses:YES];//设置是否自动回到初始状态
-//        app.window.transform=CGAffineTransformMakeScale(0.1, 0.1);
-//
-//        [UIView commitAnimations];//提交动画
-        
-        
         CABasicAnimation*transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
         CATransform3D transform1 = CATransform3DMakeScale(0.1, 0.1, 0.1);
         CATransform3D transform2 = CATransform3DMakeTranslation(140, 200, 100);
@@ -156,22 +178,21 @@
         transformAnimation.fillMode = kCAFillModeBackwards;
         transformAnimation.removedOnCompletion = NO;
         [[app.window layer] addAnimation:transformAnimation forKey:@"213"];
-        
     }
-    if (indexPath.section ==0&&indexPath.row==0)
-    {
-        NSNotification*notification= [NSNotification notificationWithName:@"pushAccount" object:self userInfo:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
-    }else if (indexPath.section==3&&indexPath.row==1)
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0)
     {
         NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtPath:cachPath error:&error];
-        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"缓存清理完毕" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"缓存清理完毕" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
-        [tableView reloadData];
+        [self reloadData];
     }
 }
+
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     exit(0);

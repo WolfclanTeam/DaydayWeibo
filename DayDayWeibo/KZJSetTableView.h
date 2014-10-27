@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KZJSetTableViewCell.h"
 #import "KZJAccountView.h"
-@interface KZJSetTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
+@interface KZJSetTableView : UITableView<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray*titleArray;
 }

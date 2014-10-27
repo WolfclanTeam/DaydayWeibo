@@ -22,4 +22,5 @@
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSString * unread;
 @property (nonatomic, retain) NSString *collectionNum;
+@property (nonatomic, retain) NSString *photoNum;
 @end

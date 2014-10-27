@@ -21,7 +21,7 @@
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"启动" forKey:@"标示启动"];
         [[NSUserDefaults standardUserDefaults]synchronize];
-        [[[KZJRequestData alloc]initOnly] startRequestData1];
+        [[KZJRequestData requestOnly] startRequestData1];
     }
     NSLog(@"%@",NSHomeDirectory());
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -185,12 +185,12 @@
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    KZJRequestData*requestData = [KZJRequestData requestOnly];
     return [WeiboSDK handleOpenURL:url delegate:requestData];
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    KZJRequestData*requestData = [[KZJRequestData alloc]initOnly];
+    KZJRequestData*requestData = [KZJRequestData requestOnly];
     return [WeiboSDK handleOpenURL:url delegate:requestData];
 }
 

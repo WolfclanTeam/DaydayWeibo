@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    KZJRequestData *data = [[KZJRequestData alloc] initOnly];
+    KZJRequestData *data = [KZJRequestData requestOnly];
    // [data zljRequestData1];
     [data zljRequestData2];
 }

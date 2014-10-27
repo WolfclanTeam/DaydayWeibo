@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KZJWeiboTableView.h"
+#import"KZJDetailWeiboViewController.h"
+#import"MJRefresh/MJRefresh.h"
+#import "KZJDetailWeiboViewController.h"
 
 @interface KZJHomeController : UIViewController
-
+{
+    int page;
+    NSMutableArray *dataArr;
+    KZJWeiboTableView *weiboList;
+}
 @end

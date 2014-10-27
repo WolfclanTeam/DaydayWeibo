@@ -28,7 +28,7 @@
         _image1 = [[UIImageView alloc]initWithFrame:CGRectMake(320-20, 7, 12, 15)];
         [self addSubview:_image1];
         
-        _label1 = [[UILabel alloc]initWithFrame:CGRectMake(45, 0, 80, 30)];
+        _label1 = [[UILabel alloc]initWithFrame:CGRectMake(45, 0, 150, 30)];
         [self addSubview:_label1];
     }
     return self;

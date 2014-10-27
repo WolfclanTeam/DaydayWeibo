@@ -21,4 +21,5 @@
 @dynamic uid;
 @dynamic unread;
 @dynamic collectionNum;
+@dynamic photoNum;
 @end

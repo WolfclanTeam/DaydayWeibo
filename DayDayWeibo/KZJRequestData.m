@@ -42,9 +42,12 @@
 {
     NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/users/show.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"991"];
-
+    
     NSDictionary*params2=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://rm.api.weibo.com/2/remind/unread_count.json" httpMethod:@"GET" params:params2 delegate:self withTag:@"993"];
+    
+    [self startRequestData5:1];
+    //    [self getHomeWeibo];
 }
 -(void)startRequestData2
 {
@@ -52,6 +55,68 @@
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/to_me.json" httpMethod:@"GET" params:nil delegate:self withTag:@"992"];
 }
 
+-(void)startRequestData3:(int)page withTitle:(NSString*)title withID:(NSString*)ID
+{
+    NSString*count = [NSString stringWithFormat:@"%d",15*page];
+    NSDictionary*params3=[NSDictionary dictionaryWithObjectsAndKeys:ID,@"uid",count,@"count",@"0",@"trim_status",nil];
+    if ([title isEqualToString:@"关注"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/friends.json" httpMethod:@"GET" params:params3 delegate:self withTag:@"994"];
+    }else if ([title isEqualToString:@"粉丝"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/followers.json" httpMethod:@"GET" params:params3 delegate:self withTag:@"995"];
+    }
+}
+//请求话题的链接
+-(void)startRequestData4
+{
+    //     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/trends/daily.json" httpMethod:@"GET" params:nil delegate:self withTag:@"996"];
+    //    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/trends/hourly.json" httpMethod:@"GET" params:nil delegate:self withTag:@"996"];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/trends/weekly.json" httpMethod:@"GET" params:nil delegate:self withTag:@"996"];
+}
+
+-(void)startRequestData5:(int)page withType:(NSString*)type
+{
+    if (page==1)
+    {
+        [weiboData removeAllObjects];
+    }
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"count",[NSString stringWithFormat:@"%d",page],@"page",type,@"feature",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/user_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"997"];
+}
+-(void)startRequestData5:(int)page
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:@"100",@"count",[NSString stringWithFormat:@"%d",page],@"page",@"1",@"feature",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/user_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1003"];
+    
+}
+-(void)startRequestData6:(NSString*)name
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:name,@"q",@"20",@"count",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/search/suggestions/users.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"998"];
+}
+
+-(void)startRequestData7:(NSString*)userID
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:userID,@"uid",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/users/show.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"999"];
+}
+
+-(void)startRequestData8:(NSString*)userID
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"source_id",userID,@"target_id",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/show.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1000"];
+}
+-(void)startRequestData9:(NSString*)userID withName:(NSString*)name
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:userID,@"uid",name,@"screen_name",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/create.json" httpMethod:@"POST" params:params1 delegate:self withTag:@"1001"];
+}
+-(void)startRequestData10:(NSString*)userID withName:(NSString*)name
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:userID,@"uid",name,@"screen_name",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/destroy.json" httpMethod:@"POST" params:params1 delegate:self withTag:@"1002"];
+}
 #pragma mark 微博认证请求返回结果结束
 -(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
 {
@@ -76,8 +141,160 @@
     }else if ([request.tag isEqualToString:@"1101"])
     {
         //NSLog(@"1101 = %@",result);
+    }else if ([request.tag isEqualToString:@"994"])
+    {
+        [self fansData:result];
+    }else if ([request.tag isEqualToString:@"995"])
+    {
+        [self fansData:result];
+    }else if ([request.tag isEqualToString:@"996"])
+    {
+        //        NSLog(@"%@",[[[result objectFromJSONString] objectForKey:@"trends"] objectForKey:[[[[result objectFromJSONString] objectForKey:@"trends"] allKeys] objectAtIndex:0]]);
+        //        NSLog(@"%@",result);
+        
+        NSNotification *notification = [NSNotification notificationWithName:@"hourtopic" object:self userInfo:[[result objectFromJSONString] objectForKey:@"trends"]];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
+        
+    }else if ([request.tag isEqualToString:@"997"])
+    {
+        //        NSLog(@"%@",[[dict objectForKey:@"statuses"] objectAtIndex:0]);
+        if (weiboData==nil)
+        {
+            weiboData = [[NSMutableArray alloc]init];
+        }
+        NSDictionary *dict = [result objectFromJSONString];
+        for (NSDictionary*dict1 in [dict objectForKey:@"statuses"])
+        {
+            [weiboData addObject:dict1];
+        }
+        NSDictionary*dict2 = [NSDictionary dictionaryWithObject:weiboData forKey:@"statuses"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"myweibo" object:nil userInfo:dict2];
+        
+    }else if ([request.tag isEqualToString:@"998"])
+    {
+        if ([[result objectFromJSONString] count]>0)
+        {
+            countNum = [[result objectFromJSONString] count];
+            peopleArray = [[NSMutableArray alloc]initWithCapacity:[[result objectFromJSONString] count]];
+            
+            //            countNum1 = [[result objectFromJSONString] count];
+            //            relationArray = [[NSMutableArray alloc]initWithCapacity:[[result objectFromJSONString] count]];
+            
+            for (NSDictionary*dict in [result objectFromJSONString])
+            {
+                [self startRequestData7:[NSString stringWithFormat:@"%@",[dict objectForKey:@"uid"]]];
+            }
+        }
+    }else if ([request.tag isEqualToString:@"999"])
+    {
+        countNum--;
+        [peopleArray addObject:[result objectFromJSONString]];
+        //        [self startRequestData8:[NSString stringWithFormat:@"%@",[[result objectFromJSONString] objectForKey:@"id"]]];
+        if (countNum==0)
+        {
+            NSDictionary*dict = [NSDictionary dictionaryWithObject:peopleArray forKey:@"people"];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"people" object:nil userInfo:dict];
+        }
+    }else if ([request.tag isEqualToString:@"1000"])
+    {
+        //        NSLog(@"%@",[result objectFromJSONString]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"relation" object:nil userInfo:[NSDictionary dictionaryWithObject:[[result objectFromJSONString] objectForKey:@"target"] forKey:@"target"]];
+    }else if ([request.tag isEqualToString:@"1001"])
+    {
+        //        NSLog(@"%@",result);
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"attention" object:nil userInfo:nil];
+        
+    }else if ([request.tag isEqualToString:@"1002"])
+    {
+        //        NSLog(@"%@",result);
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"cancelAttention" object:nil userInfo:nil];
+    }else if ([request.tag isEqualToString:@"HOMEWEIBO"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"ADTAILWEIBO"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"COMMENT"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"GETWEIBO"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"1003"])
+    {
+        
+        [self photoNum:result];
+        //用总微博数进行判断,实现遍历全部微博
+        
+    }
+
+}
+
+#pragma mark 相册图片数量
+-(void)photoNum:(NSString*)result
+{
+    if (photoArray==nil)
+    {
+        photoArray = [[NSMutableArray alloc]init];
+    }
+    static int pageNum = 1;
+    if (pageNum==1)
+    {
+        [photoArray removeAllObjects];
+    }
+    int i =0;
+    for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"] )
+    {
+        if ([[dict objectForKey:@"pic_urls"] count]>0)
+        {
+            i=i+[[dict objectForKey:@"pic_urls"] count];
+            for (NSString*str in [dict objectForKey:@"pic_urls"])
+            {
+                [photoArray addObject:str];
+            }
+        }
+    }
+    
+    KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = app.managedObjectContext;
+    UserInformation*info = [self searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+    if (pageNum>1)
+    {
+        info.photoNum = [NSString stringWithFormat:@"%d",i+[info.photoNum intValue]];
+    }else
+    {
+        info.photoNum = [NSString stringWithFormat:@"%d",i];
+    }
+    
+    [context save:nil];
+    //    NSLog(@"%d",[info.photoNum intValue]);
+    
+    //    NSLog(@"%d",[[[result objectFromJSONString] objectForKey:@"statuses"] count] );
+    if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]==100)
+    {
+        
+        [self startRequestData5:++pageNum];
+    }
+    if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]<100)
+    {
+        pageNum =1;
+        //        NSLog(@"%@",photoArray);
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"photo" object:nil userInfo:[NSDictionary dictionaryWithObject:photoArray forKey:@"photo"]];
     }
 }
+#pragma mark 关注用户信息
+-(void)fansData:(NSString*)result
+{
+    NSDictionary*dict = [result objectFromJSONString];
+    NSNotification*notification=[NSNotification notificationWithName:@"fansData" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+
 #pragma mark 返回用户未读信息数(不包含未读微博)
 -(void)unread:(NSString*)result
 {
@@ -88,7 +305,7 @@
     {
         num+=[[dict objectForKey:key] intValue];
     }
-//    NSLog(@"%d",num);
+    //    NSLog(@"%d",num);
     
     KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = app.managedObjectContext;
@@ -98,7 +315,7 @@
         if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
         {
             info.unread = [NSString stringWithFormat:@"%d",num];
-//            NSLog(@"%@",info.unread);
+            //            NSLog(@"%@",info.unread);
         }
     }
     [context save:nil];
@@ -113,11 +330,11 @@
     UserInformation*userInformation = [NSEntityDescription
                                        insertNewObjectForEntityForName:@"UserInformation"
                                        inManagedObjectContext:context];
-    
+    //    NSLog(@"%@",result);
     userInformation.name = [dict objectForKey:@"name"];
     userInformation.photo = [dict objectForKey:@"avatar_hd"];
     
-    
+    userInformation.collectionNum = [NSString stringWithFormat:@"%@",[dict objectForKey:@"favourites_count"]];
     userInformation.brief = [dict objectForKey:@"description"];
     userInformation.token = [[NSUserDefaults standardUserDefaults]objectForKey:@"Token"];
     userInformation.statuses = [NSString stringWithFormat:@"%@",[dict objectForKey:@"statuses_count"]];
@@ -126,9 +343,9 @@
     
     userInformation.fans =[NSString stringWithFormat:@"%@",[dict objectForKey:@"followers_count"]]  ;
     userInformation.uid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
-//    NSLog(@"%@",[dict objectForKey:@"id"]);
+    //    NSLog(@"%@",[dict objectForKey:@"id"]);
     NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
-    //        NSLog(@"%@",array);
+    //    NSLog(@"=======%@",array);
     int flag = 0;
     for (UserInformation*info in array)
     {
@@ -158,21 +375,21 @@
     NSNotification*notification=nil;
     notification = [NSNotification notificationWithName:@"passValue" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
     if ([array count]==1)
     {
         NSNotification*notification1= [NSNotification notificationWithName:@"login" object:self userInfo:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification1];
         
-        NSLog(@"=dasfa-24354");
     }
     
     NSNotification*notification2= [NSNotification notificationWithName:@"addlogin" object:self userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification2];
 }
 #pragma mark 单例
--(id)initOnly
++(id)requestOnly
 {
-
+    
     static KZJRequestData*request = nil;
     if (!request)
     {
@@ -227,7 +444,7 @@
     NSManagedObjectContext*manager = appdelegate.managedObjectContext;
     //
     NSFetchRequest*request = [[NSFetchRequest alloc]initWithEntityName:name];
-//    NSString*str = @".*k$";
+    //    NSString*str = @".*k$";
     NSPredicate*predicate = [NSPredicate predicateWithFormat:@"uid matches %@",uid];
     [request setPredicate:predicate];
     //
@@ -301,6 +518,46 @@
         return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
     }
     return 0;
+}
+
+
+#pragma mark-王锦章微博数据请求
+-(void)getHomeWeibo
+{
+    //获取当前登录用户所关注用户的微博
+    //https://api.weibo.com/2/statuses/friends_timeline.json
+    NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/friends_timeline.json" httpMethod:@"GET" params:parms delegate:self withTag:@"HOMEWEIBO"];
+}
+
+-(void)getNewWeibo:(NSString *)page
+{
+    //获取当前登录用户所关注用户的微博
+    //https://api.weibo.com/2/statuses/friends_timeline.json
+    NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",page,@"page",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/friends_timeline.json" httpMethod:@"GET" params:parms delegate:self withTag:@"GETWEIBO"];
+}
+
+-(void)getADetailWeibo:(NSString*)weiboID
+{
+    //http://api.weibo.com/2/statuses/go
+    NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",weiboID,@"id", nil];
+    NSLog(@"%@",parms);
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"ADTAILWEIBO"];
+}
+
+//根据微博ID获取某条微博评论列表
+-(void)getCommentList:(NSString*)weiboID
+{
+    //https://api.weibo.com/2/comments/show.json
+    NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",weiboID,@"id", nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"COMMENT"];
+}
+
+//代码块传值
+-(void)passWeiboData:(passData)sender
+{
+    passBlock = sender;
 }
 #pragma mark 张立坚 的消息页面 "@我的"  数据请求
 /**

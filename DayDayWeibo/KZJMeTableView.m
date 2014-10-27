@@ -14,6 +14,8 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0.906, 0.906, 0.906, 1 });
     [self.layer setBackgroundColor:colorref];
+    CGColorSpaceRelease(colorSpace);
+    CGColorRelease(colorref);
     
 //    NSLog(@"%@",array);
     for (UserInformation*userInformation in array)
@@ -24,6 +26,7 @@
         {
 //            NSLog(@"%@",info);
             info = userInformation;
+            [self reloadData];
 //            NSLog(@"%@",info);
         }
 //        NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]);
@@ -46,6 +49,7 @@
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0.902, 0.902, 0.902, 1 });
         headBtn.layer.borderColor = colorref;
+        [headBtn addTarget:self action:@selector(myView) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:headBtn];
         
         UIImageView*headImage = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
@@ -87,10 +91,12 @@
             btn.frame = CGRectMake(0+i*SCREENWIDTH/3, 60, SCREENWIDTH/3, 40);
             //                [btn setTitle:@"das" forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+            [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+            btn.tag =1000+i;
             UILabel*kind = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, SCREENWIDTH/3, 20)];
             kind.text = array1[i];
             kind.textAlignment = NSTextAlignmentCenter;
+            kind.tag = 1010+i;
             kind.font = [UIFont systemFontOfSize:13];
             [btn addSubview:kind];
             
@@ -107,6 +113,7 @@
             {
                 num.text = [NSString stringWithFormat:@"%@",info.fans];
             }
+//            NSLog(@"%@,%@,%@",info.statuses,info.care,info.fans);
             [btn addSubview:num];
             [view addSubview:btn];
         }
@@ -114,10 +121,12 @@
         view.userInteractionEnabled = YES;
         view;
     });
+    
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"passValue" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(passAction:) name:@"passValue" object:nil];
 }
 
+//登陆成功更新内容
 -(void)passAction:(NSNotification*)notif
 {
     if ([[notif userInfo] objectForKey:@"avatar_hd"]!=nil)
@@ -132,7 +141,6 @@
         NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
         for (UserInformation *info1 in fetchedObjects) {
 //            NSLog(@"Name: %@", info1.brief);
-            
             UIImageView*imageView = (UIImageView*)[self viewWithTag:110];
             [imageView sd_setImageWithURL:[NSURL URLWithString:info1.photo]];
             
@@ -140,7 +148,6 @@
             nameLabel.text = info1.name;
 //            NSLog(@"%@",info1.name);
         }
-
         NSUserDefaults*user = [NSUserDefaults standardUserDefaults];
         [user setObject: [[notif userInfo] objectForKey:@"name"] forKey:@"用户名"];
         [user setObject: [[notif userInfo] objectForKey:@"avatar_hd"] forKey:@"头像"];
@@ -150,9 +157,18 @@
     }
     
 }
--(void)btnAction
+//微博,关注,粉丝按钮单击事件
+-(void)btnAction:(UIButton*)btn
 {
-    NSLog(@"21");
+    UILabel*label = (UILabel*)[self viewWithTag:btn.tag+10];
+
+    NSNotification*notification = [NSNotification notificationWithName:@"fans" object:self userInfo:[NSDictionary dictionaryWithObject:label.text forKey:@"btnTitle"]];
+    [[NSNotificationCenter defaultCenter]postNotification:notification];
+}
+//个人主页单击事件
+-(void)myView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"myView" object:nil];
 }
 
 #pragma mark 我的页面的tableview的代理
@@ -165,9 +181,60 @@
         cell = [[KZJMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:meMark];
     }
 //    NSLog(@"%@",cell.subviews);
-    cell.image.image = [UIImage imageNamed:imageArray[indexPath.section][indexPath.row]];
+    cell.image.image = [UIImage redraw:[UIImage imageNamed:imageArray[indexPath.section][indexPath.row]] Frame:CGRectMake(0, 0, 20, 20)];
+   
     cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
-    cell.label1.text = titleArray[indexPath.section][indexPath.row];
+    if (indexPath.section==1&&indexPath.row==1)
+    {
+        if (info.collectionNum ==nil||[info.collectionNum isEqualToString:@"0"])
+        {
+            NSMutableAttributedString*str=[[NSMutableAttributedString alloc]initWithString: [NSString stringWithFormat:@"%@(0)",titleArray[indexPath.section][indexPath.row]]];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 4)];
+//            NSLog(@"%d",[str length]);
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(4, [str length]-4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(4, [str length]-4)];
+            //对于上面设置的字符串只能赋给attributeText,无法赋给text
+            cell.label1.attributedText=str;
+
+        }else
+        {
+            NSMutableAttributedString*str=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@(%@)",titleArray[indexPath.section][indexPath.row],info.collectionNum]];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(4,[str length]-4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(4, [str length]-4)];
+            //对于上面设置的字符串只能赋给attributeText,无法赋给text
+            cell.label1.attributedText=str;
+        }
+        
+    }else if(indexPath.section==1&&indexPath.row==0)
+    {
+        if (info.photoNum ==nil||[info.photoNum isEqualToString:@"0"])
+        {
+            NSMutableAttributedString*str=[[NSMutableAttributedString alloc]initWithString: [NSString stringWithFormat:@"%@(0)",titleArray[indexPath.section][indexPath.row]]];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 4)];
+//            NSLog(@"%d",[str length]);
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(4, [str length]-4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(4, [str length]-4)];
+            //对于上面设置的字符串只能赋给attributeText,无法赋给text
+            cell.label1.attributedText=str;
+            
+        }else
+        {
+            NSMutableAttributedString*str=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@(%@)",titleArray[indexPath.section][indexPath.row],info.photoNum]];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(4,[str length]-4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 4)];
+            [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(4, [str length]-4)];
+            //对于上面设置的字符串只能赋给attributeText,无法赋给text
+            cell.label1.attributedText=str;
+        }
+    }else
+    {
+        cell.label1.text = titleArray[indexPath.section][indexPath.row];
+    }
     
     return cell;
 }
@@ -194,7 +261,18 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.section ==1&&indexPath.row==0)
+    {
+        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"picture" object:nil];
+    }else if (indexPath.section ==3 &&indexPath.row==0)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"card" object:nil];
+    }else if (indexPath.section ==1 &&indexPath.row==1)
+    {
+//        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
+//        [[NSNotificationCenter defaultCenter]postNotificationName:@"picture" object:nil];
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

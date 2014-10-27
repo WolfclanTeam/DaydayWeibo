@@ -9,19 +9,51 @@
 #import <Foundation/Foundation.h>
 #import "KZJAppDelegate.h"
 #import "UserInformation.h"
+typedef void(^passData)(NSDictionary*);
 @interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate,WBHttpRequestDelegate>
+{
+    NSMutableArray*arrayFans;
+    NSMutableDictionary*dictFans;
+    NSMutableArray*photoArray;
+    NSMutableArray*peopleArray;
+    int countNum;
+    NSMutableArray*relationArray;
+    int countNum1;
+    passData passBlock;
+    
+    NSMutableArray*weiboData;
+}
 
-
-
+//彬楷
 -(NSArray*)getCoreData:(NSString*)entityName;
 -(int)textLength:(NSString *)dataString;
 -(NSArray*)loginRank:(NSArray*)array;
 -(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info;
--(id)initOnly;
++(id)requestOnly;
 -(NSString*)cacheNumber;
 -(id)searchEntityName:(NSString*)name uid:(NSString*)uid;
 -(void)startRequestData1;
 -(void)startRequestData2;
+-(void)startRequestData3:(int)page withTitle:(NSString*)title withID:(NSString*)ID;//请求关注粉丝列表
+-(void)startRequestData4;//请求话题
+-(void)startRequestData5:(int)page withType:(NSString*)type;//请求微博(此处只为获取相册,后面结合时可重新利用)
+//0：全部、1：原创、2：图片、3：视频、4：音乐
+-(void)startRequestData5:(int)page;
+-(void)startRequestData6:(NSString*)name;//请求搜人的联想
+-(void)startRequestData7:(NSString*)userID;//根据用户ID获取用户详情
+-(void)startRequestData8:(NSString*)userID;//根据用户ID获取其和登陆用户的关系
+-(void)startRequestData9:(NSString*)userID withName:(NSString*)name;//关注某用户
+-(void)startRequestData10:(NSString*)userID withName:(NSString*)name;//取消关注某用户
+-(void)startRequestData11:(int)page;//获取当前
+
+
+//锦章
+-(void)passWeiboData:(passData)sender;
+-(void)getHomeWeibo;
+-(void)getADetailWeibo:(NSString*)weiboID;
+-(void)getCommentList:(NSString*)weiboID;
+-(void)getNewWeibo:(NSString *)page;
+
 
 
 #pragma mark 张立坚 的消息页面@我的  数据请求

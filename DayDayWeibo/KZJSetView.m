@@ -30,13 +30,52 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"pushAccount" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushAccount) name:@"pushAccount" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"remind" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remind) name:@"remind" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"common" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(common) name:@"common" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"privacy" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privacy) name:@"privacy" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"about" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(about) name:@"about" object:nil];
 }
 -(void)pushAccount
 {
     KZJNextView*accountView = [[KZJNextView alloc]init];
-//    self.hidesBottomBarWhenPushed = YES;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:accountView animated:YES];
 }
+-(void)remind
+{
+    KZJRemindView*remindView = [[KZJRemindView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:remindView animated:YES];
+}
+-(void)common
+{
+    KZJCommonView*commonView = [[KZJCommonView alloc]init];
+        self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:commonView animated:YES];
+}
+-(void)privacy
+{
+    KZJPrivacyView*privacyView = [[KZJPrivacyView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:privacyView animated:YES];
+}
+
+-(void)about
+{
+    KZJAboutView*aboutView = [[KZJAboutView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:aboutView animated:YES];
+}
+
+
 -(void)back
 {
     self.hidesBottomBarWhenPushed = NO;

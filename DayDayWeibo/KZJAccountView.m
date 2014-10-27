@@ -33,6 +33,8 @@
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0.906, 0.906, 0.906, 1 });
         [self.layer setBackgroundColor:colorref];
+        CGColorSpaceRelease(colorSpace);
+        CGColorRelease(colorref);
         numberArray = [[NSMutableArray alloc]initWithArray:array];
 
     }
@@ -66,6 +68,9 @@
             CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
             CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0.1, 0.1, 1 });
             cell.unreadLabel.layer.backgroundColor = colorref;
+            CGColorSpaceRelease(colorSpace);
+            CGColorRelease(colorref);
+            
             cell.unreadLabel.text = info.unread;
             cell.unreadLabel.font = [UIFont systemFontOfSize:12];
             cell.unreadLabel.textAlignment =NSTextAlignmentCenter;
@@ -146,7 +151,7 @@
             if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
             {
                 numberArray = (NSMutableArray*)[[KZJRequestData alloc]deleteCoreData:@"UserInformation" withData:info];
-                NSLog(@"===%@",numberArray);
+//                NSLog(@"===%@",numberArray);
                 [tableView reloadData];
             }
         }
@@ -184,7 +189,7 @@
             [[NSUserDefaults standardUserDefaults]setObject:@"已存在" forKey:@"账号管理"];
             [[NSUserDefaults standardUserDefaults]synchronize];
             
-            [[[KZJRequestData alloc] initOnly]startRequestData1];
+            [[KZJRequestData requestOnly]startRequestData1];
             numberArray = (NSMutableArray*)[[KZJRequestData alloc]loginRank:numberArray];
             [tableView reloadData];
         }

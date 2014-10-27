@@ -10,6 +10,12 @@
 #import "KZJMeTableView.h"
 #import "KZJLoginView.h"
 #import "KZJSetView.h"
+#import "KZJFansView.h"
+#import "KZJWeiboView.h"
+#import "KZJPictureView.h"
+#import "KZJCardView.h"
+#import "KZJMyHomeView.h"
+
 @interface KZJMeController : UIViewController
 {
     NSArray*arrayTableTitle;
