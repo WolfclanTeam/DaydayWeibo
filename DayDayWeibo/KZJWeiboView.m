@@ -27,7 +27,7 @@
     weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) view:self.tabBarController.view];
     [self.view addSubview:weiboList];
     KZJRequestData *dataManger = [KZJRequestData requestOnly];
-    [dataManger startRequestData5:1 withType:@"0"];
+    [dataManger startRequestData5:1 withType:@"0" withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"myweibo" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(myWeibo:) name:@"myweibo" object:nil];

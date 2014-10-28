@@ -29,7 +29,7 @@
     [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];
 
     KZJRequestData *dataManger = [KZJRequestData requestOnly];
-    [dataManger startRequestData5:1];
+    [dataManger startRequestData5:1 withID:ID];
     [self.view addSubview:weiboList];
     
     NSArray*coverImages = [NSArray arrayWithObjects:@"page_cover_book_background@2x",@"page_cover_car_background@2x",@"page_cover_game_background@2x",@"page_cover_movie_background@2x",@"page_cover_music_background@2x",@"page_cover_poi_background@2x",@"page_cover_radio_background@2x",@"page_cover_topic_background@2x",@"page_cover_tv_background@2x", nil];
@@ -199,7 +199,7 @@
 {
     page =1;
      KZJRequestData *datamanager = [KZJRequestData requestOnly];
-    [datamanager startRequestData5:page withType:@"0"];
+    [datamanager startRequestData5:page withType:@"0" withID:ID];
    
 }
 //
@@ -208,7 +208,7 @@
     
     page++;
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
-    [datamanager startRequestData5:page withType:@"0"];
+    [datamanager startRequestData5:page withType:@"0" withID:ID];
    
 }
 //返回按钮

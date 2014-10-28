@@ -57,7 +57,7 @@
     NSDictionary*params2=[NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"],@"uid",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://rm.api.weibo.com/2/remind/unread_count.json" httpMethod:@"GET" params:params2 delegate:self withTag:@"993"];
     
-    [self startRequestData5:1];
+    [self startRequestData5:1 withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
     //    [self getHomeWeibo];
 }
 -(void)startRequestData2
@@ -86,18 +86,18 @@
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/trends/weekly.json" httpMethod:@"GET" params:nil delegate:self withTag:@"996"];
 }
 
--(void)startRequestData5:(int)page withType:(NSString*)type
+-(void)startRequestData5:(int)page withType:(NSString*)type  withID:(NSString*)ID
 {
     if (page==1)
     {
         [weiboData removeAllObjects];
     }
-    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"count",[NSString stringWithFormat:@"%d",page],@"page",type,@"feature",nil];
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:ID,@"uid",@"20",@"count",[NSString stringWithFormat:@"%d",page],@"page",type,@"feature",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/user_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"997"];
 }
--(void)startRequestData5:(int)page
+-(void)startRequestData5:(int)page withID:(NSString*)ID
 {
-    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:@"100",@"count",[NSString stringWithFormat:@"%d",page],@"page",@"1",@"feature",nil];
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:ID,@"uid",@"100",@"count",[NSString stringWithFormat:@"%d",page],@"page",@"1",@"feature",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/user_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1003"];
     
 }
@@ -324,7 +324,7 @@
     if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]==100)
     {
         
-        [self startRequestData5:++pageNum];
+        [self startRequestData5:++pageNum withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
     }
     if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]<100)
     {

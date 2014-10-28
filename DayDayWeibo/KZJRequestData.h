@@ -43,9 +43,11 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData2;
 -(void)startRequestData3:(int)page withTitle:(NSString*)title withID:(NSString*)ID;//请求关注粉丝列表
 -(void)startRequestData4;//请求话题
--(void)startRequestData5:(int)page withType:(NSString*)type;//请求微博(此处只为获取相册,后面结合时可重新利用)
-//0：全部、1：原创、2：图片、3：视频、4：音乐
--(void)startRequestData5:(int)page;
+-(void)startRequestData5:(int)page withType:(NSString*)type withID:(NSString*)ID;
+//请求指定ID微博(此处只为获取相册,后面结合时可重新利用),page为第几页,每页20条
+//type为0：全部、1：原创、2：图片、3：视频、4：音乐
+-(void)startRequestData5:(int)page withID:(NSString*)ID;
+
 -(void)startRequestData6:(NSString*)name;//请求搜人的联想
 -(void)startRequestData7:(NSString*)userID;//根据用户ID获取用户详情
 -(void)startRequestData8:(NSString*)userID;//根据用户ID获取其和登陆用户的关系
