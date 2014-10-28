@@ -15,6 +15,7 @@
 #import "KZJPictureView.h"
 #import "KZJCardView.h"
 #import "KZJMyHomeView.h"
+#import "KZJCollectView.h"
 
 @interface KZJMeController : UIViewController
 {

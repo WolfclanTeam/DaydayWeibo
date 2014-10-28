@@ -23,7 +23,7 @@ typedef void(^passData)(NSDictionary*);
     passData passBlock;
     
     NSMutableArray*weiboData;
-    
+    NSMutableArray*collectData;
     
     //坚 的数组 签到
     NSMutableArray *addressArr;
@@ -46,14 +46,18 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData5:(int)page withType:(NSString*)type withID:(NSString*)ID;
 //请求指定ID微博(此处只为获取相册,后面结合时可重新利用),page为第几页,每页20条
 //type为0：全部、1：原创、2：图片、3：视频、4：音乐
--(void)startRequestData5:(int)page withID:(NSString*)ID;
+
+-(void)startRequestData5:(int)page withID:(NSString*)ID;
 
 -(void)startRequestData6:(NSString*)name;//请求搜人的联想
 -(void)startRequestData7:(NSString*)userID;//根据用户ID获取用户详情
 -(void)startRequestData8:(NSString*)userID;//根据用户ID获取其和登陆用户的关系
 -(void)startRequestData9:(NSString*)userID withName:(NSString*)name;//关注某用户
 -(void)startRequestData10:(NSString*)userID withName:(NSString*)name;//取消关注某用户
--(void)startRequestData11:(int)page;//获取当前
+-(void)startRequestData11:(int)page;//获取当前用户收藏
+-(void)startRequestData12:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu;//获取周边动态
+-(void)startRequestData12:(NSString*)type;//获取系统推荐用户
+-(void)startRequestData13:(int)page;//获取热门微博(公共微博)
 
 
 //锦章

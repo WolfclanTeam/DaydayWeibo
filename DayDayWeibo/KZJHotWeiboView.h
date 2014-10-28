@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KZJWeiboTableView.h"
 @interface KZJHotWeiboView : UIViewController
-
+{
+    int page;
+    NSMutableArray *dataArr;
+}
+@property(retain,nonatomic)KZJWeiboTableView *weiboList;
 @end

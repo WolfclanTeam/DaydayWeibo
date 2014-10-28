@@ -103,7 +103,7 @@
 }
 -(void)startRequestData6:(NSString*)name
 {
-    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:name,@"q",@"20",@"count",nil];
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:name,@"q",@"10",@"count",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/search/suggestions/users.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"998"];
 }
 
@@ -128,6 +128,32 @@
     NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:userID,@"uid",name,@"screen_name",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/destroy.json" httpMethod:@"POST" params:params1 delegate:self withTag:@"1002"];
 }
+-(void)startRequestData11:(int)page
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",@"25",@"count",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/favorites.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1005"];
+}
+-(void)startRequestData12:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",[NSString stringWithFormat:@"%f",latDu],@"lat",[NSString stringWithFormat:@"%f",longDu],@"long",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1004"];
+}
+-(void)startRequestData12:(NSString*)type
+{
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:type,@"category",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/suggestions/users/hot.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1006"];
+}
+
+-(void)startRequestData13:(int)page
+{
+    if (page==1)
+    {
+        [weiboData removeAllObjects];
+    }
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",@"20",@"count",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/public_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1007"];
+}
+
 #pragma mark 微博认证请求返回结果结束
 -(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
 {
@@ -157,6 +183,7 @@
         [self fansData:result];
     }else if ([request.tag isEqualToString:@"995"])
     {
+        NSLog(@"%@",[result objectFromJSONString]);
         [self fansData:result];
     }else if ([request.tag isEqualToString:@"996"])
     {
@@ -241,6 +268,48 @@
         [self photoNum:result];
         //用总微博数进行判断,实现遍历全部微博
         
+    }else if ([request.tag isEqualToString:@"1004"])
+    {
+//         NSLog(@"1004 = %@",[result objectFromJSONString]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundweibo" object:nil userInfo:[result objectFromJSONString]];
+        
+        
+    }else if ([request.tag isEqualToString:@"1005"])
+    {
+        if (collectData==nil)
+        {
+            collectData = [[NSMutableArray alloc]init];
+        }
+        NSDictionary *dict = [result objectFromJSONString];
+        for (NSDictionary*dict1 in [dict objectForKey:@"favorites"])
+        {
+            NSDictionary*dict2 = [NSDictionary dictionaryWithDictionary:[dict1 objectForKey:@"status"]];
+            [collectData addObject:dict2];
+        }
+        
+        NSDictionary*dict3 = [NSDictionary dictionaryWithObject:collectData forKey:@"statuses"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"myCollect" object:nil userInfo:dict3];
+        
+        
+    }else if ([request.tag isEqualToString:@"1006"])
+    {
+//         NSLog(@"1006 = %@",[result objectFromJSONString]);
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"findManView" object:nil userInfo:[NSDictionary dictionaryWithObject:[result objectFromJSONString] forKey:@"findMan"]];
+        
+    }else if ([request.tag isEqualToString:@"1007"])
+    {
+        if (weiboData==nil)
+        {
+            weiboData = [[NSMutableArray alloc]init];
+        }
+        NSDictionary *dict = [result objectFromJSONString];
+        for (NSDictionary*dict1 in [dict objectForKey:@"statuses"])
+        {
+            [weiboData addObject:dict1];
+        }
+        NSDictionary*dict2 = [NSDictionary dictionaryWithObject:weiboData forKey:@"statuses"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hotweibo" object:nil userInfo:dict2];
+        
     }else if ([request.tag isEqualToString:@"1100"])
     {
         // NSLog(@"1100 = %@",result);
@@ -251,8 +320,6 @@
     else if ([request.tag isEqualToString:@"1105"])
     {
         //  NSLog(@"签到：%@",result);
-        
-        
         NSDictionary *dict = [result objectFromJSONString];
         //NSLog(@"%@",dict);
         NSArray *poisArr =  [dict objectForKey:@"pois"];

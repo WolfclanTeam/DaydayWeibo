@@ -39,7 +39,7 @@
         UserInformation*info = [[KZJRequestData requestOnly]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
         
         UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
-        UIImageView*imageCover = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 140)];
+        UIImageView*imageCover = [[UIImageView alloc]initWithFrame:CGRectMake(0, -100, SCREENWIDTH, 240)];
         imageCover.tag = 110;
         imageCover.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:coverImages[num] ofType:@"jpg"]];
         [view addSubview:imageCover];

@@ -32,7 +32,8 @@
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"navigationbar_background@2x"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setAction)];
     
-    
+//    [[KZJRequestData requestOnly]startRequestData11:1];
+//    [[KZJRequestData requestOnly]startRequestData12:1 withLocationLat:1 withLocationLong:1];
     
 //    [self initView];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -50,6 +51,16 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"myView" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(myView) name:@"myView" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"collect" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(myCollect) name:@"collect" object:nil];
+}
+//我的收藏
+-(void)myCollect
+{
+    KZJCollectView*collectView = [[KZJCollectView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:collectView animated:YES];
 }
 //我的主页
 -(void)myView

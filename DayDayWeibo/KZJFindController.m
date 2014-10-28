@@ -98,7 +98,7 @@
     
     self.navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:leftItem1,leftItem2, nil];
     
-    NSArray*titleNameArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"热门微博笑话",@"找人", nil],[NSArray arrayWithObjects:@"游戏中心",@"应用",@"周边", nil],[NSArray arrayWithObjects:@"电影",@"听歌",@"发现兴趣", nil], nil];
+    NSArray*titleNameArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"热门微博",@"找人", nil],[NSArray arrayWithObjects:@"游戏中心",@"应用",@"周边", nil],[NSArray arrayWithObjects:@"电影",@"听歌",@"发现兴趣", nil], nil];
     
     NSArray*titleImageArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"findfriend_icon_star@2x",@"findfriend_icon_star@2x", nil], [NSArray arrayWithObjects:@"findfriend_icon_star@2x",@"findfriend_icon_star@2x",@"findfriend_icon_star@2x", nil],[NSArray arrayWithObjects:@"topic_movie@2x",@"tabbar_compose_music@2x",@"findfriend_icon_star@2x", nil],nil];
     
@@ -352,6 +352,7 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"cancelAttention" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"attention" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"relation" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"people" object:nil];
 }
 
 - (void)didReceiveMemoryWarning

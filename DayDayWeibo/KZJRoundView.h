@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface KZJRoundView : UIViewController
-
+#import <CoreLocation/CoreLocation.h>
+#import "KZJWeiboTableView.h"
+@interface KZJRoundView : UIViewController<UISearchBarDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager* locationManager;
+    int flag;
+    int page;
+    NSMutableArray *dataArr;
+    NSDictionary*locationDict;
+}
+@property(retain,nonatomic)KZJWeiboTableView *weiboList;
 @end

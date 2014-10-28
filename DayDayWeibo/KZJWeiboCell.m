@@ -197,6 +197,8 @@
     CGFloat statuHeight = 0.0f;
     retweetWeibo.hidden = YES;
     //博主ID
+    if (dataArr.count>0)
+    {
     idLabel.text = [[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"screen_name"];
     //微博发布时间以及来源
     NSString *sourceStr = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"source"];
@@ -410,6 +412,7 @@
     [retweetBtn addTarget:self action:@selector(retweetAction:) forControlEvents:UIControlEventTouchUpInside];
     [commentBtn addTarget:self action:@selector(commentAction:) forControlEvents:UIControlEventTouchUpInside];
     [attitudeBtn addTarget:self action:@selector(attitudeAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 #pragma mark-RTLabelDelegate

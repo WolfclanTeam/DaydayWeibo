@@ -171,7 +171,7 @@
         KZJRequestData *datamanager = [KZJRequestData requestOnly];
         NSNumber *weiboID = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"id"];
         
-        NSString *str = [weiboID stringValue];
+        NSString *str = [NSString stringWithFormat:@"%@",weiboID];
         [datamanager getADetailWeibo:str];
         [datamanager passWeiboData:^(NSDictionary *dict) {
             NSNotification *detailWeiboNoti = [[NSNotification alloc] initWithName:@"DETAILWEIBO" object:self userInfo:dict];

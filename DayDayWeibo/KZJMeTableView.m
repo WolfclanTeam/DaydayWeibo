@@ -271,7 +271,7 @@
     }else if (indexPath.section ==1 &&indexPath.row==1)
     {
 //        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"picture" object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"collect" object:nil];
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -1,63 +1,70 @@
 //
-//  KZJHotWeiboView.m
+//  KZJCollectView.m
 //  DayDayWeibo
 //
-//  Created by bk on 14/10/25.
+//  Created by bk on 14/10/28.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJHotWeiboView.h"
+#import "KZJCollectView.h"
 
-@interface KZJHotWeiboView ()
+@interface KZJCollectView ()
 
 @end
 
-@implementation KZJHotWeiboView
+@implementation KZJCollectView
 @synthesize weiboList;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"热门微博";
+    self.navigationItem.title = @"我的收藏";
     UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
     UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
     self.navigationItem.leftBarButtonItem = leftItem;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    page = 1;
-    weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64) view:self.tabBarController.view];
     
+    page =1;
+
+    
+    weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) view:self.tabBarController.view];
+    [self.view addSubview:weiboList];
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
     [weiboList headerBeginRefreshing];
     [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];
-    [self.view addSubview:weiboList];
     
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"hotweibo" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hotweibo:) name:@"hotweibo" object:nil];
+    
+    
+//    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"myfavorites" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(myfavorites:) name:@"myfavorites" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"myCollect" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(myCollect:) name:@"myCollect" object:nil];
+    
 }
--(void)hotweibo:(NSNotification*)notif
+-(void)myCollect:(NSNotification*)notif
 {
-    NSDictionary*dict = [notif userInfo];
-    dataArr = [dict objectForKey:@"statuses"];
-    weiboList.dataArr = dataArr;
-    [weiboList reloadData];
     [weiboList headerEndRefreshing];
     [weiboList footerEndRefreshing];
+    
+    NSDictionary*dict = [notif userInfo];
+    dataArr = [dict objectForKey:@"statuses"];
+    NSLog(@"====%d",[dataArr count]);
+    weiboList.dataArr = dataArr;
+    [weiboList reloadData];
 }
-
 -(void)headerRefresh
 {
     page =1;
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
-    [datamanager startRequestData13:page];
+    [datamanager startRequestData11:page];
     
 }
-
 //
 -(void)footerRefresh
 {
     
     page++;
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
-    [datamanager startRequestData13:page];
+    [datamanager startRequestData11:page];
     
 }
 -(void)back

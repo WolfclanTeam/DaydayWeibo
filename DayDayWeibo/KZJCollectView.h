@@ -1,18 +1,17 @@
 //
-//  KZJMyHomeView.h
+//  KZJCollectView.h
 //  DayDayWeibo
 //
-//  Created by bk on 14-10-23.
+//  Created by bk on 14/10/28.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "KZJShareSheet.h"
-@interface KZJMyHomeView : UIViewController<UISearchBarDelegate>
+
+@interface KZJCollectView : UIViewController
 {
     NSMutableArray *dataArr;
     int page;
 }
-@property(retain,nonatomic)NSString*ID;
 @property(retain,nonatomic)KZJWeiboTableView *weiboList;
 @end

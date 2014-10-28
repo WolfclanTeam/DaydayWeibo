@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0FE2588319FE4E3200783A90 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2588219FE4E3200783A90 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A56B305419FF29CF00141A2C /* 中国广东广州人民北路.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A56B305319FF29CF00141A2C /* 中国广东广州人民北路.gpx */; };
+		A56B305719FF30C900141A2C /* KZJCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B305619FF30C900141A2C /* KZJCollectView.m */; };
+		A56B305919FF3E0400141A2C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56B305819FF3E0400141A2C /* CoreLocation.framework */; };
+		A56B305B19FF3E0900141A2C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56B305A19FF3E0900141A2C /* MapKit.framework */; };
+		A56B305D19FF69F900141A2C /* userinfo_icon_screening@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B305C19FF69F900141A2C /* userinfo_icon_screening@2x.png */; };
+		A56B306019FF6DF300141A2C /* KZJPullDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B305F19FF6DF300141A2C /* KZJPullDownView.m */; };
+		A56B306419FFA0DC00141A2C /* activity_card_locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B306319FFA0DC00141A2C /* activity_card_locate@2x.png */; };
+		A56B306619FFA91500141A2C /* compose_privatebutton_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */; };
 		DE33549C19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */; };
 		DE33549D19FE52D8005EA80C /* compose_pic_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */; };
 		DE33549F19FE5509005EA80C /* activity_icon_locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */; };
@@ -276,6 +284,17 @@
 /* Begin PBXFileReference section */
 		0FE2588119FE4E3200783A90 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		0FE2588219FE4E3200783A90 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		A56B305319FF29CF00141A2C /* 中国广东广州人民北路.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "中国广东广州人民北路.gpx"; sourceTree = "<group>"; };
+		A56B305519FF30C900141A2C /* KZJCollectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCollectView.h; sourceTree = "<group>"; };
+		A56B305619FF30C900141A2C /* KZJCollectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCollectView.m; sourceTree = "<group>"; };
+		A56B305819FF3E0400141A2C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A56B305A19FF3E0900141A2C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A56B305C19FF69F900141A2C /* userinfo_icon_screening@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userinfo_icon_screening@2x.png"; sourceTree = "<group>"; };
+		A56B305E19FF6DF300141A2C /* KZJPullDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJPullDownView.h; sourceTree = "<group>"; };
+		A56B305F19FF6DF300141A2C /* KZJPullDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJPullDownView.m; sourceTree = "<group>"; };
+		A56B306219FF704F00141A2C /* KZJPullDownViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJPullDownViewProtocol.h; sourceTree = "<group>"; };
+		A56B306319FFA0DC00141A2C /* activity_card_locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity_card_locate@2x.png"; sourceTree = "<group>"; };
+		A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_privatebutton_background@2x.png"; sourceTree = "<group>"; };
 		DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add@2x.png"; sourceTree = "<group>"; };
 		DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity_icon_locate@2x.png"; sourceTree = "<group>"; };
@@ -661,6 +680,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56B305B19FF3E0900141A2C /* MapKit.framework in Frameworks */,
+				A56B305919FF3E0400141A2C /* CoreLocation.framework in Frameworks */,
 				DE5669B319FE477B00B4624E /* libicucore.dylib in Frameworks */,
 				DEBCFDE219F2126D0014D970 /* libWeiboSDK.a in Frameworks */,
 				DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */,
@@ -704,6 +725,8 @@
 				DE3A646819FE36F100BA4E59 /* KZJCardView.m */,
 				DE3A646919FE36F100BA4E59 /* KZJMyHomeView.h */,
 				DE3A646A19FE36F100BA4E59 /* KZJMyHomeView.m */,
+				A56B305519FF30C900141A2C /* KZJCollectView.h */,
+				A56B305619FF30C900141A2C /* KZJCollectView.m */,
 			);
 			name = MeSunController;
 			sourceTree = "<group>";
@@ -843,6 +866,7 @@
 		DEBCFD9919F2114A0014D970 = {
 			isa = PBXGroup;
 			children = (
+				A56B305319FF29CF00141A2C /* 中国广东广州人民北路.gpx */,
 				DEBCFDAD19F2114A0014D970 /* DayDayWeibo */,
 				DEBCFDCA19F2114A0014D970 /* DayDayWeiboTests */,
 				DEBCFDA419F2114A0014D970 /* Frameworks */,
@@ -862,6 +886,8 @@
 		DEBCFDA419F2114A0014D970 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A56B305A19FF3E0900141A2C /* MapKit.framework */,
+				A56B305819FF3E0400141A2C /* CoreLocation.framework */,
 				DE5669B219FE477B00B4624E /* libicucore.dylib */,
 				DEBCFDA519F2114A0014D970 /* Foundation.framework */,
 				DEBCFDA719F2114A0014D970 /* CoreGraphics.framework */,
@@ -942,6 +968,9 @@
 				DE3A64A619FE379F00BA4E59 /* KZJLoadView.m */,
 				DE3A64A719FE379F00BA4E59 /* KZJShareSheet.h */,
 				DE3A64A819FE379F00BA4E59 /* KZJShareSheet.m */,
+				A56B306219FF704F00141A2C /* KZJPullDownViewProtocol.h */,
+				A56B305E19FF6DF300141A2C /* KZJPullDownView.h */,
+				A56B305F19FF6DF300141A2C /* KZJPullDownView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1105,6 +1134,9 @@
 		DEBCFE5519F212BB0014D970 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */,
+				A56B306319FFA0DC00141A2C /* activity_card_locate@2x.png */,
+				A56B305C19FF69F900141A2C /* userinfo_icon_screening@2x.png */,
 				DE3354BA19FE5657005EA80C /* compose_guide_check_box_number@2x.png */,
 				DE3354B819FE563A005EA80C /* compose_guide_check_box_right@2x.png */,
 				DE3354B619FE55B5005EA80C /* message_add_background_highlighted@2x.png */,
@@ -1465,6 +1497,7 @@
 				DE3A657819FE3AF400BA4E59 /* accountmanage_add@2x.png in Resources */,
 				DE3A653F19FE3AF400BA4E59 /* more_icon_code@2x.png in Resources */,
 				DE3A658D19FE3AF400BA4E59 /* tabbar_profile_highlighted@2x.png in Resources */,
+				A56B306419FFA0DC00141A2C /* activity_card_locate@2x.png in Resources */,
 				DE3A654D19FE3AF400BA4E59 /* more_email_highlighted@2x.png in Resources */,
 				DE3A653519FE3AF400BA4E59 /* page_cover_poi_background@2x.jpg in Resources */,
 				DE3A652F19FE3AF400BA4E59 /* userinfo_relationship_indicator_edit@2x.png in Resources */,
@@ -1472,6 +1505,7 @@
 				DE3A654119FE3AF400BA4E59 /* userinfo_tabicon_more@2x.png in Resources */,
 				DE3A655C19FE3AF400BA4E59 /* searchbar_textfield_down_icon@2x.png in Resources */,
 				DE3A657119FE3AF400BA4E59 /* messagescenter_at@2x.png in Resources */,
+				A56B306619FFA91500141A2C /* compose_privatebutton_background@2x.png in Resources */,
 				DE5669B819FE47A700B4624E /* page_image_loading@2x.png in Resources */,
 				DE3A655319FE3AF400BA4E59 /* more_weixin_highlighted@2x.png in Resources */,
 				DE3A657019FE3AF400BA4E59 /* messagescenter_comments@2x.png in Resources */,
@@ -1505,6 +1539,7 @@
 				DE3354B119FE559E005EA80C /* compose_emoticonbutton_background@2x.png in Resources */,
 				DE3A653019FE3AF400BA4E59 /* page_cover_book_background@2x.jpg in Resources */,
 				DE3A655119FE3AF400BA4E59 /* more_weibo_highlighted@2x.png in Resources */,
+				A56B305D19FF69F900141A2C /* userinfo_icon_screening@2x.png in Resources */,
 				DE3A654419FE3AF400BA4E59 /* more_icon_back@2x.png in Resources */,
 				DE3A655619FE3AF400BA4E59 /* meyou_invitation_loading_dot_3@2x.png in Resources */,
 				DE33549C19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png in Resources */,
@@ -1536,6 +1571,7 @@
 				DE3A653B19FE3AF400BA4E59 /* attitoolbar_icon_unlike@2x.png in Resources */,
 				DE3A64C319FE38E500BA4E59 /* more_chat@2x.png in Resources */,
 				DE3A654919FE3AF400BA4E59 /* more_chat_highlighted@2x.png in Resources */,
+				A56B305419FF29CF00141A2C /* 中国广东广州人民北路.gpx in Resources */,
 				DE3A653719FE3AF400BA4E59 /* page_cover_topic_background@2x.jpg in Resources */,
 				DE3A64C419FE38E500BA4E59 /* more_chat_highlighted@2x.png in Resources */,
 				DE3A654019FE3AF400BA4E59 /* more_icon_channelmanage@2x.png in Resources */,
@@ -1637,6 +1673,7 @@
 				DEBCFE2219F212870014D970 /* SDWebImageCompat.m in Sources */,
 				DE3A64AA19FE379F00BA4E59 /* KZJShareSheet.m in Sources */,
 				DE3A644619FE366D00BA4E59 /* KZJInformationCell.m in Sources */,
+				A56B306019FF6DF300141A2C /* KZJPullDownView.m in Sources */,
 				DE5669AF19FE474900B4624E /* NSString+URLEncoding.m in Sources */,
 				DEBCFDB419F2114A0014D970 /* main.m in Sources */,
 				DE3A648C19FE373000BA4E59 /* KZJRoundView.m in Sources */,
@@ -1658,6 +1695,7 @@
 				DE3A64CD19FE396700BA4E59 /* UserInformation.m in Sources */,
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,
 				DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */,
+				A56B305719FF30C900141A2C /* KZJCollectView.m in Sources */,
 				DEBCFE2419F212870014D970 /* SDWebImageDownloader.m in Sources */,
 				DE5669A819FE46A800B4624E /* KZJDetailWeiboViewController.m in Sources */,
 				DE5669A719FE46A800B4624E /* KZJHomeController.m in Sources */,

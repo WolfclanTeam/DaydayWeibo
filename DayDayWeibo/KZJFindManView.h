@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface KZJFindManView : UIViewController
-
+#import "KZJInformationCell.h"
+#import "KZJPullDownView.h"
+#import "KZJInformationCell.h"
+@interface KZJFindManView : UIViewController<UIAlertViewDelegate,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,KZJPullDownViewProtocol>
+{
+    NSArray*manArray;
+    NSDictionary*dictDetail;
+    NSDictionary*dictDetail2;
+    NSString*type;
+    NSArray*peopleArray;
+}
+@property(retain,nonatomic)UITableView*tableview;
+@property(retain,nonatomic)UITableView*findTable;
 @end
