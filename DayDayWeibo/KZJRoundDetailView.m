@@ -13,7 +13,7 @@
 @end
 
 @implementation KZJRoundDetailView
-@synthesize mapView,weiboList,selectedBtn;
+@synthesize mapview,weiboList,selectedBtn;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -45,11 +45,12 @@
     
     weiboList.tableHeaderView = ({
         UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 180)];
-        if (mapView==nil)
+        if (mapview==nil)
         {
-            mapView = [[MKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 150)];
+            mapview = [[MKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 150)];
+            mapview.delegate = self;
         }
-        [view addSubview:mapView];
+        [view addSubview:mapview];
         NSArray*titleArray = [NSArray arrayWithObjects:@"微博",@"图片",@"人",@"地点", nil];
         for (int i = 0; i<4; i++)
         {
@@ -78,6 +79,18 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"roundDetail" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(roundDetail:) name:@"roundDetail" object:nil];
     
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"photoDetailWeibo" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoDetailWeibo:) name:@"photoDetailWeibo" object:nil];
+    
+}
+-(void)photoDetailWeibo:(NSNotification*)notif
+{
+    KZJDetailWeiboViewController*detailView = [[KZJDetailWeiboViewController alloc]init];
+    //    NSLog(@"%@",[notif userInfo]);
+    detailView.dataDict = [notif userInfo];
+    detailView.kind = @"非模态";
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:NO];
 }
 -(void)roundDetail:(NSNotification*)notif
 {
@@ -86,10 +99,14 @@
     {
         dataArr = [dict objectForKey:@"statuses"];
         weiboList.dataArr = dataArr;
+        
     }else if (flag==1)
     {
         dataArr = [dict objectForKey:@"photo"];
+//        NSLog(@"%@",dict);
+        NSArray*photoB = [NSArray arrayWithArray:[dict objectForKey:@"photoBigger"]];
         weiboList.photoArray = dataArr;
+        weiboList.photoBiggerArray = photoB;
     }else if (flag==2)
     {
         dataArr = [dict objectForKey:@"users"];
@@ -101,7 +118,6 @@
         NSLog(@"%@",dataArr);
         weiboList.addressArray = dataArr;
     }
-    
     
     [weiboList reloadData];
     [weiboList headerEndRefreshing];
@@ -141,36 +157,36 @@
 -(void)headerRefresh
 {
     page =1;
-
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"====3243546");
+//    NSLog(@"====3243546");
     
     CLGeocoder*coder = [[CLGeocoder alloc]init];
     [coder reverseGeocodeLocation:manager.location completionHandler:^(NSArray *placemarks, NSError *error)
     {
         
          //移除所有大头针和气泡
-         [mapView removeAnnotations:mapView.annotations];
+         [mapview removeAnnotations:mapview.annotations];
          //
          if ([placemarks count]>0)
          {
              CLPlacemark*placeMark = [placemarks objectAtIndex:0];
              //设置显示区域region
              MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(placeMark.location.coordinate, 100, 100);
-             [mapView setRegion:region animated:YES];
-             NSLog(@"%f,%f",mapView.centerCoordinate.latitude,mapView.centerCoordinate.longitude);
+             [mapview setRegion:region animated:YES];
+//             NSLog(@"%f,%f",mapview.centerCoordinate.latitude,mapview.centerCoordinate.longitude);
              //添加气泡信息
-//             MapLocation*annotation = [[MapLocation alloc]init];
-//             annotation.coordinate = placeMark.location.coordinate;
-//             annotation.state = [placeMark.addressDictionary objectForKey:(NSString*)kABPersonAddressStateKey];
-//             annotation.city = [placeMark.addressDictionary objectForKey:(NSString*)kABPersonAddressCityKey];
-//             annotation.streetAddress = [placeMark.addressDictionary objectForKey:(NSString*)kABPersonAddressStreetKey];
-//             annotation.zip = [placeMark.addressDictionary objectForKey:(NSString*)kABPersonAddressZIPKey];
-//             [mapView addAnnotation:annotation];
+             MapLocation*annotation = [[MapLocation alloc]init];
+             annotation.coordinate = placeMark.location.coordinate;
+             annotation.state = [placeMark.addressDictionary objectForKey:@"State"];
+             annotation.city = [placeMark.addressDictionary objectForKey:@"City"];
+             annotation.streetAddress = [placeMark.addressDictionary objectForKey:@"Street"];
+             annotation.zip = [placeMark.addressDictionary objectForKey:@"SubLocality"];
+             [mapview addAnnotation:annotation];
+             
              
              locationLatitude = manager.location.coordinate.latitude ;
              locationLongitude = manager.location.coordinate.longitude;
@@ -183,7 +199,21 @@
      }];
     
 }
-
+//设置大头针
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+//    NSLog(@"3243567");
+    static NSString*mark = @"mark";
+    MKPinAnnotationView*annotationView =(MKPinAnnotationView*) [mapView dequeueReusableAnnotationViewWithIdentifier:mark];
+    if (annotationView ==nil)
+    {
+        annotationView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:mark];
+        annotationView.animatesDrop = YES;//大头针动画
+        annotationView.canShowCallout = YES;//显示气泡信息
+        annotationView.selected = YES;
+    }
+    return annotationView;
+}
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];

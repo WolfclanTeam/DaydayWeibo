@@ -22,6 +22,7 @@
 @property(nonatomic,retain)NSArray *dataArr;
 
 @property(nonatomic,retain)NSArray *photoArray;
+@property(nonatomic,retain)NSArray *photoBiggerArray;
 @property(nonatomic,retain)NSArray *peopleArray;
 @property(nonatomic,retain)NSArray *addressArray;
 @property(nonatomic,retain)NSString*kind;

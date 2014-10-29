@@ -273,7 +273,9 @@
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"COMMENT"])
     {
+       
         NSDictionary *dict = [result objectFromJSONString];
+        NSLog(@"%@",dict);
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"GETWEIBO"])
     {
@@ -335,15 +337,18 @@
     {
 //         NSLog(@"1100 = %@",[[[result objectFromJSONString] objectForKey:@"statuses"] objectAtIndex:0]);
         NSMutableArray*photoArray1 = [[NSMutableArray alloc]init];
+        NSMutableArray*photoBiggerArray1 = [[NSMutableArray alloc]init];
         for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"])
         {
+            
             if ([dict objectForKey:@"thumbnail_pic"] !=nil)
             {
                 [photoArray1 addObject:[NSDictionary dictionaryWithObject:[dict objectForKey:@"thumbnail_pic"] forKey:@"thumbnail_pic"]];
+                [photoBiggerArray1 addObject:dict];
             }
             
         }
-        NSDictionary*dict1 = [NSDictionary dictionaryWithObject:photoArray1 forKey:@"photo"];
+        NSDictionary*dict1 =@{@"photo":photoArray1,@"photoBigger":photoBiggerArray1};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict1];
         
     }else if ([request.tag isEqualToString:@"1010"])
@@ -402,10 +407,12 @@
     if (photoArray==nil)
     {
         photoArray = [[NSMutableArray alloc]init];
+        photoBiggerArray = [[NSMutableArray alloc]init];
     }
     static int pageNum = 1;
     if (pageNum==1)
     {
+        [photoBiggerArray removeAllObjects];
         [photoArray removeAllObjects];
     }
     int i =0;
@@ -417,10 +424,11 @@
             for (NSString*str in [dict objectForKey:@"pic_urls"])
             {
                 [photoArray addObject:str];
+                [photoBiggerArray addObject:dict];
             }
+            
         }
     }
-    
     KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = app.managedObjectContext;
     UserInformation*info = [self searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
@@ -445,7 +453,7 @@
     {
         pageNum =1;
         //        NSLog(@"%@",photoArray);
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"photo" object:nil userInfo:[NSDictionary dictionaryWithObject:photoArray forKey:@"photo"]];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"photo" object:nil userInfo:@{@"photo":photoArray,@"photoBigger":photoBiggerArray}];
     }
 }
 #pragma mark 关注用户信息

@@ -9,7 +9,7 @@
 #import "KZJWeiboTableView.h"
 
 @implementation KZJWeiboTableView
-@synthesize dataArr,kind,selectedBtn,photoArray,flag,peopleArray,addressArray;
+@synthesize dataArr,kind,selectedBtn,photoArray,flag,peopleArray,addressArray,photoBiggerArray;
 
 - (id)initWithFrame:(CGRect)frame view:(UIView*)view
 {
@@ -88,7 +88,7 @@
         KZJPhotoCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
         if (cell==nil)
         {
-            cell = [[KZJPhotoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+            cell = [[KZJPhotoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark withBiggerPhotoArray:photoBiggerArray withControllerView:self.superview];
         }
         cell.backgroundColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -111,7 +111,7 @@
             [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[photoArray[indexPath.row*3+1] objectForKey:@"thumbnail_pic"]]];
             [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[photoArray[indexPath.row*3+2] objectForKey:@"thumbnail_pic"]]];
         }
-        
+         cell.tag = 1000+indexPath.row;
         return  cell;
     }else if (flag == 0)
     {

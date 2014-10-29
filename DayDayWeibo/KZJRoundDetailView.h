@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-
-@interface KZJRoundDetailView : UIViewController<CLLocationManagerDelegate>
+#import "MapLocation.h"
+@interface KZJRoundDetailView : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate>
 {
     CLLocationManager* locationManager;
     int flag;
@@ -21,5 +21,5 @@
 }
 @property(retain,nonatomic)KZJWeiboTableView *weiboList;
 @property (nonatomic, weak) UIButton *selectedBtn;
-@property(retain,nonatomic)MKMapView *mapView;
+@property(retain,nonatomic)MKMapView *mapview;
 @end

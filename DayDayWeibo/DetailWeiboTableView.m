@@ -213,7 +213,7 @@
         repostsCount.text = @"转发";
         [repostsBtn addSubview:repostsCount];
         [repostsBtn addSubview:repostsBG];
-        [self.superview addSubview:repostsBtn];
+        [supView addSubview:repostsBtn];
         
         //评论
         commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -224,7 +224,7 @@
         commentCount.text = @"评论";
         [commentBtn addSubview:commentBG];
         [commentBtn addSubview:commentCount];
-        [self.superview addSubview:commentBtn];
+        [supView addSubview:commentBtn];
         
         //表态
         attitudesBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -235,7 +235,7 @@
         attitudeCount.text = @"赞";
         [attitudesBtn addSubview:attitudesBG];
         [attitudesBtn addSubview:attitudeCount];
-        [self.superview addSubview:attitudesBtn];
+        [supView addSubview:attitudesBtn];
         
         
         headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH,weiboContentHeight+50+weiboImageHeight+retweetImageHeight+retweetContentHeight)];

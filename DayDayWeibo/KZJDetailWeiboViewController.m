@@ -13,7 +13,7 @@
 @end
 
 @implementation KZJDetailWeiboViewController
-@synthesize dataDict,fromCom;
+@synthesize dataDict,fromCom,kind;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,16 +45,28 @@
     
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
     NSNumber *weiboID = [dataDict objectForKey:@"id"];
-    NSString *str = [weiboID stringValue];
+    NSString *str = [NSString stringWithFormat:@"%@",weiboID];
+    
     [datamanager getCommentList:str];
     [datamanager passWeiboData:^(NSDictionary *dict) {
-        detail = [[DetailWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-30) dataDict:dataDict superView:self.navigationController.view];
+        if ([kind isEqualToString:@"非模态"])
+        {
+            detail = [[DetailWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-30) dataDict:dataDict superView:self.view];
+        }else if ([kind isEqualToString:@"非模态1"])
+        {
+            detail = [[DetailWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64-30) dataDict:dataDict superView:self.view];
+        }
+        else
+        {
+            detail = [[DetailWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-30) dataDict:dataDict superView:self.view];
+        }
+        
         detail.commentsArr = [dict objectForKey:@"comments"];
         if (self.fromCom == YES)
         {
             [detail reloadData];
         }
-        
+//        self.navigationController.view = detail;
         [detail addHeaderWithTarget:self action:@selector(headerRefresh)];
         [detail addFooterWithTarget:self action:@selector(footerRefresh)];
         
@@ -116,7 +128,21 @@
 
 -(void)backAction
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([kind isEqualToString:@"非模态"])
+    {
+        self.hidesBottomBarWhenPushed = YES;
+        self.navigationController.navigationBarHidden = NO;
+        [self.navigationController popViewControllerAnimated:NO];
+    }else if ([kind isEqualToString:@"非模态1"])
+    {
+        self.hidesBottomBarWhenPushed = YES;
+        self.navigationController.navigationBarHidden = YES;
+        [self.navigationController popViewControllerAnimated:NO];
+    }else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

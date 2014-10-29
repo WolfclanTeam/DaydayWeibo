@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface KZJPhotoCell : UITableViewCell
+{
+    NSArray*biggerPhotoArray;
+    UIView*mainview;
+}
 @property(retain,nonatomic)UIImageView*image1;
 @property(retain,nonatomic)UIImageView*image2;
 @property(retain,nonatomic)UIImageView*image3;
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withBiggerPhotoArray:(NSArray*)biggerArray withControllerView:(UIView*)view;
 @end

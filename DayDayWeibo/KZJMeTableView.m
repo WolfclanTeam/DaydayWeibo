@@ -272,6 +272,10 @@
     {
 //        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"collect" object:nil];
+    }else if (indexPath.section ==3 &&indexPath.row==1)
+    {
+        //        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"draft" object:nil];
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

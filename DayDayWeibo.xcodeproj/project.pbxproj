@@ -17,6 +17,9 @@
 		A56B306419FFA0DC00141A2C /* activity_card_locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B306319FFA0DC00141A2C /* activity_card_locate@2x.png */; };
 		A56B306619FFA91500141A2C /* compose_privatebutton_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */; };
 		A56B71151A00759E00B51EAD /* KZJRoundDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B71141A00759E00B51EAD /* KZJRoundDetailView.m */; };
+		A56B71181A00C90800B51EAD /* KZJDraftView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B71171A00C90800B51EAD /* KZJDraftView.m */; };
+		A56B711B1A00CAF600B51EAD /* MapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B711A1A00CAF600B51EAD /* MapLocation.m */; };
+		A56B711D1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B711C1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png */; };
 		DE33549C19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */; };
 		DE33549D19FE52D8005EA80C /* compose_pic_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */; };
 		DE33549F19FE5509005EA80C /* activity_icon_locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */; };
@@ -298,6 +301,11 @@
 		A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_privatebutton_background@2x.png"; sourceTree = "<group>"; };
 		A56B71131A00759E00B51EAD /* KZJRoundDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJRoundDetailView.h; sourceTree = "<group>"; };
 		A56B71141A00759E00B51EAD /* KZJRoundDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRoundDetailView.m; sourceTree = "<group>"; };
+		A56B71161A00C90800B51EAD /* KZJDraftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJDraftView.h; sourceTree = "<group>"; };
+		A56B71171A00C90800B51EAD /* KZJDraftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJDraftView.m; sourceTree = "<group>"; };
+		A56B71191A00CAF600B51EAD /* MapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocation.h; sourceTree = "<group>"; };
+		A56B711A1A00CAF600B51EAD /* MapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocation.m; sourceTree = "<group>"; };
+		A56B711C1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_save_icon_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add@2x.png"; sourceTree = "<group>"; };
 		DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity_icon_locate@2x.png"; sourceTree = "<group>"; };
@@ -730,6 +738,8 @@
 				DE3A646A19FE36F100BA4E59 /* KZJMyHomeView.m */,
 				A56B305519FF30C900141A2C /* KZJCollectView.h */,
 				A56B305619FF30C900141A2C /* KZJCollectView.m */,
+				A56B71161A00C90800B51EAD /* KZJDraftView.h */,
+				A56B71171A00C90800B51EAD /* KZJDraftView.m */,
 			);
 			name = MeSunController;
 			sourceTree = "<group>";
@@ -762,6 +772,8 @@
 				DE3A648919FE373000BA4E59 /* KZJRoundView.m */,
 				A56B71131A00759E00B51EAD /* KZJRoundDetailView.h */,
 				A56B71141A00759E00B51EAD /* KZJRoundDetailView.m */,
+				A56B71191A00CAF600B51EAD /* MapLocation.h */,
+				A56B711A1A00CAF600B51EAD /* MapLocation.m */,
 			);
 			name = findsubcontroller;
 			sourceTree = "<group>";
@@ -1139,6 +1151,7 @@
 		DEBCFE5519F212BB0014D970 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A56B711C1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png */,
 				A56B306519FFA91500141A2C /* compose_privatebutton_background@2x.png */,
 				A56B306319FFA0DC00141A2C /* activity_card_locate@2x.png */,
 				A56B305C19FF69F900141A2C /* userinfo_icon_screening@2x.png */,
@@ -1504,6 +1517,7 @@
 				DE3A658D19FE3AF400BA4E59 /* tabbar_profile_highlighted@2x.png in Resources */,
 				A56B306419FFA0DC00141A2C /* activity_card_locate@2x.png in Resources */,
 				DE3A654D19FE3AF400BA4E59 /* more_email_highlighted@2x.png in Resources */,
+				A56B711D1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png in Resources */,
 				DE3A653519FE3AF400BA4E59 /* page_cover_poi_background@2x.jpg in Resources */,
 				DE3A652F19FE3AF400BA4E59 /* userinfo_relationship_indicator_edit@2x.png in Resources */,
 				DE3A658719FE3AF400BA4E59 /* tabbar_home_highlighted@2x.png in Resources */,
@@ -1643,6 +1657,7 @@
 				DE3A645C19FE369200BA4E59 /* KZJPictureView.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				DE56697A19FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m in Sources */,
+				A56B711B1A00CAF600B51EAD /* MapLocation.m in Sources */,
 				DE3A648B19FE373000BA4E59 /* KZJFindManView.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1713,6 +1728,7 @@
 				DE56698F19FE3E8400B4624E /* KZJ@MyCommentSupportBaseController.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
 				DE5669B119FE474900B4624E /* RegexKitLite.m in Sources */,
+				A56B71181A00C90800B51EAD /* KZJDraftView.m in Sources */,
 				DE3A64C219FE38E500BA4E59 /* mask.c in Sources */,
 				DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */,
 				DE5669A619FE46A800B4624E /* KZJWebViewController.m in Sources */,

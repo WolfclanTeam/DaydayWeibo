@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"相册";
     photoArray = [[NSArray alloc]init];
-    
+    photoBiggerArray = [[NSArray alloc]init];
     
     UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
     UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
@@ -34,11 +34,24 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"photo" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoShow:) name:@"photo" object:nil];
     
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"photoDetailWeibo" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoDetailWeibo:) name:@"photoDetailWeibo" object:nil];
+    
+}
+-(void)photoDetailWeibo:(NSNotification*)notif
+{
+    KZJDetailWeiboViewController*detailView = [[KZJDetailWeiboViewController alloc]init];
+//    NSLog(@"%@",[notif userInfo]);
+    detailView.dataDict = [notif userInfo];
+    detailView.kind = @"非模态";
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:NO];
 }
 -(void)photoShow:(NSNotification*)notif
 {
 //    [photoArray]
     photoArray = [[notif userInfo] objectForKey:@"photo"];
+    photoBiggerArray = [[notif userInfo] objectForKey:@"photoBigger"];
     page = 1;
 //    NSLog(@"%@",photoArray);
     if (photoTable==nil)
@@ -97,6 +110,7 @@
     {
         UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经没有更多的图片了" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
+        
     }else
     {
         page++;
@@ -110,7 +124,7 @@
     KZJPhotoCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
     if (cell==nil)
     {
-        cell = [[KZJPhotoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        cell = [[KZJPhotoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark withBiggerPhotoArray:photoBiggerArray withControllerView:self.view];
     }
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -133,7 +147,7 @@
         [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[photoArray[indexPath.row*3+1] objectForKey:@"thumbnail_pic"]]];
         [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[photoArray[indexPath.row*3+2] objectForKey:@"thumbnail_pic"]]];
     }
-    
+    cell.tag = 1000+indexPath.row;
     return  cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -19,5 +19,6 @@
 }
 @property(nonatomic,retain)NSDictionary *dataDict;
 @property(nonatomic,assign)BOOL fromCom;
+@property(retain,nonatomic)NSString*kind;
 
 @end

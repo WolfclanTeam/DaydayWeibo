@@ -54,6 +54,16 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"collect" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(myCollect) name:@"collect" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"draft" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft) name:@"draft" object:nil];
+}
+//草稿箱
+-(void)draft
+{
+    KZJDraftView*draftView = [[KZJDraftView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:draftView animated:YES];
 }
 //我的收藏
 -(void)myCollect

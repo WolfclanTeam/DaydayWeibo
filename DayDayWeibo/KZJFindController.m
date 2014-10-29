@@ -52,7 +52,7 @@
     [loadView removeFromSuperview];
     NSDictionary*dict = [notif userInfo];
     topicArray = [NSArray arrayWithArray:[dict objectForKey:[[dict allKeys] objectAtIndex:0]]];
-    NSLog(@"%@",dict);
+//    NSLog(@"%@",dict);
     int num = arc4random_uniform([topicArray count]);
     
     UIView*view =[[UIView alloc]initWithFrame:CGRectMake(0, 5, 260, 34)];

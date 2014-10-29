@@ -16,6 +16,7 @@ typedef void(^passData)(NSDictionary*);
     NSMutableArray*arrayFans;
 //    NSMutableDictionary*dictFans;
     NSMutableArray*photoArray;
+    NSMutableArray*photoBiggerArray;
     NSMutableArray*peopleArray;
     int countNum;
     NSMutableArray*relationArray;
@@ -47,7 +48,7 @@ typedef void(^passData)(NSDictionary*);
 //请求指定ID微博(此处只为获取相册,后面结合时可重新利用),page为第几页,每页20条
 //type为0：全部、1：原创、2：图片、3：视频、4：音乐
 
--(void)startRequestData5:(int)page withID:(NSString*)ID;
+-(void)startRequestData5:(int)page withID:(NSString*)ID;//获取指定用户的相册
 
 -(void)startRequestData6:(NSString*)name;//请求搜人的联想
 -(void)startRequestData7:(NSString*)userID;//根据用户ID获取用户详情
@@ -59,6 +60,7 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData12:(NSString*)type;//获取系统推荐用户
 -(void)startRequestData13:(int)page;//获取热门微博(公共微博)
 -(void)startRequestData14:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu withType:(NSString*)type;//获取周边微博,人,地点,图片
+-(void)startRequestDataWithLocationLat:(float)latDu withLocationLong:(float)longDu;//根据坐标获取用户当前地点的详细信息
 
 //锦章
 -(void)passWeiboData:(passData)sender;

@@ -147,8 +147,19 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"addHeader" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addHeader) name:@"addHeader" object:nil];
     
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"photoDetailWeibo" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoDetailWeibo:) name:@"photoDetailWeibo" object:nil];
 }
-
+-(void)photoDetailWeibo:(NSNotification*)notif
+{
+    KZJDetailWeiboViewController*detailView = [[KZJDetailWeiboViewController alloc]init];
+    //    NSLog(@"%@",[notif userInfo]);
+    detailView.dataDict = [notif userInfo];
+    detailView.kind = @"非模态1";
+    self.hidesBottomBarWhenPushed = YES;
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController pushViewController:detailView animated:NO];
+}
 -(void)addHeader
 {
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
@@ -175,6 +186,7 @@
 {
     //    [photoArray]
     weiboList.photoArray = [[notif userInfo] objectForKey:@"photo"];
+    weiboList.photoBiggerArray = [[notif userInfo] objectForKey:@"photoBigger"];
                   
 }
 -(void)NoHideCover
