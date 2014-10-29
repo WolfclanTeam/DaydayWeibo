@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "KZJWeiboTableView.h"
+#import "KZJRoundDetailView.h"
 @interface KZJRoundView : UIViewController<UISearchBarDelegate,CLLocationManagerDelegate>
 {
     CLLocationManager* locationManager;

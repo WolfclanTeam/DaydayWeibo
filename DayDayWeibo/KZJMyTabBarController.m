@@ -30,10 +30,17 @@
         NSLog(@"12");
         imageArr = image;
         seletedImageArr = seletedImage;
-        
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:@"home" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(home) name:@"home" object:nil];
     }
     return self;
 }
+-(void)home
+{
+    UIButton*btn = (UIButton*)[self.tabBar viewWithTag:1000];
+    [self clickBtn:btn];
+}
+
 -(void)btn
 {
    

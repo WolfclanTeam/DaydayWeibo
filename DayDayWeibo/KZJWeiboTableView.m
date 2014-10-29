@@ -9,7 +9,7 @@
 #import "KZJWeiboTableView.h"
 
 @implementation KZJWeiboTableView
-@synthesize dataArr,kind,selectedBtn,photoArray;
+@synthesize dataArr,kind,selectedBtn,photoArray,flag,peopleArray,addressArray;
 
 - (id)initWithFrame:(CGRect)frame view:(UIView*)view
 {
@@ -36,6 +36,9 @@
     }else if (flag == 0)
     {
         return 30;
+    }else if (flag ==3||flag==4)
+    {
+        return 60;
     }
     CGFloat height = 0.0f;
     KZJWeiboCell *cell = (KZJWeiboCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -59,6 +62,12 @@
     }else if (flag ==0)
     {
         return 1;
+    }else if (flag ==3)
+    {
+        return [peopleArray count];
+    }else if (flag==4)
+    {
+        return [addressArray count];
     }
     return [dataArr count];
 }
@@ -129,6 +138,55 @@
         image.image = [UIImage imageNamed:@"login_detail@2x"];
         [cell.contentView addSubview:image];
         return cell;
+    }else if (flag==3)
+    {
+        static NSString*mark = @"markFind";
+        KZJInformationCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
+        if (cell ==nil)
+        {
+            cell = [[KZJInformationCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        }
+        
+        if (peopleArray.count>0)
+        {
+            [cell.image sd_setImageWithURL:[NSURL URLWithString:[peopleArray[indexPath.row] objectForKey:@"profile_image_url"]]];
+            cell.labelName.text = [peopleArray[indexPath.row]objectForKey:@"screen_name"];
+            cell.labelDetial.text = [NSString stringWithFormat:@"简介:%@",[peopleArray[indexPath.row]objectForKey:@"description"]];
+            if ([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==0)
+            {
+                [cell.btn setImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted@2x"] forState:UIControlStateNormal];
+            }else if([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==1)
+            {
+                if ([[peopleArray[indexPath.row]objectForKey:@"follow_me"] intValue]==1) {
+                    [cell.btn setImage:[UIImage imageNamed:@"card_icon_attention@2x"] forState:UIControlStateNormal];
+                }else
+                {
+                    [cell.btn setImage:[UIImage imageNamed:@"card_icon_arrow@2x"] forState:UIControlStateNormal];
+                }
+            }
+            cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[peopleArray[indexPath.row] objectForKey:@"id"]];
+            cell.btn.titleLabel.hidden = YES;
+            [cell.btn setHidden:NO];
+        }
+        return cell;
+    }else if (flag ==4)
+    {
+        static NSString*mark = @"markFind";
+        KZJInformationCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
+        if (cell ==nil)
+        {
+            cell = [[KZJInformationCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        }
+        
+        if (addressArray.count>0)
+        {
+            [cell.image sd_setImageWithURL:[NSURL URLWithString:[addressArray[indexPath.row] objectForKey:@"icon"]]];
+            cell.labelName.text = [addressArray[indexPath.row]objectForKey:@"address"];
+            cell.labelDetial.text = [NSString stringWithFormat:@"%@人",[addressArray[indexPath.row]objectForKey:@"checkin_num"]];
+            [cell.btn setHidden:YES];
+        }
+        return cell;
+
     }
     //重用
     static NSString *iden = @"CELLMARK";
@@ -165,6 +223,20 @@
         }else if(flag ==0)
         {
             
+        }
+    }else if([kind isEqualToString:@"位置周边"])
+    {
+        if (flag==1)
+        {
+            KZJRequestData *datamanager = [KZJRequestData requestOnly];
+            NSNumber *weiboID = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"id"];
+            
+            NSString *str = [NSString stringWithFormat:@"%@",weiboID];
+            [datamanager getADetailWeibo:str];
+            [datamanager passWeiboData:^(NSDictionary *dict) {
+                NSNotification *detailWeiboNoti = [[NSNotification alloc] initWithName:@"DETAILWEIBO" object:self userInfo:dict];
+                [[NSNotificationCenter defaultCenter] postNotification:detailWeiboNoti];
+            }];
         }
     }else
     {

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KZJHotTopicView : UIViewController
-
+@interface KZJHotTopicView : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property(retain,nonatomic)NSArray*topicArray;
 @end

@@ -33,6 +33,7 @@
         NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
         [locationManager requestAlwaysAuthorization];
     }
+    [locationManager startUpdatingLocation];
     flag = 0;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -40,7 +41,6 @@
     page = 1;
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
     [weiboList headerBeginRefreshing];
-    [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];
     [self.view addSubview:weiboList];
     
     
@@ -74,7 +74,7 @@
         
         UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(SCREENWIDTH-50, 50, 40, 45);
-        [btn setImage:[UIImage imageNamed:@"activity_card_locate@2x"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage redraw:[UIImage imageNamed:@"activity_card_locate@2x"] Frame:CGRectMake(0, 0, 20, 20)] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(daociyiyou) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];
         
@@ -138,6 +138,9 @@
 -(void)nextView
 {
     NSLog(@"dadsfdg");
+    KZJRoundDetailView*roundDetailView = [[KZJRoundDetailView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:roundDetailView animated:YES];
 }
 //到此一游
 -(void)daociyiyou
@@ -153,7 +156,7 @@
     [geocoder reverseGeocodeLocation:manager.location completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *mark =[placemarks objectAtIndex:0];
 //        NSString* currentLocation = [NSString stringWithFormat:@"%@,%@,%@,%@",[mark.addressDictionary objectForKey:@"State"],[mark.addressDictionary objectForKey:@"City"],[mark.addressDictionary objectForKey:@"SubLocality"],[mark.addressDictionary objectForKey:@"Street"]];
-        NSLog(@"===%@",[mark.addressDictionary allKeys]);
+//        NSLog(@"===%@",[mark.addressDictionary allKeys]);
         float locationLatitude = manager.location.coordinate.latitude ;
         float locationLongitude = manager.location.coordinate.longitude;
         if (!flag)
@@ -168,16 +171,10 @@
 -(void)headerRefresh
 {
     page =1;
-    [locationManager startUpdatingLocation];
+    
 }
 
-//
--(void)footerRefresh
-{
-    
-    page++;
-    [locationManager startUpdatingLocation];
-}
+
 -(void)back
 {
     self.hidesBottomBarWhenPushed = NO;

@@ -39,11 +39,11 @@
         [self addSubview:_btn];
         
         _labelName = [[UILabel alloc]initWithFrame:CGRectMake(55, 10, 200, 20)];
-        _labelName.font = [UIFont systemFontOfSize:16];
+        _labelName.font = [UIFont systemFontOfSize:15];
         [self addSubview:_labelName];
         
         _labelDetial = [[UILabel alloc]initWithFrame:CGRectMake(55, 33, 230, 18)];
-        _labelDetial.font = [UIFont systemFontOfSize:13];
+        _labelDetial.font = [UIFont systemFontOfSize:12];
         _labelDetial.textColor = [UIColor grayColor];
         [self addSubview:_labelDetial];
     }

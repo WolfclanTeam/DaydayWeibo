@@ -16,14 +16,16 @@
     int page;
     UIView *theView;
     NSMutableArray *newData;
-    int flag;
+    
 }
 - (id)initWithFrame:(CGRect)frame view:(UIView*)view;
 @property(nonatomic,retain)NSArray *dataArr;
 
 @property(nonatomic,retain)NSArray *photoArray;
+@property(nonatomic,retain)NSArray *peopleArray;
+@property(nonatomic,retain)NSArray *addressArray;
 @property(nonatomic,retain)NSString*kind;
 @property (nonatomic, weak) UIButton *selectedBtn;
-
+@property(assign,nonatomic)int flag;
 
 @end

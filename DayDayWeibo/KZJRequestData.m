@@ -153,7 +153,24 @@
     NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",@"20",@"count",nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/public_timeline.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1007"];
 }
-
+-(void)startRequestData14:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu withType:(NSString*)type
+{
+    NSDictionary*params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",[NSString stringWithFormat:@"%f",latDu],@"lat",[NSString stringWithFormat:@"%f",longDu],@"long",nil];
+    if ([type isEqualToString:@"微博"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby_timeline.json" httpMethod:@"GET" params:params delegate:self withTag:@"1008"];
+    }else if ([type isEqualToString:@"图片"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby/photos.json" httpMethod:@"GET" params:params delegate:self withTag:@"1009"];
+    }else if ([type isEqualToString:@"人"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby/users.json" httpMethod:@"GET" params:params delegate:self withTag:@"1010"];
+    }else if ([type isEqualToString:@"地点"])
+    {
+        [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/place/nearby/pois.json" httpMethod:@"GET" params:params delegate:self withTag:@"1011"];
+    }
+    
+}
 #pragma mark 微博认证请求返回结果结束
 -(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
 {
@@ -310,6 +327,37 @@
         NSDictionary*dict2 = [NSDictionary dictionaryWithObject:weiboData forKey:@"statuses"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hotweibo" object:nil userInfo:dict2];
         
+    }else if ([request.tag isEqualToString:@"1008"])
+    {
+        // NSLog(@"1100 = %@",result);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:[result objectFromJSONString]];
+    }else if ([request.tag isEqualToString:@"1009"])
+    {
+//         NSLog(@"1100 = %@",[[[result objectFromJSONString] objectForKey:@"statuses"] objectAtIndex:0]);
+        NSMutableArray*photoArray1 = [[NSMutableArray alloc]init];
+        for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"])
+        {
+            if ([dict objectForKey:@"thumbnail_pic"] !=nil)
+            {
+                [photoArray1 addObject:[NSDictionary dictionaryWithObject:[dict objectForKey:@"thumbnail_pic"] forKey:@"thumbnail_pic"]];
+            }
+            
+        }
+        NSDictionary*dict1 = [NSDictionary dictionaryWithObject:photoArray1 forKey:@"photo"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict1];
+        
+    }else if ([request.tag isEqualToString:@"1010"])
+    {
+//         NSLog(@"1100 = %@",[[[result objectFromJSONString] objectForKey:@"users"] objectAtIndex:0]);
+       
+        NSDictionary*dict = [NSDictionary dictionaryWithObject:[[result objectFromJSONString] objectForKey:@"users"] forKey:@"users"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict];
+        
+    }else if ([request.tag isEqualToString:@"1011"])
+    {
+         NSLog(@"1100 = %@",[result objectFromJSONString]);
+        NSDictionary*dict = [NSDictionary dictionaryWithObject:[[result objectFromJSONString] objectForKey:@"pois"] forKey:@"pois"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict];
     }else if ([request.tag isEqualToString:@"1100"])
     {
         // NSLog(@"1100 = %@",result);

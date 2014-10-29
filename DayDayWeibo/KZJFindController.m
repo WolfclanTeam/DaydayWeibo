@@ -52,7 +52,7 @@
     [loadView removeFromSuperview];
     NSDictionary*dict = [notif userInfo];
     topicArray = [NSArray arrayWithArray:[dict objectForKey:[[dict allKeys] objectAtIndex:0]]];
-//    NSLog(@"%@",topicArray);
+    NSLog(@"%@",dict);
     int num = arc4random_uniform([topicArray count]);
     
     UIView*view =[[UIView alloc]initWithFrame:CGRectMake(0, 5, 260, 34)];
@@ -157,6 +157,7 @@
 {
     KZJHotTopicView*hotTopicView = [[KZJHotTopicView alloc]init];
     self.hidesBottomBarWhenPushed = YES;
+    hotTopicView.topicArray = topicArray;
     [self.navigationController pushViewController:hotTopicView animated:YES];
 }
 #pragma mark 取消关注
@@ -334,6 +335,7 @@
     [cell.btn setImage:[UIImage imageNamed:@"login_user@2x"] forState:UIControlStateNormal];
     cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[peopleArray[indexPath.row]objectForKey:@"id"]];
     cell.btn.titleLabel.hidden = YES;
+    [cell.btn setHidden:NO];
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

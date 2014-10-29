@@ -14,7 +14,7 @@ typedef void(^passData)(NSDictionary*);
 @interface KZJRequestData : NSObject<WeiboSDKDelegate,UIApplicationDelegate,WBHttpRequestDelegate>
 {
     NSMutableArray*arrayFans;
-    NSMutableDictionary*dictFans;
+//    NSMutableDictionary*dictFans;
     NSMutableArray*photoArray;
     NSMutableArray*peopleArray;
     int countNum;
@@ -58,7 +58,7 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData12:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu;//获取周边动态
 -(void)startRequestData12:(NSString*)type;//获取系统推荐用户
 -(void)startRequestData13:(int)page;//获取热门微博(公共微博)
-
+-(void)startRequestData14:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu withType:(NSString*)type;//获取周边微博,人,地点,图片
 
 //锦章
 -(void)passWeiboData:(passData)sender;

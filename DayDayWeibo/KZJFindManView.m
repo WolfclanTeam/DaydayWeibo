@@ -146,7 +146,7 @@
     if ([tableView isEqual:tableview])
     {
         static NSString*mark = @"markFind";
-        KZJInformationCell*cell = [tableview dequeueReusableCellWithIdentifier:mark];
+        KZJInformationCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
         if (cell ==nil)
         {
             cell = [[KZJInformationCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
@@ -172,6 +172,7 @@
             }
             cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[manArray[indexPath.row] objectForKey:@"id"]];
             cell.btn.titleLabel.hidden = YES;
+            [cell.btn setHidden:NO];
         }
         return cell;
     }
