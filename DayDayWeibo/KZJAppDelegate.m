@@ -16,7 +16,76 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"===");
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    UIImageView*image1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    if (SCREENHEIGHT==480)
+    {
+        image1.image = [UIImage imageNamed:@"ad_background@2x"];
+    }else if (SCREENHEIGHT==568)
+    {
+        image1.image = [UIImage imageNamed:@"ad_background-568h@2x"];
+    }
+    UIImageView*subImage = [[UIImageView alloc]initWithFrame:CGRectMake(60, 100, SCREENWIDTH-120, 100)];
+    subImage.image = [UIImage imageNamed:@"compose_slogan@2x"];
+    subImage.tag = 10001;
+    [image1 addSubview:subImage];
+    image1.tag = 10000;
+    [self.window addSubview:image1];
+    
+    [self performSelector:@selector(action1) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(action2) withObject:nil afterDelay:3];
+    
+    return YES;
+}
+-(void)action1
+{
+
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]!=nil)
+    {
+
+        UIImageView*image = (UIImageView*)[self.window viewWithTag:10000];
+        UIImageView*subImage = (UIImageView*)[self.window viewWithTag:10001];
+        [subImage removeFromSuperview];
+        UserInformation*info = [[KZJRequestData requestOnly]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(60, 100, SCREENWIDTH-120, 100)];
+        UIImageView*photoImage = [[UIImageView alloc]initWithFrame:CGRectMake(75, 60, 50, 50)];
+        photoImage.image = [UIImage imageWithData:info.photoData];
+        photoImage.layer.cornerRadius = 25;
+        photoImage.layer.masksToBounds = YES;
+        photoImage.layer.shouldRasterize = YES;
+//        photoImage.backgroundColor = [UIColor redColor];
+        [label addSubview:photoImage];
+//        label.backgroundColor = [UIColor whiteColor];
+        label.tag = 10002;
+        [image addSubview:label];
+        
+        [UIView beginAnimations:@"translAnimation" context:nil];
+        [UIView setAnimationDuration:0.8];
+        [UIView setAnimationDelegate:self];//设置代理监视是否结束,不设不会进行方法
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+        [photoImage setTransform:CGAffineTransformMakeTranslation(0, -50)];
+        [UIView setAnimationRepeatAutoreverses:NO];
+        [UIView commitAnimations];
+    }
+}
+-(void)animationDidStop:(NSString *)animationName finished:(NSNumber*)number context:(void *)context
+{
+    UILabel*label = (UILabel*)[self.window viewWithTag:10002];
+    UILabel*label1 = [[UILabel alloc]initWithFrame:CGRectMake(70, 70, 60, 30)];
+    label1.textAlignment = NSTextAlignmentCenter;
+    label1.font = [UIFont systemFontOfSize:15];
+    label1.text = @"欢迎回来";
+    [label addSubview:label1];
+}
+-(void)action2
+{
+    UIImageView*image1 = (UIImageView*)[self.window viewWithTag:10000];
+    [image1 removeFromSuperview];
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]!=nil)
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"启动" forKey:@"标示启动"];
@@ -24,10 +93,7 @@
         [[KZJRequestData requestOnly] startRequestData1];
     }
     NSLog(@"%@",NSHomeDirectory());
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    
     
     KZJHomeController*homeController = [[KZJHomeController alloc]init];
     UINavigationController*nav_home = [[UINavigationController alloc]initWithRootViewController:homeController];
@@ -51,14 +117,8 @@
     myTabBar.titleArray = [NSArray arrayWithObjects:@"首页",@"消息",@"发现",@"我",nil];
     
     myTabBar.viewControllers = [NSArray arrayWithObjects:nav_home,nav_message,share,nav_find,nav_me, nil];
-    
-    
-    
-    
     self.window.rootViewController = myTabBar;
-    return YES;
 }
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

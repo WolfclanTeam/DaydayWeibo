@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     statusBarView.backgroundColor=[UIColor whiteColor];
+    
     [self.view addSubview:statusBarView];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
@@ -68,12 +69,14 @@
         UIButton*fansBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         fansBtn.frame = CGRectMake(160, 110, 60, 30);
         [fansBtn setTitle:[NSString stringWithFormat:@"粉丝 %@",info.care] forState:UIControlStateNormal];
+        [fansBtn addTarget:self action:@selector(fansView:) forControlEvents:UIControlEventTouchUpInside];
         [fansBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [view addSubview:fansBtn];
         
         UIButton*careBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         careBtn.frame = CGRectMake(100, 110, 60, 30);
         [careBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [careBtn addTarget:self action:@selector(fansView:) forControlEvents:UIControlEventTouchUpInside];
         [careBtn setTitle:[NSString stringWithFormat:@"关注 %@",info.fans] forState:UIControlStateNormal];
         [view addSubview:careBtn];
         
@@ -88,6 +91,14 @@
         editBtn.frame = CGRectMake(0, 0, 80, 25);
         editBtn.center = CGPointMake(SCREENWIDTH/2, 180);
         [editBtn setTitle:@"编辑资料" forState:UIControlStateNormal];
+        if ([[[UIDevice currentDevice] systemVersion] intValue]<8)
+        {
+            editBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+            [editBtn setImage:[UIImage redraw:[UIImage imageNamed:@"userinfo_relationship_indicator_edit@2x"] Frame:CGRectMake(0, 0, 20, 20)] forState:UIControlStateNormal];
+        }else
+        {
+            [editBtn setImage:[UIImage imageNamed:@"userinfo_relationship_indicator_edit@2x"] forState:UIControlStateNormal];
+        }
         //        editBtn.titleLabel.text = @"编辑资料";
         [editBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -95,7 +106,7 @@
         editBtn.layer.cornerRadius = 1;
         editBtn.layer.borderWidth = 1;
         editBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        [editBtn setImage:[UIImage imageNamed:@"userinfo_relationship_indicator_edit@2x"] forState:UIControlStateNormal];
+        
         [view addSubview:editBtn];
         view;
     });
@@ -149,6 +160,25 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"photoDetailWeibo" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(photoDetailWeibo:) name:@"photoDetailWeibo" object:nil];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+-(void)fansView:(UIButton*)btn
+{
+    KZJFansView*fansView = [[KZJFansView alloc]init];
+    if ([btn.titleLabel.text hasPrefix:@"粉丝"])
+    {
+        fansView.kind = @"粉丝";
+    }else if ([btn.titleLabel.text hasPrefix:@"关注"])
+    {
+        fansView.kind = @"关注";
+    }
+    fansView.ID = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserID"];
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController pushViewController:fansView animated:YES];
 }
 -(void)photoDetailWeibo:(NSNotification*)notif
 {

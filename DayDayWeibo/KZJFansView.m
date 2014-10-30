@@ -149,6 +149,10 @@
 -(void)back
 {
     self.hidesBottomBarWhenPushed = NO;
+//    if () {
+//        <#statements#>
+//    }
+//    self.navigationController.navigationBarHidden = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark tableView代理
@@ -165,6 +169,8 @@
         [cell.image sd_setImageWithURL:[number[indexPath.row] objectForKey:@"profile_image_url"]];
         cell.labelName.text = [number[indexPath.row] objectForKey:@"name"];
         int follow = [[number[indexPath.row]objectForKey:@"follow_me"] intValue];
+        int follow1 = [[number[indexPath.row]objectForKey:@"following"] intValue];
+//        NSLog(@"%@",[number[indexPath.row]objectForKey:@"following"]);
         if ([kind isEqualToString:@"关注"]) {
             if (follow ==1)
             {
@@ -177,7 +183,16 @@
             [cell.btn addTarget:self action:@selector(attention:) forControlEvents:UIControlEventTouchUpInside];
         }else if ([kind isEqualToString:@"粉丝"])
         {
-            [cell.btn setImage:[UIImage imageNamed:@"login_user@2x"] forState:UIControlStateNormal];
+            
+            if (follow1 ==1)
+            {
+                [cell.btn setImage:[UIImage imageNamed:@"card_icon_arrow@2x"] forState:UIControlStateNormal];
+                
+            }else
+            {
+                [cell.btn setImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted@2x"] forState:UIControlStateNormal];
+            }
+            
             cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[number[indexPath.row] objectForKey:@"id"]];
             cell.btn.titleLabel.hidden = YES;
         }

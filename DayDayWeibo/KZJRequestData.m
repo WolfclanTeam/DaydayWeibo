@@ -200,7 +200,8 @@
         [self fansData:result];
     }else if ([request.tag isEqualToString:@"995"])
     {
-        NSLog(@"%@",[result objectFromJSONString]);
+        
+//        NSLog(@"%@",[[result objectFromJSONString] objectForKey:@"users"]);
         [self fansData:result];
     }else if ([request.tag isEqualToString:@"996"])
     {
@@ -275,7 +276,7 @@
     {
        
         NSDictionary *dict = [result objectFromJSONString];
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"GETWEIBO"])
     {
@@ -360,7 +361,7 @@
         
     }else if ([request.tag isEqualToString:@"1011"])
     {
-         NSLog(@"1100 = %@",[result objectFromJSONString]);
+//         NSLog(@"1100 = %@",[result objectFromJSONString]);
         NSDictionary*dict = [NSDictionary dictionaryWithObject:[[result objectFromJSONString] objectForKey:@"pois"] forKey:@"pois"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict];
     }else if ([request.tag isEqualToString:@"1100"])
@@ -393,7 +394,7 @@
         
     }else if ([request.tag isEqualToString:@"NEWCOMMENT"])
     {
-        NSLog(@"%@",result);
+//        NSLog(@"%@",result);
         NSDictionary *dict = [result objectFromJSONString];
         passBlock(dict);
     }
@@ -500,9 +501,25 @@
     UserInformation*userInformation = [NSEntityDescription
                                        insertNewObjectForEntityForName:@"UserInformation"
                                        inManagedObjectContext:context];
-    //    NSLog(@"%@",result);
+//        NSLog(@"%@",result);
     userInformation.name = [dict objectForKey:@"name"];
     userInformation.photo = [dict objectForKey:@"avatar_hd"];
+    UIImageView*imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[dict objectForKey:@"avatar_hd"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        NSLog(@"===%@",image);
+        KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+        NSManagedObjectContext *context = app.managedObjectContext;
+        NSArray*array = [self getCoreData:@"UserInformation"];
+        for (UserInformation*info in array)
+        {
+            if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
+            {
+                 userInformation.photoData = UIImageJPEGRepresentation(imageview.image, 1);
+                //            NSLog(@"%@",info.unread);
+            }
+        }
+        [context save:nil];
+    }];
     
     userInformation.collectionNum = [NSString stringWithFormat:@"%@",[dict objectForKey:@"favourites_count"]];
     userInformation.brief = [dict objectForKey:@"description"];
@@ -515,7 +532,7 @@
     userInformation.uid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
     //    NSLog(@"%@",[dict objectForKey:@"id"]);
     NSArray*array = [[KZJRequestData alloc]getCoreData:@"UserInformation"];
-    //    NSLog(@"=======%@",array);
+//        NSLog(@"=======%@",array);
     int flag = 0;
     for (UserInformation*info in array)
     {

@@ -100,7 +100,7 @@
     
     NSArray*titleNameArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"热门微博",@"找人", nil],[NSArray arrayWithObjects:@"游戏中心",@"应用",@"周边", nil],[NSArray arrayWithObjects:@"电影",@"听歌",@"发现兴趣", nil], nil];
     
-    NSArray*titleImageArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"findfriend_icon_star@2x",@"findfriend_icon_star@2x", nil], [NSArray arrayWithObjects:@"findfriend_icon_star@2x",@"findfriend_icon_star@2x",@"findfriend_icon_star@2x", nil],[NSArray arrayWithObjects:@"topic_movie@2x",@"tabbar_compose_music@2x",@"findfriend_icon_star@2x", nil],nil];
+    NSArray*titleImageArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"o_weibo@2x",@"findfriend_icon_star@2x", nil], [NSArray arrayWithObjects:@"more_icon_channelmanage@2x",@"more_icon_code@2x",@"lbs_nearbypeople_popuphint_location_icon@2x", nil],[NSArray arrayWithObjects:@"topic_movie@2x",@"tabbar_compose_music@2x",@"group_edit_member_more@2x", nil],nil];
     
     topicTable = [[KZJFindView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-113) style:UITableViewStylePlain withTitle:titleNameArray withTitleImage:titleImageArray withTopicArray:topicArray];
     [self.view addSubview:topicTable];
@@ -332,7 +332,18 @@
 //            }
 //        }
 //    }
-    [cell.btn setImage:[UIImage imageNamed:@"login_user@2x"] forState:UIControlStateNormal];
+    if ([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==0)
+    {
+        [cell.btn setImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted@2x"] forState:UIControlStateNormal];
+    }else if([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==1)
+    {
+        if ([[peopleArray[indexPath.row]objectForKey:@"follow_me"] intValue]==1) {
+            [cell.btn setImage:[UIImage imageNamed:@"card_icon_attention@2x"] forState:UIControlStateNormal];
+        }else
+        {
+            [cell.btn setImage:[UIImage imageNamed:@"card_icon_arrow@2x"] forState:UIControlStateNormal];
+        }
+    }
     cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[peopleArray[indexPath.row]objectForKey:@"id"]];
     cell.btn.titleLabel.hidden = YES;
     [cell.btn setHidden:NO];

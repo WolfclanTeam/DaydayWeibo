@@ -22,4 +22,5 @@
 @dynamic unread;
 @dynamic collectionNum;
 @dynamic photoNum;
+@dynamic photoData;
 @end

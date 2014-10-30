@@ -92,7 +92,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         KZJRequestData *datamanager = [KZJRequestData requestOnly];
         NSNumber *weiboID = [dataDict objectForKey:@"id"];
-        NSString *str = [weiboID stringValue];
+        NSString *str = [NSString stringWithFormat:@"%@",weiboID];
         NSString *page = [NSString stringWithFormat:@"%d",num];
         [datamanager getNewComment:str page:page];
         [datamanager passWeiboData:^(NSDictionary *dict) {

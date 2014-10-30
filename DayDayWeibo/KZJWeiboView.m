@@ -26,8 +26,9 @@
     
     weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) view:self.tabBarController.view];
     [self.view addSubview:weiboList];
-    KZJRequestData *dataManger = [KZJRequestData requestOnly];
-    [dataManger startRequestData5:1 withType:@"0" withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+    [weiboList addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    [weiboList headerBeginRefreshing];
+    [weiboList addFooterWithTarget:self action:@selector(footerRefreshing)];
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"myweibo" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(myWeibo:) name:@"myweibo" object:nil];
@@ -35,12 +36,26 @@
 
 -(void)myWeibo:(NSNotification*)notif
 {
+    [weiboList headerEndRefreshing];
+    [weiboList footerEndRefreshing];
+    
     NSDictionary*dict = [notif userInfo];
     dataArr = [dict objectForKey:@"statuses"];
     weiboList.dataArr = dataArr;
     [weiboList reloadData];
 }
-
+-(void)headerRefreshing
+{
+    page = 1;
+    KZJRequestData *dataManger = [KZJRequestData requestOnly];
+    [dataManger startRequestData5:page withType:@"0" withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+}
+-(void)footerRefreshing
+{
+    page++;
+    KZJRequestData *dataManger = [KZJRequestData requestOnly];
+    [dataManger startRequestData5:page withType:@"0" withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+}
 -(void)back
 {
     self.hidesBottomBarWhenPushed = NO;

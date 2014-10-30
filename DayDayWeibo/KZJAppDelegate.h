@@ -21,7 +21,9 @@
 #import "MKNetworkKit.h"
 
 @interface KZJAppDelegate : UIResponder <UIApplicationDelegate,WBHttpRequestDelegate>
-
+{
+    NSTimer*timer;
+}
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

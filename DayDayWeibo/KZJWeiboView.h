@@ -12,5 +12,6 @@
 {
     NSMutableArray *dataArr;
     KZJWeiboTableView *weiboList;
+    int page;
 }
 @end

@@ -32,6 +32,11 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
     }
     cell.textLabel.text = titleArr[indexPath.row];
+    if ([[[UIDevice currentDevice]systemVersion] intValue]<8)
+    {
+        cell.textLabel.font = [UIFont systemFontOfSize:15];
+    }
+
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor blackColor];
     return cell;

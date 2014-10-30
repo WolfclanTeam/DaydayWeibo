@@ -94,9 +94,7 @@
     detailLabel.textColor = [UIColor blackColor];
     detailLabel.font = [UIFont systemFontOfSize:12];
     detailLabel.userInteractionEnabled = YES;
-    UITapGestureRecognizer*tapdetail = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(detail:)];
-    detailLabel.tag = tap.view.tag+200;
-    [detailLabel addGestureRecognizer:tapdetail];
+   
     [imageview addSubview:detailLabel];
     
 //    NSLog(@"%@",biggerPhotoArray[(self.tag-1000)*3+tap.view.tag-1100]);
@@ -105,6 +103,10 @@
         UITapGestureRecognizer*taptap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
         imageview.userInteractionEnabled = YES;
         [imageview addGestureRecognizer:taptap];
+        
+        UITapGestureRecognizer*tapdetail = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(detail:)];
+        detailLabel.tag = tap.view.tag+200;
+        [detailLabel addGestureRecognizer:tapdetail];
         
     }];
 

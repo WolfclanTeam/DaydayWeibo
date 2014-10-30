@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * fans;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * photo;
+@property (nonatomic, retain) NSData * photoData;
 @property (nonatomic, retain) NSString * statuses;
 @property (nonatomic, retain) NSString * token;
 @property (nonatomic, retain) NSString * uid;

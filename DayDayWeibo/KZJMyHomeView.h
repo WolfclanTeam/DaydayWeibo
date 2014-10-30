@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "KZJShareSheet.h"
 #import "KZJDetailWeiboViewController.h"
+#import "KZJFansView.h"
+
 @interface KZJMyHomeView : UIViewController<UISearchBarDelegate>
 {
     NSMutableArray *dataArr;

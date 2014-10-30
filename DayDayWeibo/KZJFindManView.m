@@ -25,7 +25,7 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
+    tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableview.delegate = self;
     tableview.dataSource = self;
@@ -188,7 +188,18 @@
         cell.labelName.text = [peopleArray[indexPath.row]objectForKey:@"name"];
         cell.labelDetial.text = [NSString stringWithFormat:@"简介:%@",[peopleArray[indexPath.row]objectForKey:@
                                                                      "description"]];
-        [cell.btn setImage:[UIImage imageNamed:@"login_user@2x"] forState:UIControlStateNormal];
+        if ([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==0)
+        {
+            [cell.btn setImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted@2x"] forState:UIControlStateNormal];
+        }else if([[peopleArray[indexPath.row]objectForKey:@"following"] intValue]==1)
+        {
+            if ([[peopleArray[indexPath.row]objectForKey:@"follow_me"] intValue]==1) {
+                [cell.btn setImage:[UIImage imageNamed:@"card_icon_attention@2x"] forState:UIControlStateNormal];
+            }else
+            {
+                [cell.btn setImage:[UIImage imageNamed:@"card_icon_arrow@2x"] forState:UIControlStateNormal];
+            }
+        }
         cell.btn.titleLabel.text = [NSString stringWithFormat:@"%@",[peopleArray[indexPath.row]objectForKey:@"id"]];
         cell.btn.titleLabel.hidden = YES;
     }
@@ -223,7 +234,13 @@
     
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(SCREENWIDTH-40, 0, 40, 20);
-    [btn setImage:[UIImage imageNamed:@"userinfo_icon_screening@2x"] forState:UIControlStateNormal];
+    if ([[[UIDevice currentDevice] systemVersion] intValue]<8)
+    {
+        [btn setImage:[UIImage redraw:[UIImage imageNamed:@"userinfo_icon_screening@2x"] Frame:CGRectMake(0, 0, 15, 15)] forState:UIControlStateNormal];
+    }else if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
+    {
+        [btn setImage:[UIImage imageNamed:@"userinfo_icon_screening@2x"] forState:UIControlStateNormal];
+    }
     [btn setTitle:@"筛选" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:10];
@@ -298,7 +315,7 @@
     }
     if (findTable==nil)
     {
-        findTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 104, SCREENWIDTH, SCREENHEIGHT-64)];
+        findTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 104, SCREENWIDTH, SCREENHEIGHT-104)];
         findTable.delegate =self;
         findTable.dataSource = self;
         findTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -330,7 +347,7 @@
 }
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    
+    [findTable removeFromSuperview];
     [searchBar resignFirstResponder];
 }
 #pragma mark 搜索返回的个人信息
