@@ -10,9 +10,10 @@
 
 @interface KZJWebViewController : UIViewController<UIWebViewDelegate>
 {
-    UIWebView *webView;
+    UIWebView *myWebView;
     UIActivityIndicatorView *indicatorView;
-
+    UIView *myWebViewControl;
+    UIImageView *refreshBG;
 }
 @property (nonatomic,retain) NSString *urlString;
 

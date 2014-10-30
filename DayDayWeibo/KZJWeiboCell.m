@@ -9,19 +9,29 @@
 #import "KZJWeiboCell.h"
 
 @implementation KZJWeiboCell
-@synthesize HeadImageView,idLabel,timeLabel;
+@synthesize HeadImageView,idLabel,timeLabel,viewForHead;
 @synthesize Weibocontent,weiboImages;
 @synthesize retweetContent,retweetImages,retweetWeibo;
 @synthesize retweetBtn,retweetBg,retweetNum;
 @synthesize commentBtn,commentBg,commentNum;
 @synthesize attitudeBtn,attitudeBg,attitudeNum;
-@synthesize mainView;
+@synthesize mainView,boundsView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
+        //
+        divisionView = [[UIView alloc] init];
+        divisionView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+        [self addSubview:boundsView];
+        
+        //分隔每个cell
+        boundsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 8)];
+        boundsView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+        [self addSubview:boundsView];
         
         //设置显示大图的图片视图
         picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
@@ -37,21 +47,35 @@
         [self.detailTextLabel removeFromSuperview];
         
         //用于显示博主ID的label
-        idLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 0, SCREENWIDTH-45, 25)];
+        idLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 8, SCREENWIDTH-75, 25)];
         idLabel.font = [UIFont systemFontOfSize:14];
         [self addSubview:idLabel];
         
         //显示微博时间来源
-        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 25, SCREENWIDTH-45, 15)];
+        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 33, SCREENWIDTH-75, 15)];
         timeLabel.textColor = [UIColor grayColor];
         timeLabel.font = [UIFont systemFontOfSize:10];
         [self addSubview:timeLabel];
         
 //        //用于显示博主头像的imageview
-        HeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        viewForHead = [[UIView alloc] initWithFrame:CGRectMake(0, 8, 40, 40)];
+        
+        HeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5,5, 30, 30)];
         HeadImageView.contentMode = UIViewContentModeScaleAspectFill;
-        HeadImageView.clipsToBounds = YES;
-        [self addSubview:HeadImageView];
+//        HeadImageView.clipsToBounds = YES;
+        viewForHead.userInteractionEnabled = YES;
+        HeadImageView.userInteractionEnabled = YES;
+        [viewForHead addSubview:HeadImageView];
+        [self addSubview:viewForHead];
+        
+        //
+        actionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        actionBtn.frame = CGRectMake(SCREENWIDTH-25, 10, 20, 20);
+        [actionBtn setBackgroundImage:[UIImage redraw:[UIImage imageNamed:@"timeline_icon_more@2x.png"] Frame:CGRectMake(0, 0, 20, 20)] forState:UIControlStateNormal];
+        [actionBtn setBackgroundImage:[UIImage redraw:[UIImage imageNamed:@"timeline_icon_more_highlighted@2x.png"] Frame:CGRectMake(0, 0, 20, 20)] forState:UIControlStateSelected];
+        [actionBtn addTarget:self action:@selector(actionBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:actionBtn];
+        
 //
 //        //显示微博正文的textview
         Weibocontent = [[RTLabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 0)];
@@ -97,7 +121,9 @@
         retweetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         retweetBg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 20, 20)];
         retweetBg.image = [UIImage redraw:[UIImage imageNamed:@"rettoolbar_icon_retweet@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
-        retweetNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
+        retweetNum = [[UILabel alloc] initWithFrame:CGRectMake(40,5, SCREENWIDTH/3-50, 20)];
+        retweetNum.font = [UIFont systemFontOfSize:13];
+        retweetNum.textColor = [UIColor grayColor];
         [retweetBtn addSubview:retweetBg];
         [retweetBtn addSubview:retweetNum];
         
@@ -106,6 +132,8 @@
         commentBg = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 20, 20)];
         commentBg.image = [UIImage redraw:[UIImage imageNamed:@"comtoolbar_icon_comment@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
         commentNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
+        commentNum.font = [UIFont systemFontOfSize:13];
+        commentNum.textColor = [UIColor grayColor];
         [commentBtn addSubview:commentBg];
         [commentBtn addSubview:commentNum];
         
@@ -113,7 +141,9 @@
         attitudeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         attitudeBg = [[UIImageView alloc]initWithFrame:CGRectMake(20, 5, 20, 20)];
         attitudeBg.image = [UIImage redraw:[UIImage imageNamed:@"attitoolbar_icon_unlike@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
-        attitudeNum = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, SCREENWIDTH/3-50, 20)];
+        attitudeNum = [[UILabel alloc] initWithFrame:CGRectMake(40,5, SCREENWIDTH/3-50, 20)];
+        attitudeNum.font = [UIFont systemFontOfSize:13];
+        attitudeNum.textColor = [UIColor grayColor];
         [attitudeBtn addSubview:attitudeBg];
         [attitudeBtn addSubview:attitudeNum];
         
@@ -125,6 +155,200 @@
     return self;
 }
 
+#pragma mark-action按钮
+-(void)actionBtn:(UIButton*)sender
+{
+    int num = sender.tag - 10000;
+    //
+    bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.alpha =0.75;
+    
+    NSNumber *userID = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"id"];
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"] isEqualToString:[userID stringValue]])
+    {
+        comSelectView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREENWIDTH-40, SCREENHEIGHT/3-30)];
+        comSelectView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
+        comSelectView.layer.cornerRadius = 8.0;
+        comSelectView.layer.masksToBounds = YES;
+        comSelectView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+        
+        //
+        collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        collectBtn.backgroundColor = [UIColor whiteColor];
+        [collectBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        collectBtn.frame = CGRectMake(0, 0, comSelectView.frame.size.width, comSelectView.frame.size.height/3-1);
+        collectL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, collectBtn.frame.size.width-20, collectBtn.frame.size.height)];
+        BOOL favorited = [[[weiboData objectAtIndex:num] objectForKey:@"favorited"] boolValue];
+        if (favorited)
+        {
+            collectL.text = @"取消收藏";
+        }else
+        {
+            collectL.text = @"收藏";
+        }
+        [collectBtn addSubview:collectL];
+        
+        //
+        UIButton *extensionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        extensionBtn.backgroundColor = [UIColor whiteColor];
+        [extensionBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        extensionBtn.frame = CGRectMake(0, comSelectView.frame.size.height/3, comSelectView.frame.size.width, comSelectView.frame.size.height/3-1);
+        UILabel *extensionL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, extensionBtn.frame.size.width-20, extensionBtn.frame.size.height)];
+        extensionL.text = @"推广";
+        [extensionBtn addSubview:extensionL];
+        
+        //删除
+        UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        deleteBtn.backgroundColor = [UIColor whiteColor];
+        [deleteBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        deleteBtn.frame = CGRectMake(0, comSelectView.frame.size.height/3*2, comSelectView.frame.size.width, comSelectView.frame.size.height/3-1);
+        UILabel *deleteL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, deleteBtn.frame.size.width-20, deleteBtn.frame.size.height)];
+        deleteL.text = @"删除";
+        deleteL.textColor = [UIColor redColor];
+        [deleteBtn addSubview:deleteL];
+        [deleteBtn addTarget:self action:@selector(delegateAction:) forControlEvents:UIControlEventTouchUpInside];
+        deleteBtn.tag = 12000+num;
+        
+        //
+        [comSelectView addSubview:collectBtn];
+        [comSelectView addSubview:extensionBtn];
+        [comSelectView addSubview:deleteBtn];
+    }else
+    {
+        comSelectView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREENWIDTH-40, SCREENHEIGHT/2-40)];
+        comSelectView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
+        comSelectView.layer.cornerRadius = 8.0;
+        comSelectView.layer.masksToBounds = YES;
+        comSelectView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+        
+        //
+        collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        collectBtn.backgroundColor = [UIColor whiteColor];
+        [collectBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        collectBtn.frame = CGRectMake(0, 0, comSelectView.frame.size.width, comSelectView.frame.size.height/4-1);
+        collectL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, collectBtn.frame.size.width-20, collectBtn.frame.size.height)];
+        BOOL favorited = [[[weiboData objectAtIndex:num] objectForKey:@"favorited"] boolValue];
+        if (favorited)
+        {
+            collectL.text = @"取消收藏";
+        }else
+        {
+            collectL.text = @"收藏";
+        }
+        [collectBtn addSubview:collectL];
+        
+        //
+        UIButton *attentionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        attentionBtn.backgroundColor = [UIColor whiteColor];
+        [attentionBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        attentionBtn.frame = CGRectMake(0, comSelectView.frame.size.height/4, comSelectView.frame.size.width, comSelectView.frame.size.height/4-1);
+        UILabel *attentionL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,attentionBtn.frame.size.width-20, attentionBtn.frame.size.height)];
+        following = [[[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"following"] boolValue];
+        if (following)
+        {
+            attentionL.text = @"取消关注";
+        }else
+        {
+            attentionL.text = @"关注";
+        }
+        [attentionBtn addSubview:attentionL];
+        attentionBtn.tag = 13000+num;
+        [attentionBtn addTarget:self action:@selector(attentionAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //
+        UIButton *shieldBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        shieldBtn.backgroundColor = [UIColor whiteColor];
+        [shieldBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        shieldBtn.frame = CGRectMake(0, comSelectView.frame.size.height/4*2, comSelectView.frame.size.width, comSelectView.frame.size.height/4-1);
+        UILabel *shieldL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, shieldBtn.frame.size.width-20, shieldBtn.frame.size.height)];
+        shieldL.text = @"屏蔽";
+        [shieldBtn addSubview:shieldL];
+        
+        //
+        UIButton *reportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        reportBtn.backgroundColor = [UIColor whiteColor];
+        [reportBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+        reportBtn.frame = CGRectMake(0, comSelectView.frame.size.height/4*3, comSelectView.frame.size.width, comSelectView.frame.size.height/4-1);
+        UILabel *reportL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, reportBtn.frame.size.width-20, reportBtn.frame.size.height)];
+        reportL.text = @"举报";
+        [reportBtn addSubview:reportL];
+        
+        
+        //
+        [comSelectView addSubview:collectBtn];
+        [comSelectView addSubview:attentionBtn];
+        [comSelectView addSubview:reportBtn];
+        [comSelectView addSubview:shieldBtn];
+    }
+    
+    collectBtn.tag = 11000+num;
+    [collectBtn addTarget:self action:@selector(collectWeibo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backWeibo:)];
+    tap.numberOfTapsRequired = 1;
+    [bgView addGestureRecognizer:tap];
+    //
+    [mainView addSubview:bgView];
+    [mainView addSubview:comSelectView];
+}
+
+-(void)collectWeibo:(UIButton*)sender
+{
+    int num = sender.tag - 11000;
+    NSNumber *weiboID = [[weiboData objectAtIndex:num] objectForKey:@"id"];
+    KZJRequestData *datamanager = [KZJRequestData requestOnly];
+    [datamanager createFavoritesWeibo:[weiboID stringValue]];
+    [datamanager passWeiboData:^(NSDictionary *dict) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [bgView removeFromSuperview];
+        [comSelectView removeFromSuperview];
+    }];
+}
+
+-(void)delegateAction:(UIButton*)sender
+{
+    int num = sender.tag-12000;
+    NSNumber *weiboID = [[weiboData objectAtIndex:num] objectForKey:@"id"];
+    KZJRequestData *datamanager = [KZJRequestData requestOnly];
+    [datamanager deleteWeibo:[weiboID stringValue]];
+    [datamanager passWeiboData:^(NSDictionary *dict) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"删除成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [bgView removeFromSuperview];
+        [comSelectView removeFromSuperview];
+        NSNotification *refreshNoti = [[NSNotification alloc] initWithName:@"REFRESH" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:refreshNoti];
+    }];
+}
+
+-(void)attentionAction:(UIButton*)sender
+{
+    int num = sender.tag-13000;
+    KZJRequestData *datamanager = [KZJRequestData requestOnly];
+    NSNumber *userID = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"id"];
+    NSLog(@"%@",[userID stringValue]);
+    if (following)
+    {
+        [datamanager destroyFriendships:[userID stringValue]];
+        [bgView removeFromSuperview];
+        [comSelectView removeFromSuperview];
+    }else
+    {
+        [datamanager createFriendships:[userID stringValue]];
+        [bgView removeFromSuperview];
+        [comSelectView removeFromSuperview];
+    }
+}
+
+-(void)backWeibo:(id)sender
+{
+    [bgView removeFromSuperview];
+    [comSelectView removeFromSuperview];
+}
 
 -(NSString *)compareDate:(NSDate *)date{
     
@@ -192,19 +416,25 @@
 #pragma mark-设置cell内容与高度
 -(void)setCell:(NSArray *)dataArr indexPath:(NSIndexPath *)indexPath
 {
+    actionBtn.tag = 10000+indexPath.row;
     weiboData = dataArr;
     CGFloat weiboImgHeight = 0.0f;
     CGFloat statuHeight = 0.0f;
     retweetWeibo.hidden = YES;
     //博主ID
-    if (dataArr.count>0)
-    {
     idLabel.text = [[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"screen_name"];
     //微博发布时间以及来源
     NSString *sourceStr = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"source"];
-    NSArray *array=[sourceStr componentsSeparatedByString:@">"];
-    NSString *separateString=[array objectAtIndex:1];
-    NSString *inputSource = [separateString substringToIndex:(separateString.length-3)];
+    NSString *inputSource;
+    if (sourceStr.length!=0)
+    {
+        NSArray *array=[sourceStr componentsSeparatedByString:@">"];
+        NSString *sourString=[array objectAtIndex:1];
+        inputSource = [NSString stringWithFormat:@"来自%@",[sourString substringToIndex:(sourString.length-3)]];
+    }else
+    {
+        inputSource = @"";
+    }
     
     NSString *timeStr = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"created_at"];
     NSDateFormatter *getFormatter = [[NSDateFormatter alloc] init];
@@ -216,33 +446,36 @@
         timeBetween+=420;
         if (timeBetween/60 < 60)
         {
-            timeLabel.text = [NSString stringWithFormat:@"%d分钟前 来自%@",(int)timeBetween/60,inputSource];
+            timeLabel.text = [NSString stringWithFormat:@"%d分钟前 %@",(int)timeBetween/60,inputSource];
         }else if (timeBetween/3600>0&&timeBetween/3600<24)
         {
-            timeLabel.text = [NSString stringWithFormat:@"%d小时前 来自%@",(int)timeBetween/3600,inputSource];
+            timeLabel.text = [NSString stringWithFormat:@"%d小时前 %@",(int)timeBetween/3600,inputSource];
         }
     }else if ([[self compareDate:inputDate] isEqualToString:@"昨天"])
     {
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
         [inputFormatter setDateFormat:@"H:mm"];
         NSString *inputTimeStr = [inputFormatter stringFromDate:inputDate];
-        timeLabel.text = [NSString stringWithFormat:@"昨天 %@ 来自%@",inputTimeStr,inputSource];
+        timeLabel.text = [NSString stringWithFormat:@"昨天 %@ %@",inputTimeStr,inputSource];
     }else
     {
         NSDateFormatter *moreInputFormatter = [[NSDateFormatter alloc] init];
         [moreInputFormatter setDateFormat:@"MM-dd"];
         NSString *inputTimeStr = [moreInputFormatter stringFromDate:inputDate];
-        timeLabel.text = [NSString stringWithFormat:@"%@ 来自%@",inputTimeStr,inputSource];
+        timeLabel.text = [NSString stringWithFormat:@"%@ %@",inputTimeStr,inputSource];
     }
     
     //博主头像
-    [HeadImageView sd_setImageWithURL:[NSURL URLWithString:[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"]];
+    [HeadImageView sd_setImageWithURL:[NSURL URLWithString:[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"profile_image_url"]] placeholderImage:[UIImage imageNamed:@"touxiang_40x40.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+    {
+        HeadImageView.image = [UIImage redraw:image Frame:CGRectMake(0, 0, 30, 30)];
+    }];
     //微博正文
     NSString *weiboText = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"text"];
     [self parseLink:weiboText];
     Weibocontent.text = [self parseLink:weiboText];
     CGFloat textViewContentHeight = Weibocontent.optimumSize.height;
-    Weibocontent.frame = CGRectMake(10, 50, SCREENWIDTH-20, textViewContentHeight);
+    Weibocontent.frame = CGRectMake(10, 55, SCREENWIDTH-20, textViewContentHeight);
     
     //微博图片
     if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count] == 0)
@@ -256,7 +489,7 @@
         CGSize sizeH = [GetNetImageSize downloadImageSizeWithURL:[NSURL URLWithString:[[dataArr objectAtIndex:indexPath.row] objectForKey:@"thumbnail_pic"]]];
         weiboImgHeight = sizeH.height;
         
-        weiboImages.frame = CGRectMake(10, 40+textViewContentHeight+10, sizeH.width, sizeH.height);
+        weiboImages.frame = CGRectMake(10, 50+textViewContentHeight+10, sizeH.width, sizeH.height);
         UIImageView *aImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeH.width, sizeH.height)];
         
         [aImage sd_setImageWithURL:[[dataArr objectAtIndex:indexPath.row] objectForKey:@"thumbnail_pic"]];
@@ -274,7 +507,7 @@
             weiboImgHeight = 100*([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]/3+1);
         }
         
-        weiboImages.frame = CGRectMake(10, 40+textViewContentHeight+10, 300, weiboImgHeight);
+        weiboImages.frame = CGRectMake(10, 50+textViewContentHeight+10, 300, weiboImgHeight);
         for (int i = 0; i<[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]; i++)
         {
             UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
@@ -355,21 +588,38 @@
         }
 //
     }
-    retweetWeibo.frame = CGRectMake(0, 40+textViewContentHeight+10, SCREENWIDTH, statuHeight);
-    self.frame = CGRectMake(0, 0, SCREENWIDTH, 50+35+textViewContentHeight+weiboImgHeight+statuHeight);
+    retweetWeibo.frame = CGRectMake(0, 50+textViewContentHeight+10, SCREENWIDTH, statuHeight);
+    self.frame = CGRectMake(0, 0, SCREENWIDTH, 60+35+textViewContentHeight+weiboImgHeight+statuHeight);
     
     //转发
-    retweetBtn.frame = CGRectMake(0, self.frame.size.height-35, self.frame.size.width/3, 30);
+    retweetBtn.frame = CGRectMake(0, self.frame.size.height-30, self.frame.size.width/3, 30);
     retweetNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"reposts_count"]];
+    if ([retweetNum.text isEqualToString:@"0"])
+    {
+        retweetNum.text = @"转发";
+    }
     [retweetBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
     //评论
-    commentBtn.frame = CGRectMake(self.frame.size.width/3, self.frame.size.height-35, self.frame.size.width/3, 30);
+    commentBtn.frame = CGRectMake(self.frame.size.width/3, self.frame.size.height-30, self.frame.size.width/3, 30);
     commentNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"comments_count"]];
+    if ([commentNum.text isEqualToString:@"0"])
+    {
+        commentNum.text = @"评论";
+    }
     [commentBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
     //表态
-    attitudeBtn.frame = CGRectMake(self.frame.size.width/3*2, self.frame.size.height-35, self.frame.size.width/3, 30);
+    attitudeBtn.frame = CGRectMake(self.frame.size.width/3*2, self.frame.size.height-30, self.frame.size.width/3, 30);
     attitudeNum.text = [NSString stringWithFormat:@"%@",[[dataArr objectAtIndex:indexPath.row] objectForKey:@"attitudes_count"]];
+    if ([attitudeNum.text isEqualToString:@"0"])
+    {
+        attitudeNum.text = @"赞";
+    }
     [attitudeBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+    
+    divisionView.frame = CGRectMake(0, self.frame.size.height-31, SCREENWIDTH, 1);
+    [self addSubview:divisionView];
+    
+    
     //点击微博图片触发显示大图方法
     UITapGestureRecognizer *bigger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
     bigger.numberOfTapsRequired = 1;
@@ -404,6 +654,11 @@
         [retweetWeibo addGestureRecognizer:retweetTap];
     }
     
+    UITapGestureRecognizer *userHome = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushUserHome:)];
+    userHome.numberOfTapsRequired = 1;
+    viewForHead.tag = 10000+indexPath.row;
+    [viewForHead addGestureRecognizer:userHome];
+    
     
     //点击cell低端按钮
     retweetBtn.tag = 4000+indexPath.row;
@@ -412,7 +667,6 @@
     [retweetBtn addTarget:self action:@selector(retweetAction:) forControlEvents:UIControlEventTouchUpInside];
     [commentBtn addTarget:self action:@selector(commentAction:) forControlEvents:UIControlEventTouchUpInside];
     [attitudeBtn addTarget:self action:@selector(attitudeAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
 }
 
 #pragma mark-RTLabelDelegate
@@ -427,6 +681,10 @@
         NSDictionary *dict = @{@"http": urlString};
         NSNotification *webNoti = [[NSNotification alloc] initWithName:@"WEBPUSH" object:self userInfo:dict];
         [[NSNotificationCenter defaultCenter] postNotification:webNoti];
+    }else if ([urlString hasPrefix:@"@"])
+    {
+//        NSString *str = [urlString substringFromIndex:1];
+        
     }
 }
 
@@ -437,6 +695,10 @@
 {
     UIButton *btn = (UIButton*)sender;
     NSLog(@"%d",btn.tag);
+    int row = btn.tag-4000;
+    NSDictionary *dict = @{@"weiboID":[[weiboData objectAtIndex:row] objectForKey:@"id"]};
+    NSNotification *retNoti = [[NSNotification alloc] initWithName:@"RETWEIBO" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:retNoti];
 }
 //点击评论触发方法
 -(void)commentAction:(id)sender
@@ -453,6 +715,7 @@
 {
     UIButton *btn = (UIButton*)sender;
     NSLog(@"%d",btn.tag);
+//    attitudeBg.image = [UIImage redraw:[UIImage imageNamed:@"messagescenter_good@2x.png"] Frame:CGRectMake(0, 0, 20, 20)];
 }
 
 
@@ -468,6 +731,21 @@
         NSNotification *detailWeiboNoti = [[NSNotification alloc] initWithName:@"DETAILWEIBO" object:self userInfo:dict];
         [[NSNotificationCenter defaultCenter] postNotification:detailWeiboNoti];
     }];
+}
+
+
+-(void)pushUserHome:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    int num = tap.view.tag-10000;
+    NSNumber *userID = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"id"];
+    NSString *userIDStr = [userID stringValue];
+    NSDictionary *dict = @{@"userIDStr":userIDStr};
+    NSNotification *pushUser = [[NSNotification alloc] initWithName:@"PUSHUSER" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:pushUser];
+//    NSString *domain = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"domain"];
+//    KZJRequestData *dataManager = [KZJRequestData requestOnly];
+//    [dataManager getUserMessage:domain];
 }
 
 #pragma mark-放大图片显示大图
@@ -493,27 +771,31 @@
     {
         num = bigTap.view.tag-3000;
         imageUrl = [NSURL URLWithString:[[[weiboData objectAtIndex:num] objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]];
+        NSLog(@"%@",[[[weiboData objectAtIndex:num] objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]);
         orImage = (UIImageView*)bigTap.view;
     }else if(bigTap.view.tag>=1000&&bigTap.view.tag<2000)
     {
         num = bigTap.view.tag-1000;
         imageUrl = [NSURL URLWithString:[[weiboData objectAtIndex:num] objectForKey:@"original_pic"]];
         orImage = (UIImageView*)bigTap.view;
+        NSLog(@"%@",[[weiboData objectAtIndex:num] objectForKey:@"original_pic"]);
     }else if (bigTap.view.tag>=7000&&bigTap.view.tag<8000)
     {
         num = bigTap.view.tag-7000;
         imageUrl = [NSURL URLWithString:[[weiboData objectAtIndex:num] objectForKey:@"original_pic"]];
+        NSLog(@"%@",[[weiboData objectAtIndex:num] objectForKey:@"original_pic"]);
         orImage = [[bigTap.view subviews] objectAtIndex:0];
     }else if (bigTap.view.tag>=8000&&bigTap.view.tag<9000)
     {
         num = bigTap.view.tag-8000;
         imageUrl = [NSURL URLWithString:[[[weiboData objectAtIndex:num] objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]];
+        NSLog(@"%@",[[[weiboData objectAtIndex:num] objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]);
         orImage = [[bigTap.view subviews] objectAtIndex:0];
     }
     
     picImageView.frame = CGRectMake(self.superview.center.x, self.superview.center.y, 0, 0);
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1];
+    [UIView setAnimationDuration:0.8];
     UIImage *OrgImage = [UIImage redraw:orImage.image Frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [picImageView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
@@ -530,7 +812,10 @@
          [indicatorView stopAnimating];
          [indicatorView removeFromSuperview];
          
-         
+         if (picImageView.frame.size.height<SCREENHEIGHT)
+         {
+             picImageView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
+         }
          
      }];
     UITapGestureRecognizer *backTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backAction)];

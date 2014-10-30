@@ -26,7 +26,7 @@
         timeLbel = [[UILabel alloc] initWithFrame:CGRectMake(65, 30, [UIScreen mainScreen].bounds.size.width-65, 15)];
         timeLbel.font = [UIFont systemFontOfSize:10];
         timeLbel.textColor = [UIColor grayColor];
-        commentContent = [[RTLabel alloc] initWithFrame:CGRectMake(45, 45, SCREENWIDTH-45, 0)];
+        commentContent = [[RTLabel alloc] initWithFrame:CGRectMake(65, 45, SCREENWIDTH-65, 0)];
         commentContent.linkAttributes = [NSDictionary dictionaryWithObject:@"blue" forKey:@"color"];
         commentContent.font = [UIFont systemFontOfSize:13];
         commentContent.userInteractionEnabled = YES;
@@ -59,9 +59,9 @@
     commentContent.text = [self parseLink:commentText];
     
     CGFloat commentContentHeight =commentContent.optimumSize.height;
-    commentContent.frame = CGRectMake(45, 45, SCREENWIDTH-45, 20+commentContentHeight);
+    commentContent.frame = CGRectMake(65, 45, SCREENWIDTH-65, commentContentHeight);
     
-    self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40+10+commentContentHeight+20);
+    self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40+10+commentContentHeight);
 }
 
 #pragma mark-解析超链接

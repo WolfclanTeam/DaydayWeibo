@@ -213,7 +213,7 @@
         repostsCount.text = @"转发";
         [repostsBtn addSubview:repostsCount];
         [repostsBtn addSubview:repostsBG];
-        [supView addSubview:repostsBtn];
+        [self.superview addSubview:repostsBtn];
         
         //评论
         commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -224,7 +224,7 @@
         commentCount.text = @"评论";
         [commentBtn addSubview:commentBG];
         [commentBtn addSubview:commentCount];
-        [supView addSubview:commentBtn];
+        [self.superview addSubview:commentBtn];
         
         //表态
         attitudesBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -235,10 +235,13 @@
         attitudeCount.text = @"赞";
         [attitudesBtn addSubview:attitudesBG];
         [attitudesBtn addSubview:attitudeCount];
-        [supView addSubview:attitudesBtn];
+        [self.superview addSubview:attitudesBtn];
         
         
-        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH,weiboContentHeight+50+weiboImageHeight+retweetImageHeight+retweetContentHeight)];
+        headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH,weiboContentHeight+50+weiboImageHeight+retweetImageHeight+retweetContentHeight+20)];
+        boundsView = [[UIView alloc] initWithFrame:CGRectMake(0, headView.frame.size.height-8, SCREENWIDTH, 8)];
+        boundsView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+        [headView addSubview:boundsView];
         [retweetView addSubview:retweetContent];
         [headView addSubview:retweetView];
         [headView addSubview:viewForHeadImage];
@@ -250,35 +253,83 @@
         [headView addSubview:retweetView];
         self.tableHeaderView = headView;
         
+        
+        
     }
     return self;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *listView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0)];
+    
+    
+    selectView = [[UIView alloc] initWithFrame:CGRectMake(100, 20, 40, 5)];
+    selectView.backgroundColor = [UIColor blackColor];
+    UIView *listView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
     listView.backgroundColor = [UIColor whiteColor];
-    UILabel *reposts = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 80, 20)];
-    UILabel *comments = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 80, 20)];
-    UILabel *attitudes = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-80, 5, 80, 20)];
-    reposts.font = [UIFont systemFontOfSize:12];
-    comments.font = [UIFont systemFontOfSize:12];
-    attitudes.font = [UIFont systemFontOfSize:12];
+    UIButton *reposts = [UIButton buttonWithType:UIButtonTypeCustom];
+    reposts.frame = CGRectMake(0, 0, 80, 20);
+    UIButton *comments = [UIButton buttonWithType:UIButtonTypeCustom];
+    comments.frame = CGRectMake(80, 0, 80, 20);
+    UIButton *attitudes = [UIButton buttonWithType:UIButtonTypeCustom];
+    attitudes.frame = CGRectMake(SCREENWIDTH-80, 0, 80, 20);
+    UILabel *repostsL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 60, 20)];
+    UILabel *commentsL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 60, 20)];
+    UILabel *attitudesL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 60, 20)];
+    [reposts addSubview:repostsL];
+    [comments addSubview:commentsL];
+    [attitudes addSubview:attitudesL];
+
+    repostsL.text = [NSString stringWithFormat:@"%@ %@",@"转发",[repostsNum stringValue]];
+    commentsL.text = [NSString stringWithFormat:@"%@ %@",@"评论",[commentsNum stringValue]];
+    attitudesL.text = [NSString stringWithFormat:@"%@ %@",@"赞",[attitudesNum stringValue]];
+    
+    
+    repostsL.font = [UIFont systemFontOfSize:12];
+    commentsL.font = [UIFont systemFontOfSize:12];
+    attitudesL.font = [UIFont systemFontOfSize:12];
+    repostsL.textColor = [UIColor grayColor];
+    commentsL.textColor = [UIColor grayColor];
+    attitudesL.textColor = [UIColor grayColor];
+    [reposts addTarget:self action:@selector(repostsAction:) forControlEvents:UIControlEventTouchUpInside];
+    [comments addTarget:self action:@selector(commentsAction:) forControlEvents:UIControlEventTouchUpInside];
+    [attitudes addTarget:self action:@selector(attitudesAction:) forControlEvents:UIControlEventTouchUpInside];
+
     [listView addSubview:reposts];
     [listView addSubview:comments];
     [listView addSubview:attitudes];
-    reposts.text = [NSString stringWithFormat:@"%@ %@",@"转发",[repostsNum stringValue]];
-    comments.text = [NSString stringWithFormat:@"%@ %@",@"评论",[commentsNum stringValue]];
-    attitudes.text = [NSString stringWithFormat:@"%@ %@",@"赞",[attitudesNum stringValue]];
+    [listView addSubview:selectView];
+
     return listView;
 }
 
+-(void)repostsAction:(id)sender
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    selectView.frame = CGRectMake(20, 20, 40, 5);
+    [UIView commitAnimations];
+    
+}
 
+-(void)commentsAction:(id)sender
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    selectView.frame = CGRectMake(100, 20, 40, 5);
+    [UIView commitAnimations];
+}
 
+-(void)attitudesAction:(id)sender
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    selectView.frame = CGRectMake(SCREENWIDTH-60, 20, 40, 5);
+    [UIView commitAnimations];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"jjjjjjjlllll");
     return [commentsArr count];
 }
 
@@ -350,36 +401,87 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-    [self.superview addSubview:bgView];
-    bgView.backgroundColor = [UIColor grayColor];
-    bgView.alpha = 0.9;
+    
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.alpha =0.75;
     
     comSelectView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREENWIDTH-40, SCREENHEIGHT/3)];
-    comSelectView.alpha = 1;
     comSelectView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
-    UIButton *replyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    comSelectView.layer.cornerRadius = 8.0;
+    comSelectView.layer.masksToBounds = YES;
+    comSelectView.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
+    
+    UIButton *replyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     replyBtn.backgroundColor = [UIColor whiteColor];
-    replyBtn.frame = CGRectMake(0, 0, comSelectView.frame.size.width, comSelectView.frame.size.height/3);
-    UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    replyBtn.frame = CGRectMake(0, 0, comSelectView.frame.size.width, comSelectView.frame.size.height/3-1);
+    UILabel *replyL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, comSelectView.frame.size.width-20, comSelectView.frame.size.height/3)];
+    [replyBtn addSubview:replyL];
+    
+    UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     copyBtn.backgroundColor = [UIColor whiteColor];
     copyBtn.frame = CGRectMake(0, comSelectView.frame.size.height/3, comSelectView.frame.size.width, comSelectView.frame.size.height/3);
+    UILabel *copyL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, comSelectView.frame.size.width-20, comSelectView.frame.size.height/3)];
+    [copyBtn addSubview:copyL];
+    
+    
     UIButton *denounceBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     denounceBtn.backgroundColor = [UIColor whiteColor];
-    denounceBtn.frame = CGRectMake(0, comSelectView.frame.size.height/3*2, comSelectView.frame.size.width, comSelectView.frame.size.height/3);
-    [replyBtn setTitle:@"回复" forState:UIControlStateNormal];
-    [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
-    [denounceBtn setTitle:@"举报" forState:UIControlStateNormal];
+    denounceBtn.frame = CGRectMake(0, comSelectView.frame.size.height/3*2+1, comSelectView.frame.size.width, comSelectView.frame.size.height/3);
+    UILabel *denounceL = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, comSelectView.frame.size.width-20, comSelectView.frame.size.height/3)];
+    [denounceBtn addSubview:denounceL];
+    
+    replyL.text = @"回复";
+    copyL.text = @"复制" ;
+    denounceL.text = @"举报";
+    
+    [replyBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+    [copyBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+    [denounceBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
+
     [comSelectView addSubview:replyBtn];
     [comSelectView addSubview:copyBtn];
     [comSelectView addSubview:denounceBtn];
+    
+    
+    [self.superview addSubview:bgView];
     [self.superview addSubview:comSelectView];
+
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backCom:)];
     tap.numberOfTapsRequired = 1;
     [bgView addGestureRecognizer:tap];
+    
+    [replyBtn addTarget:self action:@selector(replyAction:) forControlEvents:UIControlEventTouchUpInside];
+    [copyBtn addTarget:self action:@selector(copyAction:) forControlEvents:UIControlEventTouchUpInside];
+    [denounceBtn addTarget:self action:@selector(denounceAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    replyBtn.tag = 1000+indexPath.row;
+    copyBtn.tag = 2000+indexPath.row;
+    denounceBtn.tag = 3000+indexPath.row;
 }
 
+-(void)replyAction:(UIButton*)sender
+{
+    
+}
 
+-(void)copyAction:(UIButton*)sender
+{
+    int num = sender.tag-2000;
+    NSString *str = [NSString stringWithFormat:@"@%@:%@",[[[commentsArr objectAtIndex:num] objectForKey:@"user"] objectForKey:@"screen_name"],[[commentsArr objectAtIndex:num] objectForKey:@"text"]];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = str;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已复制到剪贴板" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+    [bgView removeFromSuperview];
+    [comSelectView removeFromSuperview];
+}
+
+-(void)denounceAction:(UIButton*)sender
+{
+    
+}
 
 -(void)backCom:(id)sender
 {

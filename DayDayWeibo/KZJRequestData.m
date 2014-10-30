@@ -189,13 +189,8 @@
     {
         //NSLog(@"%@",result);
         [self unread:result];
-    }else if ([request.tag isEqualToString:@"1100"])
-    {
-       // NSLog(@"1100 = %@",result);
-    }else if ([request.tag isEqualToString:@"1101"])
-    {
-        //NSLog(@"1101 = %@",result);
-    }else if ([request.tag isEqualToString:@"994"])
+    }
+    else if ([request.tag isEqualToString:@"994"])
     {
         [self fansData:result];
     }else if ([request.tag isEqualToString:@"995"])
@@ -282,6 +277,28 @@
     {
         NSDictionary *dict = [result objectFromJSONString];
         passBlock(dict);
+    }else if ([request.tag isEqualToString:@"NEWCOMMENT"])
+    {
+        //        NSLog(@"%@",result);
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"GETUSERMESSAGE"])
+    {
+        //        NSLog(@"%@",result);
+    }else if ([request.tag isEqualToString:@"COLLECTWEIBO"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"DELETEWEIBO"])
+    {
+        NSDictionary *dict = [result objectFromJSONString];
+        passBlock(dict);
+    }else if ([request.tag isEqualToString:@"CREATFRIENDS"])
+    {
+        //        NSLog(@"CREATFRIENDS");
+    }else if ([request.tag isEqualToString:@"DESTROYFRIENDS"])
+    {
+        //        NSLog(@"%@",result);
     }else if ([request.tag isEqualToString:@"1003"])
     {
         
@@ -366,14 +383,18 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict];
     }else if ([request.tag isEqualToString:@"1100"])
     {
-        // NSLog(@"1100 = %@",result);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"receiveMyData" object:self userInfo:[result objectFromJSONString]];
+        
     }else if ([request.tag isEqualToString:@"1101"])
     {
-        //NSLog(@"1101 = %@",result);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notifiMethod" object:self userInfo:[result objectFromJSONString]];
     }
     else if ([request.tag isEqualToString:@"1105"])
     {
         //  NSLog(@"签到：%@",result);
+        
+        
         NSDictionary *dict = [result objectFromJSONString];
         //NSLog(@"%@",dict);
         NSArray *poisArr =  [dict objectForKey:@"pois"];
@@ -746,6 +767,46 @@
     NSDictionary *parms = [NSDictionary dictionaryWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"access_token",weiboID,@"id",page,@"page", nil];
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"NEWCOMMENT"];
 }
+
+//
+-(void)getUserMessage :(NSString*)domain
+{
+    //https://api.weibo.com/2/users/domain_show.json
+    NSDictionary *parms = @{@"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"domain":domain};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/users/domain_show.json" httpMethod:@"GET" params:parms delegate:self withTag:@"GETUSERMESSAGE"];
+    NSLog(@"%@",domain);
+}
+
+
+-(void)createFavoritesWeibo:(NSString*)weiboID
+{
+    //https://api.weibo.com/2/favorites/create.json
+    NSDictionary *parms = @{@"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"id":weiboID};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https:api.weibo.com/2/favorites/create.json" httpMethod:@"POST" params:parms delegate:self withTag:@"COLLECTWEIBO"];
+}
+
+
+-(void)deleteWeibo:(NSString*)weiboID
+{
+    //https://api.weibo.com/2/statuses/destroy.json
+    NSDictionary *parms = @{@"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"id":weiboID};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/destroy.json" httpMethod:@"POST" params:parms delegate:self withTag:@"DELETEWEIBO"];
+}
+
+-(void)createFriendships:(NSString*)userID
+{
+    //https://api.weibo.com/2/friendships/create.json
+    NSDictionary *parms = @{@"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"uid":userID};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/create.json" httpMethod:@"POST" params:parms delegate:self withTag:@"CREATFRIENDS"];
+}
+
+-(void)destroyFriendships:(NSString*)userID
+{
+    //https://api.weibo.com/2/friendships/destroy.json
+    NSDictionary *parms = @{@"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"],@"uid":userID};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/friendships/destroy.json" httpMethod:@"POST" params:parms delegate:self withTag:@"DESTROYFRIENDS"];
+}
+
 //代码块传值
 -(void)passWeiboData:(passData)sender
 {
@@ -756,20 +817,20 @@
  
  "@我的"  数据请求
  */
--(void)zljRequestData1
+-(void)zljRequestData1:(int)page
 {
     //NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"filter_by_source", nil];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"filter_by_type", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"filter_by_type",[NSString stringWithFormat:@"%d",page],@"page", nil];
     
     
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/mentions.json" httpMethod:@"Get" params:params delegate:self withTag:@"1100"];
 }
 
 #pragma mark 张立坚 的消息页面 "评论"  数据请求
--(void)zljRequestData2
+-(void)zljRequestData2:(int)page
 {
-    //NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"page", nil];
-    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/by_me.json" httpMethod:@"Get" params:nil delegate:self withTag:@"1101"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page", nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/timeline.json" httpMethod:@"Get" params:params delegate:self withTag:@"1101"];
     
 }
 #pragma mark  张立坚 的消息页面 "赞"  数据请求
@@ -811,4 +872,5 @@
     [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:url httpMethod:@"POST" params:params delegate:self withTag:@"1106"];
     
     
-}@end
+}
+@end

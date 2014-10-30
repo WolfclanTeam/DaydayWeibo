@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tabBarController.delegate = self;
+   // self.tabBarController.delegate = self;
     //创建动画
     slideAnimationController  = [[SlideAnimation alloc] init];
    
@@ -127,14 +127,35 @@
    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.row==0)
+    {
+        [self performSelector:@selector(presentmyContentVC)];//@我的页面
+    }
+    else if (indexPath.row==1)
+    {
+        [self performSelector:@selector(presentmyCommentVC)];
+    }
+    else if (indexPath.row==2)
+    {
+        [self performSelector:@selector(presentmySupportVC)];
+    }
     
-    [self performSelector:@selector(presentmyContentVC)];//@我的页面
 }
 -(void)presentmyContentVC
 {
     KZJ_MyCotentViewController *myContentVC = [[KZJ_MyCotentViewController alloc] init]; //@我的页面
    
     [self.navigationController pushViewController:myContentVC animated:YES];
+}
+-(void)presentmyCommentVC
+{
+    KZJCommentViewController *commentVC = [[KZJCommentViewController alloc] init];
+    [self.navigationController pushViewController:commentVC animated:YES];
+}
+-(void)presentmySupportVC
+{
+    KZJSupportViewController *supportVC = [[KZJSupportViewController alloc] init];
+    [self.navigationController pushViewController:supportVC animated:YES];
 }
 #pragma mark 发起聊天
 -(void)startChat

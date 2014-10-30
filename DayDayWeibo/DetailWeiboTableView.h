@@ -17,6 +17,8 @@
 
 @interface DetailWeiboTableView : UITableView<UITableViewDataSource,UITableViewDelegate,RTLabelDelegate>
 {
+    
+    UIView *footView;
     //微博信息
     UIView *headView;
     UIImageView*headImage;
@@ -49,8 +51,13 @@
     NSNumber *attitudesNum;
     
     //
+    UIView *selectView;
+    UIView *boundsView;
     UIView *bgView;
     UIView *comSelectView;
+    
+    //
+    NSArray *dataArr;
 }
 
 @property (nonatomic,retain) NSDictionary *commentDict;

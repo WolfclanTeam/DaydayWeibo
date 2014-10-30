@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "KZJWeiboTableView.h"
 #import"KZJDetailWeiboViewController.h"
+#import"MJRefresh/MJRefresh.h"
 #import "KZJDetailWeiboViewController.h"
 #import "KZJWebViewController.h"
+#import"KZJMyHomeView.h"
+#import"ZBarViewController.h"
 
 @interface KZJHomeController : UIViewController
 {

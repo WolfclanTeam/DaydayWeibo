@@ -26,11 +26,11 @@
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 1000.0f;
-    if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
-    {
-        NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
-        [locationManager requestAlwaysAuthorization];
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
+//    {
+//        NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
+//        [locationManager requestAlwaysAuthorization];
+//    }
     [locationManager startUpdatingLocation];
     
     self.automaticallyAdjustsScrollViewInsets = NO;

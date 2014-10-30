@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJ@MyCommentSupportBaseController.h"
+#import "KZJMyMessageDetailBaseController.h"
 
-@interface KZJ_MyCommentSupportBaseController ()
+@interface KZJMyMessageDetailBaseController ()
 
 @end
 
-@implementation KZJ_MyCommentSupportBaseController
-@synthesize baseTableView;
+@implementation KZJMyMessageDetailBaseController
+@synthesize btnTitleView,downMenuButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,28 +35,25 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor grayColor];
     
-    
-    //设置基类view
-    [self setBaseView];
-    UIButton *testView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [testView setTitle:@"所有微博" forState:UIControlStateNormal];
-    [testView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [testView addTarget:self action:@selector(test) forControlEvents:UIControlEventTouchUpInside];
+    btnTitleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.navigationItem.titleView.frame.size.width, self.navigationItem.titleView.frame.size.height)];
+    [btnTitleView setTitle:@"所有微博" forState:UIControlStateNormal];
+    //btnTitleView.titleLabel.font=[UIFont systemFontOfSize:14];
+    btnTitleView.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [btnTitleView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnTitleView addTarget:self action:@selector(dropDownMenuMethod) forControlEvents:UIControlEventTouchUpInside];
     //testView.backgroundColor = [UIColor redColor];
-    self.navigationItem.titleView =testView;
+    self.navigationItem.titleView =btnTitleView;
+    
+
     
 }
--(void)test
+
+-(void)dropDownMenuMethod
 {
-    NSLog(@"出来");
-    //添加动画
-    
+
+
 }
--(void)setBaseView
-{
-    self.baseTableView = [[KZJMyCommentSupportBaseTableView alloc] initWithFrame:self.view.bounds];
-    self.view = self.baseTableView;
-}
+
 -(void)setMethod
 {
     NSLog(@"设置");

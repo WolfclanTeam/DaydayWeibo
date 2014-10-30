@@ -54,6 +54,7 @@
 
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(60, 100, SCREENWIDTH-120, 100)];
         UIImageView*photoImage = [[UIImageView alloc]initWithFrame:CGRectMake(75, 60, 50, 50)];
+//        NSLog(@"%@",info.photoData);
         photoImage.image = [UIImage imageWithData:info.photoData];
         photoImage.layer.cornerRadius = 25;
         photoImage.layer.masksToBounds = YES;

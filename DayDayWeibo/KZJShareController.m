@@ -16,7 +16,7 @@
 @end
 NSString *const CollectionViewCellIdentifier = @"Cell";
 @implementation KZJShareController
-@synthesize collectionView,weiboContentTextView,weiboVisibleScopeValue,weiboVisibleScopeTitle;
+@synthesize collectionView,weiboContentTextView,weiboVisibleScopeValue,weiboVisibleScopeTitle,managedObjectContext;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,6 +46,7 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    managedObjectContext = ((KZJAppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     imageArr = [[NSMutableArray alloc] init];
     UIImage *addImage = [UIImage imageNamed:@"compose_pic_add"];
@@ -74,7 +75,7 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
     sendWeiboLabel.text = @"发微博";
     [titleView addSubview:sendWeiboLabel];
     whoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 80, 20)];
-    
+    whoLabel.textAlignment = NSTextAlignmentCenter;
     whoLabel.textColor = [UIColor grayColor];
     whoLabel.adjustsFontSizeToFitWidth = YES;
     [titleView addSubview:whoLabel];
@@ -220,7 +221,7 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
             if(imagePickerSourceType==UIImagePickerControllerSourceTypeCamera)
             {
                 [self addPhotoCollectionView];
-                 NSLog(@"xiangji");
+                
             }
             
             [imageArr replaceObjectAtIndex:index-1 withObject:image];
@@ -535,7 +536,7 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
 #pragma mark 取消方法
 -(void)cancelMethod
 {
-    NSLog(@"inputcontent %@",weiboContentTextView.text);
+    
     if(imageArr.count >1 || [weiboContentTextView hasText])
     {
         UIAlertView *isSaveAlert = [[UIAlertView alloc] initWithTitle:nil message:@"是否保存草稿" delegate:self cancelButtonTitle:@"不保存" otherButtonTitles:@"保存", nil];
@@ -556,8 +557,30 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
     if(buttonIndex ==1)
     {
 #warning 保存到草稿箱
+        StoreWeibo *storeWeibo = [NSEntityDescription insertNewObjectForEntityForName:@"StoreWeibo"
+                                                               inManagedObjectContext:managedObjectContext];
+        storeWeibo.textContent = weiboContentTextView.text;
+        if ([imageArr count]>1)
+        {
+             storeWeibo.image = UIImagePNGRepresentation([imageArr objectAtIndex:0]);
+        }
+       
+        NSError *error;
+        if (![managedObjectContext save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
         
-
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoreWeibo"
+                                                  inManagedObjectContext:managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        for (StoreWeibo *weibo in fetchedObjects)
+        {
+            NSLog(@"content: %@", weibo.textContent);
+            NSLog(@"image: %@",weibo.image);
+        }
     }
     [self dismissViewControllerAnimated:YES completion:^{
         

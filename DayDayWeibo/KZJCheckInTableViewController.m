@@ -37,10 +37,6 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = 1000.0f;
-    if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
-    {
-        [locationManager requestAlwaysAuthorization];
-    }
     [self.locationManager startUpdatingLocation];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkInPositionNoti:) name:@"checkInPositionNoti" object:nil];
@@ -61,7 +57,7 @@
    
     
     allItems = [[NSArray alloc] init];
-    NSLog(@"定位");
+    
     requestData  = [KZJRequestData requestOnly];
     
     [self setupRefresh];

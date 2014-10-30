@@ -11,7 +11,8 @@
 #import "KZJ@MyCotentViewController.h"
 #import "UIImage+Redraw.h"
 #import "SlideAnimation.h"
-
+#import "KZJCommentViewController.h"
+#import "KZJSupportViewController.h"
 @interface KZJMessageController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 {
    

@@ -12,6 +12,9 @@
 #import "HPGrowingTextView.h"
 #import "KZJShareScopeTableController.h"
 #import "KZJCheckInTableViewController.h"
+
+#import "KZJAppDelegate.h"
+#import "StoreWeibo.h"
 @interface KZJShareController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,HPGrowingTextViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource,UIAlertViewDelegate>
 
 {
@@ -38,6 +41,7 @@
 @property(retain,nonatomic)HPGrowingTextView *weiboContentTextView;
 @property(assign,nonatomic)int weiboVisibleScopeValue;
 @property(copy,nonatomic)NSString *weiboVisibleScopeTitle;
+@property(strong,nonatomic) NSManagedObjectContext* managedObjectContext;
 -(void)insertPic;
 -(void)openCamera;
 @end

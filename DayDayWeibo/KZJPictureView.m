@@ -20,7 +20,7 @@
     self.navigationItem.title = @"相册";
     photoArray = [[NSArray alloc]init];
     photoBiggerArray = [[NSArray alloc]init];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
     UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
     self.navigationItem.leftBarButtonItem = leftItem;

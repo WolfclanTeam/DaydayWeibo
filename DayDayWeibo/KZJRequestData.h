@@ -60,27 +60,33 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData12:(NSString*)type;//获取系统推荐用户
 -(void)startRequestData13:(int)page;//获取热门微博(公共微博)
 -(void)startRequestData14:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu withType:(NSString*)type;//获取周边微博,人,地点,图片
--(void)startRequestDataWithLocationLat:(float)latDu withLocationLong:(float)longDu;//根据坐标获取用户当前地点的详细信息
+//-(void)startRequestDataWithLocationLat:(float)latDu withLocationLong:(float)longDu;//根据坐标获取用户当前地点的详细信息
 
 //锦章
--(void)passWeiboData:(passData)sender;
--(void)getHomeWeibo;
--(void)getADetailWeibo:(NSString*)weiboID;
--(void)getCommentList:(NSString*)weiboID;
--(void)getNewWeibo:(NSString *)page;
--(void)getNewComment:(NSString*)weiboID page:(NSString*)page;
+-(void)passWeiboData:(passData)sender;//代码块传值
+-(void)getHomeWeibo;//获取主页微博列表
+-(void)getADetailWeibo:(NSString*)weiboID;//根据微博ID获取单条微博信息
+-(void)getCommentList:(NSString*)weiboID;//根据微博ID获取评论列表
+-(void)getNewWeibo:(NSString *)page;//根据页数获取用户微博
+-(void)getNewComment:(NSString*)weiboID page:(NSString*)page;//根据微博ID以及页数获取微博评论
+-(void)getUserMessage :(NSString*)domain;//根据个性域名获取用户信息
+-(void)createFavoritesWeibo:(NSString*)weiboID;//收藏微博
+-(void)deleteWeibo:(NSString*)weiboID;//删除自己发的微博
+-(void)createFriendships:(NSString*)userID;//关注某用户
+-(void)destroyFriendships:(NSString*)userID;//取消关注某用户
+
 
 
 #pragma mark 张立坚 的消息页面@我的  数据请求
 /**
  "@我的"  数据请求
  */
--(void)zljRequestData1;
+-(void)zljRequestData1:(int)page;
 
 /**
  #pragma mark 张立坚 的消息页面 "评论"  数据请求
  */
--(void)zljRequestData2;
+-(void)zljRequestData2:(int)page;
 
 /**
  #pragma mark  张立坚 的消息页面 "赞"  数据请求

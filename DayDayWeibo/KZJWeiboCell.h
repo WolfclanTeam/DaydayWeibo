@@ -21,8 +21,20 @@
     UIScrollView *imageScroll;//用于添加picImageView的滑动视图
     NSArray *weiboData;//接收由viewcontroller传来的微博数据
     CGFloat lastScale;
+    UIView *divisionView;
+    UIButton *actionBtn;
+    //
+    UIView *bgView;
+    UIView *comSelectView;
+    
+    //
+    UIButton *collectBtn;
+    UILabel *collectL;
+    BOOL following;
 }
 
+@property (nonatomic,retain) UIView *boundsView;
+@property (nonatomic,retain) UIView *viewForHead;
 @property (nonatomic,retain) UIImageView *HeadImageView;//头像视图
 @property (nonatomic,retain) UILabel *timeLabel;//显示微博发布时间
 @property (nonatomic,retain) UILabel *idLabel;//显示博主ID

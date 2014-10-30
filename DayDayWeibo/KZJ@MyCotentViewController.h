@@ -6,8 +6,16 @@
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJ@MyCommentSupportBaseController.h"
-
-@interface KZJ_MyCotentViewController : KZJ_MyCommentSupportBaseController
-
+#import "KZJMyMessageDetailBaseController.h"
+#import "KZJWeiboTableView.h"
+#import "JGProgressHUD.h"
+@interface KZJ_MyCotentViewController : KZJMyMessageDetailBaseController
+{
+    NSArray *listArr;
+    
+    KZJWeiboTableView *weiboTableView;
+    
+    NSMutableArray *statuseArr ;
+}
+@property(strong,nonatomic)KZJWeiboTableView *weiboTableView;
 @end
