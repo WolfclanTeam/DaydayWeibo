@@ -34,8 +34,16 @@
     }
     
     titleArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"阅读模式",@"字号设置",@"显示备注信息", nil],[NSArray arrayWithObjects:@"自动加载更多",nil],[NSArray arrayWithObjects:@"开启快速拖动", nil],[NSArray arrayWithObjects:@"横竖屏自动切换", nil],[NSArray arrayWithObjects:@"图片质量设置", nil],[NSArray arrayWithObjects:@"声音与振动",@"多语言环境", nil],nil];
+    
+    UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
+    UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
+    self.navigationItem.leftBarButtonItem = leftItem;
 }
-
+-(void)back
+{
+    //    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark tableview代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

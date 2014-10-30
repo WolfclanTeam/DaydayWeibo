@@ -25,6 +25,7 @@ typedef void(^passData)(NSDictionary*);
     
     NSMutableArray*weiboData;
     NSMutableArray*collectData;
+    NSMutableArray*friendData;
     
     //坚 的数组 签到
     NSMutableArray *addressArr;
@@ -61,6 +62,8 @@ typedef void(^passData)(NSDictionary*);
 -(void)startRequestData13:(int)page;//获取热门微博(公共微博)
 -(void)startRequestData14:(int)page withLocationLat:(float)latDu withLocationLong:(float)longDu withType:(NSString*)type;//获取周边微博,人,地点,图片
 //-(void)startRequestDataWithLocationLat:(float)latDu withLocationLong:(float)longDu;//根据坐标获取用户当前地点的详细信息
+-(void)startRequestData15:(int)page;//获取可能感兴趣的人
+
 
 //锦章
 -(void)passWeiboData:(passData)sender;//代码块传值

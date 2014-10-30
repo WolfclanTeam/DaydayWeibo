@@ -17,6 +17,9 @@
 		A5682D9B1A01F458009FEE52 /* group_edit_member_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5682D9A1A01F458009FEE52 /* group_edit_member_more@2x.png */; };
 		A5682D9D1A01F478009FEE52 /* message_more_poi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5682D9C1A01F478009FEE52 /* message_more_poi@2x.png */; };
 		A5682D9F1A01F53D009FEE52 /* lbs_nearbypeople_popuphint_location_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5682D9E1A01F53D009FEE52 /* lbs_nearbypeople_popuphint_location_icon@2x.png */; };
+		A5682DA21A023924009FEE52 /* KZJRemindSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5682DA11A023924009FEE52 /* KZJRemindSubView.m */; };
+		A5682DA41A023F9F009FEE52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5682DA31A023F9F009FEE52 /* StoreKit.framework */; };
+		A5682DA71A0249B7009FEE52 /* KZJNewFriendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5682DA61A0249B7009FEE52 /* KZJNewFriendView.m */; };
 		A56B305419FF29CF00141A2C /* 中国广东广州人民北路.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A56B305319FF29CF00141A2C /* 中国广东广州人民北路.gpx */; };
 		A56B305719FF30C900141A2C /* KZJCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B305619FF30C900141A2C /* KZJCollectView.m */; };
 		A56B305919FF3E0400141A2C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56B305819FF3E0400141A2C /* CoreLocation.framework */; };
@@ -333,6 +336,11 @@
 		A5682D9A1A01F458009FEE52 /* group_edit_member_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_edit_member_more@2x.png"; sourceTree = "<group>"; };
 		A5682D9C1A01F478009FEE52 /* message_more_poi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_more_poi@2x.png"; sourceTree = "<group>"; };
 		A5682D9E1A01F53D009FEE52 /* lbs_nearbypeople_popuphint_location_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lbs_nearbypeople_popuphint_location_icon@2x.png"; sourceTree = "<group>"; };
+		A5682DA01A023924009FEE52 /* KZJRemindSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJRemindSubView.h; sourceTree = "<group>"; };
+		A5682DA11A023924009FEE52 /* KZJRemindSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRemindSubView.m; sourceTree = "<group>"; };
+		A5682DA31A023F9F009FEE52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A5682DA51A0249B7009FEE52 /* KZJNewFriendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJNewFriendView.h; sourceTree = "<group>"; };
+		A5682DA61A0249B7009FEE52 /* KZJNewFriendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJNewFriendView.m; sourceTree = "<group>"; };
 		A56B305319FF29CF00141A2C /* 中国广东广州人民北路.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "中国广东广州人民北路.gpx"; sourceTree = "<group>"; };
 		A56B305519FF30C900141A2C /* KZJCollectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCollectView.h; sourceTree = "<group>"; };
 		A56B305619FF30C900141A2C /* KZJCollectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCollectView.m; sourceTree = "<group>"; };
@@ -793,6 +801,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5682DA41A023F9F009FEE52 /* StoreKit.framework in Frameworks */,
 				DE9F75F81A0220C900FDA623 /* libiconv.dylib in Frameworks */,
 				A56B305B19FF3E0900141A2C /* MapKit.framework in Frameworks */,
 				A56B305919FF3E0400141A2C /* CoreLocation.framework in Frameworks */,
@@ -844,6 +853,8 @@
 				A56B305619FF30C900141A2C /* KZJCollectView.m */,
 				A56B71161A00C90800B51EAD /* KZJDraftView.h */,
 				A56B71171A00C90800B51EAD /* KZJDraftView.m */,
+				A5682DA51A0249B7009FEE52 /* KZJNewFriendView.h */,
+				A5682DA61A0249B7009FEE52 /* KZJNewFriendView.m */,
 			);
 			name = MeSunController;
 			sourceTree = "<group>";
@@ -853,6 +864,8 @@
 			children = (
 				DE3A646E19FE36FF00BA4E59 /* KZJRemindView.h */,
 				DE3A646F19FE36FF00BA4E59 /* KZJRemindView.m */,
+				A5682DA01A023924009FEE52 /* KZJRemindSubView.h */,
+				A5682DA11A023924009FEE52 /* KZJRemindSubView.m */,
 				DE3A647019FE36FF00BA4E59 /* KZJCommonView.h */,
 				DE3A647119FE36FF00BA4E59 /* KZJCommonView.m */,
 				DE3A647219FE36FF00BA4E59 /* KZJPrivacyView.h */,
@@ -1104,6 +1117,7 @@
 		DEBCFDA419F2114A0014D970 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5682DA31A023F9F009FEE52 /* StoreKit.framework */,
 				DE9F75F71A0220C900FDA623 /* libiconv.dylib */,
 				A56B305A19FF3E0900141A2C /* MapKit.framework */,
 				A56B305819FF3E0400141A2C /* CoreLocation.framework */,
@@ -1973,9 +1987,11 @@
 				DEBCFE2B19F212870014D970 /* UIImage+WebP.m in Sources */,
 				DE3A648A19FE373000BA4E59 /* KZJHotWeiboView.m in Sources */,
 				DE9F75C61A02201900FDA623 /* ZBarViewController.m in Sources */,
+				A5682DA21A023924009FEE52 /* KZJRemindSubView.m in Sources */,
 				DEBCFE2519F212870014D970 /* SDWebImageDownloaderOperation.m in Sources */,
 				DE3A646B19FE36F100BA4E59 /* KZJFansView.m in Sources */,
 				DE9F75571A0217F500FDA623 /* DWBubbleMenuButton.m in Sources */,
+				A5682DA71A0249B7009FEE52 /* KZJNewFriendView.m in Sources */,
 				DEBCFE4D19F212910014D970 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				DE3A64CD19FE396700BA4E59 /* UserInformation.m in Sources */,
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,

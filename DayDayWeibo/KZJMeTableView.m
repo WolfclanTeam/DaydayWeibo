@@ -182,8 +182,23 @@
     }
 //    NSLog(@"%@",cell.subviews);
     cell.image.image = [UIImage redraw:[UIImage imageNamed:imageArray[indexPath.section][indexPath.row]] Frame:CGRectMake(0, 0, 20, 20)];
-   
-    cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
+    if (indexPath.section==3&&indexPath.row ==1)
+    {
+        NSArray*draftNum = [[KZJRequestData requestOnly]getCoreData:@"StoreWeibo"];
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+        label.text = [NSString stringWithFormat:@"%d",draftNum.count];
+        label.layer.cornerRadius = 5;
+        label.layer.masksToBounds = YES;
+        label.font = [UIFont systemFontOfSize:10];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.backgroundColor = [UIColor lightGrayColor];
+        [cell.image1 addSubview:label];
+    }else
+    {
+        cell.image1.image = [UIImage imageNamed:@"login_detail@2x"];
+    }
+    
     if (indexPath.section==1&&indexPath.row==1)
     {
         if (info.collectionNum ==nil||[info.collectionNum isEqualToString:@"0"])
@@ -248,6 +263,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (section==3)
+    {
+        return 10;
+    }
     return 0.0001;
 }
 
@@ -276,6 +295,9 @@
     {
         //        [[KZJRequestData requestOnly]startRequestData5:1 withType:@"1"];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"draft" object:nil];
+    }else if (indexPath.section ==0&&indexPath.row==0)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"newFriend" object:nil];
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -284,7 +306,12 @@
     view.alpha=0;
     return view;
 }
-
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)];
+    view.alpha=0;
+    return view;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -14,6 +14,7 @@
 #import "KZJPrivacyView.h"
 #import "KZJOpinionView.h"
 #import "KZJAboutView.h"
+#import "KZJShareController.h"
 @interface KZJSetView : UIViewController
 
 @end

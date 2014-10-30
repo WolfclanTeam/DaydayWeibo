@@ -18,8 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"意见反馈";
+    
+    UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
+    UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
+    self.navigationItem.leftBarButtonItem = leftItem;
 }
-
+-(void)back
+{
+    //    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

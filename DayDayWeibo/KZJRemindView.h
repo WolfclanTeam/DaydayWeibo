@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KZJRemindSubView.h"
 @interface KZJRemindView : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray*titleArray;

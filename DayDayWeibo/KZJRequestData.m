@@ -171,6 +171,15 @@
     }
     
 }
+-(void)startRequestData15:(int)page
+{
+    if (page==1)
+    {
+        [friendData removeAllObjects];
+    }
+    NSDictionary*params1=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",page],@"page",@"20",@"count",nil];
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/suggestions/users/may_interested.json" httpMethod:@"GET" params:params1 delegate:self withTag:@"1012"];
+}
 #pragma mark 微博认证请求返回结果结束
 -(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result
 {
@@ -266,6 +275,7 @@
     }else if ([request.tag isEqualToString:@"ADTAILWEIBO"])
     {
         NSDictionary *dict = [result objectFromJSONString];
+        NSLog(@"%@",dict);
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"COMMENT"])
     {
@@ -381,6 +391,23 @@
 //         NSLog(@"1100 = %@",[result objectFromJSONString]);
         NSDictionary*dict = [NSDictionary dictionaryWithObject:[[result objectFromJSONString] objectForKey:@"pois"] forKey:@"pois"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict];
+    }else if ([request.tag isEqualToString:@"1012"])
+    {
+        if (peopleArray==nil)
+        {
+            peopleArray = [[NSMutableArray alloc]init];
+        }
+        NSArray *dict = [result objectFromJSONString];
+        NSLog(@"%@",dict);
+        countNum = [dict count];
+        for (NSDictionary*dict1 in dict)
+        {
+            [self startRequestData7:[NSString stringWithFormat:@"%@",[dict1 objectForKey:@"uid"]]];
+        }
+//        NSDictionary*dict2 = [NSDictionary dictionaryWithObject:weiboData forKey:@"statuses"];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"myweibo" object:nil userInfo:dict2];
+//        
+        
     }else if ([request.tag isEqualToString:@"1100"])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"receiveMyData" object:self userInfo:[result objectFromJSONString]];

@@ -17,6 +17,7 @@
 #import "KZJMyHomeView.h"
 #import "KZJCollectView.h"
 #import "KZJDraftView.h"
+#import "KZJNewFriendView.h"
 
 @interface KZJMeController : UIViewController
 {

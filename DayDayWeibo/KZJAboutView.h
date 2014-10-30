@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface KZJAboutView : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import<StoreKit/StoreKit.h>
+@interface KZJAboutView : UIViewController<UITableViewDataSource,UITableViewDelegate,SKStoreProductViewControllerDelegate,NSURLConnectionDataDelegate>
 {
     NSArray*titleArray;
+    NSURLConnection*getConnection;//post请求连接
+    NSMutableData*getData;
+    UIActivityIndicatorView*indicatorview ;
+
 }
 @property(retain,nonatomic)UITableView*tableview;
 

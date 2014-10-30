@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface KZJDraftView : UIViewController
-
+#import "KZJShareController.h"
+@interface KZJDraftView : UIViewController<UITableViewDelegate,UITableViewDataSource>
+{
+    NSArray*draftArray;
+}
 @end

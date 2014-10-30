@@ -33,8 +33,16 @@
         [self.view addSubview:tableview];
     }
     titleArray = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"隐私设置",@"账号安全", nil],[NSArray arrayWithObjects:@"已屏蔽私信的人",@"已屏蔽微博的人", nil],[NSArray arrayWithObjects:@"黑名单", nil],nil];
+    
+    UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
+    UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
+    self.navigationItem.leftBarButtonItem = leftItem;
 }
-
+-(void)back
+{
+    //    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark tableview代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

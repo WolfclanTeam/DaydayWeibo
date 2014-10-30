@@ -1,94 +1,70 @@
 //
-//  KZJDraftView.m
+//  KZJRemindSubView.m
 //  DayDayWeibo
 //
-//  Created by bk on 14/10/29.
+//  Created by bk on 14/10/30.
 //  Copyright (c) 2014年 KZJ. All rights reserved.
 //
 
-#import "KZJDraftView.h"
+#import "KZJRemindSubView.h"
 
-@interface KZJDraftView ()
+@interface KZJRemindSubView ()
 
 @end
 
-@implementation KZJDraftView
-
+@implementation KZJRemindSubView
+@synthesize kind,titlesArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"草稿箱";
+    self.navigationItem.title = kind;
     UIButton*btnback = [UIButton buttonWithType:UIButtonTypeCustom frame:CGRectMake(0, 0, 30, 22) backgroundImage:[UIImage redraw:[UIImage imageNamed:@"navigationbar_back@2x"] Frame:CGRectMake(0, 0, 30, 22)] title:nil target:self action:@selector(back)];
     UIBarButtonItem*leftItem = [[UIBarButtonItem alloc]initWithCustomView:btnback];
     self.navigationItem.leftBarButtonItem = leftItem;
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
-    UITableView*draftTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
-    draftTable.delegate = self;
-    draftTable.dataSource = self;
-    
+    UITableView*tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
+    tableview.delegate = self;
+    tableview.dataSource = self;
+    tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 0.906, 0.906, 0.906, 1 });
-    draftTable.layer.backgroundColor = colorref;
+    [tableview.layer setBackgroundColor:colorref];
     CGColorSpaceRelease(colorSpace);
     CGColorRelease(colorref);
-    
-    draftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:draftTable];
-    
-    draftArray = [[NSArray alloc]init];
-    draftArray = [[KZJRequestData requestOnly]getCoreData:@"StoreWeibo"];
-    
-    
+    [self.view addSubview:tableview];
 }
+#pragma mark tableview代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString*mark = @"draftMark";
+    static NSString*mark = @"markRemindSub";
     UITableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
     if (cell==nil)
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
     }
-    StoreWeibo*storeWeibo = draftArray[indexPath.section];
-    cell.imageView.image = [UIImage imageWithData:storeWeibo.image];
-    cell.textLabel.text = storeWeibo.textContent;
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.textLabel.text = titlesArray[indexPath.section][indexPath.row];
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    return [titlesArray[section] count];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [draftArray count];
+    return titlesArray.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 15;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 8;
-}
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 8)];
-    view.backgroundColor = [UIColor clearColor];
-    return view;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    KZJShareController*shareView = [[KZJShareController alloc]init];
-    StoreWeibo*storeWeibo = draftArray[indexPath.section];
-    NSLog(@"%@",storeWeibo.textContent);
-    shareView.weiboContentTextView.text = storeWeibo.textContent;
-    self.hidesBottomBarWhenPushed = YES;
-    
+    return 15;
 }
 -(void)back
 {
-    self.hidesBottomBarWhenPushed = NO;
+    //    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

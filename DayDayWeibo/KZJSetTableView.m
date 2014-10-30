@@ -153,7 +153,7 @@
     }else if (indexPath.section ==2&&indexPath.row==0)
     {
         //意见反馈
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"remind" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"opinion" object:nil userInfo:nil];
     }else if (indexPath.section ==2&&indexPath.row==1)
     {
         //关于微博

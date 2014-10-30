@@ -42,6 +42,9 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"about" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(about) name:@"about" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"opinion" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(opinion) name:@"opinion" object:nil];
 }
 -(void)pushAccount
 {
@@ -65,9 +68,18 @@
 {
     KZJPrivacyView*privacyView = [[KZJPrivacyView alloc]init];
     self.hidesBottomBarWhenPushed = YES;
+//    self
     [self.navigationController pushViewController:privacyView animated:YES];
 }
-
+-(void)opinion
+{
+    KZJShareController*opinionView = [[KZJShareController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:opinionView];
+    [self presentViewController:shareNav animated:YES completion:^{
+        
+    }];
+}
 -(void)about
 {
     KZJAboutView*aboutView = [[KZJAboutView alloc]init];

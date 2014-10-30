@@ -57,6 +57,16 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"draft" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft) name:@"draft" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"newFriend" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newFriend) name:@"newFriend" object:nil];
+}
+//新的好友(由于获取不到接口,只做了里面的推荐可能感兴趣的人)
+-(void)newFriend
+{
+    KZJNewFriendView *newFriendView = [[KZJNewFriendView alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:newFriendView animated:YES];
 }
 //草稿箱
 -(void)draft
