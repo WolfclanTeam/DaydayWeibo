@@ -13,6 +13,7 @@
 #import "SlideAnimation.h"
 #import "KZJCommentViewController.h"
 #import "KZJSupportViewController.h"
+#import "KZJTranspondWeiboViewController.h"
 @interface KZJMessageController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 {
    

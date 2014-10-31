@@ -24,7 +24,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     page = 1;
     weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64) view:self.tabBarController.view];
-    
+    weiboList.separatorStyle = UITableViewCellSeparatorStyleNone;
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
     [weiboList headerBeginRefreshing];
     [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];

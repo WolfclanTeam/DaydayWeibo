@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="StoreWeibo" syncable="YES">
+        <attribute name="identifierName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="textContent" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -19,7 +20,7 @@
         <attribute name="unread" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="StoreWeibo" positionX="-63" positionY="72" width="128" height="90"/>
         <element name="UserInformation" positionX="-63" positionY="-18" width="128" height="225"/>
-        <element name="StoreWeibo" positionX="-63" positionY="72" width="128" height="75"/>
     </elements>
 </model>

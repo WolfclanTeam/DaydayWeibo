@@ -13,5 +13,5 @@
 
 @dynamic image;
 @dynamic textContent;
-
+@dynamic identifierName;
 @end

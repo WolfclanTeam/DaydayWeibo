@@ -139,6 +139,14 @@
     {
         [self performSelector:@selector(presentmySupportVC)];
     }
+    else if (indexPath.row ==3)
+    {
+//        KZJTranspondWeiboViewController *transpond = [[KZJTranspondWeiboViewController alloc] init];
+//        transpond.whoLabelContent = @"sdfsfasdfsdfsdf";
+//        transpond.detailViewContent = @"sdfsafsfasfasdfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfdsfadsf";
+//        transpond.urlString = @"http://d.hiphotos.baidu.com/image/w%3D230/sign=cc56d22f9d2f07085f052d03d925b865/0df3d7ca7bcb0a46b99f4b596863f6246b60af15.jpg";
+//        [self.navigationController pushViewController:transpond animated:YES];
+    }
     
 }
 -(void)presentmyContentVC

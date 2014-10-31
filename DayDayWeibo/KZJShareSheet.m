@@ -88,6 +88,36 @@
         line1.backgroundColor = [UIColor lightGrayColor];
         [view addSubview:line1];
         
+        for (int i = 0; i<2; i++)
+        {
+            UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame = CGRectMake(15+i*64, 115, 35, 35);
+            btn.tag = 1200+i;
+            if (i==0) {
+                [btn setImage:[UIImage imageNamed:@"preview_save_icon_highlighted@2x"] forState:UIControlStateNormal];
+                [btn setImage:[UIImage imageNamed:@"preview_save_icon_highlighted@2x"] forState:UIControlStateHighlighted];
+            }else if (i==1)
+            {
+                [btn setImage:[UIImage imageNamed:@"tabbar_home@2x"] forState:UIControlStateNormal];
+//                [btn setImage:[UIImage imageNamed:@"more_weixin_highlighted@2x"] forState:UIControlStateHighlighted];
+            }
+            [btn addTarget:view1.superview action:@selector(btn2Action:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:btn];
+            
+            UILabel*titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10+i*64, 145, 50, 25)];
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            if (i==0)
+            {
+                titleLabel.text = @"保存到手机";
+            }else if (i==1)
+            {
+                titleLabel.text = @"返回首页";
+            }
+            titleLabel.tag = 1300+i;
+            titleLabel.font = [UIFont systemFontOfSize:10];
+            [view addSubview:titleLabel];
+        }
+        
         
     }
     view1.tag = 999;
@@ -97,7 +127,31 @@
 {
     [self removeFromSuperview];
 }
+-(void)btn2Action:(UIButton*)btn
+{
+    UILabel*label = (UILabel*)[self viewWithTag:btn.tag+100];
+    if ([label.text isEqualToString:@"保存到手机"])
+    {
+        for (UIView*view in self.subviews)
+        {
+            [view removeFromSuperview];
+        }
+        UIGraphicsBeginImageContext(self.superview.bounds.size);
+        [self.superview.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"图片保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        [self cancel1];
+        
+    }else if ([label.text isEqualToString:@"返回首页"])
+    {
 
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:nil];
+
+    }
+}
 -(void)btnAction:(UIButton*)btn
 {
     UILabel*label = (UILabel*)[self viewWithTag:btn.tag+100];

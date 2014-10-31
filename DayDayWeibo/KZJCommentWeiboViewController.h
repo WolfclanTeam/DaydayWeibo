@@ -8,6 +8,15 @@
 
 #import "KZJCommentTranspondBaseController.h"
 
-@interface KZJCommentWeiboViewController : KZJCommentTranspondBaseController<UIAlertViewDelegate>
+@interface KZJCommentWeiboViewController : KZJCommentTranspondBaseController
+@property(copy,nonatomic)NSString *titleText;
 
+//cid 需要回复的评论ID。
+@property(copy,nonatomic)NSString *cid;
+//id 需要评论的微博ID。
+@property(copy,nonatomic)NSString *commentId;
+//comment 回复评论内容
+@property(copy,nonatomic)NSString *commentContent;
+//comment_ori 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0
+@property(copy,nonatomic)NSString *comment_ori;
 @end

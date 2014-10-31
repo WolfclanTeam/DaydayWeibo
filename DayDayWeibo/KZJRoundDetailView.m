@@ -26,11 +26,11 @@
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 1000.0f;
-    if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
-    {
-        NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
-        [locationManager requestAlwaysAuthorization];
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] intValue]>=8)
+//    {
+//        NSLog(@"%@",[[UIDevice currentDevice] systemVersion]);
+//        [locationManager requestAlwaysAuthorization];
+//    }
     [locationManager startUpdatingLocation];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -95,31 +95,39 @@
 -(void)roundDetail:(NSNotification*)notif
 {
     NSDictionary*dict = [notif userInfo];
-    if (flag==0)
+    if (dict!=nil)
     {
-        dataArr = [dict objectForKey:@"statuses"];
-        weiboList.dataArr = dataArr;
-        
-    }else if (flag==1)
-    {
-        dataArr = [dict objectForKey:@"photo"];
-//        NSLog(@"%@",dict);
-        NSArray*photoB = [NSArray arrayWithArray:[dict objectForKey:@"photoBigger"]];
-        weiboList.photoArray = dataArr;
-        weiboList.photoBiggerArray = photoB;
-    }else if (flag==2)
-    {
-        dataArr = [dict objectForKey:@"users"];
-
-        weiboList.peopleArray = dataArr;
-    }else if (flag==3)
-    {
-        dataArr = [dict objectForKey:@"pois"];
-        NSLog(@"%@",dataArr);
-        weiboList.addressArray = dataArr;
+        NSLog(@"%@",dict);
+        if ([dict isKindOfClass:[NSDictionary class]])
+        {
+            if (flag==0)
+            {
+                dataArr = [dict objectForKey:@"statuses"];
+                weiboList.dataArr = dataArr;
+                
+            }else if (flag==1)
+            {
+                dataArr = [dict objectForKey:@"photo"];
+                //        NSLog(@"%@",dict);
+                NSArray*photoB = [NSArray arrayWithArray:[dict objectForKey:@"photoBigger"]];
+                weiboList.photoArray = dataArr;
+                weiboList.photoBiggerArray = photoB;
+            }else if (flag==2)
+            {
+                dataArr = [dict objectForKey:@"users"];
+                
+                weiboList.peopleArray = dataArr;
+            }else if (flag==3)
+            {
+                dataArr = [dict objectForKey:@"pois"];
+                NSLog(@"%@",dataArr);
+                weiboList.addressArray = dataArr;
+            }
+            
+            [weiboList reloadData];
+        }
     }
     
-    [weiboList reloadData];
     [weiboList headerEndRefreshing];
 }
 -(void)btnAction:(UIButton*)btn
@@ -157,12 +165,15 @@
 -(void)headerRefresh
 {
     page =1;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)2*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [weiboList headerEndRefreshing];
+//    });
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-//    NSLog(@"====3243546");
+    NSLog(@"====3243546");
     
     CLGeocoder*coder = [[CLGeocoder alloc]init];
     [coder reverseGeocodeLocation:manager.location completionHandler:^(NSArray *placemarks, NSError *error)
@@ -202,7 +213,7 @@
 //设置大头针
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-//    NSLog(@"3243567");
+    NSLog(@"3243567");
     static NSString*mark = @"mark";
     MKPinAnnotationView*annotationView =(MKPinAnnotationView*) [mapView dequeueReusableAnnotationViewWithIdentifier:mark];
     if (annotationView ==nil)
@@ -216,6 +227,7 @@
 }
 -(void)back
 {
+    [locationManager stopUpdatingLocation];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

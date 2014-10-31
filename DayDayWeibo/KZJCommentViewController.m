@@ -291,6 +291,7 @@ JGProgressHUD *HUD;
 {
     NSLog(@"回复");
     KZJCommentWeiboViewController *commentWeiboVC = [[KZJCommentWeiboViewController alloc] init];
+    commentWeiboVC.titleText = @"回复评论";
     [self.navigationController pushViewController:commentWeiboVC animated:YES];
 }
 #pragma mark UITableViewDelegate

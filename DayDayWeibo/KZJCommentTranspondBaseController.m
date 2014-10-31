@@ -13,7 +13,7 @@
 @end
 
 @implementation KZJCommentTranspondBaseController
-@synthesize whoLabel,titleLabel,growingTextView,myToolBar,commentTranspondBtn,commentTranspondLabel,commentTranspondImageView,atItem,searchHuaTiItem,moreItem,faceItem,spaceButtonItem;
+@synthesize whoLabel,titleLabel,growingTextView,myToolBar,commentTranspondBtn,commentTranspondLabel,commentTranspondImageView,atItem,searchHuaTiItem,moreItem,faceItem,spaceButtonItem,managedObjectContext;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     managedObjectContext = ((KZJAppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidHide)
@@ -62,12 +63,14 @@
     
     self.navigationItem.titleView = titleView;
     
+    
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelMethod)];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor orangeColor];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(sendMethod)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor orangeColor];
     
     self.growingTextView = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64)];
     self.growingTextView.delegate = self;

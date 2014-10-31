@@ -105,4 +105,27 @@ typedef void(^passData)(NSDictionary*);
  */
 -(void)zljSendWeibo:(NSString*)message picArr:(NSMutableArray*)imageArr visible:(int)visible;
 
+/**
+ jian 回复一条微博
+ param  cid 需要回复的评论ID。
+ param id 需要评论的微博ID。
+ param comment 回复评论内容，必须做URLencode，内容不超过140个汉字。
+ comment_ori 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0
+ */
+-(void)zljreplyWeibo:(NSString*)cid Id:(NSString*)weiboId comment:(NSString*)commentContent comment_ori:(NSString*)comment_ori;
+/**
+ 对一条微博进行评论
+ @param  commentContent 评论内容，必须做URLencode，内容不超过140个汉字。
+ @param id 需要评论的微博ID
+ @param comment_ori 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0。
+ */
+-(void)zljCommentWeibo:(NSString*)commentContent Id:(NSString*)Id comment_ori:(NSString*)comment_ori;
+
+/**
+ 转发一条微博
+ @param id 要转发的微博ID。
+ @param status 添加的转发文本，必须做URLencode，内容不超过140个汉字，不填则默认为“转发微博”。
+ @param is_comment 是否在转发的同时发表评论，0：否、1：评论给当前微博、2：评论给原微博、3：都评论，默认为0 。
+ */
+-(void)zljRepostWeibo:(NSString*)repostId Status:(NSString*)status is_comment:(NSString*)is_comment;
 @end

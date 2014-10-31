@@ -84,7 +84,11 @@
     NSLog(@"%@",storeWeibo.textContent);
     shareView.weiboContentTextView.text = storeWeibo.textContent;
     self.hidesBottomBarWhenPushed = YES;
-    
+    UINavigationController*shareC = [[UINavigationController alloc]initWithRootViewController:shareView];
+    [self presentViewController:shareC animated:YES completion:^{
+        
+    }];
+    //微博用sharecontroller，评论用KZJCommentWeiboViewController
 }
 -(void)back
 {

@@ -14,5 +14,5 @@
 
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSString * textContent;
-
+@property(nonatomic,retain)NSString *identifierName;
 @end

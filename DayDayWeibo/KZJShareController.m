@@ -16,7 +16,7 @@
 @end
 NSString *const CollectionViewCellIdentifier = @"Cell";
 @implementation KZJShareController
-@synthesize collectionView,weiboContentTextView,weiboVisibleScopeValue,weiboVisibleScopeTitle,managedObjectContext;
+@synthesize collectionView,weiboContentTextView,weiboVisibleScopeValue,weiboVisibleScopeTitle,managedObjectContext,myImage,weiboContent;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -85,6 +85,12 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
     
     weiboVisibleScopeTitle = @"对所有人可见";
     
+    if (self.myImage)
+    {
+        [imageArr insertObject:self.myImage atIndex:0];
+        [self addPhotoCollectionView];
+        self.collectionView.hidden = NO;
+    }
 }
 #pragma mark 插入图片
 -(void)insertPic
@@ -277,8 +283,12 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
         weiboContentTextView.delegate  =self;
         weiboContentTextView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
         weiboContentTextView.placeholder = @" 分享身边新鲜事";
-        
-        
+    if (weiboContent.length >0)
+    {
+         weiboContentTextView.text = weiboContent;
+    }
+   
+    
         [self.view addSubview:weiboContentTextView];
         
         [self.view addSubview:toolBar];
@@ -557,30 +567,35 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
     if(buttonIndex ==1)
     {
 #warning 保存到草稿箱
-        StoreWeibo *storeWeibo = [NSEntityDescription insertNewObjectForEntityForName:@"StoreWeibo"
-                                                               inManagedObjectContext:managedObjectContext];
-        storeWeibo.textContent = weiboContentTextView.text;
-        if ([imageArr count]>1)
-        {
-             storeWeibo.image = UIImagePNGRepresentation([imageArr objectAtIndex:0]);
-        }
-       
-        NSError *error;
-        if (![managedObjectContext save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
         
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoreWeibo"
-                                                  inManagedObjectContext:managedObjectContext];
-        [fetchRequest setEntity:entity];
-        
-        NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        for (StoreWeibo *weibo in fetchedObjects)
-        {
-            NSLog(@"content: %@", weibo.textContent);
-            NSLog(@"image: %@",weibo.image);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            StoreWeibo *storeWeibo = [NSEntityDescription insertNewObjectForEntityForName:@"StoreWeibo"
+                                                                   inManagedObjectContext:managedObjectContext];
+            storeWeibo.textContent = weiboContentTextView.text;
+            storeWeibo.identifierName = @"微博";
+            if ([imageArr count]>1)
+            {
+                storeWeibo.image = UIImagePNGRepresentation([imageArr objectAtIndex:0]);
+            }
+            
+            NSError *error;
+            if (![managedObjectContext save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+            
+//            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//            NSEntityDescription *entity = [NSEntityDescription entityForName:@"StoreWeibo"
+//                                                      inManagedObjectContext:managedObjectContext];
+//            [fetchRequest setEntity:entity];
+//            
+//            NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+//            for (StoreWeibo *weibo in fetchedObjects)
+//            {
+//                NSLog(@"content: %@", weibo.textContent);
+//                NSLog(@"image: %@",weibo.image);
+//            }
+
+        });
     }
     [self dismissViewControllerAnimated:YES completion:^{
         

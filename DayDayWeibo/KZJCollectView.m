@@ -26,6 +26,7 @@
 
     
     weiboList = [[KZJWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) view:self.tabBarController.view];
+    weiboList.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:weiboList];
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
     [weiboList headerBeginRefreshing];

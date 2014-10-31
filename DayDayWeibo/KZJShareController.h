@@ -44,4 +44,8 @@
 @property(strong,nonatomic) NSManagedObjectContext* managedObjectContext;
 -(void)insertPic;
 -(void)openCamera;
+
+//草稿箱接口
+@property(retain,nonatomic)UIImage *myImage;
+@property(copy,nonatomic)NSString *weiboContent;
 @end

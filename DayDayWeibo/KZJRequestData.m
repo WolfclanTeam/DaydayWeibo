@@ -366,18 +366,23 @@
 //         NSLog(@"1100 = %@",[[[result objectFromJSONString] objectForKey:@"statuses"] objectAtIndex:0]);
         NSMutableArray*photoArray1 = [[NSMutableArray alloc]init];
         NSMutableArray*photoBiggerArray1 = [[NSMutableArray alloc]init];
-        for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"])
+//        NSLog(@"%@",result);
+        if (result!=nil)
         {
-            
-            if ([dict objectForKey:@"thumbnail_pic"] !=nil)
+            for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"])
             {
-                [photoArray1 addObject:[NSDictionary dictionaryWithObject:[dict objectForKey:@"thumbnail_pic"] forKey:@"thumbnail_pic"]];
-                [photoBiggerArray1 addObject:dict];
+                
+                if ([dict objectForKey:@"thumbnail_pic"] !=nil)
+                {
+                    [photoArray1 addObject:[NSDictionary dictionaryWithObject:[dict objectForKey:@"thumbnail_pic"] forKey:@"thumbnail_pic"]];
+                    [photoBiggerArray1 addObject:dict];
+                }
+                
             }
-            
+            NSDictionary*dict1 =@{@"photo":photoArray1,@"photoBigger":photoBiggerArray1};
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict1];
         }
-        NSDictionary*dict1 =@{@"photo":photoArray1,@"photoBigger":photoBiggerArray1};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"roundDetail" object:nil userInfo:dict1];
+        
         
     }else if ([request.tag isEqualToString:@"1010"])
     {
@@ -398,7 +403,7 @@
             peopleArray = [[NSMutableArray alloc]init];
         }
         NSArray *dict = [result objectFromJSONString];
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
         countNum = [dict count];
         for (NSDictionary*dict1 in dict)
         {
@@ -440,6 +445,17 @@
         [JDStatusBarNotification showWithStatus:@"发送成功" dismissAfter:1 styleName:@"JDStatusBarStyleSuccess"];
         
         
+    } else if ([request.tag isEqualToString:@"1107"])
+    {
+        //NSLog(@"%@",result);
+    }
+    else if ([request.tag isEqualToString:@"1108"])
+    {
+        //NSLog(@"%@",result);
+    }
+    else if ([request.tag isEqualToString:@"1109"])
+    {
+        //NSLog(@"%@",result);
     }else if ([request.tag isEqualToString:@"NEWCOMMENT"])
     {
 //        NSLog(@"%@",result);
@@ -555,17 +571,17 @@
     UIImageView*imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
     [imageview sd_setImageWithURL:[NSURL URLWithString:[dict objectForKey:@"avatar_hd"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        NSLog(@"===%@",image);
-        KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
-        NSManagedObjectContext *context = app.managedObjectContext;
-        NSArray*array = [self getCoreData:@"UserInformation"];
-        for (UserInformation*info in array)
-        {
-            if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
-            {
+//        KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
+//        NSManagedObjectContext *context = app.managedObjectContext;
+//        NSArray*array = [self getCoreData:@"UserInformation"];
+//        for (UserInformation*info in array)
+//        {
+//            if ([info.uid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]])
+//            {
                  userInformation.photoData = UIImageJPEGRepresentation(imageview.image, 1);
-                //            NSLog(@"%@",info.unread);
-            }
-        }
+//                //            NSLog(@"%@",info.unread);
+//            }
+//        }
         [context save:nil];
     }];
     
@@ -604,9 +620,10 @@
         }
         //        [context deleteObject:info];
     }
-    
+
     [context save:nil];
-    
+
+//    NSLog(@"%@",array);
     NSNotification*notification=nil;
     notification = [NSNotification notificationWithName:@"passValue" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
@@ -900,4 +917,26 @@
     
     
 }
+#pragma mark 回复一条微博
+-(void)zljreplyWeibo:(NSString*)cid Id:(NSString*)weiboId comment:(NSString*)commentContent comment_ori:(NSString*)comment_ori;
+{
+    NSDictionary*params = @{@"cid": cid,@"id":weiboId,@"comment":commentContent,@"comment_ori":comment_ori};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/reply.json" httpMethod:@"POST" params:params delegate:self withTag:@"1107"];
+    
+}
+#pragma  mark 对一条微博进行评论
+-(void)zljCommentWeibo:(NSString*)commentContent Id:(NSString*)Id comment_ori:(NSString*)comment_ori
+{
+    NSDictionary*params = @{@"id":Id,@"comment":commentContent,@"comment_ori":comment_ori};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/comments/create.json" httpMethod:@"POST" params:params delegate:self withTag:@"1108"];
+    
+}
+#pragma mark 转发一条微博
+-(void)zljRepostWeibo:(NSString*)repostId Status:(NSString*)status is_comment:(NSString*)is_comment
+{
+    NSDictionary*params = @{@"id":repostId,@"status":status,@"is_comment":is_comment};
+    [WBHttpRequest requestWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"] url:@"https://api.weibo.com/2/statuses/repost.json" httpMethod:@"POST" params:params delegate:self withTag:@"1109"];
+}
+
+
 @end

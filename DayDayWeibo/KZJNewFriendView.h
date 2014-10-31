@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "KZJInformationCell.h"
-@interface KZJNewFriendView : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface KZJNewFriendView : UIViewController<UIAlertViewDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     int page;
     NSArray*dataArr;
+    
+    NSDictionary*dictDetail;
+    NSDictionary*dictDetail2;
 }
 @property(retain,nonatomic)UITableView*friendTable;
 @end

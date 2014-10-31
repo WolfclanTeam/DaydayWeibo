@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HPGrowingTextView.h"
-@interface KZJCommentTranspondBaseController : UIViewController<HPGrowingTextViewDelegate>
+#import "KZJAppDelegate.h"
+@interface KZJCommentTranspondBaseController : UIViewController<HPGrowingTextViewDelegate,UIAlertViewDelegate>
 
 @property(retain,nonatomic)UILabel *whoLabel;
 @property(retain,nonatomic)UILabel *titleLabel;
@@ -22,4 +23,6 @@
 @property(retain,nonatomic)UIBarButtonItem *faceItem;
 @property(retain,nonatomic)UIBarButtonItem *moreItem;
 @property(retain,nonatomic)UIBarButtonItem *spaceButtonItem ;
+
+@property(strong,nonatomic) NSManagedObjectContext* managedObjectContext;
 @end

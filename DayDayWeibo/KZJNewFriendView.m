@@ -24,6 +24,7 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     self.automaticallyAdjustsScrollViewInsets = NO;
     friendTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
+    friendTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     friendTable.delegate = self;
     friendTable.dataSource = self;
     [friendTable addHeaderWithTarget:self action:@selector(headerRefresh)];
@@ -33,6 +34,58 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"people" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(friend:) name:@"people" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"attention" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(attention) name:@"attention" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"relation" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(relation:) name:@"relation" object:nil];
+}
+//搜索返回的个人关系信息
+-(void)relation:(NSNotification*)notif
+{
+    dictDetail = [[notif userInfo] objectForKey:@"target"];
+    NSLog(@"%@",[dictDetail objectForKey:@"followed_by"]);
+    if ([[dictDetail objectForKey:@"followed_by"] intValue])
+    {
+        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:nil message:@"你确定取消关注该用户?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        alert.tag = 110;
+        [alert show];
+    }else
+    {
+        UIAlertView*alert = [[UIAlertView alloc]initWithTitle:nil message:@"你确定关注该用户?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        alert.tag = 111;
+        [alert show];
+    }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==110)
+    {
+        if (buttonIndex==0)
+        {
+            NSLog(@"%@",dictDetail);
+            [[KZJRequestData requestOnly]startRequestData10:[NSString stringWithFormat:@"%@",[dictDetail objectForKey:@"id"]] withName:[dictDetail objectForKey:@"screen_name"]];
+        }
+    }else if (alertView.tag==111)
+    {
+        if (buttonIndex==0)
+        {
+            [[KZJRequestData requestOnly]startRequestData9:[NSString stringWithFormat:@"%@",[dictDetail objectForKey:@"id"]] withName:[dictDetail objectForKey:@"screen_name"]];
+        }
+    }else if (alertView.tag==112)
+    {
+        if (buttonIndex==0)
+        {
+            [[KZJRequestData requestOnly]startRequestData10:[NSString stringWithFormat:@"%@",[dictDetail2 objectForKey:@"id"]] withName:[dictDetail objectForKey:@"screen_name"]];
+        }
+    }
+}
+-(void)attention
+{
+    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:nil message:@"关注成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    
 }
 -(void)friend:(NSNotification*)notif
 {
@@ -94,6 +147,12 @@
 {
     self.hidesBottomBarWhenPushed = NO;
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"attention" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"relation" object:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
