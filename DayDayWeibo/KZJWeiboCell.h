@@ -31,6 +31,7 @@
     UIButton *collectBtn;
     UILabel *collectL;
     BOOL following;
+    CGPoint beginPoint;
 }
 
 @property (nonatomic,retain) UIView *boundsView;

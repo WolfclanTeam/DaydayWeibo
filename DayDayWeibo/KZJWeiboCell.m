@@ -621,8 +621,8 @@
     
     
     //点击微博图片触发显示大图方法
-    UITapGestureRecognizer *bigger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
-    bigger.numberOfTapsRequired = 1;
+//    UITapGestureRecognizer *bigger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
+//    bigger.numberOfTapsRequired = 1;
     
     UITapGestureRecognizer *moreBigger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
     weiboImages.tag = 7000+indexPath.row;
@@ -817,6 +817,14 @@
              picImageView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
          }
          
+         picImageView.userInteractionEnabled = YES;
+         UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+         [picImageView addGestureRecognizer:pinch];
+         
+//         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+//         [picImageView addGestureRecognizer:pan];
+
+         
      }];
     UITapGestureRecognizer *backTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backAction)];
     backTap.numberOfTapsRequired = 1;
@@ -827,7 +835,48 @@
     
 }
 
+-(void)pinchAction:(id)sender
+{
+    NSLog(@"捏合");
+    UIPinchGestureRecognizer *pinch = (UIPinchGestureRecognizer *)sender;
+    picImageView.transform = CGAffineTransformMakeScale(pinch.scale, pinch.scale);
+}
 
+-(void)panAction:(id)sender
+{
+    UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)sender;
+    if (pan.state == UIGestureRecognizerStateBegan)
+    {
+        beginPoint = CGPointMake(0, 0);
+    }
+    CGPoint nowPoint = [pan translationInView:picImageView];
+    float offX = nowPoint.x-beginPoint.x;
+    float offY = nowPoint.y-beginPoint.y;
+    picImageView.center = CGPointMake(picImageView.center.x+offX, picImageView.center.y+offY);
+//    if (picImageView.center.x>picImageView.frame.size.width/2)
+//    {
+//        picImageView.center = CGPointMake(picImageView.frame.size.width/2, picImageView.center.y);
+//    }
+//    if (picImageView.center.y>picImageView.frame.size.height/2)
+//    {
+//        if (picImageView.frame.size.height<SCREENHEIGHT)
+//        {
+//            picImageView.center = CGPointMake(picImageView.center.x, SCREENHEIGHT/2);
+//        }else
+//        {
+//            picImageView.center = CGPointMake(picImageView.center.x, picImageView.center.y);
+//        }
+//    }
+//    if (picImageView.center.x<picImageView.frame.size.width/2)
+//    {
+//        picImageView.center = CGPointMake(picImageView.frame.size.width/2, picImageView.center.y);
+//    }
+//    if (picImageView.center.y<picImageView.frame.size.height/2)
+//    {
+//        picImageView.center = CGPointMake(picImageView.center.x, picImageView.frame.size.height/2);
+//    }
+    beginPoint = nowPoint;
+}
 
 - (void)awakeFromNib
 {

@@ -32,6 +32,13 @@
         [supView addSubview:self];
         self.delegate = self;
         self.dataSource = self;
+        theWeiboDict = weiboDict;
+        //设置显示大图的图片视图
+        picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+        imageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, SCREENWIDTH, SCREENHEIGHT)];
+        imageScroll.backgroundColor = [UIColor blackColor];
+        imageScroll.bounces = NO;
+        [imageScroll addSubview:picImageView];
         
         repostsNum = [weiboDict objectForKey:@"reposts_count"];
         commentsNum = [weiboDict objectForKey:@"comments_count"];
@@ -204,6 +211,32 @@
             
         }
         
+        //
+        weiboSingleImage.userInteractionEnabled = YES;
+        weiboImages.userInteractionEnabled = YES;
+        retweetImages.userInteractionEnabled = YES;
+        retweetSingleImage.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *singleImageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
+        singleImageTap.numberOfTapsRequired = 1;
+        weiboSingleImage.tag  = 1201;
+        [weiboSingleImage addGestureRecognizer:singleImageTap];
+        
+        UITapGestureRecognizer *weiboImagesTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
+        weiboImagesTap.numberOfTapsRequired = 1;
+        weiboImages.tag = 1202;
+        [weiboImages addGestureRecognizer:weiboImagesTap];
+
+        UITapGestureRecognizer *singleRetImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
+        singleRetImgTap.numberOfTapsRequired = 1;
+        retweetSingleImage.tag = 1301;
+        [retweetSingleImage addGestureRecognizer:singleRetImgTap];
+        
+        UITapGestureRecognizer *retweetImagesTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(biggerAction:)];
+        retweetImagesTap.numberOfTapsRequired = 1;
+        retweetImages.tag = 1302;
+        [retweetImages addGestureRecognizer:retweetImagesTap];
+        
         //转发
         repostsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         repostsBtn.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-30, 106, 30);
@@ -213,6 +246,8 @@
         repostsCount.text = @"转发";
         [repostsBtn addSubview:repostsCount];
         [repostsBtn addSubview:repostsBG];
+        [repostsBtn addTarget:self action:@selector(retweetWeiboAction:) forControlEvents:UIControlEventTouchUpInside];
+        [repostsBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
         [self.superview addSubview:repostsBtn];
         
         //评论
@@ -224,6 +259,8 @@
         commentCount.text = @"评论";
         [commentBtn addSubview:commentBG];
         [commentBtn addSubview:commentCount];
+        [commentBtn addTarget:self action:@selector(commentWeibo:) forControlEvents:UIControlEventTouchUpInside];
+        [commentBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
         [self.superview addSubview:commentBtn];
         
         //表态
@@ -235,6 +272,7 @@
         attitudeCount.text = @"赞";
         [attitudesBtn addSubview:attitudesBG];
         [attitudesBtn addSubview:attitudeCount];
+        [attitudesBtn setBackgroundImage:[UIImage imageNamed:@"page_image_loading@2x.png"] forState:UIControlStateHighlighted];
         [self.superview addSubview:attitudesBtn];
         
         
@@ -257,6 +295,112 @@
         
     }
     return self;
+}
+
+
+-(void)biggerAction:(UITapGestureRecognizer*)sender
+{
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicatorView.center = picImageView.center;
+    [picImageView addSubview:indicatorView];
+    [indicatorView startAnimating];
+    
+    NSURL *imageUrl;
+    UIImageView *orgImageView;
+    if (sender.view.tag == 1201)
+    {
+        orgImageView = (UIImageView*)sender.view;
+        imageUrl = [NSURL URLWithString:[theWeiboDict objectForKey:@"original_pic"]];
+    }else if(sender.view.tag == 1202)
+    {
+        orgImageView = [[sender.view subviews] objectAtIndex:0];
+        imageUrl = [NSURL URLWithString:[theWeiboDict objectForKey:@"original_pic"]];
+    }else if (sender.view.tag == 1301)
+    {
+        orgImageView = (UIImageView*)sender.view;
+        imageUrl = [NSURL URLWithString:[[theWeiboDict objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]];
+    }else if (sender.view.tag == 1302)
+    {
+        orgImageView = [[sender.view subviews] objectAtIndex:0];
+        imageUrl = [NSURL URLWithString:[[theWeiboDict objectForKey:@"retweeted_status"] objectForKey:@"original_pic"]];
+    }
+    
+    picImageView.frame = CGRectMake(self.superview.center.x, self.superview.center.y, 0, 0);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.8];
+    UIImage *OrgImage = [UIImage redraw:orgImageView.image Frame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    [picImageView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    [UIView commitAnimations];
+    
+    [picImageView sd_setImageWithURL:imageUrl placeholderImage:OrgImage options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+     {
+         UIImage *newImage = [UIImage redraw:image Frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, image.size.height/image.size.width*[UIScreen mainScreen].bounds.size.width)];
+         picImageView.image = newImage;
+         picImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, newImage.size.height);
+         imageScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, newImage.size.height+20);
+         
+         [indicatorView stopAnimating];
+         [indicatorView removeFromSuperview];
+         
+         if (picImageView.frame.size.height<SCREENHEIGHT)
+         {
+             picImageView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
+         }
+         
+         picImageView.userInteractionEnabled = YES;
+         UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+         [picImageView addGestureRecognizer:pinch];
+         
+//         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+//         [picImageView addGestureRecognizer:pan];
+         
+         
+     }];
+    UITapGestureRecognizer *backTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backAction)];
+    backTap.numberOfTapsRequired = 1;
+    [imageScroll addGestureRecognizer:backTap];
+    [self.superview.superview.superview.superview addSubview:imageScroll];
+    
+}
+
+-(void)pinchAction:(id)sender
+{
+    NSLog(@"捏合");
+    UIPinchGestureRecognizer *pinch = (UIPinchGestureRecognizer *)sender;
+    picImageView.transform = CGAffineTransformMakeScale(pinch.scale, pinch.scale);
+}
+
+-(void)panAction:(id)sender
+{
+    UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)sender;
+    if (pan.state == UIGestureRecognizerStateBegan)
+    {
+        beginPoint = CGPointMake(0, 0);
+    }
+    CGPoint nowPoint = [pan translationInView:picImageView];
+    float offX = nowPoint.x-beginPoint.x;
+    float offY = nowPoint.y-beginPoint.y;
+    picImageView.center = CGPointMake(picImageView.center.x+offX, picImageView.center.y+offY);
+    beginPoint = nowPoint;
+}
+
+-(void)backAction
+{
+    [imageScroll removeFromSuperview];
+}
+
+-(void)retweetWeiboAction:(UIButton*)sender
+{
+    NSDictionary *dict = @{@"weiboID":[theWeiboDict objectForKey:@"id"]};
+    NSNotification *retNoti = [[NSNotification alloc] initWithName:@"DETAILRETWEIBO" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:retNoti];
+}
+
+-(void)commentWeibo:(UIButton*)sender
+{
+    NSDictionary *dict = @{@"weiboID":[theWeiboDict objectForKey:@"id"]};
+    NSNotification *comNoti = [[NSNotification alloc] initWithName:@"COMMENTWEIBO" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:comNoti];
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -462,7 +606,12 @@
 
 -(void)replyAction:(UIButton*)sender
 {
-    
+    int num = sender.tag - 1000;
+    NSDictionary *dict = @{@"commentID":[[commentsArr objectAtIndex:num] objectForKey:@"id"]};
+    NSNotification *replyNoti = [[NSNotification alloc] initWithName:@"REPLYCOMMENT" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:replyNoti];
+    [bgView removeFromSuperview];
+    [comSelectView removeFromSuperview];
 }
 
 -(void)copyAction:(UIButton*)sender

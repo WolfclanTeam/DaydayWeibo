@@ -7,9 +7,13 @@
 //
 
 #import "KZJCommentTranspondBaseController.h"
-
+typedef void(^PassTitleText)(NSString*);
 @interface KZJCommentWeiboViewController : KZJCommentTranspondBaseController
-@property(copy,nonatomic)NSString *titleText;
+{
+    PassTitleText passTItleText;
+}
+//@property(assign,nonatomic)PassTitleText passTItleText;
+@property(retain,nonatomic)NSString *titleText;
 
 //cid 需要回复的评论ID。
 @property(copy,nonatomic)NSString *cid;
@@ -19,4 +23,6 @@
 @property(copy,nonatomic)NSString *commentContent;
 //comment_ori 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0
 @property(copy,nonatomic)NSString *comment_ori;
+                             
+-(void)passTitle:(PassTitleText)passTItleTextBlock;
 @end

@@ -14,11 +14,17 @@
 #import "KZJWebViewController.h"
 #import"KZJMyHomeView.h"
 #import"ZBarViewController.h"
-
+#import"KZJTranspondWeiboViewController.h"
+#import "DWBubbleMenuButton.h"
 @interface KZJHomeController : UIViewController
 {
     int page;
     NSMutableArray *dataArr;
     KZJWeiboTableView *weiboList;
+    UserInformation*info;
+    NSArray *listArr;
+    BOOL whoseWeibo;
 }
+@property(nonatomic,retain)UIButton * btnTitleView;
+@property(strong,nonatomic)DWBubbleMenuButton *downMenuButton;
 @end

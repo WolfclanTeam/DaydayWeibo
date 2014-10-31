@@ -17,7 +17,8 @@
 
 @interface DetailWeiboTableView : UITableView<UITableViewDataSource,UITableViewDelegate,RTLabelDelegate>
 {
-    
+    UIImageView *picImageView;//显示微博图片大图的图片视图
+    UIScrollView *imageScroll;//用于添加picImageView的滑动视图
     UIView *footView;
     //微博信息
     UIView *headView;
@@ -58,6 +59,10 @@
     
     //
     NSArray *dataArr;
+    
+    //
+    NSDictionary *theWeiboDict;
+    CGPoint beginPoint;
 }
 
 @property (nonatomic,retain) NSDictionary *commentDict;

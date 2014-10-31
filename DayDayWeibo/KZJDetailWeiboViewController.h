@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DetailWeiboTableView.h"
 #import"KZJWebViewController.h"
-
+#import "KZJCommentWeiboViewController.h"
 @interface KZJDetailWeiboViewController : UIViewController
 {
     DetailWeiboTableView *detail;

@@ -229,6 +229,7 @@
         }
         NSDictionary*dict2 = [NSDictionary dictionaryWithObject:weiboData forKey:@"statuses"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"myweibo" object:nil userInfo:dict2];
+        passBlock(dict);
         
     }else if ([request.tag isEqualToString:@"998"])
     {

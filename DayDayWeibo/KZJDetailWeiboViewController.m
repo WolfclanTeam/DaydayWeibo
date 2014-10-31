@@ -40,6 +40,9 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
     [self.navigationItem setLeftBarButtonItem:backBtn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWebView:) name:@"COMPUSHWEB" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCommentWeibo:) name:@"COMMENTWEIBO" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replyComment:) name:@"REPLYCOMMENT" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushRetWeibo:) name:@"DETAILRETWEIBO" object:nil];
 
     //分享按钮设置
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -83,6 +86,38 @@
         
     }];
 }
+
+-(void)pushRetWeibo:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    NSLog(@"%@",dict);
+    KZJTranspondWeiboViewController *retweetWeibo = [[KZJTranspondWeiboViewController alloc] init];
+    [self.navigationController pushViewController:retweetWeibo animated:YES];
+
+}
+
+-(void)replyComment:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    NSLog(@"%@",dict);
+    KZJCommentWeiboViewController *replyComment = [[KZJCommentWeiboViewController alloc] init];
+    [replyComment passTitle:^(NSString *string) {
+        string = @"回复评论";
+    }];
+//    replyComment.titleText = @"回复评论";
+    [self.navigationController pushViewController:replyComment animated:YES];
+    
+}
+
+-(void)pushCommentWeibo:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    NSLog(@"%@",dict);
+    KZJCommentWeiboViewController *commentWeibo = [[KZJCommentWeiboViewController alloc] init];
+    [self.navigationController pushViewController:commentWeibo animated:YES];
+    
+}
+
 -(void)shareBtnAction:(id)sender
 {
     KZJShareSheet*view = [KZJShareSheet shareWeiboView];
