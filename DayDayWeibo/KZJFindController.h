@@ -15,9 +15,9 @@
 #import"KZJFindManView.h"
 #import"KZJHotWeiboView.h"
 #import"KZJRoundView.h"
+#import "SlideAnimation.h"
 
-
-@interface KZJFindController : UIViewController<UIAlertViewDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface KZJFindController : UIViewController<UIAlertViewDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 {
     NSArray*titleArray;
     NSArray*topicArray;
@@ -25,6 +25,7 @@
 //    NSArray*relationArray;
 //    int flag,flag1;
     NSDictionary*dictDetail;
+    SlideAnimation *slideAnimationController;
 }
 @property(retain,nonatomic)KZJFindView*topicTable;
 @property(retain,nonatomic)UITableView*tableview;

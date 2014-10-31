@@ -43,6 +43,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCommentWeibo:) name:@"COMMENTWEIBO" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replyComment:) name:@"REPLYCOMMENT" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushRetWeibo:) name:@"DETAILRETWEIBO" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushUserHome:) name:@"DETAILPUSHUSER" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushRetDetailWeibo:) name:@"PUSHRETWEIBO" object:nil];
 
     //分享按钮设置
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,11 +89,42 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [detail headerBeginRefreshing];
+}
+
+-(void)pushRetDetailWeibo:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    KZJDetailWeiboViewController *retDetailWeibo = [[KZJDetailWeiboViewController alloc] init];
+    UINavigationController *nav_retDetailWeibo = [[UINavigationController alloc] initWithRootViewController:retDetailWeibo];
+    retDetailWeibo.dataDict = [dict objectForKey:@"retWeibo"];
+    [self presentViewController:nav_retDetailWeibo animated:YES completion:nil];
+}
+
+
+-(void)pushUserHome:(NSNotification*)noti
+{
+    NSDictionary *dict = [noti userInfo];
+    KZJWebViewController *webView = [[KZJWebViewController alloc] init];
+    UINavigationController *nav_webView = [[UINavigationController alloc] initWithRootViewController:webView];
+    
+    webView.urlString = [NSString stringWithFormat:@"http://m.weibo.cn/u/%@",[dict objectForKey:@"userID"]];
+    [self presentViewController:nav_webView animated:YES completion:nil];
+}
+
+
 -(void)pushRetWeibo:(NSNotification*)noti
 {
     NSDictionary *dict = [noti userInfo];
     NSLog(@"%@",dict);
     KZJTranspondWeiboViewController *retweetWeibo = [[KZJTranspondWeiboViewController alloc] init];
+    retweetWeibo.whoLabelContent = [dict objectForKey:@"userID"];
+    retweetWeibo.detailViewContent = [dict objectForKey:@"weiboText"];
+    retweetWeibo.urlString = [dict objectForKey:@"weiboImageUrl"];
+    retweetWeibo.Id = [dict objectForKey:@"weiboID"];
+    retweetWeibo.status = [dict objectForKey:@"retWeibo"];
     [self.navigationController pushViewController:retweetWeibo animated:YES];
 
 }
@@ -101,10 +134,9 @@
     NSDictionary *dict = [noti userInfo];
     NSLog(@"%@",dict);
     KZJCommentWeiboViewController *replyComment = [[KZJCommentWeiboViewController alloc] init];
-    [replyComment passTitle:^(NSString *string) {
-        string = @"回复评论";
-    }];
-//    replyComment.titleText = @"回复评论";
+    replyComment.titleText = @"回复评论";
+    replyComment.commentId = [NSString stringWithFormat:@"%@",[dict objectForKey:@"weiboID"]];
+    replyComment.cid = [NSString stringWithFormat:@"%@",[dict objectForKey:@"commentID"]];
     [self.navigationController pushViewController:replyComment animated:YES];
     
 }
@@ -114,6 +146,8 @@
     NSDictionary *dict = [noti userInfo];
     NSLog(@"%@",dict);
     KZJCommentWeiboViewController *commentWeibo = [[KZJCommentWeiboViewController alloc] init];
+    commentWeibo.titleText = @"发评论";
+    commentWeibo.commentId = [NSString stringWithFormat:@"%@",[dict objectForKey:@"weiboID"]];
     [self.navigationController pushViewController:commentWeibo animated:YES];
     
 }
@@ -126,9 +160,20 @@
 
 -(void)headerRefresh
 {
+    num = 1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [detail headerEndRefreshing];
-       
+        KZJRequestData *datamanager = [KZJRequestData requestOnly];
+        NSNumber *weiboID = [dataDict objectForKey:@"id"];
+        NSString *str = [NSString stringWithFormat:@"%@",weiboID];
+        
+        [datamanager getCommentList:str];
+        [datamanager passWeiboData:^(NSDictionary *dict) {
+            
+            detail.commentsArr = [dict objectForKey:@"comments"];
+            [detail reloadData];
+            [detail headerEndRefreshing];
+        }];
+
     });
 }
 //

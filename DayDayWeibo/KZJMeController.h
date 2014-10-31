@@ -18,11 +18,12 @@
 #import "KZJCollectView.h"
 #import "KZJDraftView.h"
 #import "KZJNewFriendView.h"
-
-@interface KZJMeController : UIViewController
+#import "SlideAnimation.h"
+@interface KZJMeController : UIViewController<UIViewControllerTransitioningDelegate,UINavigationControllerDelegate>
 {
     NSArray*arrayTableTitle;
     NSArray*arrayTableImage;
+    SlideAnimation *slideAnimationController;
 }
 @property(retain,nonatomic)KZJMeTableView*meTableView;
 @end

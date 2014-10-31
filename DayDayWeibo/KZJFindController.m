@@ -26,6 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    slideAnimationController  = [[SlideAnimation alloc] init];
+    
+    self.navigationController.delegate =self;
+    
+    
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
     peopleArray = [[NSArray alloc]init];
@@ -367,7 +372,25 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"relation" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"people" object:nil];
 }
-
+#pragma mark - Navigation Controller Delegate
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+    
+    
+    BaseAnimation *animationController;
+    
+    animationController = slideAnimationController;
+    switch (operation) {
+        case UINavigationControllerOperationPush:
+            animationController.type = AnimationTypePresent;
+            return  animationController;
+        case UINavigationControllerOperationPop:
+            animationController.type = AnimationTypeDismiss;
+            return animationController;
+        default: return nil;
+    }
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

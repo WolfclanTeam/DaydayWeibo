@@ -29,6 +29,9 @@
     
     NSMutableArray *statusArr;
     
+    NSMutableArray *userIdArr;
+    NSMutableArray *CIDArr;
+    
 }
 @property(retain,nonatomic)UITableView *myTableView;
 @end

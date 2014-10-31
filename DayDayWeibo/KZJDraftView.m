@@ -13,7 +13,7 @@
 @end
 
 @implementation KZJDraftView
-
+@synthesize draftTable;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -23,7 +23,7 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    UITableView*draftTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
+    draftTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStylePlain];
     draftTable.delegate = self;
     draftTable.dataSource = self;
     
@@ -41,18 +41,52 @@
     
     
 }
+//**********删除与添加****************
+//tableview响应编辑
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [draftTable setEditing:editing animated:animated];
+}
+//cell响应的编辑按钮样式
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //删除
+    if (editingStyle==UITableViewCellEditingStyleDelete)
+    {
+        UITableViewCell*cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSArray*array = [[KZJRequestData alloc]getCoreData:@"StoreWeibo"];
+        for (StoreWeibo*storeWeibo in array)
+        {
+            if ([storeWeibo.textContent isEqualToString:cell.detailTextLabel.text])
+            {
+                draftArray = (NSMutableArray*)[[KZJRequestData alloc]deleteCoreData:@"StoreWeibo" withData:storeWeibo];
+                //                NSLog(@"===%@",numberArray);
+                [tableView reloadData];
+            }
+        }
+    }
+   
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString*mark = @"draftMark";
     UITableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:mark];
     if (cell==nil)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:mark];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:mark];
     }
     StoreWeibo*storeWeibo = draftArray[indexPath.section];
     cell.imageView.image = [UIImage imageWithData:storeWeibo.image];
-    cell.textLabel.text = storeWeibo.textContent;
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.textLabel.text = storeWeibo.identifierName;
+    cell.textLabel.font = [UIFont systemFontOfSize:13];
+    cell.detailTextLabel.text = storeWeibo.textContent;
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:17];
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -79,15 +113,25 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KZJShareController*shareView = [[KZJShareController alloc]init];
     StoreWeibo*storeWeibo = draftArray[indexPath.section];
-    NSLog(@"%@",storeWeibo.textContent);
-    shareView.weiboContentTextView.text = storeWeibo.textContent;
-    self.hidesBottomBarWhenPushed = YES;
-    UINavigationController*shareC = [[UINavigationController alloc]initWithRootViewController:shareView];
-    [self presentViewController:shareC animated:YES completion:^{
-        
-    }];
+    if ([storeWeibo.identifierName isEqualToString:@"微博"])
+    {
+        KZJShareController*shareView = [[KZJShareController alloc]init];
+        shareView.weiboContent = storeWeibo.textContent;
+        shareView.myImage = [UIImage imageWithData:storeWeibo.image];
+        self.hidesBottomBarWhenPushed = YES;
+        UINavigationController*shareC = [[UINavigationController alloc]initWithRootViewController:shareView];
+        [self presentViewController:shareC animated:YES completion:^{
+            
+        }];
+    }else if ([storeWeibo.identifierName isEqualToString:@"评论"])
+    {
+        KZJCommentWeiboViewController*commentView = [[KZJCommentWeiboViewController alloc]init];
+        commentView.commentContent = storeWeibo.textContent;
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:commentView animated:YES];
+    }
+    
     //微博用sharecontroller，评论用KZJCommentWeiboViewController
 }
 -(void)back

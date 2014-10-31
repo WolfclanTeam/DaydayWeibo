@@ -165,8 +165,9 @@
     bgView.alpha =0.75;
     
     NSNumber *userID = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"id"];
-    
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"] isEqualToString:[userID stringValue]])
+    UserInformation*info = [[[KZJRequestData alloc]init]searchEntityName:@"UserInformation" uid:
+                            [[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+    if ([info.uid isEqualToString:[NSString stringWithFormat:@"%@",userID]])
     {
         comSelectView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREENWIDTH-40, SCREENHEIGHT/3-30)];
         comSelectView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
@@ -300,7 +301,7 @@
     int num = sender.tag - 11000;
     NSNumber *weiboID = [[weiboData objectAtIndex:num] objectForKey:@"id"];
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
-    [datamanager createFavoritesWeibo:[weiboID stringValue]];
+    [datamanager createFavoritesWeibo:[NSString stringWithFormat:@"%@",weiboID]];
     [datamanager passWeiboData:^(NSDictionary *dict) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
@@ -330,15 +331,14 @@
     int num = sender.tag-13000;
     KZJRequestData *datamanager = [KZJRequestData requestOnly];
     NSNumber *userID = [[[weiboData objectAtIndex:num] objectForKey:@"user"] objectForKey:@"id"];
-    NSLog(@"%@",[userID stringValue]);
     if (following)
     {
-        [datamanager destroyFriendships:[userID stringValue]];
+        [datamanager destroyFriendships:[NSString stringWithFormat:@"%@",userID]];
         [bgView removeFromSuperview];
         [comSelectView removeFromSuperview];
     }else
     {
-        [datamanager createFriendships:[userID stringValue]];
+        [datamanager createFriendships:[NSString stringWithFormat:@"%@",userID]];
         [bgView removeFromSuperview];
         [comSelectView removeFromSuperview];
     }
@@ -696,7 +696,31 @@
     UIButton *btn = (UIButton*)sender;
     NSLog(@"%d",btn.tag);
     int row = btn.tag-4000;
-    NSDictionary *dict = @{@"weiboID":[[weiboData objectAtIndex:row] objectForKey:@"id"]};
+    NSNumber *weiID = [[weiboData objectAtIndex:row] objectForKey:@"id"];
+    NSString *weiboID = [NSString stringWithFormat:@"%@",weiID];
+    NSString *weiboImageUrl;
+    if ([[[weiboData objectAtIndex:row] objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"])
+    {
+        weiboImageUrl = [[[weiboData objectAtIndex:row] objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"];
+    }else if ([[weiboData objectAtIndex:row] objectForKey:@"thumbnail_pic"])
+    {
+        weiboImageUrl = [[weiboData objectAtIndex:row] objectForKey:@"thumbnail_pic"];
+    }else
+    {
+        weiboImageUrl = [[[weiboData objectAtIndex:row] objectForKey:@"user"] objectForKey:@"profile_image_url"];
+    }
+    NSString *userID = [[[weiboData objectAtIndex:row] objectForKey:@"user"] objectForKey:@"screen_name"];
+    NSString *weiboText = [[weiboData objectAtIndex:row] objectForKey:@"text"];
+    NSString *retWeibo;
+    if ([[weiboData objectAtIndex:row] objectForKey:@"retweeted_status"])
+    {
+        retWeibo = [[weiboData objectAtIndex:row] objectForKey:@"text"];
+    }else
+    {
+        retWeibo = @"";
+    }
+    
+    NSDictionary *dict = @{@"weiboID":weiboID,@"weiboImageUrl":weiboImageUrl,@"userID":userID,@"weiboText":weiboText,@"retWeibo":retWeibo};
     NSNotification *retNoti = [[NSNotification alloc] initWithName:@"RETWEIBO" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:retNoti];
 }
@@ -821,8 +845,8 @@
          UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
          [picImageView addGestureRecognizer:pinch];
          
-//         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-//         [picImageView addGestureRecognizer:pan];
+         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+         [picImageView addGestureRecognizer:pan];
 
          
      }];

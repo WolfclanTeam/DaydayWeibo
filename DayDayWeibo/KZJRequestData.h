@@ -37,7 +37,7 @@ typedef void(^passData)(NSDictionary*);
 -(NSArray*)getCoreData:(NSString*)entityName;
 -(int)textLength:(NSString *)dataString;
 -(NSArray*)loginRank:(NSArray*)array;
--(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info;
+-(NSArray *)deleteCoreData:(NSString *)entityName withData:(id)info;
 +(id)requestOnly;
 -(NSString*)cacheNumber;
 -(id)searchEntityName:(NSString*)name uid:(NSString*)uid;

@@ -34,7 +34,7 @@
         label.text = labelTitle;
         [self addSubview:label];
         
-        UIImageView*imageView = [[UIImageView alloc]initWithFrame:CGRectMake(110, 60, self.frame.size.width-220, 100)];
+        UIImageView*imageView = [[UIImageView alloc]initWithFrame:CGRectMake(60, 60, self.frame.size.width-120, 100)];
         imageView.image = image;
         [self addSubview:imageView];
         

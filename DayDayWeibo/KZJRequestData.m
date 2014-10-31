@@ -290,7 +290,7 @@
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"NEWCOMMENT"])
     {
-        //        NSLog(@"%@",result);
+        NSLog(@"%@",result);
         NSDictionary *dict = [result objectFromJSONString];
         passBlock(dict);
     }else if ([request.tag isEqualToString:@"GETUSERMESSAGE"])
@@ -666,7 +666,7 @@
 }
 
 #pragma mark 通过传入实体名和要删除的某个实体数据,可实现删除
--(NSArray *)deleteCoreData:(NSString *)entityName withData:(UserInformation*)info
+-(NSArray *)deleteCoreData:(NSString *)entityName withData:(id)info
 {
     KZJAppDelegate*app =(KZJAppDelegate*) [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = app.managedObjectContext;
@@ -675,16 +675,16 @@
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
-    for (UserInformation*info1 in fetchedObjects)
+    for (id info1 in fetchedObjects)
     {
         if ([info isEqual:info1])
         {
             [context deleteObject:info1];
         }
-        if (info1.uid ==nil)
-        {
-            [context deleteObject:info1];
-        }
+//        if (info1.uid ==nil)
+//        {
+//            [context deleteObject:info1];
+//        }
     }
     [context save:nil];
     fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];

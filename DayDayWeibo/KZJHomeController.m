@@ -27,8 +27,12 @@
 {
     [super viewDidLoad];
     whoseWeibo = YES;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]!=nil)
+    {
+        info =[[[KZJRequestData alloc]init]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+    }
     // Do any additional setup after loading the view.
-    info =[[[KZJRequestData alloc]init]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+    
     listArr = @[@"首页",@"好友圈",@"我的微博",@"周边微博"];
     
     
@@ -68,6 +72,7 @@
     
     
     btnTitleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, self.navigationItem.titleView.frame.size.height)];
+    btnTitleView.titleLabel.text = info.name;
     [btnTitleView setTitle:info.name forState:UIControlStateNormal];
     //btnTitleView.titleLabel.font=[UIFont systemFontOfSize:14];
     btnTitleView.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -152,6 +157,11 @@
     NSDictionary *dict = [noti userInfo];
     NSLog(@"%@",dict);
     KZJTranspondWeiboViewController *retweetWeibo = [[KZJTranspondWeiboViewController alloc] init];
+    retweetWeibo.whoLabelContent = [dict objectForKey:@"userID"];
+    retweetWeibo.detailViewContent = [dict objectForKey:@"weiboText"];
+    retweetWeibo.urlString = [dict objectForKey:@"weiboImageUrl"];
+    retweetWeibo.Id = [dict objectForKey:@"weiboID"];
+    retweetWeibo.status = [dict objectForKey:@"retWeibo"];
    [self.navigationController pushViewController:retweetWeibo animated:YES];
     self.tabBarController.tabBar.hidden = YES;
 }

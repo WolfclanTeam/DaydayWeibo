@@ -7,11 +7,9 @@
 //
 
 #import "KZJCommentTranspondBaseController.h"
-typedef void(^PassTitleText)(NSString*);
+
 @interface KZJCommentWeiboViewController : KZJCommentTranspondBaseController
-{
-    PassTitleText passTItleText;
-}
+
 //@property(assign,nonatomic)PassTitleText passTItleText;
 @property(retain,nonatomic)NSString *titleText;
 
@@ -24,5 +22,5 @@ typedef void(^PassTitleText)(NSString*);
 //comment_ori 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0
 @property(copy,nonatomic)NSString *comment_ori;
                              
--(void)passTitle:(PassTitleText)passTItleTextBlock;
+
 @end

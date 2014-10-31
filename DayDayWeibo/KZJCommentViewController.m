@@ -41,6 +41,10 @@ JGProgressHUD *HUD;
     
     xmlParser = [[KZJXMLParser alloc] init];
     
+    userIdArr = [[NSMutableArray alloc] init];
+    
+    CIDArr = [[NSMutableArray alloc] init];
+    
     __weak typeof (sourceArr)sourcArr = sourceArr;
     xmlParser.passValueBlock = ^(NSString *string)
     {
@@ -110,6 +114,8 @@ JGProgressHUD *HUD;
     [textArr removeAllObjects];
     [statusNameArr removeAllObjects];
     [statusTextArr removeAllObjects];
+    [userIdArr removeAllObjects];
+    [CIDArr removeAllObjects];
     
     [requestData zljRequestData2:1];
     
@@ -146,7 +152,7 @@ JGProgressHUD *HUD;
     NSDictionary *dict = [note userInfo];
 
    NSArray *commentsArr = [dict objectForKey:@"comments"];
-//    NSLog(@"%@",commentsArr);
+    //NSLog(@"%@",commentsArr);
     for (NSDictionary *commentsDict in commentsArr)
     {
         
@@ -177,6 +183,11 @@ JGProgressHUD *HUD;
         
         
         [statusArr addObject:[commentsDict objectForKey:@"status"]];
+        
+        
+        [userIdArr addObject:[[commentsDict objectForKey:@"status"] objectForKey:@"id"]];
+        
+        [CIDArr addObject:[commentsDict objectForKey:@"id"] ];
         
     }
  
@@ -251,7 +262,8 @@ JGProgressHUD *HUD;
         textLabel.font = [UIFont systemFontOfSize:10];
         [cell.weiboBtn addSubview:textLabel];
         
-        [cell.replyBtn addTarget:self action:@selector(replyMethod) forControlEvents:UIControlEventTouchUpInside];
+        [cell.replyBtn addTarget:self action:@selector(replyMethod:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.replyBtn setTag:indexPath.section];
        
         [cell.weiboBtn addTarget:self action:@selector(myWeiboDetail:) forControlEvents:UIControlEventTouchUpInside];
         [cell.weiboBtn setTag:indexPath.section];
@@ -287,11 +299,16 @@ JGProgressHUD *HUD;
     }];
 }
 #pragma mark 回复评论 方法
--(void)replyMethod
+-(void)replyMethod:(UIButton*)sender
 {
     NSLog(@"回复");
     KZJCommentWeiboViewController *commentWeiboVC = [[KZJCommentWeiboViewController alloc] init];
+    NSNumber *cidNum =[CIDArr objectAtIndex:sender.tag];
+    commentWeiboVC.cid = [cidNum stringValue];
+    NSNumber *userIdNum = [userIdArr objectAtIndex:sender.tag];
+    commentWeiboVC.commentId = [userIdNum stringValue];
     commentWeiboVC.titleText = @"回复评论";
+    
     [self.navigationController pushViewController:commentWeiboVC animated:YES];
 }
 #pragma mark UITableViewDelegate

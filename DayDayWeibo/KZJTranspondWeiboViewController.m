@@ -57,6 +57,11 @@
 -(void)sendMethod
 {
     [self.growingTextView resignFirstResponder];
+    if ([self.growingTextView hasText])
+    {
+        self.status = self.growingTextView.text;
+    }
+    
     NSString *is_comment = nil;
     if (self.commentTranspondImageView.image == [UIImage imageNamed:@"diaglog_recommended_check"])
     {

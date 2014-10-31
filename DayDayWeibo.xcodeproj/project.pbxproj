@@ -49,7 +49,6 @@
 		DE3354B719FE55B5005EA80C /* message_add_background_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3354B619FE55B5005EA80C /* message_add_background_highlighted@2x.png */; };
 		DE3354B919FE563A005EA80C /* compose_guide_check_box_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3354B819FE563A005EA80C /* compose_guide_check_box_right@2x.png */; };
 		DE3354BB19FE5657005EA80C /* compose_guide_check_box_number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3354BA19FE5657005EA80C /* compose_guide_check_box_number@2x.png */; };
-		DE3A643E19FE364A00BA4E59 /* KZJLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A643919FE364A00BA4E59 /* KZJLoginView.m */; };
 		DE3A643F19FE364A00BA4E59 /* KZJMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A643B19FE364A00BA4E59 /* KZJMeTableViewCell.m */; };
 		DE3A644019FE364A00BA4E59 /* KZJMeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A643D19FE364A00BA4E59 /* KZJMeTableView.m */; };
 		DE3A644619FE366D00BA4E59 /* KZJInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3A644319FE366D00BA4E59 /* KZJInformationCell.m */; };
@@ -285,33 +284,34 @@
 		DEBCFE5019F212910014D970 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE4619F212910014D970 /* Reachability.m */; };
 		DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE5319F212AC0014D970 /* UIImage+Redraw.m */; };
 		DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */; };
-		DED7C2DC1A03456F0060A46C /* KZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2D71A03456F0060A46C /* KZJWebViewController.m */; };
-		DED7C2DD1A03456F0060A46C /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2D91A03456F0060A46C /* KZJHomeController.m */; };
-		DED7C2DE1A03456F0060A46C /* KZJDetailWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2DB1A03456F0060A46C /* KZJDetailWeiboViewController.m */; };
-		DED7C2E91A0345980060A46C /* DetailWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2E01A0345980060A46C /* DetailWeiboTableView.m */; };
-		DED7C2EA1A0345980060A46C /* KZJCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2E21A0345980060A46C /* KZJCommentCell.m */; };
-		DED7C2EB1A0345980060A46C /* GetNetImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2E41A0345980060A46C /* GetNetImageSize.m */; };
-		DED7C2EC1A0345980060A46C /* KZJWeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2E61A0345980060A46C /* KZJWeiboCell.m */; };
-		DED7C2ED1A0345980060A46C /* KZJWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2E81A0345980060A46C /* KZJWeiboTableView.m */; };
+		DED7C2F01A038BFA0060A46C /* KZJLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2EF1A038BFA0060A46C /* KZJLoginView.m */; };
+		DED7C3061A038C5A0060A46C /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2F21A038C5A0060A46C /* KZJMessageController.m */; };
+		DED7C3071A038C5A0060A46C /* KZJMyMessageDetailBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2F41A038C5A0060A46C /* KZJMyMessageDetailBaseController.m */; };
+		DED7C3081A038C5A0060A46C /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2F61A038C5A0060A46C /* KZJ@MyCotentViewController.m */; };
+		DED7C3091A038C5A0060A46C /* KZJCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2F81A038C5A0060A46C /* KZJCommentViewController.m */; };
+		DED7C30A1A038C5A0060A46C /* KZJXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2FA1A038C5A0060A46C /* KZJXMLParser.m */; };
+		DED7C30B1A038C5A0060A46C /* ZLJCostomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2FC1A038C5A0060A46C /* ZLJCostomTableViewCell.m */; };
+		DED7C30C1A038C5A0060A46C /* ZLJCostomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED7C2FD1A038C5A0060A46C /* ZLJCostomTableViewCell.xib */; };
+		DED7C30D1A038C5A0060A46C /* KZJSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C2FF1A038C5A0060A46C /* KZJSupportViewController.m */; };
+		DED7C30E1A038C5A0060A46C /* KZJCommentTranspondBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3011A038C5A0060A46C /* KZJCommentTranspondBaseController.m */; };
+		DED7C30F1A038C5A0060A46C /* KZJCommentWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3031A038C5A0060A46C /* KZJCommentWeiboViewController.m */; };
+		DED7C3101A038C5A0060A46C /* KZJTranspondWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3051A038C5A0060A46C /* KZJTranspondWeiboViewController.m */; };
+		DED7C3191A038C700060A46C /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3121A038C700060A46C /* KZJShareController.m */; };
+		DED7C31A1A038C700060A46C /* KZJShareScopeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3141A038C700060A46C /* KZJShareScopeTableController.m */; };
+		DED7C31B1A038C700060A46C /* KZJShareScopeTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED7C3151A038C700060A46C /* KZJShareScopeTableController.xib */; };
+		DED7C31C1A038C700060A46C /* KZJCheckInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3171A038C700060A46C /* KZJCheckInTableViewController.m */; };
+		DED7C31D1A038C700060A46C /* KZJCheckInTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED7C3181A038C700060A46C /* KZJCheckInTableViewController.xib */; };
+		DED7C3281A038E860060A46C /* DetailWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C31F1A038E860060A46C /* DetailWeiboTableView.m */; };
+		DED7C3291A038E860060A46C /* KZJCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3211A038E860060A46C /* KZJCommentCell.m */; };
+		DED7C32A1A038E860060A46C /* GetNetImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3231A038E860060A46C /* GetNetImageSize.m */; };
+		DED7C32B1A038E860060A46C /* KZJWeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3251A038E860060A46C /* KZJWeiboCell.m */; };
+		DED7C32C1A038E860060A46C /* KZJWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3271A038E860060A46C /* KZJWeiboTableView.m */; };
+		DED7C3331A038EA10060A46C /* KZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C32E1A038EA10060A46C /* KZJWebViewController.m */; };
+		DED7C3341A038EA10060A46C /* KZJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3301A038EA10060A46C /* KZJHomeController.m */; };
+		DED7C3351A038EA10060A46C /* KZJDetailWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED7C3321A038EA10060A46C /* KZJDetailWeiboViewController.m */; };
 		DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */; };
 		DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DEEA7B771A033D2B00B89DFE /* StoreWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B761A033D2B00B89DFE /* StoreWeibo.m */; };
-		DEEA7B801A033E2800B89DFE /* KZJShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B791A033E2800B89DFE /* KZJShareController.m */; };
-		DEEA7B811A033E2800B89DFE /* KZJShareScopeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B7B1A033E2800B89DFE /* KZJShareScopeTableController.m */; };
-		DEEA7B821A033E2800B89DFE /* KZJShareScopeTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEA7B7C1A033E2800B89DFE /* KZJShareScopeTableController.xib */; };
-		DEEA7B831A033E2800B89DFE /* KZJCheckInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B7E1A033E2800B89DFE /* KZJCheckInTableViewController.m */; };
-		DEEA7B841A033E2800B89DFE /* KZJCheckInTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEA7B7F1A033E2800B89DFE /* KZJCheckInTableViewController.xib */; };
-		DEEA7B9A1A033E4000B89DFE /* KZJMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B861A033E4000B89DFE /* KZJMessageController.m */; };
-		DEEA7B9B1A033E4000B89DFE /* KZJMyMessageDetailBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B881A033E4000B89DFE /* KZJMyMessageDetailBaseController.m */; };
-		DEEA7B9C1A033E4000B89DFE /* KZJ@MyCotentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B8A1A033E4000B89DFE /* KZJ@MyCotentViewController.m */; };
-		DEEA7B9D1A033E4000B89DFE /* KZJCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B8C1A033E4000B89DFE /* KZJCommentViewController.m */; };
-		DEEA7B9E1A033E4000B89DFE /* KZJXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B8E1A033E4000B89DFE /* KZJXMLParser.m */; };
-		DEEA7B9F1A033E4000B89DFE /* ZLJCostomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B901A033E4000B89DFE /* ZLJCostomTableViewCell.m */; };
-		DEEA7BA01A033E4000B89DFE /* ZLJCostomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEA7B911A033E4000B89DFE /* ZLJCostomTableViewCell.xib */; };
-		DEEA7BA11A033E4000B89DFE /* KZJSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B931A033E4000B89DFE /* KZJSupportViewController.m */; };
-		DEEA7BA21A033E4000B89DFE /* KZJCommentTranspondBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B951A033E4000B89DFE /* KZJCommentTranspondBaseController.m */; };
-		DEEA7BA31A033E4000B89DFE /* KZJCommentWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B971A033E4000B89DFE /* KZJCommentWeiboViewController.m */; };
-		DEEA7BA41A033E4000B89DFE /* KZJTranspondWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEA7B991A033E4000B89DFE /* KZJTranspondWeiboViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -376,8 +376,6 @@
 		DE3354B619FE55B5005EA80C /* message_add_background_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_add_background_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE3354B819FE563A005EA80C /* compose_guide_check_box_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_guide_check_box_right@2x.png"; sourceTree = "<group>"; };
 		DE3354BA19FE5657005EA80C /* compose_guide_check_box_number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_guide_check_box_number@2x.png"; sourceTree = "<group>"; };
-		DE3A643819FE364A00BA4E59 /* KZJLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJLoginView.h; sourceTree = "<group>"; };
-		DE3A643919FE364A00BA4E59 /* KZJLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJLoginView.m; sourceTree = "<group>"; };
 		DE3A643A19FE364A00BA4E59 /* KZJMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMeTableViewCell.h; sourceTree = "<group>"; };
 		DE3A643B19FE364A00BA4E59 /* KZJMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMeTableViewCell.m; sourceTree = "<group>"; };
 		DE3A643C19FE364A00BA4E59 /* KZJMeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMeTableView.h; sourceTree = "<group>"; };
@@ -744,56 +742,58 @@
 		DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyTabBarController.h; sourceTree = "<group>"; };
 		DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyTabBarController.m; sourceTree = "<group>"; };
 		DEBCFE7919F212E00014D970 /* KZJRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJRequestData.h; sourceTree = "<group>"; };
-		DED7C2D61A03456F0060A46C /* KZJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWebViewController.h; sourceTree = "<group>"; };
-		DED7C2D71A03456F0060A46C /* KZJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWebViewController.m; sourceTree = "<group>"; };
-		DED7C2D81A03456F0060A46C /* KZJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJHomeController.h; sourceTree = "<group>"; };
-		DED7C2D91A03456F0060A46C /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
-		DED7C2DA1A03456F0060A46C /* KZJDetailWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJDetailWeiboViewController.h; sourceTree = "<group>"; };
-		DED7C2DB1A03456F0060A46C /* KZJDetailWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJDetailWeiboViewController.m; sourceTree = "<group>"; };
-		DED7C2DF1A0345980060A46C /* DetailWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeiboTableView.h; sourceTree = "<group>"; };
-		DED7C2E01A0345980060A46C /* DetailWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeiboTableView.m; sourceTree = "<group>"; };
-		DED7C2E11A0345980060A46C /* KZJCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentCell.h; sourceTree = "<group>"; };
-		DED7C2E21A0345980060A46C /* KZJCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentCell.m; sourceTree = "<group>"; };
-		DED7C2E31A0345980060A46C /* GetNetImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNetImageSize.h; sourceTree = "<group>"; };
-		DED7C2E41A0345980060A46C /* GetNetImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNetImageSize.m; sourceTree = "<group>"; };
-		DED7C2E51A0345980060A46C /* KZJWeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboCell.h; sourceTree = "<group>"; };
-		DED7C2E61A0345980060A46C /* KZJWeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboCell.m; sourceTree = "<group>"; };
-		DED7C2E71A0345980060A46C /* KZJWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboTableView.h; sourceTree = "<group>"; };
-		DED7C2E81A0345980060A46C /* KZJWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboTableView.m; sourceTree = "<group>"; };
+		DED7C2EE1A038BFA0060A46C /* KZJLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJLoginView.h; sourceTree = "<group>"; };
+		DED7C2EF1A038BFA0060A46C /* KZJLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJLoginView.m; sourceTree = "<group>"; };
+		DED7C2F11A038C5A0060A46C /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
+		DED7C2F21A038C5A0060A46C /* KZJMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageController.m; sourceTree = "<group>"; };
+		DED7C2F31A038C5A0060A46C /* KZJMyMessageDetailBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyMessageDetailBaseController.h; sourceTree = "<group>"; };
+		DED7C2F41A038C5A0060A46C /* KZJMyMessageDetailBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyMessageDetailBaseController.m; sourceTree = "<group>"; };
+		DED7C2F51A038C5A0060A46C /* KZJ@MyCotentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCotentViewController.h"; sourceTree = "<group>"; };
+		DED7C2F61A038C5A0060A46C /* KZJ@MyCotentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCotentViewController.m"; sourceTree = "<group>"; };
+		DED7C2F71A038C5A0060A46C /* KZJCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentViewController.h; sourceTree = "<group>"; };
+		DED7C2F81A038C5A0060A46C /* KZJCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentViewController.m; sourceTree = "<group>"; };
+		DED7C2F91A038C5A0060A46C /* KZJXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJXMLParser.h; sourceTree = "<group>"; };
+		DED7C2FA1A038C5A0060A46C /* KZJXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJXMLParser.m; sourceTree = "<group>"; };
+		DED7C2FB1A038C5A0060A46C /* ZLJCostomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLJCostomTableViewCell.h; sourceTree = "<group>"; };
+		DED7C2FC1A038C5A0060A46C /* ZLJCostomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLJCostomTableViewCell.m; sourceTree = "<group>"; };
+		DED7C2FD1A038C5A0060A46C /* ZLJCostomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLJCostomTableViewCell.xib; sourceTree = "<group>"; };
+		DED7C2FE1A038C5A0060A46C /* KZJSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJSupportViewController.h; sourceTree = "<group>"; };
+		DED7C2FF1A038C5A0060A46C /* KZJSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJSupportViewController.m; sourceTree = "<group>"; };
+		DED7C3001A038C5A0060A46C /* KZJCommentTranspondBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentTranspondBaseController.h; sourceTree = "<group>"; };
+		DED7C3011A038C5A0060A46C /* KZJCommentTranspondBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentTranspondBaseController.m; sourceTree = "<group>"; };
+		DED7C3021A038C5A0060A46C /* KZJCommentWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentWeiboViewController.h; sourceTree = "<group>"; };
+		DED7C3031A038C5A0060A46C /* KZJCommentWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentWeiboViewController.m; sourceTree = "<group>"; };
+		DED7C3041A038C5A0060A46C /* KZJTranspondWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJTranspondWeiboViewController.h; sourceTree = "<group>"; };
+		DED7C3051A038C5A0060A46C /* KZJTranspondWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJTranspondWeiboViewController.m; sourceTree = "<group>"; };
+		DED7C3111A038C700060A46C /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
+		DED7C3121A038C700060A46C /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
+		DED7C3131A038C700060A46C /* KZJShareScopeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareScopeTableController.h; sourceTree = "<group>"; };
+		DED7C3141A038C700060A46C /* KZJShareScopeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareScopeTableController.m; sourceTree = "<group>"; };
+		DED7C3151A038C700060A46C /* KZJShareScopeTableController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJShareScopeTableController.xib; sourceTree = "<group>"; };
+		DED7C3161A038C700060A46C /* KZJCheckInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCheckInTableViewController.h; sourceTree = "<group>"; };
+		DED7C3171A038C700060A46C /* KZJCheckInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCheckInTableViewController.m; sourceTree = "<group>"; };
+		DED7C3181A038C700060A46C /* KZJCheckInTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJCheckInTableViewController.xib; sourceTree = "<group>"; };
+		DED7C31E1A038E860060A46C /* DetailWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeiboTableView.h; sourceTree = "<group>"; };
+		DED7C31F1A038E860060A46C /* DetailWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeiboTableView.m; sourceTree = "<group>"; };
+		DED7C3201A038E860060A46C /* KZJCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentCell.h; sourceTree = "<group>"; };
+		DED7C3211A038E860060A46C /* KZJCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentCell.m; sourceTree = "<group>"; };
+		DED7C3221A038E860060A46C /* GetNetImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNetImageSize.h; sourceTree = "<group>"; };
+		DED7C3231A038E860060A46C /* GetNetImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNetImageSize.m; sourceTree = "<group>"; };
+		DED7C3241A038E860060A46C /* KZJWeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboCell.h; sourceTree = "<group>"; };
+		DED7C3251A038E860060A46C /* KZJWeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboCell.m; sourceTree = "<group>"; };
+		DED7C3261A038E860060A46C /* KZJWeiboTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWeiboTableView.h; sourceTree = "<group>"; };
+		DED7C3271A038E860060A46C /* KZJWeiboTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWeiboTableView.m; sourceTree = "<group>"; };
+		DED7C32D1A038EA10060A46C /* KZJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJWebViewController.h; sourceTree = "<group>"; };
+		DED7C32E1A038EA10060A46C /* KZJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJWebViewController.m; sourceTree = "<group>"; };
+		DED7C32F1A038EA10060A46C /* KZJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJHomeController.h; sourceTree = "<group>"; };
+		DED7C3301A038EA10060A46C /* KZJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJHomeController.m; sourceTree = "<group>"; };
+		DED7C3311A038EA10060A46C /* KZJDetailWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJDetailWeiboViewController.h; sourceTree = "<group>"; };
+		DED7C3321A038EA10060A46C /* KZJDetailWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJDetailWeiboViewController.m; sourceTree = "<group>"; };
 		DEDD9D4019F5FC55007D45A9 /* KZJRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJRequestData.m; sourceTree = "<group>"; };
 		DEDD9D5D19F5FF0A007D45A9 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		DEDD9D5E19F5FF0A007D45A9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DEEA7B751A033D2B00B89DFE /* StoreWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreWeibo.h; sourceTree = "<group>"; };
 		DEEA7B761A033D2B00B89DFE /* StoreWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreWeibo.m; sourceTree = "<group>"; };
-		DEEA7B781A033E2800B89DFE /* KZJShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareController.h; sourceTree = "<group>"; };
-		DEEA7B791A033E2800B89DFE /* KZJShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareController.m; sourceTree = "<group>"; };
-		DEEA7B7A1A033E2800B89DFE /* KZJShareScopeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJShareScopeTableController.h; sourceTree = "<group>"; };
-		DEEA7B7B1A033E2800B89DFE /* KZJShareScopeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJShareScopeTableController.m; sourceTree = "<group>"; };
-		DEEA7B7C1A033E2800B89DFE /* KZJShareScopeTableController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJShareScopeTableController.xib; sourceTree = "<group>"; };
-		DEEA7B7D1A033E2800B89DFE /* KZJCheckInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCheckInTableViewController.h; sourceTree = "<group>"; };
-		DEEA7B7E1A033E2800B89DFE /* KZJCheckInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCheckInTableViewController.m; sourceTree = "<group>"; };
-		DEEA7B7F1A033E2800B89DFE /* KZJCheckInTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KZJCheckInTableViewController.xib; sourceTree = "<group>"; };
-		DEEA7B851A033E4000B89DFE /* KZJMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMessageController.h; sourceTree = "<group>"; };
-		DEEA7B861A033E4000B89DFE /* KZJMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMessageController.m; sourceTree = "<group>"; };
-		DEEA7B871A033E4000B89DFE /* KZJMyMessageDetailBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJMyMessageDetailBaseController.h; sourceTree = "<group>"; };
-		DEEA7B881A033E4000B89DFE /* KZJMyMessageDetailBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJMyMessageDetailBaseController.m; sourceTree = "<group>"; };
-		DEEA7B891A033E4000B89DFE /* KZJ@MyCotentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KZJ@MyCotentViewController.h"; sourceTree = "<group>"; };
-		DEEA7B8A1A033E4000B89DFE /* KZJ@MyCotentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KZJ@MyCotentViewController.m"; sourceTree = "<group>"; };
-		DEEA7B8B1A033E4000B89DFE /* KZJCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentViewController.h; sourceTree = "<group>"; };
-		DEEA7B8C1A033E4000B89DFE /* KZJCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentViewController.m; sourceTree = "<group>"; };
-		DEEA7B8D1A033E4000B89DFE /* KZJXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJXMLParser.h; sourceTree = "<group>"; };
-		DEEA7B8E1A033E4000B89DFE /* KZJXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJXMLParser.m; sourceTree = "<group>"; };
-		DEEA7B8F1A033E4000B89DFE /* ZLJCostomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLJCostomTableViewCell.h; sourceTree = "<group>"; };
-		DEEA7B901A033E4000B89DFE /* ZLJCostomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLJCostomTableViewCell.m; sourceTree = "<group>"; };
-		DEEA7B911A033E4000B89DFE /* ZLJCostomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLJCostomTableViewCell.xib; sourceTree = "<group>"; };
-		DEEA7B921A033E4000B89DFE /* KZJSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJSupportViewController.h; sourceTree = "<group>"; };
-		DEEA7B931A033E4000B89DFE /* KZJSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJSupportViewController.m; sourceTree = "<group>"; };
-		DEEA7B941A033E4000B89DFE /* KZJCommentTranspondBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentTranspondBaseController.h; sourceTree = "<group>"; };
-		DEEA7B951A033E4000B89DFE /* KZJCommentTranspondBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentTranspondBaseController.m; sourceTree = "<group>"; };
-		DEEA7B961A033E4000B89DFE /* KZJCommentWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJCommentWeiboViewController.h; sourceTree = "<group>"; };
-		DEEA7B971A033E4000B89DFE /* KZJCommentWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJCommentWeiboViewController.m; sourceTree = "<group>"; };
-		DEEA7B981A033E4000B89DFE /* KZJTranspondWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZJTranspondWeiboViewController.h; sourceTree = "<group>"; };
-		DEEA7B991A033E4000B89DFE /* KZJTranspondWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZJTranspondWeiboViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1511,16 +1511,16 @@
 				DE9F75C41A02201900FDA623 /* ZBarViewController.m */,
 				DE9F75C51A02201900FDA623 /* ZBarViewController.xib */,
 				DE5669A919FE473E00B4624E /* RegexKitLite */,
-				DED7C2DF1A0345980060A46C /* DetailWeiboTableView.h */,
-				DED7C2E01A0345980060A46C /* DetailWeiboTableView.m */,
-				DED7C2E11A0345980060A46C /* KZJCommentCell.h */,
-				DED7C2E21A0345980060A46C /* KZJCommentCell.m */,
-				DED7C2E31A0345980060A46C /* GetNetImageSize.h */,
-				DED7C2E41A0345980060A46C /* GetNetImageSize.m */,
-				DED7C2E51A0345980060A46C /* KZJWeiboCell.h */,
-				DED7C2E61A0345980060A46C /* KZJWeiboCell.m */,
-				DED7C2E71A0345980060A46C /* KZJWeiboTableView.h */,
-				DED7C2E81A0345980060A46C /* KZJWeiboTableView.m */,
+				DED7C31E1A038E860060A46C /* DetailWeiboTableView.h */,
+				DED7C31F1A038E860060A46C /* DetailWeiboTableView.m */,
+				DED7C3201A038E860060A46C /* KZJCommentCell.h */,
+				DED7C3211A038E860060A46C /* KZJCommentCell.m */,
+				DED7C3221A038E860060A46C /* GetNetImageSize.h */,
+				DED7C3231A038E860060A46C /* GetNetImageSize.m */,
+				DED7C3241A038E860060A46C /* KZJWeiboCell.h */,
+				DED7C3251A038E860060A46C /* KZJWeiboCell.m */,
+				DED7C3261A038E860060A46C /* KZJWeiboTableView.h */,
+				DED7C3271A038E860060A46C /* KZJWeiboTableView.m */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1556,8 +1556,8 @@
 		DEBCFE8019F213280014D970 /* me */ = {
 			isa = PBXGroup;
 			children = (
-				DE3A643819FE364A00BA4E59 /* KZJLoginView.h */,
-				DE3A643919FE364A00BA4E59 /* KZJLoginView.m */,
+				DED7C2EE1A038BFA0060A46C /* KZJLoginView.h */,
+				DED7C2EF1A038BFA0060A46C /* KZJLoginView.m */,
 				DE3A643A19FE364A00BA4E59 /* KZJMeTableViewCell.h */,
 				DE3A643B19FE364A00BA4E59 /* KZJMeTableViewCell.m */,
 				DE3A643C19FE364A00BA4E59 /* KZJMeTableView.h */,
@@ -1609,14 +1609,14 @@
 		DEBCFE8319F213420014D970 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				DEEA7B781A033E2800B89DFE /* KZJShareController.h */,
-				DEEA7B791A033E2800B89DFE /* KZJShareController.m */,
-				DEEA7B7A1A033E2800B89DFE /* KZJShareScopeTableController.h */,
-				DEEA7B7B1A033E2800B89DFE /* KZJShareScopeTableController.m */,
-				DEEA7B7C1A033E2800B89DFE /* KZJShareScopeTableController.xib */,
-				DEEA7B7D1A033E2800B89DFE /* KZJCheckInTableViewController.h */,
-				DEEA7B7E1A033E2800B89DFE /* KZJCheckInTableViewController.m */,
-				DEEA7B7F1A033E2800B89DFE /* KZJCheckInTableViewController.xib */,
+				DED7C3111A038C700060A46C /* KZJShareController.h */,
+				DED7C3121A038C700060A46C /* KZJShareController.m */,
+				DED7C3131A038C700060A46C /* KZJShareScopeTableController.h */,
+				DED7C3141A038C700060A46C /* KZJShareScopeTableController.m */,
+				DED7C3151A038C700060A46C /* KZJShareScopeTableController.xib */,
+				DED7C3161A038C700060A46C /* KZJCheckInTableViewController.h */,
+				DED7C3171A038C700060A46C /* KZJCheckInTableViewController.m */,
+				DED7C3181A038C700060A46C /* KZJCheckInTableViewController.xib */,
 				DE56698119FE3E1900B4624E /* HPGrowingTextView */,
 				DE56696019FE3DFF00B4624E /* JGProgressHUD */,
 				DE56695419FE3DAC00B4624E /* stausBarNotification */,
@@ -1627,28 +1627,28 @@
 		DEBCFE8419F213490014D970 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				DED7C2F11A038C5A0060A46C /* KZJMessageController.h */,
+				DED7C2F21A038C5A0060A46C /* KZJMessageController.m */,
+				DED7C2F31A038C5A0060A46C /* KZJMyMessageDetailBaseController.h */,
+				DED7C2F41A038C5A0060A46C /* KZJMyMessageDetailBaseController.m */,
+				DED7C2F51A038C5A0060A46C /* KZJ@MyCotentViewController.h */,
+				DED7C2F61A038C5A0060A46C /* KZJ@MyCotentViewController.m */,
+				DED7C2F71A038C5A0060A46C /* KZJCommentViewController.h */,
+				DED7C2F81A038C5A0060A46C /* KZJCommentViewController.m */,
+				DED7C2F91A038C5A0060A46C /* KZJXMLParser.h */,
+				DED7C2FA1A038C5A0060A46C /* KZJXMLParser.m */,
+				DED7C2FB1A038C5A0060A46C /* ZLJCostomTableViewCell.h */,
+				DED7C2FC1A038C5A0060A46C /* ZLJCostomTableViewCell.m */,
+				DED7C2FD1A038C5A0060A46C /* ZLJCostomTableViewCell.xib */,
+				DED7C2FE1A038C5A0060A46C /* KZJSupportViewController.h */,
+				DED7C2FF1A038C5A0060A46C /* KZJSupportViewController.m */,
+				DED7C3001A038C5A0060A46C /* KZJCommentTranspondBaseController.h */,
+				DED7C3011A038C5A0060A46C /* KZJCommentTranspondBaseController.m */,
+				DED7C3021A038C5A0060A46C /* KZJCommentWeiboViewController.h */,
+				DED7C3031A038C5A0060A46C /* KZJCommentWeiboViewController.m */,
+				DED7C3041A038C5A0060A46C /* KZJTranspondWeiboViewController.h */,
+				DED7C3051A038C5A0060A46C /* KZJTranspondWeiboViewController.m */,
 				DE9F75541A0217E500FDA623 /* source */,
-				DEEA7B851A033E4000B89DFE /* KZJMessageController.h */,
-				DEEA7B861A033E4000B89DFE /* KZJMessageController.m */,
-				DEEA7B871A033E4000B89DFE /* KZJMyMessageDetailBaseController.h */,
-				DEEA7B881A033E4000B89DFE /* KZJMyMessageDetailBaseController.m */,
-				DEEA7B891A033E4000B89DFE /* KZJ@MyCotentViewController.h */,
-				DEEA7B8A1A033E4000B89DFE /* KZJ@MyCotentViewController.m */,
-				DEEA7B8B1A033E4000B89DFE /* KZJCommentViewController.h */,
-				DEEA7B8C1A033E4000B89DFE /* KZJCommentViewController.m */,
-				DEEA7B8D1A033E4000B89DFE /* KZJXMLParser.h */,
-				DEEA7B8E1A033E4000B89DFE /* KZJXMLParser.m */,
-				DEEA7B8F1A033E4000B89DFE /* ZLJCostomTableViewCell.h */,
-				DEEA7B901A033E4000B89DFE /* ZLJCostomTableViewCell.m */,
-				DEEA7B911A033E4000B89DFE /* ZLJCostomTableViewCell.xib */,
-				DEEA7B921A033E4000B89DFE /* KZJSupportViewController.h */,
-				DEEA7B931A033E4000B89DFE /* KZJSupportViewController.m */,
-				DEEA7B941A033E4000B89DFE /* KZJCommentTranspondBaseController.h */,
-				DEEA7B951A033E4000B89DFE /* KZJCommentTranspondBaseController.m */,
-				DEEA7B961A033E4000B89DFE /* KZJCommentWeiboViewController.h */,
-				DEEA7B971A033E4000B89DFE /* KZJCommentWeiboViewController.m */,
-				DEEA7B981A033E4000B89DFE /* KZJTranspondWeiboViewController.h */,
-				DEEA7B991A033E4000B89DFE /* KZJTranspondWeiboViewController.m */,
 				DE56694019FE3D2B00B4624E /* animations */,
 			);
 			name = message;
@@ -1657,12 +1657,12 @@
 		DEBCFE8519F213500014D970 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				DED7C2D61A03456F0060A46C /* KZJWebViewController.h */,
-				DED7C2D71A03456F0060A46C /* KZJWebViewController.m */,
-				DED7C2D81A03456F0060A46C /* KZJHomeController.h */,
-				DED7C2D91A03456F0060A46C /* KZJHomeController.m */,
-				DED7C2DA1A03456F0060A46C /* KZJDetailWeiboViewController.h */,
-				DED7C2DB1A03456F0060A46C /* KZJDetailWeiboViewController.m */,
+				DED7C32D1A038EA10060A46C /* KZJWebViewController.h */,
+				DED7C32E1A038EA10060A46C /* KZJWebViewController.m */,
+				DED7C32F1A038EA10060A46C /* KZJHomeController.h */,
+				DED7C3301A038EA10060A46C /* KZJHomeController.m */,
+				DED7C3311A038EA10060A46C /* KZJDetailWeiboViewController.h */,
+				DED7C3321A038EA10060A46C /* KZJDetailWeiboViewController.m */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1831,7 +1831,7 @@
 				DE9F75F01A02205E00FDA623 /* zbar-back.png in Resources */,
 				DE3354A719FE555B005EA80C /* compose_toolbar_picture_highlighted@2x.png in Resources */,
 				DE3A657619FE3AF400BA4E59 /* tabbar_compose_friend@2x.png in Resources */,
-				DEEA7BA01A033E4000B89DFE /* ZLJCostomTableViewCell.xib in Resources */,
+				DED7C30C1A038C5A0060A46C /* ZLJCostomTableViewCell.xib in Resources */,
 				DE3A656319FE3AF400BA4E59 /* more_icon_collection1@2x.png in Resources */,
 				DE3A653419FE3AF400BA4E59 /* page_cover_music_background@2x.jpg in Resources */,
 				DE3A658B19FE3AF400BA4E59 /* tabbar_message_center_selected@2x.png in Resources */,
@@ -1851,7 +1851,7 @@
 				DE9F75971A021D9F00FDA623 /* message_toolbar_popover_arrow@2x.png in Resources */,
 				DE3354B519FE55B1005EA80C /* message_add_background@2x.png in Resources */,
 				DE3A653B19FE3AF400BA4E59 /* attitoolbar_icon_unlike@2x.png in Resources */,
-				DEEA7B841A033E2800B89DFE /* KZJCheckInTableViewController.xib in Resources */,
+				DED7C31D1A038C700060A46C /* KZJCheckInTableViewController.xib in Resources */,
 				DE3A64C319FE38E500BA4E59 /* more_chat@2x.png in Resources */,
 				DE3A654919FE3AF400BA4E59 /* more_chat_highlighted@2x.png in Resources */,
 				A56B305419FF29CF00141A2C /* 中国广东广州人民北路.gpx in Resources */,
@@ -1863,7 +1863,7 @@
 				DE3A655D19FE3AF400BA4E59 /* searchbar_textfield_search_icon_disable@2x.png in Resources */,
 				DE3A657E19FE3AF400BA4E59 /* tabbar_compose_delete@2x.png in Resources */,
 				DE3A654B19FE3AF400BA4E59 /* more_circlefriends_highlighted@2x.png in Resources */,
-				DEEA7B821A033E2800B89DFE /* KZJShareScopeTableController.xib in Resources */,
+				DED7C31B1A038C700060A46C /* KZJShareScopeTableController.xib in Resources */,
 				DE3A656F19FE3AF400BA4E59 /* messagescenter_messagebox@2x.png in Resources */,
 				DE3A654E19FE3AF400BA4E59 /* more_email@2x.png in Resources */,
 				DE3A657219FE3AF400BA4E59 /* toolbar_stop_highlighted@2x.png in Resources */,
@@ -1929,13 +1929,13 @@
 				DE3A645C19FE369200BA4E59 /* KZJPictureView.m in Sources */,
 				DEBCFE4719F212910014D970 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				DE56697A19FE3DFF00B4624E /* JGProgressHUDFadeAnimation.m in Sources */,
-				DED7C2EA1A0345980060A46C /* KZJCommentCell.m in Sources */,
+				DED7C3291A038E860060A46C /* KZJCommentCell.m in Sources */,
 				A56B711B1A00CAF600B51EAD /* MapLocation.m in Sources */,
 				DE3A648B19FE373000BA4E59 /* KZJFindManView.m in Sources */,
 				DEBCFDF819F2127A0014D970 /* MJRefreshFooterView.m in Sources */,
 				DEBCFE1F19F212870014D970 /* MKAnnotationView+WebCache.m in Sources */,
 				DEDD9D5F19F5FF0A007D45A9 /* JSONKit.m in Sources */,
-				DEEA7BA11A033E4000B89DFE /* KZJSupportViewController.m in Sources */,
+				DED7C30D1A038C5A0060A46C /* KZJSupportViewController.m in Sources */,
 				DE3A64C819FE38E500BA4E59 /* qrspec.c in Sources */,
 				DE3A643F19FE364A00BA4E59 /* KZJMeTableViewCell.m in Sources */,
 				DE56695D19FE3DC100B4624E /* JDStatusBarView.m in Sources */,
@@ -1945,24 +1945,24 @@
 				DE3A64C919FE38E500BA4E59 /* rscode.c in Sources */,
 				DE56697719FE3DFF00B4624E /* JGProgressHUD.m in Sources */,
 				DE3A64CA19FE38E500BA4E59 /* split.c in Sources */,
-				DED7C2EB1A0345980060A46C /* GetNetImageSize.m in Sources */,
+				DED7C32A1A038E860060A46C /* GetNetImageSize.m in Sources */,
 				DE3A647A19FE36FF00BA4E59 /* KZJPrivacyView.m in Sources */,
 				DE3A64C719FE38E500BA4E59 /* qrinput.c in Sources */,
-				DED7C2ED1A0345980060A46C /* KZJWeiboTableView.m in Sources */,
+				DED7C32C1A038E860060A46C /* KZJWeiboTableView.m in Sources */,
 				DE3A645F19FE36A500BA4E59 /* KZJSetView.m in Sources */,
 				DE56697B19FE3DFF00B4624E /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				DEBCFE2719F212870014D970 /* SDWebImagePrefetcher.m in Sources */,
-				DE3A643E19FE364A00BA4E59 /* KZJLoginView.m in Sources */,
-				DEEA7BA41A033E4000B89DFE /* KZJTranspondWeiboViewController.m in Sources */,
 				DE3A646219FE36AB00BA4E59 /* KZJNextView.m in Sources */,
+				DED7C3101A038C5A0060A46C /* KZJTranspondWeiboViewController.m in Sources */,
 				DE3A645319FE367D00BA4E59 /* KZJAccountViewCell.m in Sources */,
 				DE3A645119FE367D00BA4E59 /* KZJSetTableViewCell.m in Sources */,
 				DEBCFE2619F212870014D970 /* SDWebImageManager.m in Sources */,
-				DED7C2DD1A03456F0060A46C /* KZJHomeController.m in Sources */,
+				DED7C3341A038EA10060A46C /* KZJHomeController.m in Sources */,
 				DE56698619FE3E2B00B4624E /* HPGrowingTextView.m in Sources */,
 				DE56699719FE3EA800B4624E /* TumblrLikeMenu.m in Sources */,
 				DEBCFDB819F2114A0014D970 /* KZJAppDelegate.m in Sources */,
-				DEEA7BA21A033E4000B89DFE /* KZJCommentTranspondBaseController.m in Sources */,
+				DED7C30E1A038C5A0060A46C /* KZJCommentTranspondBaseController.m in Sources */,
+				DED7C2F01A038BFA0060A46C /* KZJLoginView.m in Sources */,
 				DEBCFE4919F212910014D970 /* NSDate+RFC1123.m in Sources */,
 				DEBCFDF919F2127A0014D970 /* MJRefreshHeaderView.m in Sources */,
 				DEBCFE2D19F212870014D970 /* UIImageView+WebCache.m in Sources */,
@@ -1983,41 +1983,41 @@
 				DEBCFE2319F212870014D970 /* SDWebImageDecoder.m in Sources */,
 				DEBCFE2A19F212870014D970 /* UIImage+MultiFormat.m in Sources */,
 				0FE2588319FE4E3200783A90 /* RTLabel.m in Sources */,
-				DEEA7B9D1A033E4000B89DFE /* KZJCommentViewController.m in Sources */,
+				DED7C3091A038C5A0060A46C /* KZJCommentViewController.m in Sources */,
 				DEBCFE2B19F212870014D970 /* UIImage+WebP.m in Sources */,
 				DE3A648A19FE373000BA4E59 /* KZJHotWeiboView.m in Sources */,
 				DE9F75C61A02201900FDA623 /* ZBarViewController.m in Sources */,
 				A5682DA21A023924009FEE52 /* KZJRemindSubView.m in Sources */,
 				DEBCFE2519F212870014D970 /* SDWebImageDownloaderOperation.m in Sources */,
-				DEEA7B9A1A033E4000B89DFE /* KZJMessageController.m in Sources */,
+				DED7C31A1A038C700060A46C /* KZJShareScopeTableController.m in Sources */,
+				DED7C3351A038EA10060A46C /* KZJDetailWeiboViewController.m in Sources */,
+				DED7C3061A038C5A0060A46C /* KZJMessageController.m in Sources */,
 				DE3A646B19FE36F100BA4E59 /* KZJFansView.m in Sources */,
-				DED7C2DE1A03456F0060A46C /* KZJDetailWeiboViewController.m in Sources */,
-				DEEA7B811A033E2800B89DFE /* KZJShareScopeTableController.m in Sources */,
 				DE9F75571A0217F500FDA623 /* DWBubbleMenuButton.m in Sources */,
 				A5682DA71A0249B7009FEE52 /* KZJNewFriendView.m in Sources */,
+				DED7C31C1A038C700060A46C /* KZJCheckInTableViewController.m in Sources */,
 				DEBCFE4D19F212910014D970 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				DED7C3191A038C700060A46C /* KZJShareController.m in Sources */,
 				DE3A64CD19FE396700BA4E59 /* UserInformation.m in Sources */,
 				DEBCFE2E19F212870014D970 /* UIView+WebCacheOperation.m in Sources */,
-				DEEA7B831A033E2800B89DFE /* KZJCheckInTableViewController.m in Sources */,
-				DEEA7B801A033E2800B89DFE /* KZJShareController.m in Sources */,
+				DED7C30A1A038C5A0060A46C /* KZJXMLParser.m in Sources */,
 				DE56699919FE3EA800B4624E /* UIView+CommonAnimation.m in Sources */,
-				DEEA7B9E1A033E4000B89DFE /* KZJXMLParser.m in Sources */,
 				A56B305719FF30C900141A2C /* KZJCollectView.m in Sources */,
 				DEBCFE2419F212870014D970 /* SDWebImageDownloader.m in Sources */,
 				DE3A64A919FE379F00BA4E59 /* KZJLoadView.m in Sources */,
 				DEBCFE2919F212870014D970 /* UIImage+GIF.m in Sources */,
 				DEBCFDFA19F2127A0014D970 /* UIScrollView+MJExtension.m in Sources */,
-				DEEA7B9B1A033E4000B89DFE /* KZJMyMessageDetailBaseController.m in Sources */,
 				DEBCFE4819F212910014D970 /* NSData+MKBase64.m in Sources */,
+				DED7C3071A038C5A0060A46C /* KZJMyMessageDetailBaseController.m in Sources */,
 				DEBCFE5419F212AC0014D970 /* UIImage+Redraw.m in Sources */,
 				DE5669B119FE474900B4624E /* RegexKitLite.m in Sources */,
 				A56B71181A00C90800B51EAD /* KZJDraftView.m in Sources */,
 				DE3A64C219FE38E500BA4E59 /* mask.c in Sources */,
 				DEBCFE7819F212D30014D970 /* KZJMyTabBarController.m in Sources */,
 				DEBCFDFB19F2127A0014D970 /* UIScrollView+MJRefresh.m in Sources */,
-				DED7C2DC1A03456F0060A46C /* KZJWebViewController.m in Sources */,
+				DED7C3331A038EA10060A46C /* KZJWebViewController.m in Sources */,
 				DE3A648219FE371200BA4E59 /* KZJHotTopicView.m in Sources */,
-				DEEA7BA31A033E4000B89DFE /* KZJCommentWeiboViewController.m in Sources */,
+				DED7C30F1A038C5A0060A46C /* KZJCommentWeiboViewController.m in Sources */,
 				DE3A647919FE36FF00BA4E59 /* KZJCommonView.m in Sources */,
 				DE56697919FE3DFF00B4624E /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				DEEA7B771A033D2B00B89DFE /* StoreWeibo.m in Sources */,
@@ -2026,7 +2026,7 @@
 				DE56697F19FE3DFF00B4624E /* JGProgressHUDRingIndicatorView.m in Sources */,
 				DE56699E19FE3EBF00B4624E /* KZJMessageTableView.m in Sources */,
 				DEBCFDF619F2127A0014D970 /* MJRefreshBaseView.m in Sources */,
-				DED7C2E91A0345980060A46C /* DetailWeiboTableView.m in Sources */,
+				DED7C3281A038E860060A46C /* DetailWeiboTableView.m in Sources */,
 				DEBCFE2C19F212870014D970 /* UIImageView+HighlightedWebCache.m in Sources */,
 				DEDD9D4119F5FC55007D45A9 /* KZJRequestData.m in Sources */,
 				DE3A64C619FE38E500BA4E59 /* qrencode.c in Sources */,
@@ -2047,9 +2047,9 @@
 				DE56698719FE3E2B00B4624E /* HPTextViewInternal.m in Sources */,
 				DEBCFE2819F212870014D970 /* UIButton+WebCache.m in Sources */,
 				DE3A644719FE366D00BA4E59 /* KZJPhotoCell.m in Sources */,
-				DEEA7B9C1A033E4000B89DFE /* KZJ@MyCotentViewController.m in Sources */,
 				DE3A646D19FE36F100BA4E59 /* KZJMyHomeView.m in Sources */,
-				DED7C2EC1A0345980060A46C /* KZJWeiboCell.m in Sources */,
+				DED7C3081A038C5A0060A46C /* KZJ@MyCotentViewController.m in Sources */,
+				DED7C32B1A038E860060A46C /* KZJWeiboCell.m in Sources */,
 				DE3A64C519FE38E500BA4E59 /* QRCodeGenerator.m in Sources */,
 				DE3A64AD19FE37AE00BA4E59 /* KZJDealData.m in Sources */,
 				DE3A647819FE36FF00BA4E59 /* KZJRemindView.m in Sources */,
@@ -2061,7 +2061,7 @@
 				DEBCFDF719F2127A0014D970 /* MJRefreshConst.m in Sources */,
 				DE56698019FE3DFF00B4624E /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				DE56699819FE3EA800B4624E /* TumblrLikeMenuItem.m in Sources */,
-				DEEA7B9F1A033E4000B89DFE /* ZLJCostomTableViewCell.m in Sources */,
+				DED7C30B1A038C5A0060A46C /* ZLJCostomTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,10 +22,7 @@
     }
     return self;
 }
--(void)passTitle:(PassTitleText)passTItleTextBlock
-{
-    passTItleText = passTItleTextBlock;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,10 +36,8 @@
     self.myToolBar.items = @[self.atItem,self.searchHuaTiItem,self.moreItem];
     
    
-    [self passTitle:^(NSString *string) {
-        self.titleLabel.text = string;
-    }];
-//   self.titleLabel.text = self.titleText;
+    
+   self.titleLabel.text = self.titleText;
    
     if (self.commentContent.length >0)
     {

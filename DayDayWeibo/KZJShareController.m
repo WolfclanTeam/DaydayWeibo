@@ -395,8 +395,16 @@ NSString *const CollectionViewCellIdentifier = @"Cell";
         UIBarButtonItem *item7 = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(resignKeyboard)];
         toolBar.items = @[item1,item2,item3,item4,item5,item7];
     
-    
-    weiboContentTextView.text = inputContent;
+    if (weiboContent.length>0)
+    {
+        inputContent= weiboContent;
+         weiboContentTextView.text = inputContent;
+    }
+    else
+    {
+         weiboContentTextView.text = inputContent;
+    }
+  
     [weiboContentTextView becomeFirstResponder];
     
    

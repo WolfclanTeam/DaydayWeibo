@@ -211,6 +211,18 @@
             
         }
         
+        //点击转发
+        UITapGestureRecognizer *pushRetweetWeibo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRetweetWeibo:)];
+        pushRetweetWeibo.numberOfTapsRequired = 1;
+        [retweetView addGestureRecognizer:pushRetweetWeibo];
+        
+        
+        //点击头像
+        UITapGestureRecognizer *userHome = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushUserHome:)];
+        userHome.numberOfTapsRequired = 1;
+        [viewForHeadImage addGestureRecognizer:userHome];
+        
+        
         //
         weiboSingleImage.userInteractionEnabled = YES;
         weiboImages.userInteractionEnabled = YES;
@@ -297,7 +309,22 @@
     return self;
 }
 
+-(void)pushRetweetWeibo:(UITapGestureRecognizer*)sender
+{
+    NSDictionary *dict = @{@"retWeibo":[theWeiboDict objectForKey:@"retweeted_status"]};
+    NSNotification *pushRetWeibo = [[NSNotification alloc] initWithName:@"PUSHRETWEIBO" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:pushRetWeibo];
+}
 
+
+-(void)pushUserHome:(UITapGestureRecognizer*)sender
+{
+    NSDictionary *dict = @{@"userID":[[theWeiboDict objectForKey:@"user"] objectForKey:@"id"]};
+    NSNotification *pushUserHome = [[NSNotification alloc] initWithName:@"DETAILPUSHUSER" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:pushUserHome];
+}
+
+#pragma mark - 放大图片
 -(void)biggerAction:(UITapGestureRecognizer*)sender
 {
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -391,7 +418,31 @@
 
 -(void)retweetWeiboAction:(UIButton*)sender
 {
-    NSDictionary *dict = @{@"weiboID":[theWeiboDict objectForKey:@"id"]};
+    NSNumber *weiID = [theWeiboDict objectForKey:@"id"];
+    NSString *weiboID = [weiID stringValue];
+    NSString *weiboImageUrl;
+    if ([[theWeiboDict objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"])
+    {
+        weiboImageUrl = [[theWeiboDict objectForKey:@"retweeted_status"] objectForKey:@"thumbnail_pic"];
+    }else if ([theWeiboDict objectForKey:@"thumbnail_pic"])
+    {
+        weiboImageUrl = [theWeiboDict objectForKey:@"thumbnail_pic"];
+    }else
+    {
+        weiboImageUrl = [[theWeiboDict objectForKey:@"user"] objectForKey:@"profile_image_url"];
+    }
+    NSString *userID = [[theWeiboDict objectForKey:@"user"] objectForKey:@"screen_name"];
+    NSString *weiboText = [theWeiboDict objectForKey:@"text"];
+    NSString *retWeibo;
+    if ([theWeiboDict objectForKey:@"retweeted_status"])
+    {
+        retWeibo = [theWeiboDict objectForKey:@"text"];
+    }else
+    {
+        retWeibo = @"";
+    }
+
+    NSDictionary *dict = @{@"weiboID":weiboID,@"weiboImageUrl":weiboImageUrl,@"userID":userID,@"weiboText":weiboText,@"retWeibo":retWeibo};
     NSNotification *retNoti = [[NSNotification alloc] initWithName:@"DETAILRETWEIBO" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:retNoti];
 }
@@ -607,7 +658,7 @@
 -(void)replyAction:(UIButton*)sender
 {
     int num = sender.tag - 1000;
-    NSDictionary *dict = @{@"commentID":[[commentsArr objectAtIndex:num] objectForKey:@"id"]};
+    NSDictionary *dict = @{@"commentID":[[commentsArr objectAtIndex:num] objectForKey:@"id"],@"weiboID":[theWeiboDict objectForKey:@"id"]};
     NSNotification *replyNoti = [[NSNotification alloc] initWithName:@"REPLYCOMMENT" object:self userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:replyNoti];
     [bgView removeFromSuperview];

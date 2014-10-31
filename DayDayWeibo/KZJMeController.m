@@ -27,6 +27,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.delegate = self;
+     slideAnimationController  = [[SlideAnimation alloc] init];
+    
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"我";
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"navigationbar_background@2x"];
@@ -89,7 +92,7 @@
     myHomeView.ID = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"];
     self.hidesBottomBarWhenPushed = YES;
     self.navigationController.navigationBarHidden = YES;
-    [self.navigationController pushViewController:myHomeView animated:NO];
+    [self.navigationController pushViewController:myHomeView animated:YES];
 }
 //我的名片
 -(void)myCard
@@ -116,14 +119,14 @@
         {
             KZJWeiboView *weiboView = [[KZJWeiboView alloc] init];
             self.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:weiboView animated:NO];
+            [self.navigationController pushViewController:weiboView animated:YES];
         }else
         {
             KZJFansView*view = [[KZJFansView alloc]init];
             self.hidesBottomBarWhenPushed = YES;
             view.ID = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"];
             view.kind = [dict objectForKey:@"btnTitle"];
-            [self.navigationController pushViewController:view animated:NO];
+            [self.navigationController pushViewController:view animated:YES];
         }
     }
 }
@@ -146,7 +149,7 @@
         
     }else
     {
-        KZJLoginView*loginview = [[KZJLoginView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-113)withLabelTitle:@"你好" withImage:[UIImage imageNamed:@"accountmanage_add@2x"]];
+        KZJLoginView*loginview = [[KZJLoginView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-113)withLabelTitle:@"你好" withImage:[UIImage imageNamed:@"compose_slogan@2x"]];
         for (UIView*view in self.view.subviews)
         {
             [view removeFromSuperview];
@@ -210,7 +213,7 @@
     KZJSetView*setview = [[KZJSetView alloc]init];
     self.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController pushViewController:setview animated:NO];
+    [self.navigationController pushViewController:setview animated:YES];
     
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -219,6 +222,27 @@
     self.hidesBottomBarWhenPushed = NO;
 
 }
+
+#pragma mark - Navigation Controller Delegate
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+    
+    
+    BaseAnimation *animationController;
+    
+    animationController = slideAnimationController;
+    switch (operation) {
+        case UINavigationControllerOperationPush:
+            animationController.type = AnimationTypePresent;
+            return  animationController;
+        case UINavigationControllerOperationPop:
+            animationController.type = AnimationTypeDismiss;
+            return animationController;
+        default: return nil;
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

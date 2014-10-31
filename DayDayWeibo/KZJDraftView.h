@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "KZJShareController.h"
+#import "KZJCommentWeiboViewController.h"
 @interface KZJDraftView : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray*draftArray;
 }
+@property(retain,nonatomic)UITableView*draftTable;
 @end

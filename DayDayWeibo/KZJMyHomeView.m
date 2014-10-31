@@ -28,7 +28,7 @@
     [weiboList addHeaderWithTarget:self action:@selector(headerRefresh)];
     [weiboList headerBeginRefreshing];
     [weiboList addFooterWithTarget:self action:@selector(footerRefresh)];
-
+    weiboList.backgroundColor = [UIColor clearColor];
     KZJRequestData *dataManger = [KZJRequestData requestOnly];
     [dataManger startRequestData5:1 withID:ID];
     [self.view addSubview:weiboList];
@@ -239,6 +239,7 @@
 }
 -(void)headerRefresh
 {
+    NSLog(@"%d",self.view.subviews.count);
     page =1;
      KZJRequestData *datamanager = [KZJRequestData requestOnly];
     [datamanager startRequestData5:page withType:@"0" withID:ID];
