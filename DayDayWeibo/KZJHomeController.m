@@ -214,7 +214,7 @@
             NSArray*array =[dict objectForKey:@"statuses"];
             for (int i =0; i<[array count]; i++)
             {
-                [weibos addObject:[[dict objectForKey:@"statuses"] objectAtIndex:i]];
+                [weibos addObject:[array objectAtIndex:i]];
             }
             weiboList.dataArr = weibos;
             [weiboList footerEndRefreshing];

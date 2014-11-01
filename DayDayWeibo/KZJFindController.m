@@ -30,6 +30,8 @@
     
     self.navigationController.delegate =self;
     
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"54548050"];
+    [IFlySpeechUtility createUtility:initString];
     
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -58,7 +60,7 @@
     NSDictionary*dict = [notif userInfo];
     topicArray = [NSArray arrayWithArray:[dict objectForKey:[[dict allKeys] objectAtIndex:0]]];
 //    NSLog(@"%@",dict);
-    int num = arc4random_uniform([topicArray count]);
+    int num = arc4random_uniform((int)[topicArray count]);
     
     UIView*view =[[UIView alloc]initWithFrame:CGRectMake(0, 5, 260, 34)];
     view.tag = 1250;
@@ -236,7 +238,7 @@
         
         if ([topicArray count])
         {
-            int num = arc4random_uniform([topicArray count]);
+            int num = arc4random_uniform((int)[topicArray count]);
             textfield.placeholder = [NSString stringWithFormat:@"大家都在搜:%@",[topicArray[num]objectForKey:@"name"]];
         }
 
@@ -251,8 +253,44 @@
         }
     }else
     {
-        
+        iflyRecognizerView = [[IFlyRecognizerView alloc] initWithCenter:self.view.center];
+        iflyRecognizerView.delegate = self;
+        [iflyRecognizerView setParameter:@"iat" forKey: [IFlySpeechConstant IFLY_DOMAIN]]; //asr_audio_path保存录音文件名,如不再需要,设置value为nil表示取消,默认目录是documents
+        [iflyRecognizerView setParameter:@"asrview.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+        //启动识别服务
+        [iflyRecognizerView start];
     }
+}
+-(void)onResult:(NSArray *)resultArray isLast:(BOOL)isLast
+{
+    NSLog(@"-=====%@",resultArray);
+    NSString*all;
+    NSDictionary*str = [resultArray lastObject] ;
+    NSArray*array = [[[[str allKeys] lastObject] objectFromJSONString] objectForKey:@"ws"];
+    for (NSDictionary*dict in array)
+    {
+        NSArray*detail = [dict objectForKey:@"cw"];
+        NSDictionary*dict = [detail lastObject];
+        NSString*str1 = [dict objectForKey:@"w"];
+        if(all!=nil)
+        {
+            all = [NSString stringWithFormat:@"%@%@",all,str1];
+        }else
+        {
+            all = [NSString stringWithFormat:@"%@",str1];
+        }
+    }
+    if (all!=nil)
+    {
+        UITextField*textfield = (UITextField*)[self.navigationController.view viewWithTag:1252];
+        textfield.text = all;
+    }
+    NSLog(@"%@===%@",str,all);
+    [iflyRecognizerView cancel];
+}
+-(void)onError:(IFlySpeechError *)error
+{
+    NSLog(@"错误了");
 }
 -(void)doneAction:(id)sender
 {

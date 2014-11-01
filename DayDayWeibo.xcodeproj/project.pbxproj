@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0FE2588319FE4E3200783A90 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2588219FE4E3200783A90 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A55799611A04C52900B0BB07 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55799601A04C52900B0BB07 /* libSunFlower.a */; };
+		A55799631A04C59D00B0BB07 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A55799621A04C59D00B0BB07 /* libz.dylib */; };
+		A55799651A04C5A900B0BB07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55799641A04C5A900B0BB07 /* QuartzCore.framework */; };
 		A5682D8F1A01CC38009FEE52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5682D8E1A01CC38009FEE52 /* Images.xcassets */; };
 		A5682D911A01CD18009FEE52 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5682D901A01CD18009FEE52 /* Default@2x.png */; };
 		A5682D951A01DDA7009FEE52 /* ad_background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5682D921A01DDA7009FEE52 /* ad_background-568h@2x.png */; };
@@ -32,6 +35,11 @@
 		A56B71181A00C90800B51EAD /* KZJDraftView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B71171A00C90800B51EAD /* KZJDraftView.m */; };
 		A56B711B1A00CAF600B51EAD /* MapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B711A1A00CAF600B51EAD /* MapLocation.m */; };
 		A56B711D1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56B711C1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png */; };
+		A58CBDA61A04B9D40073CBB2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58CBDA51A04B9D40073CBB2 /* AVFoundation.framework */; };
+		A58CBDA81A04B9DF0073CBB2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58CBDA71A04B9DF0073CBB2 /* AddressBook.framework */; };
+		A58CBDAA1A04B9EB0073CBB2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58CBDA91A04B9EB0073CBB2 /* AudioToolbox.framework */; };
+		A58CBDAC1A04B9F40073CBB2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58CBDAB1A04B9F40073CBB2 /* SystemConfiguration.framework */; };
+		A58CBDAE1A04BB330073CBB2 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58CBDAD1A04BB330073CBB2 /* iflyMSC.framework */; };
 		DE33549C19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */; };
 		DE33549D19FE52D8005EA80C /* compose_pic_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */; };
 		DE33549F19FE5509005EA80C /* activity_icon_locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */; };
@@ -320,6 +328,10 @@
 /* Begin PBXFileReference section */
 		0FE2588119FE4E3200783A90 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		0FE2588219FE4E3200783A90 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		A557995F1A04C52900B0BB07 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
+		A55799601A04C52900B0BB07 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
+		A55799621A04C59D00B0BB07 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A55799641A04C5A900B0BB07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5682D8E1A01CC38009FEE52 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5682D901A01CD18009FEE52 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A5682D921A01DDA7009FEE52 /* ad_background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ad_background-568h@2x.png"; sourceTree = "<group>"; };
@@ -352,6 +364,12 @@
 		A56B71191A00CAF600B51EAD /* MapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocation.h; sourceTree = "<group>"; };
 		A56B711A1A00CAF600B51EAD /* MapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocation.m; sourceTree = "<group>"; };
 		A56B711C1A00ED1300B51EAD /* preview_save_icon_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_save_icon_highlighted@2x.png"; sourceTree = "<group>"; };
+		A58CBDA31A04B9B80073CBB2 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = ../../iOS_ui_1/lib/iflyMSC.framework; sourceTree = "<group>"; };
+		A58CBDA51A04B9D40073CBB2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A58CBDA71A04B9DF0073CBB2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		A58CBDA91A04B9EB0073CBB2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A58CBDAB1A04B9F40073CBB2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A58CBDAD1A04BB330073CBB2 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = DayDayWeibo/iflyMSC.framework; sourceTree = "<group>"; };
 		DE33549A19FE52D8005EA80C /* compose_pic_add_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add_highlighted@2x.png"; sourceTree = "<group>"; };
 		DE33549B19FE52D8005EA80C /* compose_pic_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_pic_add@2x.png"; sourceTree = "<group>"; };
 		DE33549E19FE5509005EA80C /* activity_icon_locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity_icon_locate@2x.png"; sourceTree = "<group>"; };
@@ -766,10 +784,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55799651A04C5A900B0BB07 /* QuartzCore.framework in Frameworks */,
+				A55799631A04C59D00B0BB07 /* libz.dylib in Frameworks */,
+				A58CBDAE1A04BB330073CBB2 /* iflyMSC.framework in Frameworks */,
+				A58CBDAC1A04B9F40073CBB2 /* SystemConfiguration.framework in Frameworks */,
+				A58CBDAA1A04B9EB0073CBB2 /* AudioToolbox.framework in Frameworks */,
+				A58CBDA81A04B9DF0073CBB2 /* AddressBook.framework in Frameworks */,
+				A58CBDA61A04B9D40073CBB2 /* AVFoundation.framework in Frameworks */,
 				A5682DA41A023F9F009FEE52 /* StoreKit.framework in Frameworks */,
 				DE9F75F81A0220C900FDA623 /* libiconv.dylib in Frameworks */,
 				A56B305B19FF3E0900141A2C /* MapKit.framework in Frameworks */,
 				A56B305919FF3E0400141A2C /* CoreLocation.framework in Frameworks */,
+				A55799611A04C52900B0BB07 /* libSunFlower.a in Frameworks */,
 				DE5669B319FE477B00B4624E /* libicucore.dylib in Frameworks */,
 				DEBCFDE219F2126D0014D970 /* libWeiboSDK.a in Frameworks */,
 				DEBCFDA819F2114A0014D970 /* CoreGraphics.framework in Frameworks */,
@@ -793,6 +819,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A557995E1A04C52900B0BB07 /* sunflower */ = {
+			isa = PBXGroup;
+			children = (
+				A557995F1A04C52900B0BB07 /* IFlyFlowerCollector.h */,
+				A55799601A04C52900B0BB07 /* libSunFlower.a */,
+			);
+			path = sunflower;
+			sourceTree = "<group>";
+		};
 		DE3A644119FE365500BA4E59 /* subVews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1017,6 +1052,14 @@
 		DEBCFDA419F2114A0014D970 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A55799641A04C5A900B0BB07 /* QuartzCore.framework */,
+				A55799621A04C59D00B0BB07 /* libz.dylib */,
+				A58CBDAD1A04BB330073CBB2 /* iflyMSC.framework */,
+				A58CBDAB1A04B9F40073CBB2 /* SystemConfiguration.framework */,
+				A58CBDA91A04B9EB0073CBB2 /* AudioToolbox.framework */,
+				A58CBDA71A04B9DF0073CBB2 /* AddressBook.framework */,
+				A58CBDA51A04B9D40073CBB2 /* AVFoundation.framework */,
+				A58CBDA31A04B9B80073CBB2 /* iflyMSC.framework */,
 				A5682DA31A023F9F009FEE52 /* StoreKit.framework */,
 				DE9F75F71A0220C900FDA623 /* libiconv.dylib */,
 				A56B305A19FF3E0900141A2C /* MapKit.framework */,
@@ -1125,6 +1168,7 @@
 		DEBCFDDD19F2123F0014D970 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				A557995E1A04C52900B0BB07 /* sunflower */,
 				DE3A64AE19FE38E500BA4E59 /* libqrencode */,
 				DEBCFE7619F212D30014D970 /* KZJMyTabBarController.h */,
 				DEBCFE7719F212D30014D970 /* KZJMyTabBarController.m */,
@@ -2069,6 +2113,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/.../.../lib",
+					"$(inherited)",
+					"$(PROJECT_DIR)/DayDayWeibo",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
 				INFOPLIST_FILE = "DayDayWeibo/DayDayWeibo-Info.plist";
@@ -2077,6 +2126,7 @@
 					"$(PROJECT_DIR)/DayDayWeibo/libWeiboSDK",
 					"/Users/yf02/Desktop/微博和/DaydayWeibo/DayDayWeibo/ZBarSDK",
 					"$(PROJECT_DIR)/DayDayWeibo/ZBarSDK",
+					"$(PROJECT_DIR)/DayDayWeibo/sunflower",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2089,6 +2139,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/.../.../lib",
+					"$(inherited)",
+					"$(PROJECT_DIR)/DayDayWeibo",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DayDayWeibo/DayDayWeibo-Prefix.pch";
 				INFOPLIST_FILE = "DayDayWeibo/DayDayWeibo-Info.plist";
@@ -2097,6 +2152,7 @@
 					"$(PROJECT_DIR)/DayDayWeibo/libWeiboSDK",
 					"/Users/yf02/Desktop/微博和/DaydayWeibo/DayDayWeibo/ZBarSDK",
 					"$(PROJECT_DIR)/DayDayWeibo/ZBarSDK",
+					"$(PROJECT_DIR)/DayDayWeibo/sunflower",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
