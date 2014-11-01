@@ -62,7 +62,8 @@
 {
    
     NSDictionary *dict = [note userInfo];
-    if ([[dict objectForKey:@"statuses"] count] ==0)
+    NSArray*array = [dict objectForKey:@"statuses"];
+    if ([array count] ==0)
     {
         JGProgressHUD *progress = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
         progress.position = JGProgressHUDPositionBottomCenter;

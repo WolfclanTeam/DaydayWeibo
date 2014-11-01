@@ -48,7 +48,8 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    return [titlesArray[section] count];
+    NSArray*array =titlesArray[section];
+    return [array count];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

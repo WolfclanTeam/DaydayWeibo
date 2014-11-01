@@ -478,11 +478,12 @@
     Weibocontent.frame = CGRectMake(10, 55, SCREENWIDTH-20, textViewContentHeight);
     
     //微博图片
-    if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count] == 0)
+    NSArray*pic_urlsArray = [[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"];
+    if ([pic_urlsArray count] == 0)
     {
         weiboImages.hidden = YES;
         weiboImgHeight = 0.0f;
-    }else if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count] == 1)
+    }else if ([pic_urlsArray count] == 1)
     {
         weiboImages.hidden = NO;
         [weiboImages.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -495,20 +496,20 @@
         [aImage sd_setImageWithURL:[[dataArr objectAtIndex:indexPath.row] objectForKey:@"thumbnail_pic"]];
         [weiboImages addSubview:aImage];
         
-    }else if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count] > 1)
+    }else if ([pic_urlsArray count] > 1)
     {
         [weiboImages.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         weiboImages.hidden = NO;
-        if ([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]%3 == 0)
+        if ([pic_urlsArray count]%3 == 0)
         {
-            weiboImgHeight = 100*[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]/3;
+            weiboImgHeight = 100*[pic_urlsArray count]/3;
         }else
         {
-            weiboImgHeight = 100*([[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]/3+1);
+            weiboImgHeight = 100*([pic_urlsArray count]/3+1);
         }
         
         weiboImages.frame = CGRectMake(10, 50+textViewContentHeight+10, 300, weiboImgHeight);
-        for (int i = 0; i<[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] count]; i++)
+        for (int i = 0; i<[pic_urlsArray count]; i++)
         {
             UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
             [AweiboImage sd_setImageWithURL:[NSURL URLWithString:[[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"pic_urls"] objectAtIndex:i] objectForKey:@"thumbnail_pic"]] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder.png"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
@@ -534,12 +535,13 @@
         CGFloat staContentHeight = retweetContent.optimumSize.height;
         retweetContent.frame = CGRectMake(10, 10, SCREENWIDTH-20, staContentHeight);
 //
-        if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count] == 0)
+        NSArray*retweeted_statusArray =[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"];
+        if ([retweeted_statusArray count] == 0)
         {
             weiboImages.hidden = YES;
             retweetImages.hidden = YES;
             statuHeight = staContentHeight+10;
-        }else if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count] == 1)
+        }else if ([retweeted_statusArray count] == 1)
         {
             [retweetImages.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             weiboImages.hidden = YES;
@@ -556,23 +558,23 @@
              }];
             [retweetImages addSubview:aImage];
             
-        }else if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count] > 1)
+        }else if ([retweeted_statusArray count] > 1)
         {
             [retweetImages.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             CGFloat statuImageHeight = 0.0f;
             weiboImages.hidden = YES;
             retweetImages.hidden = NO;
-            if ([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]%3 == 0)
+            if ([retweeted_statusArray count]%3 == 0)
             {
-                statuImageHeight = 100*[[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]/3;
+                statuImageHeight = 100*[retweeted_statusArray count]/3;
             }else
             {
-                statuImageHeight = 100*([[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]/3+1);
+                statuImageHeight = 100*([retweeted_statusArray count]/3+1);
             }
             
             retweetImages.frame = CGRectMake(10, staContentHeight+10, 300, statuImageHeight);
             statuHeight = staContentHeight+statuImageHeight+10;
-            for (int i = 0; i<[[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] count]; i++)
+            for (int i = 0; i<[retweeted_statusArray count]; i++)
             {
                 UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
                 [AweiboImage sd_setImageWithURL:[NSURL URLWithString:[[[[[dataArr objectAtIndex:indexPath.row] objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"] objectAtIndex:i] objectForKey:@"thumbnail_pic"]] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder.png"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)

@@ -161,7 +161,9 @@ JGProgressHUD *HUD;
         
        //[commentsDict objectForKey:@"created_at"]
 
-        [created_atArr addObject:[self fommatTime:[commentsDict objectForKey:@"created_at"]]];
+
+            [created_atArr addObject:[self fommatTime:[commentsDict objectForKey:@"created_at"]]];
+
         
         
         [xmlParser iosParseXML:[commentsDict objectForKey:@"source"]];
@@ -184,13 +186,15 @@ JGProgressHUD *HUD;
         
         [statusArr addObject:[commentsDict objectForKey:@"status"]];
         
+        NSNumber *statusIDNum =[[commentsDict objectForKey:@"status"] objectForKey:@"id"];
+        [userIdArr addObject:[statusIDNum stringValue]];
         
-        [userIdArr addObject:[[commentsDict objectForKey:@"status"] objectForKey:@"id"]];
-        
-        [CIDArr addObject:[commentsDict objectForKey:@"id"] ];
+        NSNumber *cidNum =[commentsDict objectForKey:@"id"];
+        [CIDArr addObject: [cidNum stringValue]];
         
     }
  
+    
 
     if ([HUD isVisible])
     {
@@ -209,7 +213,9 @@ JGProgressHUD *HUD;
     
     NSDateFormatter *getFormatter = [[NSDateFormatter alloc] init];
     [getFormatter setDateFormat:@"EEE MMM dd H:mm:ss Z yyyy"];
+    getFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] ;
      NSDate *inputDate = [getFormatter dateFromString:date];
+    
 
 
     [getFormatter setLocale:[NSLocale currentLocale]];
@@ -303,10 +309,10 @@ JGProgressHUD *HUD;
 {
     NSLog(@"回复");
     KZJCommentWeiboViewController *commentWeiboVC = [[KZJCommentWeiboViewController alloc] init];
-    NSNumber *cidNum =[CIDArr objectAtIndex:sender.tag];
-    commentWeiboVC.cid = [cidNum stringValue];
-    NSNumber *userIdNum = [userIdArr objectAtIndex:sender.tag];
-    commentWeiboVC.commentId = [userIdNum stringValue];
+    //NSNumber *cidNum =[CIDArr objectAtIndex:sender.tag];
+    commentWeiboVC.cid = [CIDArr objectAtIndex:sender.tag];
+    //NSNumber *userIdNum = [userIdArr objectAtIndex:sender.tag];
+    commentWeiboVC.commentId = [userIdArr objectAtIndex:sender.tag];
     commentWeiboVC.titleText = @"回复评论";
     
     [self.navigationController pushViewController:commentWeiboVC animated:YES];

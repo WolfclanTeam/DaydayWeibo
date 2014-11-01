@@ -84,10 +84,10 @@
 -(void)keyboardDidHide
 {
     
-    [self.navigationController popViewControllerAnimated:YES];
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
+   // [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 //#pragma mark commentTranspondMethod 重写父类方法
 //-(void)commentTranspondMethod

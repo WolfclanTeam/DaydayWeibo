@@ -85,11 +85,12 @@
         
         CGFloat weiboImageHeight = 0.0f;
         //微博图片
-        if ([[weiboDict objectForKey:@"pic_urls"] count] == 0)
+        NSArray*pic_urlsarray =[weiboDict objectForKey:@"pic_urls"];
+        if ([pic_urlsarray count] == 0)
         {
             weiboImageHeight = 0.0f;
             NSLog(@"无图");
-        }else if ([[weiboDict objectForKey:@"pic_urls"] count] == 1)
+        }else if ([pic_urlsarray count] == 1)
         {
             weiboSingleImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 50+weiboContentHeight, 100, 100)];
             UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
@@ -105,19 +106,19 @@
             }];
             CGSize imageSize = [GetNetImageSize downloadImageSizeWithURL:[NSURL URLWithString:[weiboDict objectForKey:@"bmiddle_pic"]]];
             weiboImageHeight = imageSize.height/imageSize.width*300;
-        }else if ([[weiboDict objectForKey:@"pic_urls"] count]>1)
+        }else if ([pic_urlsarray count]>1)
         {
 
-            if ([[weiboDict objectForKey:@"pic_urls"] count]%3 == 0)
+            if ([pic_urlsarray count]%3 == 0)
             {
-                weiboImageHeight = 100*[[weiboDict objectForKey:@"pic_urls"] count]/3;
+                weiboImageHeight = 100*[pic_urlsarray count]/3;
             }else
             {
-                weiboImageHeight = 100*([[weiboDict objectForKey:@"pic_urls"] count]/3+1);
+                weiboImageHeight = 100*([pic_urlsarray count]/3+1);
             }
             
             weiboImages = [[UIView alloc] initWithFrame:CGRectMake(0, 50+weiboContentHeight, 300, weiboImageHeight)];
-            for (int i = 0; i<[[weiboDict objectForKey:@"pic_urls"] count]; i++)
+            for (int i = 0; i<[pic_urlsarray count]; i++)
             {
                 UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
                 [AweiboImage sd_setImageWithURL:[NSURL URLWithString:[[[weiboDict objectForKey:@"pic_urls"] objectAtIndex:i] objectForKey:@"thumbnail_pic"]] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder.png"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
@@ -155,12 +156,13 @@
             retweetContent.frame = CGRectMake(10, 0, SCREENWIDTH-20, retweetContentHeight);
             
             //转发微博图片
-            if ([[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count] == 0)
+            NSArray*retweeted_statusArray = [[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ];
+            if ([retweeted_statusArray count] == 0)
             {
                 retweetImageHeight = 0.0f;
                 NSLog(@"无图");
                 retweetView.frame = CGRectMake(10, 50+weiboContentHeight, SCREENWIDTH-20, retweetContentHeight);
-            }else if ([[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count] == 1)
+            }else if ([retweeted_statusArray count] == 1)
             {
                 retweetSingleImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, retweetContentHeight, 100, 100)];
                 UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
@@ -178,19 +180,19 @@
                 retweetImageHeight = imageSize.height/imageSize.width*300;
                 [retweetView addSubview:retweetSingleImage];
                 retweetView.frame = CGRectMake(0, 50+weiboContentHeight, SCREENWIDTH, retweetContentHeight+retweetImageHeight);
-            }else if ([[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count]>1)
+            }else if ([retweeted_statusArray count]>1)
             {
                 
-                if ([[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count]%3 == 0)
+                if ([retweeted_statusArray count]%3 == 0)
                 {
-                    retweetImageHeight = 100*[[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count]/3;
+                    retweetImageHeight = 100*[retweeted_statusArray count]/3;
                 }else
                 {
-                    retweetImageHeight = 100*([[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count]/3+1);
+                    retweetImageHeight = 100*([retweeted_statusArray count]/3+1);
                 }
                 
                 retweetImages = [[UIView alloc] initWithFrame:CGRectMake(0, retweetContentHeight, 300, retweetImageHeight)];
-                for (int i = 0; i<[[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ]count]; i++)
+                for (int i = 0; i<[retweeted_statusArray count]; i++)
                 {
                     UIImageView *AweiboImage = [[UIImageView alloc] initWithFrame:CGRectMake(100*(i%3), 100*(i/3), 100, 100)];
                     [AweiboImage sd_setImageWithURL:[NSURL URLWithString:[[[[weiboDict objectForKey:@"retweeted_status"] objectForKey:@"pic_urls" ] objectAtIndex:i] objectForKey:@"thumbnail_pic"]] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder.png"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)

@@ -233,10 +233,11 @@
         
     }else if ([request.tag isEqualToString:@"998"])
     {
-        if ([[result objectFromJSONString] count]>0)
+        NSArray*resultArray = [result objectFromJSONString];
+        if ([resultArray count]>0)
         {
-            countNum = [[result objectFromJSONString] count];
-            peopleArray = [[NSMutableArray alloc]initWithCapacity:[[result objectFromJSONString] count]];
+            countNum = (int)[resultArray count] ;
+            peopleArray = [[NSMutableArray alloc]initWithCapacity:[resultArray count]];
             
             //            countNum1 = [[result objectFromJSONString] count];
             //            relationArray = [[NSMutableArray alloc]initWithCapacity:[[result objectFromJSONString] count]];
@@ -484,9 +485,10 @@
     int i =0;
     for (NSDictionary*dict in [[result objectFromJSONString] objectForKey:@"statuses"] )
     {
-        if ([[dict objectForKey:@"pic_urls"] count]>0)
+        NSArray*pic_urlsArray =[dict objectForKey:@"pic_urls"];
+        if ([pic_urlsArray count]>0)
         {
-            i=i+[[dict objectForKey:@"pic_urls"] count];
+            i=i+(int)[pic_urlsArray count];
             for (NSString*str in [dict objectForKey:@"pic_urls"])
             {
                 [photoArray addObject:str];
@@ -510,12 +512,13 @@
     //    NSLog(@"%d",[info.photoNum intValue]);
     
     //    NSLog(@"%d",[[[result objectFromJSONString] objectForKey:@"statuses"] count] );
-    if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]==100)
+    NSArray*statusesArray = [[result objectFromJSONString] objectForKey:@"statuses"];
+    if ([statusesArray count]==100)
     {
         
         [self startRequestData5:++pageNum withID:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
     }
-    if ([[[result objectFromJSONString] objectForKey:@"statuses"] count]<100)
+    if ([statusesArray count]<100)
     {
         pageNum =1;
         //        NSLog(@"%@",photoArray);

@@ -27,10 +27,7 @@
 {
     [super viewDidLoad];
     whoseWeibo = YES;
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]!=nil)
-    {
-        info =[[[KZJRequestData alloc]init]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
-    }
+   
     // Do any additional setup after loading the view.
     
     listArr = @[@"首页",@"好友圈",@"我的微博",@"周边微博"];
@@ -71,6 +68,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retweetWeibo:) name:@"RETWEIBO" object:nil];
     
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]!=nil)
+    {
+        info =[[[KZJRequestData alloc]init]searchEntityName:@"UserInformation" uid:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]];
+        
+    }
     btnTitleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, self.navigationItem.titleView.frame.size.height)];
     btnTitleView.titleLabel.text = info.name;
     [btnTitleView setTitle:info.name forState:UIControlStateNormal];
@@ -90,6 +92,7 @@
     
     [self.navigationController.view addSubview:downMenuButton];
 }
+
 -(void)dropDownMenuMethod
 {
   
@@ -137,7 +140,7 @@
     {
         whoseWeibo = YES;
         [weiboList headerBeginRefreshing];
-        NSLog(@"123");
+       
     }else if (sender.tag == 2)
     {
         whoseWeibo = NO;
@@ -147,9 +150,9 @@
 }
 -(void)moreBtnAction:(id)sender
 {
-    ZBarViewController *zbar = [[ZBarViewController alloc] init];
-    UINavigationController *nav_zbar = [[UINavigationController alloc] initWithRootViewController:zbar];
-    [self presentViewController:nav_zbar animated:YES completion:nil];
+//    ZBarViewController *zbar = [[ZBarViewController alloc] init];
+//    UINavigationController *nav_zbar = [[UINavigationController alloc] initWithRootViewController:zbar];
+//    [self presentViewController:nav_zbar animated:YES completion:nil];
 }
 
 -(void)retweetWeibo:(NSNotification*)noti
@@ -162,7 +165,11 @@
     retweetWeibo.urlString = [dict objectForKey:@"weiboImageUrl"];
     retweetWeibo.Id = [dict objectForKey:@"weiboID"];
     retweetWeibo.status = [dict objectForKey:@"retWeibo"];
-   [self.navigationController pushViewController:retweetWeibo animated:YES];
+//   [self.navigationController pushViewController:retweetWeibo animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:retweetWeibo];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
     self.tabBarController.tabBar.hidden = YES;
 }
 
@@ -204,7 +211,8 @@
         [datamanager getNewWeibo:[NSString stringWithFormat:@"%d",page]];
         [datamanager passWeiboData:^(NSDictionary *dict) {
             NSMutableArray *weibos = [NSMutableArray arrayWithArray:weiboList.dataArr];
-            for (int i =0; i<[[dict objectForKey:@"statuses"] count]; i++)
+            NSArray*array =[dict objectForKey:@"statuses"];
+            for (int i =0; i<[array count]; i++)
             {
                 [weibos addObject:[[dict objectForKey:@"statuses"] objectAtIndex:i]];
             }
@@ -219,7 +227,8 @@
         [datamanager passWeiboData:^(NSDictionary *dict)
          {
              NSMutableArray *weibos = [NSMutableArray arrayWithArray:weiboList.dataArr];
-             for (int i =0; i<[[dict objectForKey:@"statuses"] count]; i++)
+             NSArray*array =[dict objectForKey:@"statuses"];
+             for (int i =0; i<[array count]; i++)
              {
                  [weibos addObject:[[dict objectForKey:@"statuses"] objectAtIndex:i]];
              }
@@ -234,7 +243,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    
+        
+    
 }
 
 -(void)pushDetailWeibo:(NSNotification*)noti

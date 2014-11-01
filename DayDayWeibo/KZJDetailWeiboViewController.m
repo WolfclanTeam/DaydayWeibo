@@ -187,7 +187,8 @@
     NSString *page = [NSString stringWithFormat:@"%d",num];
     [datamanager getNewComment:str page:page];
     [datamanager passWeiboData:^(NSDictionary *dict) {
-        if ([[dict objectForKey:@"comments"] count] ==0)
+        NSArray*array =[dict objectForKey:@"comments"];
+        if ([array count] ==0)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有更多评论了" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
